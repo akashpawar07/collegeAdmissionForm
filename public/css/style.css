@@ -1,0 +1,850 @@
+body {
+    padding: 0px 0px 0px 200px;    
+}
+
+
+/* form css */
+form {
+    width: 800px;
+    background-color: rgba(211, 211, 211, 0.4);
+    height: auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.header {
+    height: 40px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    position: sticky;
+    top: 0px;
+    /* background-color: rgba(7, 8, 15, 0.662); */
+    background-color: rgb(69, 67, 67);
+    border-radius: 5px;
+}
+
+.addMissiontxt {
+    margin: 5px;
+    width: 247px;
+    font-size: auto;
+    color: #ffffff;
+}
+
+.acadmicTxt {
+    margin: 14px 0px 0px -2px;
+    width: 60%;
+    color: white;
+}
+
+.formno {
+    width: 100px;
+    height: 40px;
+    border-left: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#number {
+    width: 50px;
+    border: 0px;
+    background: transparent;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+/* .collageinfomation */
+.collageinfo {
+    height: 140px;
+    width: 90%;
+    margin-top: 6px;
+    
+}
+
+.collage {
+    text-align: center;
+    font-size:medium;
+    margin-top: -135px;
+    margin-left: 45px;
+    /* line-height: 17px; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-style: italic;
+}
+
+.line{
+    width: 81.5%;
+   margin-left: 0px;
+}
+
+.cphoto img {
+    height: 120px;
+    width: 120px;
+    margin: 5px 0px 0px 0px;
+    border-radius: 5px;
+}
+
+
+/* photograf section  */
+.photo{
+    /* background-color: cadetblue; */
+    height: 150px;
+    width: 140px;
+    /* border: 1.5px solid black; */
+    /* background-color: rgb(65, 55, 128); */
+    margin: 0px;
+    margin-top: -150px;
+    margin-left: 82%;
+    border-radius: 5px;
+    padding: 1px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    
+}
+.photo img{
+    width: 99%;
+    height: 80%;
+}
+.photo input{
+    display: none;
+}
+
+.photo label{
+    background-color: lightslategrey;
+    color: white;
+    padding: 4px;
+    margin-top: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
+}
+.photo label:hover{
+    background-color: rgb(66, 116, 165);
+    color: white;
+}
+.photo label:active{
+    background-color: green;
+    color: white;
+}
+
+/* signature section ..................................................................... */
+.sign {
+    height: 65px;
+    width: 130px;
+    /* border: 1.5px solid black; */
+    border-radius: 5px;
+    margin-top: -35px;
+    margin-left: 82%;
+    /* overflow: hidden;
+    text-align: center; */
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.sign img{
+    width: 99%;
+    height: 68%;
+}
+
+.sign input{
+    display: none;
+}
+
+.sign label{
+    background-color: lightslategrey;
+    color: white;
+    padding: 4px;
+    margin-top: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sign label:hover{
+    background-color: rgb(66, 116, 165);
+    color: white;
+}
+.sign label:active{
+    background-color: green;
+    color: white;
+}
+
+
+
+
+/* course section  */
+.course {
+    height: 50px;
+    width: 670px;
+    margin-top: -10px;
+    margin-left: 5px;
+    margin-right: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 15.8px; 
+}
+
+.para {
+    margin: 0px;
+    margin-top: 16px;
+}
+
+
+/*form input contant part  */
+.content {
+    width: 795px;
+    border-radius: 5px;
+
+}
+
+
+.namediv {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-transform: capitalize;
+    /* border: 1px solid red; */
+
+}
+
+.namediv .first {
+    width: 42%;
+}
+
+.namediv div input {
+    width: 99%;
+    padding: 8px;
+    margin-top: -5px;
+}
+
+
+.name {
+    margin-left: 10px;
+}
+
+.inputField {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.inputField .child {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 11px;
+    width: 99%;
+}
+
+.inputField fieldset {
+    width: 41%;
+}
+
+
+.content .items6 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* border: 1px solid red; */
+
+}
+
+.content .items6 .item-list {
+    width: 40%;
+    /* border: 1px solid orange; */
+}
+
+.content .items6 input {
+    width: 97%;
+    padding: 8px;
+    margin-top: -5px;
+}
+
+.content #last-child {
+    /* border: 1px solid orange; */
+    width: 88%;
+    padding: 0px 8px;
+    margin-left: 10px;
+}
+
+
+/* Certificate list section  */
+.Certificate {
+    border: 2px solid rgb(171, 129, 129);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.ol {
+    line-height: 30px;
+}
+
+.Orignal {
+    font-size: x-small;
+}
+
+
+.container-button{
+    display: flex;
+    justify-content: space-evenly;
+}
+#disp{
+    padding: 2px;
+    /* position: relative; */
+    /* left: 35%; */
+    border: 1px solid rgb(23, 19, 23);
+    border-radius: 4px;
+    color: #388e5f;
+}
+/* button for next page  */
+.next button {
+    /* margin-top: 1%; */
+    /* margin-left: 690px;  */
+    border: 1.5px solid violet;
+    border-radius: 4px;
+}
+
+a{
+    text-decoration: none;
+    color:#388e5f ;
+    font-size: medium;
+}
+
+/* .next button:hover {
+    background-image: url(/images/next2.jpeg);
+    background-size:contain;
+} */
+
+/* .nextbutton{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    margin-left: -32px;
+    padding-top: 20px;
+    margin-top: -7px;
+} */
+
+/* .nextbutton:hover {
+    visibility: hidden;
+    opacity: 0;
+} */
+
+
+/* ...................... PREVIEW SECTION .................... */
+.preview-header{
+    display: flex;
+    flex-direction: column;
+    height: 190px;
+    width: 99%;
+    border-bottom: 1px dashed black;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+.preview-header .mainTitle{
+    height: 40px;
+    font-size: 22px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    text-align: center;
+    border-bottom: 1px solid black;
+    background-color: rgba(187, 184, 184, 0.388);
+}
+
+.preview-header .clgContent{
+    display: flex;
+    gap: 5px;
+    height: 160px;
+}
+.preview-header .clgContent .collegeLogo{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+.preview-header .clgContent .collegeLogo img{
+    height: 130px;
+}
+.preview-header .clgContent .collegeInfo{
+    width: 80%;
+}
+
+
+.preview-header .clgContent .collegeInfo .item1{
+    text-align: center;
+    width: 90%;
+}
+
+.preview-header .clgContent .collegeInfo .item2{
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -8px;
+}
+.preview-header .clgContent .collegeInfo .item3{
+    text-align: center;
+    margin-top: -8px;
+}
+.preview-header .clgContent .collegeInfo .item4{
+    text-align: center;
+    margin-top: -8px;
+}
+
+
+#preview_from {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 66%;
+    height: auto;
+    top: 10px;
+    padding: 10px;
+    position: absolute;
+    display: none;
+    overflow:hidden;
+    background-color: rgb(254, 249, 249);
+    border: 1px dashed black;
+    box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
+}
+
+#preview_from .name-section {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    width: 98%;
+    /* border: 1px solid rgb(0, 42, 255); */
+}
+#preview_from .name-section .namesOnly{
+    width: 48%;
+
+}
+#preview_from .name-section .namesOnly div{
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 98%;
+    /* border: 1px solid rebeccapurple; */
+}
+
+#preview_from .name-section .namesOnly div input{
+    padding: 7px;
+    margin: 3px 0px 3px;
+    width: 40%;
+    padding-left: 4px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    /* border-bottom: 1px solid black;v */
+    
+}
+#preview_from .name-section .photo-sign{
+    width: 47%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: center;
+    text-align: center;
+    /* border: 1px solid rgb(205, 17, 17); */
+}
+
+#preview_from .name-section .photo-sign .profile{
+    width: 180px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid black;
+}
+
+#preview_from .name-section .photo-sign .previewsign{
+    width: 180px;
+    border: 0.5px solid black;
+}
+#preview_from .name-section .photo-sign .profile img{
+    height: 165px;
+    width: auto;
+}
+#preview_from .name-section .photo-sign .previewsign img{
+    height: 60px;
+    width: 178px;
+    padding: 1px;
+}
+
+
+#preview_from .other-section{
+    width: 99%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+#preview_from .other-section .items-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6px;
+    width: 55%;
+    margin-left: 10px;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+#preview_from .other-section .items-section div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3px 0px;
+    /* border: 1px solid olive; */
+}
+#preview_from .other-section .items-section div input{
+    width: 44%;
+    padding: 6px;
+    margin: 3px 0px;
+    padding-left: 4px;
+    border: none;
+    outline: none;
+    /* border-bottom: 1px solid black; */
+    background-color: transparent;
+}
+
+.otherDetails{
+     width: 99%; 
+     height: auto;
+     overflow: hidden; 
+     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+    /* border: 1px solid red; */
+}
+
+
+.otherDetails .item-section2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 6px;
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+.otherDetails .item-section2 div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 48%;
+    /* outline: none;
+    border: none; */
+    /* border-bottom: 1px solid orange; */
+}
+
+.item-section2 div span{
+    font-weight: 400;
+}
+.item-section2 input{
+    width: 55%;
+    padding: 6px;
+    margin: 3px 0px;
+    padding-left: 4px;
+    border: none;
+    outline: none;
+    background: transparent;    
+}
+
+#cancelpoppup{
+    cursor: pointer;
+    color: rgb(223, 18, 18);
+    position: absolute;
+    bottom: 1px;
+    right: 15px;
+}
+
+.blur{
+    filter: blur(10px);
+}
+
+#preview-Btn{
+    color: #65b5f6;
+    background-color: transparent;
+    border: 1px solid #14171b;
+    border-radius: 4px;
+    pad: 7px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+#preview_from .certificates-deatils {
+    width: 99%;
+    height: auto;
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+    /* background-color: red; */
+}
+
+
+#preview_from .certificates-deatils .item-section3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6px;
+    width: 55%;
+
+}
+#preview_from .certificates-deatils .item-section3 div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin: 3px 0px; */
+    /* border: 1px solid olive; */
+    /* background-color: red; */
+}
+#preview_from .certificates-deatils .item-section3 div input{
+    width: 90%;
+    padding: 6px;
+    margin: 3px 0px;
+    margin-right: 35%;
+    padding-left: 4px;
+    border: none;
+    outline: none;
+    /* border-bottom: 1px solid black; */
+    background-color: transparent;
+    /* background-color: red; */
+}
+
+
+
+
+
+
+
+
+/* @media print{
+    body*{
+        visibility: hidden;
+    }
+    #preview_from, #preview_from*{
+        visibility: hidden;
+    }
+    #preview_from{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+} */
+
+
+
+/* media query section ..............................................................*/
+@media screen and (min-width:200px) and (max-width:480px) {
+    body {
+        padding: 0px;
+        margin: 0.5px;
+        width: 50vw;
+    }
+
+    .addMissiontxt{
+        width: 480px;
+        font-size: 35px;
+    }
+
+    .acadmicTxt{
+        font-size: 23.5px;
+    }
+
+
+    /* .collage{
+        font-size: 17px;
+        width: 100%;
+        margin: 0px;
+        margin-top: -130px;
+        margin-left: 25px;
+        line-height: 16px;
+    } */
+    
+  
+    /* .collage h1{
+        background-color: red;
+        font-size: 40px;
+    }
+  .line{
+      background-color: red;
+      width: 100%;
+     margin-top: 40px;
+  }
+    .cphoto{
+       visibility: hidden;
+    } */
+
+
+    .photo{
+        /* visibility: hidden; */
+        /* height: 300px;
+        width: 140px; */
+    }
+
+    .sign{
+        /* visibility: hidden; */
+        position: relative;
+        top: -40px;
+    }
+
+    .course {
+        height: 100px;
+        width: 720px;
+        /* margin-top: -10px; */
+        /* margin-left: 5px; */
+        /* margin-right: 50px;  */
+        /* display: flex;
+        flex-wrap: wrap;
+        gap: 1px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 24px;  */
+        font-size: 24px;
+    }
+     
+
+    .inputField {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        font-size: 25px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .same {
+        font-size: 20px;
+        width: 200%;
+        padding: 10px;
+    }
+
+    .hrline{
+        position: relative;
+        top: 50px;
+    }
+  .name{
+    position: relative;
+    top: 40px;
+    font-size:25px ;
+  }
+    .namediv {
+        flex-direction: column;
+        padding: 10px;
+        font-size:25px ;
+    }
+
+    .namediv .first {
+        width: auto;
+        padding: 10px;
+    }
+
+    .namediv div input {
+        width: 96%;
+        padding: 10px;
+        margin-top: -10px;
+    }
+
+    .content .items6 {
+        width: 98%;
+        flex-direction: column;
+        padding: 10px;
+        /* border: 1px solid rebeccapurple; */
+
+
+    }
+
+    .content .items6 .item-list {
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        padding: 5px;
+        /* border: 1px solid purple; */
+        /* border: 1px solid orange; */
+    }
+
+    .content .items6 input {
+        width: 98%;
+        padding: 10px;
+
+    }
+
+    .content #last-child {
+        margin-left: -3px; 
+    }
+
+    fieldset {
+        margin: 0px 80px 0px 55px;
+    }
+
+    .child fieldset {
+        width: 240px;
+        height: 70px;
+    }
+
+    fieldset #date {
+        width: 150px;
+    }
+
+    .Certificate{
+        font-size: 28px;
+        padding: 20px;
+    }
+
+    #preview_from {
+        width: 225%;
+        height: auto;
+        left: 7px;
+    }
+
+    #preview-Btn{
+        /* display: none; */
+        font-size:30px;
+        border-radius: 20px;
+    }
+
+    .next button a{
+        font-size:35px;
+    }
+    .next button{
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+    #disp{
+       font-size: 30px;
+       border-radius: 10px;
+       padding: 10px;
+    }
+}

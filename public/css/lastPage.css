@@ -1,0 +1,728 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    background-color: rgba(159, 156, 156, 0.553);
+    border: 2px solid black;
+    margin: auto;
+    width: 50vw;
+    padding: 10px;
+}
+
+
+/* Heading section ......................................................... */
+#heading {
+    margin-top: 5px;
+    text-align: center;
+    color: red;
+}
+
+.ac_year {
+    text-align: center;
+    font-size: 18px;
+    margin-left: -10px;
+
+}
+
+#accYear {
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.676);
+    outline: none;
+    text-align: center;
+    font-weight: 500;
+    font-size: 17px;
+    background-color: transparent;
+}
+
+.instruction {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    display: flex;
+    font-weight: bold;
+}
+
+.instruction p {
+    color: red;
+    margin-left: 14px;
+}
+
+/* Name section ............................................................................ */
+.name-setion {
+    height: auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+
+.name-setion .name,
+.fatherName,
+.surName {
+    width: 98%;
+    flex-direction: column;
+    padding: 0px 6px;
+}
+
+.name-setion .error {
+    color: red;
+    margin-left: 4px;
+    font-size: 14px;
+}
+
+.name-setion input {
+    padding: 8px 0px 8px 10px;
+    font-size: 15px;
+    width: 600px;
+    margin-bottom: 4px;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    text-transform: uppercase;
+    caret-color: red;
+    color: rgb(0, 0, 0);
+    background-color: white;
+}
+
+.name-setion input:focus {
+    box-shadow: 0px 0px 1px 1.5px #151855;
+}
+
+.name-setion p {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+
+/* DOB, gender and blood group section .................................... */
+.DOB-BLOODG {
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* box-sizing: border-box; */
+    justify-content: space-evenly;
+    /* border: 1px solid red;    */
+}
+
+.DOB-BLOODG input,
+select {
+    padding: 6px;
+    margin-top: -4px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+
+
+/* checkboxes and multiple options to be select sections */
+.checkboxes {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    /* border: 2px solid red; */
+}
+
+.checkboxes #course,
+#class,
+#branches {
+
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.checkboxes .course .course-item {
+    display: flex;
+    padding: 5px;
+    gap: 20px;
+    margin-left: 30px;
+}
+
+.checkboxes .class .class-item {
+    display: flex;
+    gap: 20px;
+    margin-left: 30px;
+}
+
+.checkboxes .branches .branch-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-left: 30px;
+}
+
+#other {
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.676);
+    outline: none;
+    text-align: center;
+    font-weight: 500;
+    font-size: 17px;
+    background-color: transparent;
+}
+
+
+.main .contact-section {
+    padding: 0px 10px 0px;
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 17px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+.contact-section .same {
+    width: 100%;
+    padding: 0px 5px;
+    /* border: 1px solid purple; */
+}
+
+.contact-section i {
+    color: red;
+    margin-left: 4px;
+    font-size: 14px;
+}
+
+.contact-section .same input {
+    width: 97%;
+    padding: 10px;
+    outline: none;
+    margin-top: -12px;
+    border: 1px solid rgb(77, 72, 72);
+    background-color: white;
+    border: none;
+}
+
+.contact-section input:focus {
+    box-shadow: 0px 0px 1px 1.5px #151855;
+}
+
+.contact-section textarea {
+    background-color: transparent;
+    padding: 7px;
+    border: 1px solid black;
+    width: 98%;
+    text-transform: uppercase;
+    background-color: white;
+}
+
+.main .button {
+    margin-left: 20px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.main .button input {
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin: 8px 18px 0px -3px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.584);
+}
+
+.main .button input:hover {
+    background-color: rgb(241, 217, 217);
+}
+
+.main .button #submit{
+    background-color: rgb(37, 110, 37);
+    color: white;
+}
+
+.main .button #reset {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+
+
+
+/* .................................... buttons ............................................ */
+
+.prev button {
+    margin-top: 1%;
+    margin-left: 3%;
+    padding: 3px;
+    border: 1px solid violet;
+    border-radius: 4px;
+}
+
+.prev button a{
+    text-decoration: none;
+    color:#527fa5;
+    font-size:medium;
+    background: transparent;
+}
+
+/* .prev button {
+    margin-top: 3%;
+    margin-left: 4%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.prevbutton {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    margin-left: -32px;
+    padding-top: 20px;
+    margin-top: -7px;
+}
+
+.prev button:hover {
+    background-image: url(/images/back.png);
+    background-size: cover;
+}
+
+
+.prevbutton:hover {
+    visibility: hidden;
+    opacity: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+} */
+
+
+
+
+
+/* ...................... PREVIEW SECTION .................... */
+
+
+
+#preview_from {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 810px;
+    top: 7px;
+    padding: 20px;
+    position: absolute;
+    left: 295px;
+    display: none;
+    overflow:hidden;
+    background-color: rgb(255, 255, 255);
+    border: 1px dashed black;
+    box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
+}
+
+/* .content2 input{
+  width: auto;
+} */
+
+
+.preview input{
+    /* background-color: #527fa5; */
+    border: none;
+    outline: none;
+    font-weight: bold;
+}
+
+
+#cancelpoppup{
+    cursor: pointer;
+    color: rgb(223, 18, 18);
+    position: absolute;
+    bottom: 1px;
+    right: 15px;
+}
+
+
+.blur{
+    filter: blur(10px);
+}
+
+
+#preview-Btn{
+    color: #0a0c0e;
+    /* width: auto; */
+    background-color: transparent;
+    border: 1px solid #0c0e0f;
+    border-radius: 4px;
+    pad: 7px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: all 0.3s ease-in-out;
+    margin: 10px;
+}
+
+.name-setion2{
+   position: relative;
+    /* background-color: red; */
+    left: 15px;
+}
+
+
+#FNAME, #MNAME, #SNAME{
+    position: relative;
+    left: 30%;
+    bottom: 35px;
+    /* background-color: red; */
+}
+
+.fatherName2{
+    position: relative;
+    bottom: 30px;
+    /* background-color: red; */
+}
+
+.SurName{
+    position: relative;
+    bottom: 60px;
+    /* background-color: red; */
+}
+
+.DOB2{
+    position: relative;
+    bottom: 110px;
+    left: -20px;
+}
+
+#DATE{
+    position: relative;
+    left: 142%;
+    bottom: 35px;
+}
+
+
+.gender2{
+    position: relative;
+    bottom: 70px;
+    left: -175px;
+}
+
+#GENDER{
+    position: relative;
+    left: 99%;
+    bottom: 35px;
+}
+
+.bloodGroup2{
+    position: relative;
+    bottom: 30px;
+    left: -390px;
+}
+
+#B-GROUP{
+    position: relative;
+    left: 99%;
+    bottom: 35px;
+}
+
+.midline{
+    position: relative;
+    bottom: 70px;
+}
+
+.course2{
+    position: relative;
+    bottom: 90px;
+    left: 8px;
+}
+
+#course-name{
+    position: relative;
+    left: 30%;
+    bottom: 37px;
+}
+
+.class2{
+    position: relative;
+    bottom: 140px;
+    left: 8px;
+}
+
+#class-name{
+    position: relative;
+    left: 29%;
+    bottom: 37px;
+}
+
+.branch2{
+    position: relative;
+    bottom: 190px;
+    left: 8px;
+}
+
+#branch-name{
+    position: relative;
+    left: 30%;
+    bottom: 37px;
+}
+
+
+.midline2{
+    position: relative;
+    bottom: 220px;
+}
+
+.contact-section2{
+    position: relative;
+    bottom: 200px;
+    left: 10px;
+line-height: 0.1%;
+}
+
+#SCONTACT{
+    position: relative;
+    left: 40%;
+    bottom: 24px;
+}
+
+#PCONTACT{
+    position: relative;
+    left: 40%;
+    bottom: 24px;
+}
+
+#ADDRESS{
+    font-weight: bold;
+}
+
+/* ............................... MEDIA QUERRY SECTION START ................................... */
+
+@media only screen and (min-width:200px) and (max-width:480px) {
+    body {
+        /* background-color: rgba(159, 156, 156, 0.553); */
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .main {
+        border: none;
+        width: auto;
+    }
+
+    .ac_year {
+        margin: 0px 10px;
+    }
+    
+    .instruction p {
+        color: royalblue;
+       
+    }
+
+    .name-setion .name,
+    .fatherName,
+    .surName {
+        width: 100%;
+        flex-direction: column;
+        padding: 0px 6px;
+    }
+
+    .name-setion input {
+        padding: 8px 0px 8px 10px;
+        font-size: 15px;
+        width: 98%;
+    }
+
+    .DOB-BLOODG {
+        flex-direction: column;
+    }
+    .DOB-BLOODG .DOB input{
+        width: 95%;
+    }
+
+    .DOB-BLOODG div {
+        width: 99%;
+    }
+
+    .DOB-BLOODG input, select {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .checkboxes .class .class-item {
+        display: flex;
+        gap: 20px;
+        margin-left: 30px;
+    }
+
+    .checkboxes .class .class-item div {
+        width: 20%;
+    }
+
+    .main .button{
+        margin-left: 5%;
+        margin-top: 20px;
+        width: 94%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .main .button input {
+       width: 45%;
+       margin: auto;
+    }
+    
+    
+    .main .button #submit:active {
+        background-color: rgb(37, 110, 37);
+        color: white;
+    }
+    
+    .main .button #reset:active {
+        background-color: rgb(255, 0, 0);
+        color: white;
+    }
+
+    .prev button {
+        margin-top: 4%;
+        font-size: 8px;
+        border-radius: 20px;
+        padding: 5px;
+    }
+
+
+    /* .prevbutton {
+        margin-left: -43px;
+        margin-top: -13px;
+        border-radius: 20px;
+        padding: 5px;
+    } */
+
+    #preview_from {
+        left: 2.9px;
+        width: 85%;
+        height: 180%;
+    }
+
+
+    #preview-Btn{
+        border-radius: 20px;
+        padding: 5px;
+    }
+
+    #FNAME, #MNAME, #SNAME{
+        position: relative;
+        left: 50%;
+        bottom: 35px;
+        /* background-color: red; */
+    }
+
+    .DOB2{
+        position: relative;
+        bottom: 110px;
+        left: 6px;
+    }
+    
+    #DATE{
+        position: relative;
+        left: 50%;
+        bottom: 37px;
+        /* background-color: red; */
+    }
+
+    .gender2{
+        position: relative;
+        bottom: 150px;
+        left: 3px;
+    }
+    
+    #GENDER{
+        position: relative;
+        left: 54%;
+        bottom: 35px;
+    }
+
+    .bloodGroup2{
+        position: relative;
+        bottom: 186px;
+        left: 5px;
+    }
+    
+    #B-GROUP{
+        position: relative;
+        left: 55%;
+        bottom: 35px;
+    }
+
+    .midline{
+        bottom: 230px;
+    }
+
+    .course2{
+        position: relative;
+        bottom: 250px;
+        left: 8px;
+    }
+
+    #course-name{
+        position: relative;
+        left: 55%;
+        bottom: 37px;
+    }
+
+    .class2{
+        position: relative;
+        bottom: 300px;
+        left: 8px;
+    }
+    
+    #class-name{
+        position: relative;
+        left: 53%;
+        bottom: 37px;
+    }
+
+    .branch2{
+        position: relative;
+        bottom: 350px;
+        left: 8px;
+    }
+    
+    #branch-name{
+        position: relative;
+        left: 55%;
+        bottom: 37px;
+    }
+    
+    .midline2{
+        position: relative;
+        bottom: 390px;
+    }
+    
+    .contact-section2{
+        position: relative;
+        bottom: 380px;
+        left: 10px;
+    line-height: 0.1%;
+    }
+    #SCONTACT{
+        position: relative;
+        left: 70%;
+        bottom: 24px;
+    }
+    
+    #PCONTACT{
+        position: relative;
+        left: 70%;
+        bottom: 24px;
+    }
+    #ADDRESS{
+        width: 90%;
+    }
+}

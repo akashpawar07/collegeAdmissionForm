@@ -1,0 +1,308 @@
+body {
+    padding: 0px 0px 0px 200px;
+    line-height: 0.7cm;
+}
+
+form {
+    border: 2px solid black;
+    width: 800px;
+    height: auto;
+    background-color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+}
+
+/* .all {
+     margin-top: -40px;
+} */
+
+.headline {
+    text-align: center;
+    text-decoration: underline;
+    font-family: ;
+}
+
+.name {
+    margin-left: 35px;
+}
+
+input {
+    border: 0px;
+    border-bottom: 0.5px solid black;
+    background: transparent;
+    width: 350px;
+}
+
+.content2 input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    padding: 3px;
+    font-weight: bold;
+}
+
+p {
+    margin-left: 30px;
+}
+
+p input {
+    width: 120px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 3px;
+    font-weight: bold;
+}
+
+
+fieldset {
+    /* height: 30px;
+    width: 20px;
+    text-align: center;
+    margin-top: -8px;
+    margin-left: 670px; */
+    width: 13%;
+    float: right;
+}
+
+fieldset input {
+    height: 20px;
+    width: 100px;
+}
+
+.sign {
+    display: flex;
+    justify-content: space-between;
+}
+
+body input{
+    width: auto;
+}
+
+
+/* .....................................buttons..................................................... */
+
+.button {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    /* padding: 0px 20px 0px 20px; */
+}
+
+
+.prev button {
+    margin-top: 1%;
+    padding: 3px;
+    border: 1px solid violet;
+    border-radius: 4px;
+}
+
+.prev button a {
+    text-decoration: none;
+    color: #527fa5;
+    font-size: medium;
+}
+
+/* 
+.prev button {
+    margin-top: 1%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.prevbutton{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    margin-left: -32px;
+    padding-top: 20px;
+    margin-top: -7px;
+}
+
+.prev button:hover {
+    background-image: url(/images/back.png);
+    background-size: cover;
+}
+
+
+.prevbutton:hover {
+    visibility: hidden;
+    opacity: 0;
+} */
+
+#disp{
+    border: 1px solid rgb(23, 19, 23);
+    border-radius: 4px;
+    color: #388e5f;
+}
+
+
+.next button {
+    padding: 3px;
+    border: 1px solid violet;
+    border-radius: 4px;
+}
+
+.next button a {
+    text-decoration: none;
+    color: #527fa5;
+    font-size: medium;
+}
+
+/* 
+.next button {
+    margin-top: 1%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.nextbutton{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    margin-left: -32px;
+    padding-top: 20px;
+    margin-top: -7px;
+}
+
+.next button:hover {
+    background-image: url(/images/next2.jpeg);
+    background-size: cover;
+}
+
+
+.nextbutton:hover {
+    visibility: hidden;
+    opacity: 0;
+} */
+
+
+
+
+/* ...................... PREVIEW SECTION .................... */
+
+
+
+#preview_from {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 63.5%;
+    height: auto;
+    top: 10px;
+    padding: 10px;
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    background-color: rgb(254, 249, 249);
+    border: 1px dashed black;
+    box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
+}
+
+/* .content2 input{
+  width: auto;
+} */
+
+.preview input {
+    /* background-color: #527fa5; */
+    border: none;
+    outline: none;
+}
+
+#cancelpoppup {
+    cursor: pointer;
+    color: rgb(223, 18, 18);
+    position: absolute;
+    bottom: 1px;
+    right: 15px;
+}
+
+.blur {
+    filter: blur(10px);
+}
+
+#preview-Btn {
+    color: #65b5f6;
+    /* width: auto; */
+    background-color: transparent;
+    border: 1px solid #050607;
+    border-radius: 4px;
+    pad: 7px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+@media screen and (min-width:200px) and (max-width:480px) {
+    body {
+        /* height: ; */
+        padding: 0px;
+    }
+
+    form {
+        height: auto;
+        border: none;
+        font-size: large;
+    }
+fieldset{
+   margin-right: 40px;
+}
+
+.headline{
+    margin-left: 10px;
+}
+
+    .headline{
+        font-size: 22px;
+    }
+    
+    #preview_from {
+        width: 255%;
+        height: auto;
+    }
+
+   .secondSign{
+    margin-left: 10px;
+   }
+
+    .next button a{
+        font-size:35px;
+    }
+    .next button{
+        padding: 5px;
+        border-radius: 20px;
+    }
+
+    .prev button a{
+        font-size:35px; 
+    }
+
+    .prev button{
+        border-radius: 20px;
+        padding: 5px;
+
+    }
+
+    #preview-Btn{
+        font-size:25px;
+        border-radius: 20px;
+        padding: 5px;
+    }
+
+    #disp{
+        padding: 10px;
+        font-size: 30px;
+        border-radius: 15px;
+    }
+}

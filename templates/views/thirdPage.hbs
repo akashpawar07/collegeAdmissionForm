@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page three</title>
+</head>
+<body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/thirdPage.css">
+</head>
+
+<body>
+    <form action="/thirdPage" method="post" class="formContainer">
+       <center>
+            <u>
+                <H1>UNDERTAKING FOR FEES</H1>
+                <p>(FOR STUDENT)</p>
+            </u>
+        </center>
+        <div class="content">
+            <p>I <input type="text" name="stuname" id="stu-name" required>son/daughter of <input type="text" name="fathername" required style="width: 200px;"
+                    id="parent-name">seeking admission to the
+                First/Direct Second Year Engineering
+                in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic
+                year 2023-2024 in the branch UG:Civil/ Mech/ETC/CSE/AIML/other, PG: Struct
+                Mech/CSE/ETC/other Engineering. I am fully aware of the my admission is purely provisional
+                subject to the approval of AICTE, Delhi, DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai.
+                I shall be fully responsible for the consequence there to.I am fully aware and agree that
+                the presently charged fees are interim fees as approved by the 'SHIKSHAN SHUKA SAMITI'/
+                Authority / Honarable Court/ Hon'ble Supreme Court. (interim fees at present Rs <input type="number" name="presentFees"
+                    id="fees" >
+                only) I am aware and agree to pay fees which
+                will be finalized by the 'SHIKSHAN SHULKA SAMITI'Authority / Hon'ble Court/ Hon'ble Supreme Court.
+                'SHIKSHAN SHULKA SAMITI'/Authority / Honarable Court/ Hon'ble Supreme Court from time to time during
+                my entire period of course and if not paid, I know that my admission will be cancelled for which
+                will
+                be responsible and I will not held College/ any body responsible for cancellation of my admission:
+                The propossed fees will be about <input type="number" name="praposedFees" id="fees2">
+                (). I will pay all the fees due to on before
+                submission of the semester till the institution receives all claims for Govt.</p>
+        </div>
+
+        <div class="sign">
+            <p><input type="file" style="border:none;"><br>
+                (sign) <br><br>
+                <input type="text" id="stu-name2"> <br>
+                (full name of candidate)
+            </p>
+            <p><input type="file" style="border: none;"><br>
+                (sign) <br><br>
+                <input type="text" id="parent-name2"> <br>
+                (full name of the Parent/Guardian)
+            </p>
+        </div>
+        <address>
+            <textarea name="homeAdress" cols="21" rows="5" id="address" placeholder="Enter Your Address" ></textarea required> 
+        </address>
+        
+        <div class="contact">
+            Contact No.
+            <ol>
+                <li> Personal: <input type="number" name="pContact" id="Personal" required></li>
+
+                <li>Fathers: <input type="number" name="fContact" id="Fathers" required></li>
+
+                <li> Mothers: <input type="number" name="mContact" id="Mothers" required></li>
+
+                <li>Relative: <input type="number" name="rContact" id="Relative" required></li>
+            </ol>
+        </div>
+        <div class="place">
+            <p>Place: <input type="text" name="placeName" placeholder="Enter Place" id="place" required></p>
+            <p>Date: <input type="date" name="presentDate" id="date" required></p>
+        </div>
+ 
+        <div class="button">
+            <div class="prev">
+                <button>
+                    <a href="/secondPage">   
+                        Back Page
+                    </a> 
+                </button>
+               
+            </div>
+            <button id="preview-Btn">
+            Preview This Page
+        </button>
+        <button type="submit" id="disp" >Submit</button>
+
+            <div class="next">
+                <button>
+                    <a href="/lastPage">
+                      Next Page
+                    </a>
+                </button>
+            </div>
+        </div>
+        
+
+        {{!-- <button type="submit">submit</button> --}}
+        
+    </form>
+
+ <div class="preview" id="preview_from">
+        <center>
+            <u>
+                <H1>UNDERTAKING FOR FEES</H1>
+                <p>(FOR STUDENT)</p>
+            </u>
+        </center>
+        <div class="content">
+            <p>I <input type="text" id="STU-NAME" readonly>son/daughter of <input type="text" style="width: 200px;"
+                    id="PARENT-NAME" readonly>seeking admission to the
+                First/Direct Second Year Engineering
+                in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic
+                year 2023-2024 in the branch UG:Civil/ Mech/ETC/CSE/AIML/other, PG: Struct
+                Mech/CSE/ETC/other Engineering. I am fully aware of the my admission is purely provisional
+                subject to the approval of AICTE, Delhi, DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai.
+                I shall be fully responsible for the consequence there to.I am fully aware and agree that
+                the presently charged fees are interim fees as approved by the 'SHIKSHAN SHUKA SAMITI'/
+                Authority / Honarable Court/ Hon'ble Supreme Court. (interim fees at present Rs <input type="number"
+                    id="FEES" readonly>
+                only) I am aware and agree to pay fees which
+                will be finalized by the 'SHIKSHAN SHULKA SAMITI'Authority / Hon'ble Court/ Hon'ble Supreme Court.
+                'SHIKSHAN SHULKA SAMITI'/Authority / Honarable Court/ Hon'ble Supreme Court from time to time during
+                my entire period of course and if not paid, I know that my admission will be cancelled for which
+                will
+                be responsible and I will not held College/ any body responsible for cancellation of my admission:
+                The propossed fees will be about <input type="number" id="FEES2" readonly>
+                (). I will pay all the fees due to on before
+                submission of the semester till the institution receives all claims for Govt.</p>
+        </div>
+
+        <div class="sign">
+            <p><input type="file" style="border:none;"><br>
+                (sign) <br><br>
+                <input type="text" id="STU-NAME2" readonly> <br>
+                (full name of candidate)
+            </p>
+            <p><input type="file" style="border: none;"><br>
+                (sign) <br><br>
+                <input type="text" id="PARENT-NAME2" readonly> <br>
+                (full name of the Parent/Guardian)
+            </p>
+        </div>
+        <address>
+            <textarea name="" cols="21" rows="5" id="ADDRESS" readonly></textarea>
+        </address>
+        <div class="contact">
+            Contact No.
+            <ol>
+                <li> Personal: <input type="number" id="PERSONAL" readonly ></li>
+
+                <li>Fathers: <input type="number" id="FATHERS" readonly></li>
+
+                <li> Mothers: <input type="number" id="MOTHERS" readonly></li>
+
+                <li>Relative: <input type="number" id="RELATIVE" readonly></li>
+            </ol>
+        </div>
+        <div class="Place">
+            <p>Place: <input type="text" placeholder="Enter Place" id="PLACE" readonly></p>
+            <p>Date: <input type="date" id="DATE" readonly></p>
+        </div>
+        <br>
+        <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
+    </div>
+    <script src="javaScript/thirdpage.js"></script>
+
+
+</body>
+
+</html>
+</body>
+</html>

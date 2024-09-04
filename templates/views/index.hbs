@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
+
+</head>
+
+<body id="body-data">
+    <!-- form starting  -->
+    <form action="/" method="post" enctype="multipart/form-data" class="formContainer">
+        <!-- heding div part -->
+        <div class="header">
+            <h2 class="addMissiontxt">ADDMISSION FORM</h2>
+            <h4 class="acadmicTxt">
+                <marquee behavior="" direction="right">ACADMIC YEAR : 2023-2024</marquee>
+            </h4>
+            <div class="formno">
+                {{!-- <p id="number" value="0" style="color: white;">0</p> --}}
+            </div>
+        </div>
+
+        <!-- basic for collage  -->
+        <div class="collageinfo">
+            <div class="cphoto">
+                <img src="images/clogo.png" alt="Sycet Logo" name="profileImage">
+            </div>
+            <div class="collage">
+                <h2>Shreeyash Pratishathan's</h2>
+                <h1>Shreeyash Collage Of Engineering & Technology</h1>
+                <h2>(An ISO 9001:2008,Certified Institute, NAAC Accredited)</h2>
+                <h3>Gut No. 258(P),Satara Parisar,Tal & Dist Chh.Sambhajinagar-431010 <br> Ph.No.
+                    (0240)-6608701/709
+                </h3>
+            </div>
+        </div>
+        <hr class="line">
+
+        <!-- photo part  -->
+        <div class="photo">
+            <img src="images/profile2.jpeg" alt="" id="profile-pic" >
+            <label for="upload-image">upload Image</label>
+            <input type="file" id="upload-image" name="profileImage" accept="image/jpeg, image/png, image/jpg" required>
+        </div>
+
+        <!-- course selection -->
+        <div class="course">
+            <p class="para">Course Name:
+                <label for="btech" id="couses">
+                    B.TECH<input type="radio" value="B.tech" name="course" id="btech">
+                </label>
+                <label for="mtech" id="couses">
+                    M.TECH<input type="radio" value="M.tech" name="course" id="mtech" >
+                </label>
+                <label for="MBA" id="couses">
+                    MBA<input type="radio" value="MBA" name="course" id="MBA">
+                </label>
+            </p>&nbsp;&nbsp;
+            <p class="para">Admission through:
+                <label for="cap">
+                    CAP <input type="radio" value="CAP" name="AdmissionThrough" id="cap">
+                </label>
+                <label for="acap">
+                    A.CAP<input type="radio" value="A.CAP" name="AdmissionThrough" id="acap">
+                </label>
+                <label for="IL">
+                    IL<input type="radio" value="IL(Institute Level)" name="AdmissionThrough" id="IL">
+                </label>
+            </p>
+            <P class="para">
+                Application for Admission to
+                <label for="7">
+                    FE<input type="radio" value="First Year" name="classes" id="7">
+                </label>/
+                <label for="8">
+                    SE<input type="radio" value="Second Year" name="classes" id="8">
+                </label>/
+                <label for="9">
+                    TE<input type="radio" value="Third Year" name="classes" id="9">
+                </label>/
+                <label for="10">
+                    BE<input type="radio" value="Final Year" name="classes" id="10">
+                </label>
+
+                branch <input type="text" id="brnch" placeholder="Branch Name" name="branch"
+                    style="border: none;border-bottom: 1px solid black; outline: none; background: transparent;"> Eng.
+            </P>
+        </div>
+
+        <!-- signature part -->
+        <div class="sign">
+            <!-- <h3 class="file">Add Signature</h3> -->
+            <img src="sign.jpg" alt="" id="profile-sign">
+            <label for="upload-sign">upload sign</label>
+            <input type="file" id="upload-sign" name="signature" accept="image/jpeg, image/png, image/jpg" required>
+            <!-- <input type="file" accept="image/*"> -->
+        </div>
+        <hr class="hrline">
+
+        <!-- form main content  -->
+        <div class="content">
+            <p class="name">1.Full Name Of Candidate-(IN CAPITAL LETTERS)*</p>
+
+            <!-- name input  -->
+            <div class="namediv">
+                <div class="first">
+                    <p>(surname)</p>
+                    <input type="text" class="name-item" name="sur_name" id="surname" required>
+                </div>
+                <div class="first">
+                    <p>(first name)</p>
+                    <input type="text" class="name-item" name="first_name" id="fname" required>
+                </div>
+                <div class="first">
+                    <p>(fathers name)</p>
+                    <input type="text" class="name-item" name="father_name" id="father_name" required>
+                </div>
+                <div class="first">
+                    <p>(mothers name)</p>
+                    <input type="text" class="name-item" name="mother_name" id="mother_name" required>
+                </div>
+            </div>
+
+            <!-- other inputs  -->
+            <div class="inputField">
+                <div class="dob-gender">
+                    <div class="child">
+                        <fieldset>
+                            <legend>2.Date of Birth</legend>
+                            <input type="date" class="same" id="date" name="dob" required>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>3.Gender</legend>
+                            <select name="Gender" id="Gender" required>
+                                <option value="">--Select Gender--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </fieldset>
+                    </div>
+
+                </div>
+
+                <div class="items6">
+                    <div class="item-list">
+                        <p>4.Place of Birth: Village: </p>
+                        <input type="text" id="birthPlace" name="Village" required>
+                        <p> Taluka: </p><input type="text" id="tahsil" name="Taluka" required>
+                    </div>
+                    <div class="item-list">
+                        <p>District:</p> <input type="text" id="dist" name="District" required>
+                        <p> State:</p> <input type="text" id="state" name="State" required>
+                    </div>
+                    <div class="item-list">
+                        <p> 5.ABC ID:</p> <input type="text" id="abc" name="abcid" required>
+                        <p>6.Email Id: </p><input type="email" id="email" name="Email" required>
+                    </div>
+                    <div class="item-list">
+                        <p>7.Aadhar Card:</p> <input type="number" id="aadhar" name="Aadhar" required>
+                        <p>8.Nationality:</p> <input type="text" class="" id="nationality" name="Nationality" required>
+                    </div>
+                    <div class="item-list">
+                        <p>9.Religion: </p><input type="text" class="same" id="religion" name="Religion" required>
+                        <p>10.Caste:</p> <input type="text" class="same" id="caste" name="Caste" required>
+                    </div>
+                    <div class="item-list">
+                        <p>11.Category:</p> <input type="text" class="same" id="category" name="Category" required>
+                        <p>12.Address: </p><input type="text" class="same" id="selfaddress" name="Address" required>
+                    </div>
+                    <div class="item-list" id="last-child">
+                        <p>13.Student Mob.No: </p><input type="number" class="same" id="stdContact" name="StudentMN" required>
+                        <p>14.Parents Mob.No: </p><input type="number" class="same" id="parentsCon" name="pcontact" required>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+
+        <!-- certificates -->
+        <div class="Certificate">
+            <center>
+                <h3>List of Certificate/Documents Submitted with these Admission form</h3>
+            </center>
+            <ol class="ol">
+                <li>
+                    <span>S.S.C Markmemo <span class="Orignal">(Orignal)</span> <input type="file" name="documents"
+                            accept="application/pdf" id="sscdoc" required></span>
+                </li>
+                <li>
+                    <span>H.S.C/Diploma/Graduation Markmemo <span class="Orignal">(Orignal)</span>
+                        <input type="file" name="documents" accept="application/pdf" id="hscdoc" required>
+                    </span>
+                <li>
+                    <span>School Leaving / Transfer Certificate <span class="Orignal">(Orignal)</span>
+                        <input type="file" name="documents" accept="application/pdf" id="tcdoc" required></span>
+                </li>
+                <li>
+                    <span>Caste Certificate / EWS Certificate <span class="Orignal">(Orignal)</span> <input type="file"
+                            name="documents" accept="application/pdf" id="castedoc" required></span>
+                </li>
+                <li>
+                    <span>Caste Validity <span class="Orignal">(Orignal)</span> <input type="file" name="documents"
+                            accept="application/pdf" id="cvaliditydoc" required></span>
+                </li>
+                <li>
+                    <span>Domicile Certificate/Nationality Certificate <span class="Orignal">(Orignal)</span> <input
+                            type="file" name="documents" accept="application/pdf" id="domeciledoc" required></span>
+                </li>
+                <li>
+                    <span>Non Creamy Layer Certificate <span class="Orignal">(Orignal)</span> <input type="file"
+                            name="documents" accept="application/pdf" id="ncldoc" required></span>
+                </li>
+                <li>
+                    <span>Gap Certificate <span class="Orignal">(Orignal)</span> <input type="file" name="documents"
+                            accept="application/pdf" id="gapdoc" value="-"></span>
+                <li>
+                    <span>CET/JEE/GATE Score Card / Experience Certificate <span class="Orignal">(Orignal)</span> <input
+                            type="file" name="documents" accept="application/pdf" id="scorecarddoc" required></span>
+                </li>
+                <li>
+                    <span>Addmission Confirmation Letter <input type="file" name="documents"
+                            accept="application/pdf" id="addconfirmationdoc"></span>
+                </li>
+                <li>
+                    Income Certificate <input id="fileInput" type="file" name="documents" accept="application/pdf"
+                        oninput="extractAndValidate()" required>
+                    {{!-- <span>Income Certificate <span class="Orignal">(Orignal)</span> <input type="file"></span>
+                    --}}
+                </li>
+                <li>
+                    <span>Ration Card <span class="Orignal">(Orignal) </span> <input type="file" name="documents"
+                            accept="application/pdf" id="rationdoc" required></span>
+                </li>
+                <li>
+                    <span>Aadhar Card & Bank Passbook <span class="Orignal">(Xerox)</span> <input type="file"
+                            name="documents" accept="application/pdf" id="adhardoc" required></span>
+                </li>
+
+                <li>
+                    <span>Declaration Form <input type="file" name="documents" id="declarationdoc" accept="application/pdf"></span>
+                </li>
+                <li>
+                    <span>Hostel Fees Receipt <input type="file" name="documents" id="hosteldoc" accept="application/pdf" ></span>
+                </li>
+                <li>
+                    <span>Death / Divorce Certificate <span class="Orignal">(Orignal) </span> <input type="file"
+                            name="documents" accept="application/pdf" id="deathdoc"></span>
+                </li>
+            </ol>
+
+        </div><br>
+        <div class="container-button">
+            <input type="button" id="preview-Btn" value="Preview Form">
+            <input type="submit" name="" id="disp" value="Submit">
+            <!--  button for next page   -->
+            <div class="next">
+                <button>
+                    <a href="/secondPage">
+                        Next Page
+                    </a>
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+
+    {{!-- preview section------------------------------ --}}
+
+    <div class="preview" id="preview_from">
+        <div class="preview-header">
+            <div class="mainTitle">
+                <strong>ADMISSION FORM</strong>
+            </div>
+            <div class="clgContent">
+                <div class="collegeLogo">
+                    <img src="images/clogo.png" alt="">
+                </div>
+                <div class="collegeInfo">
+                    <p class="item1">SHREEYASH PRATISHATHAN</p>
+                    <p class="item2">Shreeyash College of Engineering & Technology</p>
+                    <p class="item3">(An ISO 9001:2008, Certified Institute, NAAC Accredited)</p>
+                    <p class="item4">Gut No. 258(P), Satara Parisar, Tal & Dist. Chh. Sambhajinagar-431010 Ph. No.
+                        (0240)-6608701/709
+                    </p>
+                </div>
+            </div>
+        </div>
+        <h3>Basic Details</h3>
+        <div class="name-section">
+            <div class="namesOnly">
+                <div class="div1">
+                    <span>Surname </span>
+                    <input type="text" name="" id="SURNAME" readonly>
+                </div>
+                <div class="div2">
+                    <span>First Name</span>
+                    <input type="text" name="" id="FIRSTNAME" readonly>
+                </div>
+                <div class="div3">
+                    <span>Middle Name</span>
+                    <input type="text" name="" id="MIDDLENAME" readonly>
+                </div>
+                <div class="div4">
+                    <span>Mother Name</span>
+                    <input type="text" name="" id="MOTHERNAME" readonly>
+                </div>
+                <div class="div5">
+                    <span>Date of Birth</span>
+                    <input type="text" name="DOB" id="DOB" readonly>
+                </div>
+                <div class="div5">
+                    <span>Gender</span>
+                    <input type="text" name="gender" id="gender" readonly>
+                </div>
+            </div>
+            <div class="photo-sign">
+                <div class="profile">
+                    <img src="next2.jpeg" alt="Profile Iamge" id="previewProfileImage">
+                </div>
+                <div class="previewsign">
+                    <img src="next2.jpeg" alt="Sign" id="previewProfileSign">
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+        <h3>Qualification Details</h3>
+        <div class="other-section">
+            <div class="items-section">
+                <div class="div1">
+                    <!-- courses are imported here btech, mtech, mba -->
+                    <span>Course Name</span>
+                    <input type="text" name="course" id="courses" readonly>
+                </div>
+                <div class="div2">
+                    <!-- here we import CAP/ ACAP/ IL -->
+                    <span>Admission through</span>
+                    <input type="text" name="course" id="AdmissionTh" readonly>
+                </div>
+                <div class="div3">
+                    <!-- classes FE/SE/TE/BE  -->
+                    <span>Application For</span>
+                    <input type="text" name="course" id="AdmissionForClass" readonly>
+                </div>
+                <div class="div4">
+                    <!-- branches CSE/ CIVIL / MECH / EE / ETC,  etc. -->
+                    <span>Branch</span>
+                    <input type="text" name="course" id="branchess" readonly>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h3>Other Details</h3>
+        <div class="otherDetails">
+            <div class="item-section2">
+
+                <div class="div1">
+                    <span>Place Of Birth </span>
+                    <input type="text" name="" id="palceOfBirth" readonly>
+                </div>
+                <div class="div2">
+                    <span>Taluka</span>
+                    <input type="text" name="" id="taluka" readonly>
+                </div>
+                <div class="div3">
+                    <span>District</span>
+                    <input type="text" name="" id="district" readonly>
+                </div>
+                <div class="div4">
+                    <span>State</span>
+                    <input type="text" name="" id="State" readonly>
+                </div>
+                <div class="div5">
+                    <span>Aadhar Card</span>
+                    <input type="text" name="" id="addharCard" readonly>
+                </div>
+                <div class="div5">
+                    <span>ABC ID</span>
+                    <input type="text" name="" id="abcID" readonly>
+                </div>
+                <div class="div5">
+                    <span>Email ID</span>
+                    <input type="text" name="" id="emailID" readonly>
+                </div>
+                <div class="div5">
+                    <span>Nationality</span>
+                    <input type="text" name="" id="Nationality" readonly>
+                </div>
+                <div class="div5">
+                    <span>Religion</span>
+                    <input type="text" name="" id="Religion" readonly>
+                </div>
+                <div class="div5">
+                    <span>Category</span>
+                    <input type="text" name="" id="Category" readonly>
+                </div>
+                <div class="div5">
+                    <span>Caste</span>
+                    <input type="text" name="" id="Caste" readonly>
+                </div>
+                <div class="div5">
+                    <span>Address</span>
+                    <input type="text" name="" id="address" readonly>
+                </div>
+                <div class="div5">
+                    <span>Student Mobile</span>
+                    <input type="text" name="" id="studentContact" readonly>
+                </div>
+                <div class="div5">
+                    <span>Parents Mobile</span>
+                    <input type="text" name="" id="parentsContact" readonly>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h3>List of Certificate/Documents Submitted with these Admission form</h3>
+        <div class="certificates-deatils">
+            <div class="item-section3">
+
+                <div class="div1">
+                    <span>1.</span>
+                    <input type="text" id="ssc" readonly>
+                </div>
+                <div class="div2">
+                    <span>2.</span>
+                    <input type="text" name="" id="hsc" readonly>
+                </div>
+                <div class="div3">
+                    <span>3.</span>
+                    <input type="text" name="" id="Tc" readonly>
+                </div>
+                <div class="div4">
+                    <span>4.</span>
+                    <input type="text" name="" id="Castecert" readonly>
+                </div>
+                <div class="div5">
+                    <span>5.</span>
+                    <input type="text" name="" id="validity" readonly>
+                </div>
+                <div class="div5">
+                    <span>6.</span>
+                    <input type="text" name="" id="Domicile" readonly>
+                </div>
+                <div class="div5">
+                    <span>7.</span>
+                    <input type="text" name="" id="non-creamylayer" readonly>
+                </div>
+                <div class="div5">
+                    <span>8.</span>
+                    <input type="text" name="" id="gap" readonly>
+                </div>
+                <div class="div5">
+                    <span>9.</span>
+                    <input type="text" name="" id="scorecard" readonly>
+                </div>
+                <div class="div5">
+                    <span>10.</span>
+                    <input type="text" name="" id="addmission" readonly>
+                </div>
+                <div class="div5">
+                    <span>11.</span>
+                    <input type="text" name="" id="Income" readonly>
+                </div>
+                <div class="div5">
+                    <span>12.</span>
+                    <input type="text" name="" id="Ration" readonly>
+                </div>
+                <div class="div5">
+                    <span>13.</span>
+                    <input type="text" name="" id="Adhar" readonly>
+                </div>
+                <div class="div5">
+                    <span>14.</span>
+                    <input type="text" name="" id="Declaration" readonly>
+                </div>
+                <div class="div5">
+                    <span>15.</span>
+                    <input type="text" name="" id="Hostel" readonly>
+                </div>
+                <div class="div5">
+                    <span>16.</span>
+                    <input type="text" name="" id="Death" readonly>
+                </div>
+            </div>
+
+        </div>
+        <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
+        <input type="button" name="" id="print-Btn" value="Print" onclick="printableData()">
+        <script src="javaScript/index.js"></script>
+
+</body>
+
+{{!--
+<script>
+    function incrementValue() {
+        let value = parseInt(document.getElementById('number').value);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.getElementById('number').value = value;
+    }
+
+
+</script> --}}
+
+</html>
