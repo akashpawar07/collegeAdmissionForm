@@ -24,6 +24,7 @@ router.post("/", async(req, res)=>{
     })
 
     const stdIdCard = await studentid.save()
+    res.send("Id submited")
     res.status(200).render("lastPage")
 })
 

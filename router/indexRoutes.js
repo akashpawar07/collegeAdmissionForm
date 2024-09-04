@@ -1,23 +1,23 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const studentSchema = require("../models/studentModels")
-
-
+//using middleware fro get student profileIamge, signature, documents
 const upload = require("../middleware/indexMiddleware")
-
 const docUploader = upload.fields([
     { name: 'profileImage', maxCount: 1 },
     { name: "signature", maxCount: 1 },
     { name: 'documents', maxCount: 16 }
 ])
 
-router.post("/", docUploader, async (req, res) => {
+//importing student schmea from models folder
+const studentSchema = require("../models/studentModels")
 
+// POST route fro creating student
+router.post("/", docUploader, async (req, res) => {
     studentProfile =    req.files['profileImage'][0].path,
     studentSignature =  req.files['signature']   [0].path,
     studentDoc =        req.files['documents']
-
+    
     students = new studentSchema({
         courses:req.body.course,
         addmissionThrough:req.body.AdmissionThrough,
@@ -48,15 +48,14 @@ router.post("/", docUploader, async (req, res) => {
         studentSign:            studentSignature,
         studentDocuments:       studentDoc.map(doc=>doc.path)
     })
-
     const studentIsCreated = await students.save()
-    // res.json(req.files)
     res.send("Form has been saved")
 })
-
+// GET route for accessing home page
 router.get("/", (req, res) => {
     res.render('index')
 })
 
+//exporting router
 module.exports = router
 

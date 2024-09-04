@@ -6,22 +6,14 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv").config()
 const fs = require("fs")
-
-const port = process.env.PORT || 7000
+const port = process.env.PORT || 7070
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use("/uploads", express.static('uploads'))
 
-
-
-//DB connection........
-mongoose.connect(process.env.DB_CONNECTION)
-    .then(() => {
-        console.log("Database established Successful ✅")
-    }).catch((err) => {
-        console.log("Something went wrong while connecting Atlas Database -> ", err)
-    })
+// databse connection 
+const dbURI = require('./DB/dbConnection')
 
 // use static file presents in public folder..................
 const staticPath = path.join(__dirname, "/public")
@@ -34,24 +26,25 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "/templates/views"));
 
 
-// Routing
+// importing routes from router folder
 const indexRoutes = require("./router/indexRoutes")
-const secondPageRoutes = require("./router/secondPageRoutes")
-const thirdPageRoutes = require("./router/thirdPageRoutes")
-const lastPageRoutes = require("./router/lastPageRoutes"); 
+const stdUndertakingRoutes = require("./router/studentUndertakingRoutes")
+const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
+const idcardRoutes = require("./router/icCardRoutes"); 
 const upload = require("./router/indexRoutes");
+const dbConection = require("./DB/dbConnection");
 
-
-
+//using routes here
 app.use("/", indexRoutes);
-app.use("/secondPage", secondPageRoutes)
-app.use("/thirdPage", thirdPageRoutes)
-app.use("/lastPage", lastPageRoutes)
+app.use("/undertaking", stdUndertakingRoutes)
+app.use("/feesundertaking", feesUndertakingRoutes)
+app.use("/idcard", idcardRoutes)
 
+// default route for if anyone want to access another page beyond the existing pages then this will open 404 page!
 app.get("/*", (req, res) => {
     res.render('Invalid')
 })
-
+// Listening page on port
 app.listen(port, (req, res) => {
     console.log(`Server is started click on http://localhost:${port}`)
 });
