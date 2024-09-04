@@ -25,10 +25,10 @@ const upload = multer({
     fileFilter: (req, file, cb) => {
         if (file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
             cb(null, true)
-        } else if (file.mimetype === "application/pdf") {
+        } else if (file.mimetype === "applications/pdf") {
             cb(null, true)
         } else {
-            cb("[Only supports JPG, JPEG, & PNG] [for documents PDF is supported] ", false)
+            cb(" -- Only supports JPG, JPEG,PNG and PDF file ! ", false)
         }
     },
     limits: {
