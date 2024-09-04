@@ -1,10 +1,10 @@
 const express = require("express")
 const router = express.Router()
 
-
 // imported the studentUndertakingSchema of secondPage
 const studentUndertakingFessSchema = require('../models/studentFeesModels')
 
+// POST route for feesUndertaking
 router.post("/", async (req, res) => {
     data = new studentUndertakingFessSchema({
         studentName: req.body.stuname,
@@ -19,14 +19,12 @@ router.post("/", async (req, res) => {
         place: req.body.placeName,
         currentDate: req.body.presentDate
     })
-
     stdFessUndertakingData = await data.save()
     res.status(200).render('thirdPage')
-
 })
-
+// GET router
 router.get("/", (req, res) => {
     res.render('thirdPage')
 })
-
+// exporting module
 module.exports = router;

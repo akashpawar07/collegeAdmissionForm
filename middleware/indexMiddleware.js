@@ -31,11 +31,7 @@ const upload = multer({
             cb(" -- Only supports JPG, JPEG,PNG and PDF file ! ", false)
         }
     },
-    limits: {
-
-        fileSize: 1024 * 1024 * 5 
-    }
+    limits: {fileSize: 1024 * 1024 * 5}
 })
-
-
+// exporting indexmiddleware module
 module.exports = upload

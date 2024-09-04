@@ -3,8 +3,8 @@ const router = express.Router();
 
 const studentIdCard = require("../models/studentIdCardModels")
 
+// POST route fro creating idCards
 router.post("/", async(req, res)=>{
-
     studentid = new studentIdCard({
         
         academicYear: req.body.academic,
@@ -27,13 +27,11 @@ router.post("/", async(req, res)=>{
     res.send("Id submited")
     res.status(200).render("lastPage")
 })
-
+// GET route
 router.get("/", (req, res) => {
     res.render('lastPage')
 })
-
-
-
+// exporting last page route
 module.exports = router
 
 
