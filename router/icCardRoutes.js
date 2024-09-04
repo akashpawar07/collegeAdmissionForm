@@ -25,11 +25,11 @@ router.post("/", async(req, res)=>{
 
     const stdIdCard = await studentid.save()
     res.send("Id submited")
-    res.status(200).render("lastPage")
+    res.status(200).render("idCard")
 })
 // GET route
 router.get("/", (req, res) => {
-    res.render('lastPage')
+    res.render('idCard')
 })
 // exporting last page route
 module.exports = router

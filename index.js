@@ -36,7 +36,7 @@ const dbConection = require("./DB/dbConnection");
 
 //using routes here
 app.use("/", indexRoutes);
-app.use("/undertaking", stdUndertakingRoutes)
+app.use("/studentUndertaking", stdUndertakingRoutes)
 app.use("/feesundertaking", feesUndertakingRoutes)
 app.use("/idcard", idcardRoutes)
 

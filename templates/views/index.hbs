@@ -42,7 +42,7 @@
 
         <!-- photo part  -->
         <div class="photo">
-            <img src="images/profile2.jpeg" alt="" id="profile-pic" >
+            <img src="images/profile2.jpeg" alt="" id="profile-pic">
             <label for="upload-image">upload Image</label>
             <input type="file" id="upload-image" name="profileImage" accept="image/jpeg, image/png, image/jpg" required>
         </div>
@@ -54,7 +54,7 @@
                     B.TECH<input type="radio" value="B.tech" name="course" id="btech">
                 </label>
                 <label for="mtech" id="couses">
-                    M.TECH<input type="radio" value="M.tech" name="course" id="mtech" >
+                    M.TECH<input type="radio" value="M.tech" name="course" id="mtech">
                 </label>
                 <label for="MBA" id="couses">
                     MBA<input type="radio" value="MBA" name="course" id="MBA">
@@ -174,8 +174,10 @@
                         <p>12.Address: </p><input type="text" class="same" id="selfaddress" name="Address" required>
                     </div>
                     <div class="item-list" id="last-child">
-                        <p>13.Student Mob.No: </p><input type="number" class="same" id="stdContact" name="StudentMN" required>
-                        <p>14.Parents Mob.No: </p><input type="number" class="same" id="parentsCon" name="pcontact" required>
+                        <p>13.Student Mob.No: </p><input type="number" class="same" id="stdContact" name="StudentMN"
+                            required>
+                        <p>14.Parents Mob.No: </p><input type="number" class="same" id="parentsCon" name="pcontact"
+                            required>
                     </div>
                 </div>
 
@@ -225,8 +227,8 @@
                             type="file" name="documents" accept="" id="scorecarddoc" required></span>
                 </li>
                 <li>
-                    <span>Addmission Confirmation Letter <input type="file" name="documents"
-                            accept="" id="addconfirmationdoc"></span>
+                    <span>Addmission Confirmation Letter <input type="file" name="documents" accept=""
+                            id="addconfirmationdoc"></span>
                 </li>
                 <li>
                     Income Certificate <input id="fileInput" type="file" name="documents" accept=""
@@ -247,7 +249,7 @@
                     <span>Declaration Form <input type="file" name="documents" id="declarationdoc" accept=""></span>
                 </li>
                 <li>
-                    <span>Hostel Fees Receipt <input type="file" name="documents" id="hosteldoc" accept="" ></span>
+                    <span>Hostel Fees Receipt <input type="file" name="documents" id="hosteldoc" accept=""></span>
                 </li>
                 <li>
                     <span>Death / Divorce Certificate <span class="Orignal">(Orignal) </span> <input type="file"
@@ -262,7 +264,7 @@
             <!--  button for next page   -->
             <div class="next">
                 <button>
-                    <a href="/secondPage">
+                    <a href="/studentUndertaking">
                         Next Page
                     </a>
                 </button>
@@ -273,7 +275,6 @@
 
 
     {{!-- preview section------------------------------ --}}
-
     <div class="preview" id="preview_from">
         <div class="preview-header">
             <div class="mainTitle">
@@ -497,19 +498,7 @@
         <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
         <input type="button" name="" id="print-Btn" value="Print" onclick="printableData()">
         <script src="javaScript/index.js"></script>
+    </div>
 
 </body>
-
-{{!--
-<script>
-    function incrementValue() {
-        let value = parseInt(document.getElementById('number').value);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        document.getElementById('number').value = value;
-    }
-
-
-</script> --}}
-
 </html>

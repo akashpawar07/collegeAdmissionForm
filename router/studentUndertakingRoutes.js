@@ -25,11 +25,11 @@ router.post("/", docUploader, async(req, res)=>{
         ParentsSignature:ParentsSignature
     })
     stdUndertakingData = await data.save()
-    res.status(200).render('secondPage')
+    res.status(200).render('studentUndertaking')
 })
 // GET routes for studentUndertaking
 router.get("/", (req, res) => {
-    res.render('secondPage')
+    res.render('studentUndertaking')
 })
 // exporting module
 module.exports = router
