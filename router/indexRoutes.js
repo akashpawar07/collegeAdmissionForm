@@ -50,7 +50,8 @@ router.post("/", docUploader, async (req, res) => {
     })
 
     const studentIsCreated = await students.save()
-    res.json(req.files)
+    // res.json(req.files)
+    res.send("Form has been saved")
 })
 
 router.get("/", (req, res) => {
