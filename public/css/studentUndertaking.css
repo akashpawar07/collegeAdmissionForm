@@ -75,7 +75,7 @@ fieldset input {
     justify-content: space-between;
 }
 
-body input{
+body input {
     width: auto;
 }
 
@@ -103,93 +103,8 @@ body input{
     font-size: medium;
 }
 
-/* 
-.prev button {
-    margin-top: 1%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.prevbutton{
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    margin-left: -32px;
-    padding-top: 20px;
-    margin-top: -7px;
-}
-
-.prev button:hover {
-    background-image: url(/images/back.png);
-    background-size: cover;
-}
-
-
-.prevbutton:hover {
-    visibility: hidden;
-    opacity: 0;
-} */
-
-#disp{
-    border: 1px solid rgb(23, 19, 23);
-    border-radius: 4px;
-    color: #388e5f;
-}
-
-
-.next button {
-    padding: 3px;
-    border: 1px solid violet;
-    border-radius: 4px;
-}
-
-.next button a {
-    text-decoration: none;
-    color: #527fa5;
-    font-size: medium;
-}
-
-/* 
-.next button {
-    margin-top: 1%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-a {
-    text-decoration: none;
-    color: #000;
-}
-
-.nextbutton{
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    margin-left: -32px;
-    padding-top: 20px;
-    margin-top: -7px;
-}
-
-.next button:hover {
-    background-image: url(/images/next2.jpeg);
-    background-size: cover;
-}
-
-
-.nextbutton:hover {
-    visibility: hidden;
-    opacity: 0;
-} */
-
-
-
 
 /* ...................... PREVIEW SECTION .................... */
-
-
-
 #preview_from {
     display: flex;
     flex-direction: column;
@@ -206,9 +121,6 @@ a {
     box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
 }
 
-/* .content2 input{
-  width: auto;
-} */
 
 .preview input {
     /* background-color: #527fa5; */
@@ -249,58 +161,64 @@ a {
         /* height: ; */
         padding: 0px;
     }
-
+    #popup{
+        margin: auto;
+        width: 100vw;
+        height: 80vh;
+    }
     form {
         height: auto;
         border: none;
         font-size: large;
     }
-fieldset{
-   margin-right: 40px;
-}
 
-.headline{
-    margin-left: 10px;
-}
+    fieldset {
+        margin-right: 40px;
+    }
 
-    .headline{
+    .headline {
+        margin-left: 10px;
+    }
+
+    .headline {
         font-size: 22px;
     }
-    
+
     #preview_from {
         width: 255%;
         height: auto;
     }
 
-   .secondSign{
-    margin-left: 10px;
-   }
-
-    .next button a{
-        font-size:35px;
+    .secondSign {
+        margin-left: 10px;
     }
-    .next button{
+
+    .next button a {
+        font-size: 35px;
+    }
+
+    .next button {
         padding: 5px;
         border-radius: 20px;
     }
 
-    .prev button a{
-        font-size:35px; 
+    .prev button a {
+        font-size: 35px;
     }
 
-    .prev button{
+    .prev button {
         border-radius: 20px;
         padding: 5px;
 
     }
 
-    #preview-Btn{
-        font-size:25px;
+    #preview-Btn {
+        font-size: 25px;
         border-radius: 20px;
         padding: 5px;
     }
 
-    #disp{
+    #disp {
         padding: 10px;
         font-size: 30px;
         border-radius: 15px;

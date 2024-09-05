@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
         currentDate: req.body.presentDate
     })
     stdFessUndertakingData = await data.save()
-    res.status(200).render('feesUndertaking')
+    res.status(200).render('feesUnderPopup')
 })
 // GET router
 router.get("/", (req, res) => {

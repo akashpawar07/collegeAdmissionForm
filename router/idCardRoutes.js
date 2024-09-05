@@ -24,8 +24,7 @@ router.post("/", async(req, res)=>{
     })
 
     const stdIdCard = await studentid.save()
-    res.send("Id submited")
-    res.status(200).render("idCard")
+    res.status(200).render("idCardPopup")
 })
 // GET route
 router.get("/", (req, res) => {

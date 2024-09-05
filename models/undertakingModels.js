@@ -8,28 +8,28 @@ const studentUndertakingSchema = new mongoose.Schema({
     GuardianName: {
         type: String,
         require: true,
-        lowercase:true
+        uppercase: true
     },
     StudentName: {
         type: String,
         require: true,
-        lowercase:true
+        uppercase: true
     },
 
     InstituteName: {
         type: String,
         require: true,
-        lowercase:true
+        uppercase: true
     },
     studentSignature:{
         type: String,
         require: true,
-        lowercase:true
+        uppercase: true
     },
     ParentsSignature:{
         type: String,
         require: true,
-        lowercase:true
+        uppercase: true
     }
     
 }, { timestamps: true })

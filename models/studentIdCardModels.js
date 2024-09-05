@@ -7,18 +7,15 @@ const studentIdCardSchema = new mongoose.Schema({
     },
     firstName: {
         type: String,
-        require: true,
-        lowercase:true
+        uppercase: true
     },
     middleName: {
         type: String,
-        require: true,
-        lowercase:true
+        uppercase: true
     },
     surName: {
         type: String,
-        require: true,
-        lowercase:true
+        uppercase: true
     },
     dateOfBirth: {
         type: Date,
@@ -26,39 +23,37 @@ const studentIdCardSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        require: true,
+        uppercase: true
     },
     bloodGroup: {
-        type: String
+        type: String,
+        uppercase: true
     },
     course: [{
         type: String,
-        lowercase:true
+        uppercase: true
     }],
     classes: [{
         type: String,
-        lowercase:true
+        uppercase: true
     }],
     branch: [{
         type: String,
-        lowercase:true
+        uppercase: true
     }],
     otherBranch: {
         type: String,
-        lowercase:true
+        uppercase: true
     },
     studentContact: {
-        type: Number,
-        require: true
+        type: Number
     },
     parentsContact: {
-        type: Number,
-        require: true
+        type: Number
     },
     studentAddress: {
         type: String,
-        require: true,
-        lowercase:true
+        uppercase: true
     }
 }, { timestamps: true })
 

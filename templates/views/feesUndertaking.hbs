@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page three</title>
-</head>
-<body>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/thirdPage.css">
+    <link rel="stylesheet" href="/css/feesUndertaking.css">
 </head>
 
 <body>
-    <form action="/feesUndertaking" method="post" class="formContainer">
-       <center>
+    <form action="/api/v1/feesUndertaking" method="post" class="formContainer">
+        <center>
             <u>
                 <H1>UNDERTAKING FOR FEES</H1>
                 <p>(FOR STUDENT)</p>
             </u>
         </center>
         <div class="content">
-            <p>I <input type="text" name="stuname" id="stu-name" required>son/daughter of <input type="text" name="fathername" required style="width: 200px;"
-                    id="parent-name">seeking admission to the
+            <p>I <input type="text" name="stuname" id="stu-name" required>son/daughter of <input type="text"
+                    name="fathername" required style="width: 200px;" id="parent-name">seeking admission to the
                 First/Direct Second Year Engineering
                 in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic
                 year 2023-2024 in the branch UG:Civil/ Mech/ETC/CSE/AIML/other, PG: Struct
@@ -33,8 +26,8 @@
                 subject to the approval of AICTE, Delhi, DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai.
                 I shall be fully responsible for the consequence there to.I am fully aware and agree that
                 the presently charged fees are interim fees as approved by the 'SHIKSHAN SHUKA SAMITI'/
-                Authority / Honarable Court/ Hon'ble Supreme Court. (interim fees at present Rs <input type="number" name="presentFees"
-                    id="fees" >
+                Authority / Honarable Court/ Hon'ble Supreme Court. (interim fees at present Rs <input type="number"
+                    name="presentFees" id="fees">
                 only) I am aware and agree to pay fees which
                 will be finalized by the 'SHIKSHAN SHULKA SAMITI'Authority / Hon'ble Court/ Hon'ble Supreme Court.
                 'SHIKSHAN SHULKA SAMITI'/Authority / Honarable Court/ Hon'ble Supreme Court from time to time during
@@ -59,7 +52,7 @@
             </p>
         </div>
         <address>
-            <textarea name="homeAdress" cols="21" rows="5" id="address" placeholder="Enter Your Address" ></textarea required> 
+            <textarea name="homeAdress" cols="21" rows="5" id="address" placeholder="Enter Your Address"></textarea required> 
         </address>
         
         <div class="contact">
@@ -82,22 +75,16 @@
         <div class="button">
             <div class="prev">
                 <button>
-                    <a href="/studentUndertaking">   
-                        Back Page
-                    </a> 
+                    <a href="/api/v1/studentUndertaking">Back Page</a> 
                 </button>
-               
             </div>
-            <button id="preview-Btn">
-            Preview This Page
-        </button>
-        <button type="submit" id="disp" >Submit</button>
-
+            
+            <button id="preview-Btn">Preview This Page</button>
+            <button type="submit" id="disp" >Submit</button>
+            
             <div class="next">
                 <button>
-                    <a href="/idCard">
-                      Next Page
-                    </a>
+                    <a href="/api/v1/idCard"> Next Page</a>
                 </button>
             </div>
         </div>
@@ -151,7 +138,7 @@
         <div class="contact">
             Contact No.
             <ol>
-                <li> Personal: <input type="number" id="PERSONAL" readonly ></li>
+                <li> Personal: <input type="number" id="PERSONAL" readonly></li>
 
                 <li>Fathers: <input type="number" id="FATHERS" readonly></li>
 
@@ -166,12 +153,13 @@
         </div>
         <br>
         <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
-    </div>
-    <script src="javaScript/thirdpage.js"></script>
+        </div>
+        <script src="/javaScript/thirdpage.js"></script>
 
 
 </body>
 
 </html>
 </body>
+
 </html>

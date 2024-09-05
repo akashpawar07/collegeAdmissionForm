@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup</title>
+    <style>
+        body {
+            background: rgb(45, 47, 94);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .contanier {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 99vw;
+            height: 90vh;
+        }
+        .contanier .popup {
+            width: 30%;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            gap: 10px;
+            background: rgb(255, 251, 251);
+            border-radius: 7px;
+            color: rgb(48, 44, 44);
+            margin: auto;
+            position: relative;
+        }
+        .contanier .popup img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-top: -50px;
+            position: absolute;
+            top: 0;
+        }
+        .div-item {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 90%;
+            text-align: center;
+        }
+        a {
+            background: rgb(19, 175, 19);
+            text-decoration: none;
+            border-radius: 3px;
+            padding: 10px;
+            height: 20px;
+            width: 80%;
+            color: white;
+        }
+        /* Media query setiction started */
+        @media only screen and (min-width:200px) and (max-width:480px) {
+            .contanier {
+                width: 100vw;
+                height: 100vh;
+            }
+            .contanier .popup {
+                width: 90vw;
+                height: 60vh;
+            }
+            .contanier .popup img {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contanier">
+        <div class="popup" id="disp">
+            <img src="checkBtn.png" alt="">
+            <h2>Thank You!</h2>
+            <div class="div-item">
+                <p>Your ID Card datails has been Successfully Submitted</p><br>
+                <a href="/api/v1/idCard">OK</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

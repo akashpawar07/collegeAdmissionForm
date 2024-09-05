@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page two</title>
-    <link rel="stylesheet" href="css/secondPage.css">
+    <link rel="stylesheet" href="/css/studentUndertaking.css">
 
 </head>
 
 <body>
-    <form action="/studentUndertaking" method="post" class="formContainer" enctype="multipart/form-data">
+
+    {{!-- <div id="popup">
+        <img src="/images/greencheck.jpg" alt="">
+        <b>Form has been Submitted</b>
+        <p id="cancelpoppup" onclick="cancelPopup()">&#10005</p>
+    </div> --}}
+    
+    <form action="/api/v1/studentUndertaking" method="post" class="formContainer" enctype="multipart/form-data">
         <fieldset>
             <legend>
                 Date
@@ -93,7 +100,6 @@
             <div class="headline">
                 <h3>ANNEXURE II <br> AFFIDAVIT BY PARENT/GUARDIAN</h3>
             </div>
-
             <div class="content2">
                 <div class="name">
 
@@ -145,34 +151,32 @@
                 </ol>
 
             </div>
-            <p>Declared this <input type="text" id="day">day of <input type="text" id="month">month of <input
-                    type="text" id="year">year <input type="text"></p>
+            <p>Declared this <input type="text" id="day" required>day of <input type="text" id="month" required>month of <input
+                    type="text" id="year">year <input type="text" required></p>
 
             <div class="sign">
-                <p> Signature:<input type="file" name="guardianSign" accept="image" style="border:none;" id="sign" required>
-                    <br>Name of the Parent/ guardian:<input type="text" id="parent-name2">
+                <p> Signature:
+                    <input type="file" name="guardianSign" accept="image" style="border:none;" id="sign" required><br>
+                    Name of the Parent/ guardian:<input type="text" id="parent-name2" required>
                 </p>
 
-                <p class="secondSign">Signature:<input type="file" name="studentSign" accept="image" style="border:none;"><br>Name of the
-                    Student:<input type="text" id="stu-name2"></p>
+                <p class="secondSign">Signature:
+                    <input type="file" name="studentSign" accept="image"style="border:none;" 
+                    required><br>
+                    Name of the Student:<input type="text" id="stu-name2" required></p>
             </div>
-
 
         </div>
         <div class="button">
             <div class="prev">
                 <button>
-                    <a href="/">
-                        Back Page
-                    </a>
-
+                    <a href="/api/v1/">Back Page</a>
                 </button>
-
             </div> <input type="button" id="preview-Btn" value=" Preview This Page">
-              <button type="submit" id="disp">Submit</button>
+            <button type="submit" id="disp" >Submit</button>
             <div class="next">
                 <button>
-                    <a href="/feesUndertaking">
+                    <a href="/api/v1/feesUndertaking">
                         Save & Next
                     </a>
                 </button>
@@ -328,7 +332,7 @@
     </div>
 
 
-    <script src="javaScript/secondpage.js"></script>
+    <script src="/javaScript/secondpage.js"></script>
 </body>
 
 </html>

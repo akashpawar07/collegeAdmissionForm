@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IdCard</title>
-    <link rel="stylesheet" href="css/lastPage.css">
+    <link rel="stylesheet" href="/css/idCard.css">
     {{!--
     <script defer src="fourth.js"></script> --}}
 </head>
 
 <body>
     <div class="main" id="formContainer">
-
-        <form name="myForm" onsubmit="return validation()" action="/idCard" method="post">
+        
+        <form name="myForm" onsubmit="return validation()" action="/api/v1/idCard" method="post">
 
             <h1 id="heading" class="auto-type">ID-SLIP</h1>
             <P class="ac_year"> Academic Year:
@@ -29,7 +29,7 @@
                 <div class="name ">
                     <p id="firstName">First Name</p>
                     <input type="text" name="fname" id="fname" placeholder="FIRSTNAME" required>
-                    <i class="name-error error" id="error" ></i>
+                    <i class="name-error error" id="error"></i>
                 </div>
                 <div class="fatherName">
                     <p id="fatherName">Middle Name</p>
@@ -45,7 +45,7 @@
 
 
             <!-- Date of birth, gender and blood group section -->
-            <div class="DOB-BLOODG" >
+            <div class="DOB-BLOODG">
                 <div class="DOB">
                     <p id="DOB"> Date Of Birth</p>
                     <input type="date" name="" id="date" required>
@@ -184,35 +184,29 @@
                 </div>
                 <div class="address same">
                     <p>Address</p><span>
-                        <textarea name="stdAddress" id="std_address" cols="70" rows="7"
-                            placeholder="Address..." required></textarea>
+                        <textarea name="stdAddress" id="std_address" cols="70" rows="7" placeholder="Address..."
+                            required></textarea>
                         <!-- <i class="address-error">this is error</i></span> -->
                 </div>
             </div>
-            <input type="button" id="preview-Btn" value=" Preview This Page">
 
+            <input type="button" id="preview-Btn" value=" Preview This Page">
             <div class="button">
-               
                 <input type="submit" value="Submit" id="submit">
                 <input type="reset" value="Reset" id="reset">
             </div>
-
- <div class="backbutton">
-                    <div class="prev">
-                        <button>
-                            <a href="/feesUndertaking">
-                                Back Page
-                            </a>
-                        </button>
-                    </div>
+            <div class="backbutton"> 
+                <div class="prev">
+                    <button>
+                        <a href="/api/v1/feesUndertaking">Back Page</a>
+                    </button>
                 </div>
-
+            </div>
         </form>
-        {{!-- <button id="preview-Btn">
-            Preview This Page
-        </button> --}}
     </div>
 
+
+    {{!-- from preview section starts here --}}
     <div class="preview" id="preview_from">
         <h1 id="heading" class="auto-type">ID-SLIP</h1>
         <div class="instruction">
@@ -302,7 +296,7 @@
         <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
     </div>
 
-    <script src="javaScript/fourth.js"></script>
+    <script src="/javaScript/fourth.js"></script>
 
     {{!--
     <script src="/js/alert.js"></script> --}}

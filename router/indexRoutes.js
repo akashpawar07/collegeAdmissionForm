@@ -49,7 +49,7 @@ router.post("/", docUploader, async (req, res) => {
         studentDocuments:       studentDoc.map(doc=>doc.path)
     })
     const studentIsCreated = await students.save()
-    res.send("Form has been saved")
+    res.status(200).render("indexPopup") 
 })
 // GET route for accessing home page
 router.get("/", (req, res) => {

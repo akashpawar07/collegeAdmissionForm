@@ -4,11 +4,11 @@ const mongoose = require("mongoose")
 const studentUndertakingFessSchema = new mongoose.Schema({
     studentName:{
         type:String,
-        lowercase: true
+        uppercase: true
     },
     fatherName:{
         type:String,
-        lowercase: true
+        uppercase: true
     },
     presentFees:{
         type:String,
@@ -33,6 +33,7 @@ const studentUndertakingFessSchema = new mongoose.Schema({
     },
     place:{
         type:String,
+        uppercase: true
     },
     currentDate:{
         type:String,

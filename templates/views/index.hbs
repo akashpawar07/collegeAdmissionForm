@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
 
 </head>
 
 <body id="body-data">
     <!-- form starting  -->
-    <form action="/" method="post" enctype="multipart/form-data" class="formContainer">
+    <form action="/api/v1/" method="post" enctype="multipart/form-data" class="formContainer">
         <!-- heding div part -->
         <div class="header">
             <h2 class="addMissiontxt">ADDMISSION FORM</h2>
@@ -27,7 +27,7 @@
         <!-- basic for collage  -->
         <div class="collageinfo">
             <div class="cphoto">
-                <img src="images/clogo.png" alt="Sycet Logo" name="profileImage">
+                <img src="/images/clogo.png" alt="Sycet Logo" name="profileImage">
             </div>
             <div class="collage">
                 <h2>Shreeyash Pratishathan's</h2>
@@ -42,7 +42,7 @@
 
         <!-- photo part  -->
         <div class="photo">
-            <img src="images/profile2.jpeg" alt="" id="profile-pic">
+            <img src="/images/profile2.jpeg" alt="" id="profile-pic">
             <label for="upload-image">upload Image</label>
             <input type="file" id="upload-image" name="profileImage" accept="image/jpeg, image/png, image/jpg" required>
         </div>
@@ -94,7 +94,7 @@
         <!-- signature part -->
         <div class="sign">
             <!-- <h3 class="file">Add Signature</h3> -->
-            <img src="sign.jpg" alt="" id="profile-sign">
+            <img src="" alt="" id="profile-sign">
             <label for="upload-sign">upload sign</label>
             <input type="file" id="upload-sign" name="signature" accept="image/jpeg, image/png, image/jpg" required>
             <!-- <input type="file" accept="image/*"> -->
@@ -264,7 +264,7 @@
             <!--  button for next page   -->
             <div class="next">
                 <button>
-                    <a href="/studentUndertaking">
+                    <a href="/api/v1/studentUndertaking">
                         Next Page
                     </a>
                 </button>
@@ -324,10 +324,10 @@
             </div>
             <div class="photo-sign">
                 <div class="profile">
-                    <img src="next2.jpeg" alt="Profile Iamge" id="previewProfileImage">
+                    <img src="" alt="Profile Iamge" id="previewProfileImage">
                 </div>
                 <div class="previewsign">
-                    <img src="next2.jpeg" alt="Sign" id="previewProfileSign">
+                    <img src="" alt="Sign" id="previewProfileSign">
                 </div>
             </div>
         </div>
@@ -497,8 +497,9 @@
         </div>
         <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
         <input type="button" name="" id="print-Btn" value="Print" onclick="printableData()">
-        <script src="javaScript/index.js"></script>
     </div>
 
+    <script src="/javaScript/index.js"></script>
 </body>
+
 </html>

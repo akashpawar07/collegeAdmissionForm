@@ -26,9 +26,6 @@ document.getElementById('preview-Btn').addEventListener('click', () =>{
    document.getElementById('STU-NAME2').value= sname2
    document.getElementById('SIGN').value=sign
 
-
-
-
    document.getElementById('preview_from').style.display = 'block';
 
    var formContainer = document.querySelector(".formContainer")

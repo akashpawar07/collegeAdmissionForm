@@ -25,7 +25,7 @@ router.post("/", docUploader, async(req, res)=>{
         ParentsSignature:ParentsSignature
     })
     stdUndertakingData = await data.save()
-    res.status(200).render('studentUndertaking')
+    res.status(200).render('studentUnderPopup')
 })
 // GET routes for studentUndertaking
 router.get("/", (req, res) => {

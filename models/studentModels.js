@@ -3,35 +3,35 @@ const mongoose = require("mongoose")
 const studentSchema = new mongoose.Schema({
     courses:{
         type:String,
+        uppercase: true
     },
     addmissionThrough:{
         type:String,
+        uppercase: true
     },
     class:{
         type:String,
+        uppercase: true
     },
     branch:{
         type:String,
+        uppercase: true
     },
     surname: {
         type: String,
-        // required: true,
-        lowercase: true
+        uppercase: true
     },
     firstName: {
         type: String,
-        // required: true,
-        lowercase: true
+        uppercase: true
     },
     fatherName: {
         type: String,
-        // required: true,
-        lowercase: true
+        uppercase: true
     },
     motherName: {
         type: String,
-        // required: true,
-        lowercase: true,
+        uppercase: true,
         trim: true
     },
     dateOfBirth: {
@@ -40,26 +40,28 @@ const studentSchema = new mongoose.Schema({
         // required:true
     },
     gender: {
-        type: String
+        type: String,
+        uppercase: true
     },
     village: {
-        type: String
+        type: String,
+        uppercase: true
     },
     taluka: {
         type: String,
-        // required: true
+        uppercase: true,
     },
     dist: {
         type: String,
-        // required: true
+        uppercase: true
     },
     state: {
         type: String,
-        // required: true
+        uppercase: true
     },
     abcId: {
         type: String,
-        // required: true
+        
     },
     aadharNo: {
         type: Number,
@@ -67,27 +69,27 @@ const studentSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        // required: true
+        lowercase: true
     },
     nationality:{
         type:String,
-        // required:true
+        uppercase: true
     },
     religion:{
         type:String,
-        // required:true
+        uppercase: true
     },
     category:{
         type:String,
-        // required:true
+        uppercase: true
     },
     caste:{
         type:String,
-        // required:true
+        uppercase: true
     },
     address:{
         type:String,
-        // required:true
+        uppercase: true
     },
     studentContact:{
         type:Number,

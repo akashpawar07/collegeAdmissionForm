@@ -25,20 +25,19 @@ app.set('view engine', 'hbs');
 // set the actual location of views folder.................
 app.set('views', path.join(__dirname, "/templates/views"));
 
-
 // importing routes from router folder
-const indexRoutes = require("./router/indexRoutes")
-const stdUndertakingRoutes = require("./router/studentUndertakingRoutes")
+const indexRoutes           = require("./router/indexRoutes")
+const stdUndertakingRoutes  = require("./router/studentUndertakingRoutes")
 const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
-const idcardRoutes = require("./router/icCardRoutes"); 
-const upload = require("./router/indexRoutes");
-const dbConection = require("./DB/dbConnection");
+const idcardRoutes          = require("./router/idCardRoutes"); 
+// const upload                = require("./router/indexRoutes");
+// const dbConection           = require("./DB/dbConnection");
 
 //using routes here
-app.use("/", indexRoutes);
-app.use("/studentUndertaking", stdUndertakingRoutes)
-app.use("/feesundertaking", feesUndertakingRoutes)
-app.use("/idcard", idcardRoutes)
+app.use("/api/v1/",                     indexRoutes);
+app.use("/api/v1/studentUndertaking",   stdUndertakingRoutes)
+app.use("/api/v1/feesundertaking",      feesUndertakingRoutes)
+app.use("/api/v1/idcard",               idcardRoutes)
 
 // default route for if anyone want to access another page beyond the existing pages then this will open 404 page!
 app.get("/*", (req, res) => {
@@ -46,5 +45,5 @@ app.get("/*", (req, res) => {
 })
 // Listening page on port
 app.listen(port, (req, res) => {
-    console.log(`Server is started click on http://localhost:${port}`)
+    console.log(`Server is started click on http://localhost:${port}/api/v1/`)
 });
