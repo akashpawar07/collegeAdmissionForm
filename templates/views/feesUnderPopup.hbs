@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fees | Successful</title>
+    <title>Popup</title>
     <style>
         body {
             background: rgb(45, 47, 94);
@@ -19,7 +19,7 @@
         }
         .contanier .popup {
             width: 30%;
-            height: 50vh;
+            height: 40vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,10 +33,10 @@
             position: relative;
         }
         .contanier .popup img {
-            width: 90px;
-            height: 90px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            margin-top: -50px;
+            margin-top: -35px;
             position: absolute;
             top: 0;
         }
@@ -64,11 +64,14 @@
             }
             .contanier .popup {
                 width: 90vw;
-                height: 60vh;
+                height: 30vh;
             }
             .contanier .popup img {
-                width: 90px;
-                height: 90px;
+                width: 80px;
+                height: 80px;
+            }
+            .div-item p{
+                font-size: 18px;
             }
         }
     </style>
@@ -77,9 +80,9 @@
     <div class="contanier">
         <div class="popup" id="disp">
             <img src="/images/checkBtn.png" alt="">
-            <h2>Thank You!</h2>
             <div class="div-item">
-                <p>Your Undertaking for fees datails has been successfully submitted</p><br>
+                <h2>Thank You!</h2>
+                <p>Your ID Card datails has been Successfully Submitted</p><br>
                 <a href="/feesUndertaking">OK</a>
             </div>
         </div>
