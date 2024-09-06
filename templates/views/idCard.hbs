@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IdCard</title>
+    <title>Student | ID-Card </title>
     <link rel="stylesheet" href="/css/idCard.css">
     {{!--
     <script defer src="fourth.js"></script> --}}
@@ -13,7 +13,7 @@
 <body>
     <div class="main" id="formContainer">
         
-        <form name="myForm" onsubmit="return validation()" action="/api/v1/idCard" method="post">
+        <form name="myForm" onsubmit="return validation()" action="/idCard" method="post">
 
             <h1 id="heading" class="auto-type">ID-SLIP</h1>
             <P class="ac_year"> Academic Year:
@@ -198,7 +198,7 @@
             <div class="backbutton"> 
                 <div class="prev">
                     <button>
-                        <a href="/api/v1/feesUndertaking">Back Page</a>
+                        <a href="/feesUndertaking">Back</a>
                     </button>
                 </div>
             </div>

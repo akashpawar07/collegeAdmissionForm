@@ -82,30 +82,29 @@ body input {
 
 /* .....................................buttons..................................................... */
 
-.button {
+.prev{
     display: flex;
     justify-content: space-between;
-    padding: 5px;
-    /* padding: 0px 20px 0px 20px; */
+    padding: 5px 4px;
 }
-
-
-.prev button {
-    margin-top: 1%;
-    padding: 3px;
-    border: 1px solid violet;
-    border-radius: 4px;
+.prev button{
+    border-radius: 5px;
+    padding: 5px 4px;
+    border: none;
+    border: 1px solid rgb(62, 137, 80);
+    cursor: pointer;
 }
-
-.prev button a {
+.prev a{
     text-decoration: none;
-    color: #527fa5;
-    font-size: medium;
+    padding: 6px;
+    font-size: 16px;
+    color: black;
 }
+
 
 
 /* ...................... PREVIEW SECTION .................... */
-#preview_from {
+/* #preview_from {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -119,30 +118,26 @@ body input {
     background-color: rgb(254, 249, 249);
     border: 1px dashed black;
     box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
-}
+} */
 
-
-.preview input {
-    /* background-color: #527fa5; */
+/* .preview input {
     border: none;
     outline: none;
-}
+} */
 
-#cancelpoppup {
+/* #cancelpoppup {
     cursor: pointer;
     color: rgb(223, 18, 18);
     position: absolute;
     bottom: 1px;
     right: 15px;
-}
+} */
 
-.blur {
+/* .blur {
     filter: blur(10px);
-}
+} */
 
-#preview-Btn {
-    color: #65b5f6;
-    /* width: auto; */
+/* #preview-Btn {
     background-color: transparent;
     border: 1px solid #050607;
     border-radius: 4px;
@@ -150,7 +145,7 @@ body input {
     cursor: pointer;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition: all 0.3s ease-in-out;
-}
+} */
 
 
 
@@ -161,11 +156,13 @@ body input {
         /* height: ; */
         padding: 0px;
     }
-    #popup{
+
+    #popup {
         margin: auto;
         width: 100vw;
         height: 80vh;
     }
+
     form {
         height: auto;
         border: none;
