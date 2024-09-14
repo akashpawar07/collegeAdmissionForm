@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {loggedinUserOnly} = require('../middleware/authMiddlewares')
 
 //using middleware fro get student profileIamge, signature, documents
 const upload = require("../middleware/indexMiddleware")
@@ -51,8 +52,9 @@ router.post("/", docUploader, async (req, res) => {
     const studentIsCreated = await students.save()
     res.status(200).render("indexPopup") 
 })
+
 // GET route for accessing home page
-router.get("/", (req, res) => {
+router.get("/", loggedinUserOnly, (req, res) => {
     res.render('index')
 })
 

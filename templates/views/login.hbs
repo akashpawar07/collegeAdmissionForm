@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student | Login</title>
+    <style>
+        body{
+            background-image:url('https://img.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg?ga=GA1.1.919035732.1724917926&semt=ais_hybrid');
+             background-repeat: no-repeat;
+            background-size:cover;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(77, 75, 75, 0.155);
+            padding: 10px;
+            backdrop-filter: blur(30px);
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.543);
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+        }
+
+        form h1{
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form p{
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+        }
+
+        form .form-inputs{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 100%;
+            padding: 1px;
+            gap: 10px;
+        }
+        
+        form .form-inputs .input-container{
+            border: none;
+            outline: none;
+            padding: 7px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form .form-inputs .input-container input{
+            caret-color: red;
+            background-color: rgba(128, 128, 128, 0.276);
+            color: white;
+            width: 99%;
+            margin-top: 4px;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            padding: 8px;
+            border: 2px solid gray
+            font-size: ;
+            box-sizing: border-box;
+        }
+        form .form-inputs .input-container input::placeholder{
+           font-size: 13px;
+           color: rgba(255, 255, 255, 0.532);
+        }
+
+        form input:focus{
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+
+        form label{
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        button{
+            width: 96%;
+            padding: 5px;
+            font-size: 16px;
+            align-self: center;
+            font-weight: bold;
+            background-color: transparent;
+            color: white;
+           border: none;
+           outline: none;
+        }
+
+        .btn{
+            border: 2px solid rgba(255, 255, 255, 0.333);
+            border-radius: 4px;
+        }
+        form .div-item{
+            text-align: center;
+
+        }
+        form .div-item a{
+             color: rgb(13, 15, 40);
+            text-decoration: none;
+        }
+        form .div-item a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/login" method="post">    
+
+        <h1>Login</h1>
+        <p>Use your registerd email and password for login</p>
+        <div class="form-inputs">
+           <div class="input-container">
+                <label for="email">Email</label><br>
+                <input
+                    type="email" 
+                    name="email" 
+                    id=""
+                    placeholder="Enter registerd email"
+                >
+           </div>
+          <div class="input-container">
+                <label for="password">Password</label><br>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="" 
+                    placeholder="Enter your password"
+                >
+          </div class="input-container">
+            <button type="submit" class="btn">Login</button>
+            <div class="div-item">
+                <p>dont have an account <a href="/signup">Signup</a></p>
+            </div>
+        </div>
+        
+    </form>
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require("express"); 
+const cookieParser = require('cookie-parser')
 const app = express();
 const path = require('path');
 const hbs = require('hbs');
@@ -8,12 +9,13 @@ const dotenv = require("dotenv").config()
 const fs = require("fs")
 const port = process.env.PORT || 7070
 
+
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use("/uploads", express.static('uploads'))
 
-// databse connection 
-const dbURI = require('./DB/dbConnection')
+
 
 // use static file presents in public folder..................
 const staticPath = path.join(__dirname, "/public")
@@ -25,19 +27,30 @@ app.set('view engine', 'hbs');
 // set the actual location of views folder.................
 app.set('views', path.join(__dirname, "/templates/views"));
 
+// databse connection 
+const dbURI = require('./DB/dbConnection')
+
 // importing routes from router folder
 const indexRoutes           = require("./router/indexRoutes")
 const stdUndertakingRoutes  = require("./router/studentUndertakingRoutes")
 const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
 const idcardRoutes          = require("./router/idCardRoutes"); 
-// const upload                = require("./router/indexRoutes");
-// const dbConection           = require("./DB/dbConnection");
+const userSignup            = require("./router/signupRoutes");
+const userlogin             = require("./router/loginRoutes")
+
+
+// middleware 
+const {loggedinUserOnly} = require('./middleware/authMiddlewares')
+
 
 //using routes here
-app.use("/",                     indexRoutes);
-app.use("/studentUndertaking",   stdUndertakingRoutes)
-app.use("/feesundertaking",      feesUndertakingRoutes)
-app.use("/idcard",               idcardRoutes)
+app.use("/",                        indexRoutes);
+app.use("/studentUndertaking",  loggedinUserOnly,   stdUndertakingRoutes)
+app.use("/feesundertaking",     loggedinUserOnly,   feesUndertakingRoutes)
+app.use("/idcard",              loggedinUserOnly,   idcardRoutes)
+app.use("/signup",               userSignup)
+app.use("/login",                userlogin)
+
 
 // default route for if anyone want to access another page beyond the existing pages then this will open 404 page!
 app.get("/*", (req, res) => {
