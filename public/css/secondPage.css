@@ -1,0 +1,152 @@
+body {
+    padding: 0px 0px 0px 200px;
+    line-height: 0.7cm;
+}
+
+form {
+    border: 2px solid black;
+    width: 800px;
+    height: auto;
+    background-color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+}
+
+/* .all {
+     margin-top: -40px;
+} */
+
+.headline {
+    text-align: center;
+    text-decoration: underline;
+    font-family: ;
+}
+
+.name {
+    margin-left: 35px;
+}
+
+input {
+    border: 0px;
+    border-bottom: 0.5px solid black;
+    background: transparent;
+    width: 350px;
+}
+.content2 input{
+    border:  none;
+    outline: none;
+    border-bottom: 1px solid black;
+    padding: 3px;
+    font-weight: bold;
+}
+p {
+    margin-left: 30px;
+}
+
+p input {
+    width: 120px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 3px;
+    font-weight: bold;
+}
+
+
+fieldset {
+    /* height: 30px;
+    width: 20px;
+    text-align: center;
+    margin-top: -8px;
+    margin-left: 670px; */
+    width: 13%;
+    float: right;
+}
+
+fieldset input {
+    height: 20px;
+    width: 100px;
+}
+
+.sign {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+}
+
+.prev button {
+    margin-top: 1%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.prevbutton{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    margin-left: -32px;
+    padding-top: 20px;
+    margin-top: -7px;
+}
+
+.prev button:hover {
+    background-image: url(/images/back.png);
+    background-size: cover;
+}
+
+
+.prevbutton:hover {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.next button {
+    margin-top: 1%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.nextbutton{
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    margin-left: -32px;
+    padding-top: 20px;
+    margin-top: -7px;
+}
+
+.next button:hover {
+    background-image: url(/images/next2.jpeg);
+    background-size: cover;
+}
+
+
+.nextbutton:hover {
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+@media screen and (min-width:200px) and (max-width:480px) {
+    body {
+        /* height: ; */
+        padding: 0px;
+    }
+
+    form{
+        height: auto;
+        border: none;
+    }
+}
