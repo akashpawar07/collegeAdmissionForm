@@ -54,27 +54,25 @@ async function handleUserLogin(req, res) {
         const user = await signupModel.findOne({ email });
         
         // matching password
-        if( user && await bcrypt.compare(password, user.password)){
-            console.log("Password has match ")
-        }else{
-            console.log("Password not match")
-        }
-
         // if there is no user belongs the redirect to the login page
         if (!user) {
             return res.redirect("/login");
             console.log("user is not loggedin")
         }
-
         //if it is user then generate cookie for user and redirect to the home page "/"
         const token = setUser(user)
-        
         res.cookie('userToken', token, {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
             httpOnly: true
         })
-        return res.redirect('/')
-
+        
+        if(user && await bcrypt.compare(password, user.password)){
+            return res.redirect("/");
+            console.log('Password has matched')
+        }else{
+            res.send("Something went wrong")
+            console.log("password has not match")
+        }
     } catch (error) {
         console.log(error)
     }
