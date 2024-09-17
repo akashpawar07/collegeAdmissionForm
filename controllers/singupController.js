@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require('uuid')
 const signupModel = require('../models/signupModel')
 const { setUser } = require("../services/auth")
 const bcrypt = require("bcryptjs")
+// const popups = require('popups')
 
 async function handleUserSignup(req, res) {
 
@@ -56,8 +57,10 @@ async function handleUserLogin(req, res) {
         // matching password
         // if there is no user belongs the redirect to the login page
         if (!user) {
-            return res.redirect("/login");
-            console.log("user is not loggedin")
+            // return res.redirect("/login");
+            res.send("User not found with this credentials")
+            console.log("User not found with this credentials")
+            return null;
         }
         //if it is user then generate cookie for user and redirect to the home page "/"
         const token = setUser(user)
