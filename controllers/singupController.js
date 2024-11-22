@@ -52,7 +52,7 @@ async function handleUserLogin(req, res) {
         //checking here fields empty or not send response accordingly
         if (!(email && password)) {
             res.status(500).send(`
-                <h1>Enail and Password is required</h1>
+                <h1>Email and Password is required</h1>
                 <a href="/login">Go back to login</a>
             `);
             return null
