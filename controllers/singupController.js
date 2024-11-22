@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid')
+// const { v4: uuidv4 } = require('uuid')
 const signupModel = require('../models/signupModel')
 const { setUser } = require("../services/auth")
 const bcrypt = require("bcryptjs")
@@ -11,14 +11,18 @@ async function handleUserSignup(req, res) {
 
     // check fields empty or not
     if (!name || !email || !password) {
-        res.status(500).send("All fields are required")
+        res.status(500).send(`
+            <h1>All fields are required</h1>
+            <a href="/signup">Go back to Signup</a>`);
         return null
     }
 
     //checking that email is already exist in our database or not if exist  
     const userExists = await signupModel.findOne({ email: email })
     if (userExists) {
-        return res.status(422).send("User already exists with this email")
+        return res.status(422).send(`
+            <h1>User already exists with this email</h1>
+            <a href="/signup">Go back to Signup</a> `);
     }
 
     // has the password
@@ -47,32 +51,37 @@ async function handleUserLogin(req, res) {
 
         //checking here fields empty or not send response accordingly
         if (!(email && password)) {
-            res.status(500).send("Email and password is required")
+            res.status(500).send(`
+                <h1>Enail and Password is required</h1>
+                <a href="/login">Go back to login</a>
+            `);
             return null
         }
 
         //geting user on basis of email
         const user = await signupModel.findOne({ email });
-        
-        // matching password
+
         // if there is no user belongs the redirect to the login page
         if (!user) {
             // return res.redirect("/login");
-            res.send("User not found with this credentials")
-            console.log("User not found with this credentials")
+            return res.send(`
+                <h1>User not found with this credentials</h1>
+                <a href="/login">Go back to login</a>
+            `);
             return null;
         }
+
         //if it is user then generate cookie for user and redirect to the home page "/"
         const token = setUser(user)
         res.cookie('userToken', token, {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
             httpOnly: true
         })
-        
-        if(user && await bcrypt.compare(password, user.password)){
+
+        if (user && await bcrypt.compare(password, user.password)) {
             return res.redirect("/");
             console.log('Password has matched')
-        }else{
+        } else {
             res.send("Something went wrong")
             console.log("password has not match")
         }
