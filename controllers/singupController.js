@@ -71,19 +71,20 @@ async function handleUserLogin(req, res) {
             return null;
         }
 
-        //if it is user then generate cookie for user and redirect to the home page "/"
-        const token = setUser(user)
-        res.cookie('userToken', token, {
-            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-            httpOnly: true
-        })
 
         if (user && await bcrypt.compare(password, user.password)) {
+            //if it is user then generate cookie for user and redirect to the home page "/"
+            const token = setUser(user)
+            res.cookie('userToken', token, {
+                expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+                httpOnly: true
+            })
+            console.log('server response - Password has matched')
             return res.redirect("/");
-            console.log('Password has matched')
+
         } else {
             res.send("Something went wrong")
-            console.log("password has not match")
+            console.log("server response - password has not match")
         }
     } catch (error) {
         console.log(error)

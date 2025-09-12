@@ -19,7 +19,7 @@ inputFile2.onchange = function () {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////// INCOME VALIDATION //////////////////////////////////////
 function extractAndValidate() {
     var fileInput = document.getElementById('fileInput');
 
@@ -60,43 +60,57 @@ function extractAndValidate() {
 
 
 
-
 //...................... Form PRIVIEW SECTION --------------------- 
 
 document.getElementById('preview-Btn').addEventListener('click', () => {
 
+    // Getting the value of input fields, with trim and radio checks
+    let surname = document.getElementById('surname').value.trim();
+    let firstName = document.getElementById('fname').value.trim();
+    let fatherName = document.getElementById('father_name').value.trim();
+    let motherName = document.getElementById('mother_name').value.trim();
+    let dateOfBirth = document.getElementById('date').value.trim();
+    let Gender = document.getElementById('Gender').value.trim();
 
-    // Getting the value of input fields
-    let surname = document.getElementById('surname').value
-    let firstName = document.getElementById('fname').value
-    let fatherName = document.getElementById('father_name').value
-    let motherName = document.getElementById('mother_name').value
-    let dateOfBirth = document.getElementById('date').value
-    let Gender = document.getElementById('Gender').value
+    let selectedCourseEl = document.querySelector('input[name="course"]:checked');
+    let selectedCourse = selectedCourseEl ? selectedCourseEl.value : null;
 
-    let selectedCourse = document.querySelector('input[name="course"]:checked').value
-    let AdmissionBy = document.querySelector('input[name="AdmissionThrough"]:checked').value
-    let classes= document.querySelector('input[name="classes"]:checked').value
+    let AdmissionByEl = document.querySelector('input[name="AdmissionThrough"]:checked');
+    let AdmissionBy = AdmissionByEl ? AdmissionByEl.value : null;
 
-    var selectedBranch = document.getElementById("brnch").value
-    let birthPalce = document.getElementById('birthPlace').value
-    let tq = document.getElementById('tahsil').value
-    let dist = document.getElementById('dist').value
-    let state = document.getElementById('state').value
-    let abcid = document.getElementById('abc').value
-    let emailid = document.getElementById('email').value
-    let adhar = document.getElementById('aadhar').value
-    let nationality = document.getElementById('nationality').value
-    let religion = document.getElementById('religion').value
-    let caste = document.getElementById('caste').value
-    let category = document.getElementById('category').value
-    let address = document.getElementById('selfaddress').value
-    let studentc = document.getElementById('stdContact').value
-    let parentsc = document.getElementById('parentsCon').value
+    let classesEl = document.querySelector('input[name="classes"]:checked');
+    let classes = classesEl ? classesEl.value : null;
 
+    let selectedBranch = document.getElementById("brnch").value.trim();
+    let birthPalce = document.getElementById('birthPlace').value.trim();
+    let tq = document.getElementById('tahsil').value.trim();
+    let dist = document.getElementById('dist').value.trim();
+    let state = document.getElementById('state').value.trim();
+    let abcid = document.getElementById('abc').value.trim();
+    let emailid = document.getElementById('email').value.trim();
+    let adhar = document.getElementById('aadhar').value.trim();
+    let nationality = document.getElementById('nationality').value.trim();
+    let religion = document.getElementById('religion').value.trim();
+    let caste = document.getElementById('caste').value.trim();
+    let category = document.getElementById('category').value.trim();
+    let address = document.getElementById('selfaddress').value.trim();
+    let studentc = document.getElementById('stdContact').value.trim();
+    let parentsc = document.getElementById('parentsCon').value.trim();
+
+    // Now check for any empty field
+    if (
+        !surname || !firstName || !fatherName || !motherName ||
+        !dateOfBirth || !Gender || !selectedCourse || !AdmissionBy || !classes || !selectedBranch ||
+        !birthPalce || !tq || !dist || !state || !abcid || !emailid || !adhar || !nationality ||
+        !religion || !caste || !category || !address || !studentc || !parentsc
+    ) {
+        alert("All fields are compulsory!");
+        return;
+    }
+
+
+    // documets input fields
     let sscdoc = document.getElementById('sscdoc').value
-    
-
     let hscdoc = document.getElementById('hscdoc').value
     let tcdoc = document.getElementById('tcdoc').value
     let castedoc = document.getElementById('castedoc').value
@@ -112,15 +126,6 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     let declarationdoc = document.getElementById('declarationdoc').value
     let hosteldoc = document.getElementById('hosteldoc').value
     let deathdoc = document.getElementById('deathdoc').value
-
-
-
-
-
-    
-
-
-
 
 
     // Asigning the value 
@@ -169,8 +174,6 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('Death').value = deathdoc
 
 
-
-
     document.getElementById('preview_from').style.display = 'block';
 
     var formContainer = document.querySelector(".formContainer")
@@ -194,10 +197,10 @@ function cancelPreview() {
 
 
 
-function printableData(){
+function printableData() {
     var bodyData = document.body.innerHTML;
     var data = document.getElementById('preview_from').innerHTML;
- 
+
     document.body.innerHTML = data;
     window.print()
     ddocument.body.innerHTML = data;

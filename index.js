@@ -36,20 +36,22 @@ const stdUndertakingRoutes  = require("./router/studentUndertakingRoutes")
 const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
 const idcardRoutes          = require("./router/idCardRoutes"); 
 const userSignup            = require("./router/signupRoutes");
-const userlogin             = require("./router/loginRoutes")
+const userlogin             = require("./router/loginRoutes");
+// const userLogout            = require("./route/userLogout");
 
 
-// middleware 
-const {loggedinUserOnly} = require('./middleware/authMiddlewares')
+// middleware for authorized user only
+// const {loggedinUserOnly} = require('./middleware/authMiddlewares')
 
 
 //using routes here
 app.use("/",                        indexRoutes);
-app.use("/studentUndertaking",  loggedinUserOnly,   stdUndertakingRoutes)
-app.use("/feesundertaking",     loggedinUserOnly,   feesUndertakingRoutes)
-app.use("/idcard",              loggedinUserOnly,   idcardRoutes)
-app.use("/signup",               userSignup)
-app.use("/login",                userlogin)
+app.use("/studentUndertaking",      stdUndertakingRoutes)
+app.use("/feesundertaking",         feesUndertakingRoutes)
+app.use("/idcard",                  idcardRoutes)
+app.use("/signup",                  userSignup)
+app.use("/login",                   userlogin)
+// app.use("/lgout",                   userLogout)
 
 
 // default route for if anyone want to access another page beyond the existing pages then this will open 404 page!
