@@ -10,6 +10,8 @@ const fs = require("fs")
 const port = process.env.PORT || 7070
 
 
+
+// middlewares
 app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
