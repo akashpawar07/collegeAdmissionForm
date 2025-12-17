@@ -7,6 +7,9 @@
     <title>HOME | SYCET</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Error styling */
         .error-message {
@@ -15,12 +18,12 @@
             margin-top: 5px;
             display: block;
         }
-        
+
         .field-error {
             border: 2px solid #dc3545 !important;
             background-color: #ffe6e6;
         }
-        
+
         .error-container {
             background-color: #f8d7da;
             border: 1px solid #f5c6cb;
@@ -29,7 +32,7 @@
             margin: 15px 0;
             color: #721c24;
         }
-        
+
         .success-message {
             background-color: #d4edda;
             border: 1px solid #c3e6cb;
@@ -38,12 +41,12 @@
             margin: 15px 0;
             color: #155724;
         }
-        
+
         .loading {
             opacity: 0.6;
             pointer-events: none;
         }
-        
+
         .loading-spinner {
             display: inline-block;
             width: 20px;
@@ -54,17 +57,46 @@
             animation: spin 1s linear infinite;
             margin-left: 10px;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 
 <body id="body-data">
-    <!-- Error/Success Message Container -->
-    <div id="messageContainer"></div>
+    <div class="sidebar">
+        <div class="sidebar-child">
+            <a href="/">
+                <i class="fa-regular fa-house"></i>
+                <p>Registration Form</p>
+            </a>
+        </div>
+        <div class="sidebar-child">
+            <a href="/studentUndertaking">
+                <i class="fa-solid fa-circle-info"></i>
+                <p>Student Undertaking</p>
+            </a>
+        </div>
+        <div class="sidebar-child">
+            <a href="/feesUndertaking">
+                <i class="fa-solid fa-circle-info"></i>
+                <p>Fees Undertaking</p>
+            </a>
+        </div>
+        <div class="sidebar-child">
+            <a href="/idCard">
+                <i class="fa-regular fa-id-card"></i>
+                <p>ID Card</p>
+            </a>
+        </div>
+    </div>
 
     <!-- form starting  -->
     <form id="studentForm" action="/" method="post" enctype="multipart/form-data" class="formContainer">
@@ -97,67 +129,64 @@
 
         <!-- photo part  -->
         <div class="photo">
-            <img src="/images/profile2.jpeg" alt="" id="profile-pic">
-            <label for="upload-image">Upload Image *</label>
-            <input type="file" id="upload-image" name="profileImage" accept="image/jpeg, image/png, image/jpg" >
+            <img src="/images/profile2.jpeg" alt="" id="profile-pic-placeholder">
+            <label for="profilePicture">Upload Image *</label>
+            <input type="file" id="profilePicture" name="profileImage" accept="image/jpeg, image/png, image/jpg">
         </div>
 
         <!-- course selection -->
         <div class="course">
-            <p class="para">Course Name: *
-                <label for="btech" id="couses">
-                    B.TECH<input type="radio" value="B.tech" name="course" id="btech" >
+            <p class="para">Courses : *
+                <label for="btech" id="couses" style="cursor: pointer;">
+                    B.TECH<input type="radio" value="B.tech" name="course" id="btech">
                 </label>
-                <label for="mtech" id="couses">
+                <label for="mtech" id="couses" style="cursor: pointer;">
                     M.TECH<input type="radio" value="M.tech" name="course" id="mtech">
                 </label>
-                <label for="MBA" id="couses">
+                <label for="MBA" id="couses" style="cursor: pointer;">
                     MBA<input type="radio" value="MBA" name="course" id="MBA">
                 </label>
-                <span class="error-message" id="course-error"></span>
+
             </p>&nbsp;&nbsp;
-            
-            <p class="para">Admission through: *
-                <label for="cap">
-                    CAP <input type="radio" value="CAP" name="AdmissionThrough" id="cap" >
+
+            <p class="para">Admission Type: *
+                <label for="cap" style="cursor: pointer;">
+                    CAP <input type="radio" value="CAP" name="AdmissionThrough" id="cap">
                 </label>
-                <label for="acap">
+                <label for="acap" style="cursor: pointer;">
                     A.CAP<input type="radio" value="A.CAP" name="AdmissionThrough" id="acap">
                 </label>
-                <label for="IL">
+                <label for="IL" style="cursor: pointer;">
                     IL<input type="radio" value="IL(Institute Level)" name="AdmissionThrough" id="IL">
                 </label>
-                <span class="error-message" id="AdmissionThrough-error"></span>
+
             </p>
-            
+
             <P class="para">
                 Class : *
-                <label for="7">
-                    FE<input type="radio" value="First Year" name="classes" id="7" >
+                <label for="7" style="cursor: pointer;">
+                    FE<input type="radio" value="First Year" name="classes" id="7">
                 </label>/
-                <label for="8">
+                <label for="8" style="cursor: pointer;">
                     SE<input type="radio" value="Second Year" name="classes" id="8">
                 </label>/
-                <label for="9">
+                <label for="9" style="cursor: pointer;">
                     TE<input type="radio" value="Third Year" name="classes" id="9">
                 </label>/
-                <label for="10">
+                <label for="10" style="cursor: pointer;">
                     BE<input type="radio" value="Final Year" name="classes" id="10">
                 </label>
 
-                Branch : <input type="text" id="brnch" placeholder="Branch Name" name="branch" 
-                    style="border: none;border-bottom: 1px solid black; outline: none; background: transparent;"> Eng.
-                <span class="error-message" id="classes-error"></span>
-                <span class="error-message" id="branch-error"></span>
+                Branch : <input type="text" id="brnch" placeholder="Branch Name" name="branch"
+                    style="border: none;border-bottom: 1px solid black; outline: none; background: transparent;">
             </P>
         </div>
 
         <!-- signature part -->
         <div class="sign">
-            <img src="" alt="" id="profile-sign">
-            <label for="upload-sign">Upload Sign *</label>
-            <input type="file" id="upload-sign" name="signature" accept="image/jpeg, image/png, image/jpg" >
-            <span class="error-message" id="signature-error"></span>
+            <img src="" alt="" id="sign-placeholder">
+            <label for="profileSignature">Upload Sign *</label>
+            <input type="file" id="profileSignature" name="signature" accept="image/jpeg, image/png, image/jpg">
         </div>
         <hr class="hrline">
 
@@ -169,23 +198,23 @@
             <div class="namediv">
                 <div class="first">
                     <p>(surname) *</p>
-                    <input type="text" class="name-item" name="sur_name" id="surname" >
-                    <span class="error-message" id="sur_name-error"></span>
+                    <input type="text" class="name-item" name="sur_name" id="surname">
+
                 </div>
                 <div class="first">
                     <p>(first name) *</p>
-                    <input type="text" class="name-item" name="first_name" id="fname" >
-                    <span class="error-message" id="first_name-error"></span>
+                    <input type="text" class="name-item" name="first_name" id="fname">
+
                 </div>
                 <div class="first">
                     <p>(fathers name) *</p>
-                    <input type="text" class="name-item" name="father_name" id="father_name" >
-                    <span class="error-message" id="father_name-error"></span>
+                    <input type="text" class="name-item" name="father_name" id="father_name">
+
                 </div>
                 <div class="first">
                     <p>(mothers name) *</p>
-                    <input type="text" class="name-item" name="mother_name" id="mother_name" >
-                    <span class="error-message" id="mother_name-error"></span>
+                    <input type="text" class="name-item" name="mother_name" id="mother_name">
+
                 </div>
             </div>
 
@@ -195,19 +224,19 @@
                     <div class="child">
                         <fieldset>
                             <legend>2.Date of Birth *</legend>
-                            <input type="date" class="same" id="date" name="dob" >
-                            <span class="error-message" id="dob-error"></span>
+                            <input type="date" class="same" id="date" name="dob">
+
                         </fieldset>
 
                         <fieldset>
                             <legend>3.Gender *</legend>
-                            <select name="Gender" id="Gender" >
+                            <select name="Gender" id="Gender">
                                 <option value="">--Select Gender--</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <span class="error-message" id="Gender-error"></span>
+
                         </fieldset>
                     </div>
                 </div>
@@ -215,46 +244,35 @@
                 <div class="items6">
                     <div class="item-list">
                         <p>4.Place of Birth: Village: *</p>
-                        <input type="text" id="birthPlace" name="Village" >
-                        <span class="error-message" id="Village-error"></span>
-                        <p> Taluka: *</p><input type="text" id="tahsil" name="Taluka" >
-                        <span class="error-message" id="Taluka-error"></span>
+                        <input type="text" id="birthPlace" name="Village">
+                        <p>District: *</p> <input type="text" id="dist" name="District">
                     </div>
                     <div class="item-list">
-                        <p>District: *</p> <input type="text" id="dist" name="District" >
-                        <span class="error-message" id="District-error"></span>
-                        <p> State: *</p> <input type="text" id="state" name="State" >
-                        <span class="error-message" id="State-error"></span>
+                        <p> Tahsil/Taluka: *</p><input type="text" id="tahsil" name="Taluka">
+                        <p> State: *</p> <input type="text" id="state" name="State">
                     </div>
                     <div class="item-list">
-                        <p> 5.ABC ID: *</p> <input type="text" id="abc" name="abcid" >
-                        <span class="error-message" id="abcid-error"></span>
-                        <p>6.Email Id: *</p><input type="email" id="email" name="Email" >
-                        <span class="error-message" id="Email-error"></span>
+                        <p> 5.ABC ID: *</p> <input type="text" id="abc" name="abcid">
+                        <p>6.Email Id: *</p><input type="email" id="email" name="Email">
+
                     </div>
                     <div class="item-list">
-                        <p>7.Aadhar Card: *</p> <input type="number" id="aadhar" name="Aadhar" >
-                        <span class="error-message" id="Aadhar-error"></span>
-                        <p>8.Nationality: *</p> <input type="text" class="" id="nationality" name="Nationality" >
-                        <span class="error-message" id="Nationality-error"></span>
+                        <p>7.Aadhar Card: *</p> <input type="number" id="aadhar" name="Aadhar">
+                        <p>8.Nationality: *</p> <input type="text" class="" id="nationality" name="Nationality">
+
                     </div>
                     <div class="item-list">
-                        <p>9.Religion: *</p><input type="text" class="same" id="religion" name="Religion" >
-                        <span class="error-message" id="Religion-error"></span>
-                        <p>10.Caste: *</p> <input type="text" class="same" id="caste" name="Caste" >
-                        <span class="error-message" id="Caste-error"></span>
+                        <p>9.Religion: *</p><input type="text" class="same" id="religion" name="Religion">
+                        <p>10.Caste: *</p> <input type="text" class="same" id="caste" name="Caste">
+
                     </div>
                     <div class="item-list">
-                        <p>11.Category: *</p> <input type="text" class="same" id="category" name="Category" >
-                        <span class="error-message" id="Category-error"></span>
-                        <p>12.Address: *</p> <input type="text" class="same" id="selfaddress" name="Address" >
-                        <span class="error-message" id="Address-error"></span>
+                        <p>11.Category: *</p> <input type="text" class="same" id="category" name="Category">
+                        <p>12.Address: *</p> <input type="text" class="same" id="selfaddress" name="Address">
                     </div>
                     <div class="item-list" id="last-child">
-                        <p>13.Student Mob.No: *</p><input type="number" class="same" id="stdContact" name="StudentMN" >
-                        <span class="error-message" id="StudentMN-error"></span>
-                        <p>14.Parents Mob.No: *</p><input type="number" class="same" id="parentsCon" name="pcontact" >
-                        <span class="error-message" id="pcontact-error"></span>
+                        <p>13.Student Mob.No: *</p><input type="number" class="same" id="stdContact" name="StudentMN">
+                        <p>14.Parents Mob.No: *</p><input type="number" class="same" id="parentsCon" name="pcontact">
                     </div>
                 </div>
             </div>
@@ -267,81 +285,86 @@
             </center>
             <ol class="ol">
                 <li>
-                    <span>S.S.C Markmemo <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="sscdoc" >
-                        <span class="error-message" id="documents-error"></span>
+                    <span>S.S.C Markmemo <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="sscdoc">
                     </span>
                 </li>
                 <li>
                     <span>H.S.C/Diploma/Graduation Markmemo <span class="Orignal">(Original) *</span>
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="hscdoc" >
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="hscdoc">
                     </span>
                 </li>
                 <li>
                     <span>School Leaving / Transfer Certificate <span class="Orignal">(Original) *</span>
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="tcdoc" ></span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="tcdoc"></span>
                 </li>
                 <li>
-                    <span>Caste Certificate / EWS Certificate <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="castedoc" ></span>
+                    <span>Caste Certificate / EWS Certificate <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="castedoc"></span>
                 </li>
                 <li>
-                    <span>Caste Validity <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="cvaliditydoc" ></span>
+                    <span>Caste Validity <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="cvaliditydoc"></span>
                 </li>
                 <li>
-                    <span>Domicile Certificate/Nationality Certificate <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="domeciledoc" ></span>
+                    <span>Domicile Certificate/Nationality Certificate <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="domeciledoc"></span>
                 </li>
                 <li>
-                    <span>Non Creamy Layer Certificate <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="ncldoc" ></span>
+                    <span>Non Creamy Layer Certificate <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="ncldoc"></span>
                 </li>
                 <li>
-                    <span>Gap Certificate <span class="Orignal">(Original)</span> 
+                    <span>Gap Certificate <span class="Orignal">(Original)</span>
                         <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="gapdoc"></span>
                 </li>
                 <li>
-                    <span>CET/JEE/GATE Score Card / Experience Certificate <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="scorecarddoc" ></span>
+                    <span>CET/JEE/GATE Score Card / Experience Certificate <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="scorecarddoc"></span>
                 </li>
                 <li>
-                    <span>Admission Confirmation Letter 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="addconfirmationdoc"></span>
+                    <span>Admission Confirmation Letter
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png"
+                            id="addconfirmationdoc"></span>
                 </li>
                 <li>
                     <span>Income Certificate *
-                        <input id="fileInput" type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" ></span>
+                        <input id="incomeDoc" type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png"></span>
                 </li>
                 <li>
-                    <span>Ration Card <span class="Orignal">(Original) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="rationdoc" ></span>
+                    <span>Ration Card <span class="Orignal">(Original) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="rationdoc"></span>
                 </li>
                 <li>
-                    <span>Aadhar Card & Bank Passbook <span class="Orignal">(Xerox) *</span> 
-                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="adhardoc" ></span>
+                    <span>Aadhar Card & Bank Passbook <span class="Orignal">(Xerox) *</span>
+                        <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="adhardoc"></span>
                 </li>
                 <li>
-                    <span>Declaration Form 
+                    <span>Declaration Form
                         <input type="file" name="documents" id="declarationdoc" accept=".pdf,.jpg,.jpeg,.png"></span>
                 </li>
                 <li>
-                    <span>Hostel Fees Receipt 
+                    <span>Hostel Fees Receipt
                         <input type="file" name="documents" id="hosteldoc" accept=".pdf,.jpg,.jpeg,.png"></span>
                 </li>
                 <li>
-                    <span>Death / Divorce Certificate <span class="Orignal">(Original)</span> 
+                    <span>Death / Divorce Certificate <span class="Orignal">(Original)</span>
                         <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="deathdoc"></span>
                 </li>
+
             </ol>
         </div><br>
-        
+        <p style="font-family:Arial, Helvetica, sans-serif;"> <span style="font-weight: bold;">Note</span>: If all the
+            details provided are correct, you may submit this form with the understanding that the information is
+            accurate and true to the best of your knowledge.</p>
+
         <div class="container-button">
             <input type="button" id="preview-Btn" value="Preview Form" onclick="previewForm()">
-            <input type="submit" name="" id="disp" value="Submit">
+            <input type="submit" name="" id="disp" value="Submit"
+                style="cursor: pointer; padding: 6px; font-weight:bold">
             <!--  button for next page   -->
             <div class="next">
-                <button type="button">
+                <button type="button" style="cursor: pointer; padding: 6px;">
                     <a href="/studentUndertaking">Next Page</a>
                 </button>
             </div>
@@ -424,7 +447,7 @@
                 </div>
                 <div class="div4">
                     <span>Branch</span>
-                    <input type="text" name="course" id="branchess" readonly>
+                    <input type="text" name="course" id="branches" readonly>
                 </div>
             </div>
         </div>
@@ -435,10 +458,10 @@
             <div class="item-section2">
                 <div class="div1">
                     <span>Place Of Birth </span>
-                    <input type="text" name="" id="palceOfBirth" readonly>
+                    <input type="text" name="" id="placeOfBirth" readonly>
                 </div>
                 <div class="div2">
-                    <span>Taluka</span>
+                    <span>Tahsil/Taluka</span>
                     <input type="text" name="" id="taluka" readonly>
                 </div>
                 <div class="div3">
@@ -492,7 +515,7 @@
             </div>
         </div>
         <hr>
-        <h3>List of Certificate/Documents Submitted with these Admission form</h3>
+        <h3>Documents/Certificates Submitted Along with Admission Form:</h3>
         <div class="certificates-deatils">
             <div class="item-section3">
                 <div class="div1">
@@ -533,7 +556,7 @@
                 </div>
                 <div class="div5">
                     <span>10.</span>
-                    <input type="text" name="" id="addmission" readonly>
+                    <input type="text" name="" id="admission" readonly>
                 </div>
                 <div class="div5">
                     <span>11.</span>
@@ -562,51 +585,12 @@
             </div>
         </div>
         <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
-        <input type="button" name="" id="print-Btn" value="Print" onclick="printableData()">
+        <p> <span style="font-weight: bold;">Note</span> : If all the details provided are correct, you may submit this
+            form with the understanding that the information is accurate and true to the best of your knowledge.</p>
     </div>
 
-    <script>
-        // Handle form submission with simple alert validation
-        document.getElementById('studentForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            try {
-                const formData = new FormData(this);
-                
-                const response = await fetch('/', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert('Student registration successful!');
-                    // Reset form after successful submission
-                    this.reset();
-                    // Optional: Redirect after success
-                    window.location.href = '/studentUndertaking';
-                    
-                } else {
-                    // Show first error in alert
-                    if (result.errors && result.errors.length > 0) {
-                        alert(result.errors[0]); // Show first error message
-                    } else {
-                        alert('An error occurred while submitting the form.');
-                    }
-                }
-                
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Network error. Please check your connection and try again.');
-            }
-        });
 
-        // Print function
-        function printableData() {
-            window.print();
-        }
-    </script>
     <script src="/javaScript/index.js"></script>
 </body>
+
 </html>

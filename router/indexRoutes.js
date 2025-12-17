@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// const {loggedinUserOnly} = require('../middleware/authMiddlewares')
 
 // Using middleware for get student profileImage, signature, documents
 const upload = require("../middleware/indexMiddleware");
@@ -13,65 +12,6 @@ const docUploader = upload.fields([
 // Importing student schema from models folder
 const studentSchema = require("../models/studentModels");
 
-// Required fields validation mapping
-const requiredFields = {
-    course: 'Course',
-    AdmissionThrough: 'Admission Through',
-    classes: 'Class',
-    branch: 'Branch',
-    sur_name: 'Surname',
-    first_name: 'First Name',
-    father_name: 'Father Name',
-    mother_name: 'Mother Name',
-    dob: 'Date of Birth',
-    Gender: 'Gender',
-    Village: 'Village',
-    Taluka: 'Taluka',
-    District: 'District',
-    State: 'State',
-    abcid: 'ABC ID',
-    Aadhar: 'Aadhar Number',
-    Email: 'Email',
-    Nationality: 'Nationality',
-    Religion: 'Religion',
-    Category: 'Category',
-    Caste: 'Caste',
-    Address: 'Address',
-    StudentMN: 'Student Mobile Number',
-    pcontact: 'Parent Contact Number'
-};
-
-// Validation function for required fields
-const validateRequiredFields = (body) => {
-    const missingFields = [];
-    
-    for (const [fieldKey, fieldName] of Object.entries(requiredFields)) {
-        if (!body[fieldKey] || body[fieldKey].toString().trim() === '') {
-            missingFields.push(`Please enter ${fieldName}`);
-        }
-    }
-    
-    return missingFields;
-};
-
-// Validation function for files
-const validateRequiredFiles = (files) => {
-    const missingFiles = [];
-    
-    if (!files['profileImage'] || files['profileImage'].length === 0) {
-        missingFiles.push('Please upload Profile Image');
-    }
-    
-    if (!files['signature'] || files['signature'].length === 0) {
-        missingFiles.push('Please upload Signature');
-    }
-    
-    if (!files['documents'] || files['documents'].length === 0) {
-        missingFiles.push('Please upload at least one Document');
-    }
-    
-    return missingFiles;
-};
 
 // POST route for creating student
 router.post("/", docUploader, async (req, res) => {
@@ -104,28 +44,6 @@ router.post("/", docUploader, async (req, res) => {
             pcontact
         } = req.body;
 
-        // Validate required fields
-        const fieldValidationErrors = validateRequiredFields(req.body);
-        
-        // Validate required files
-        const fileValidationErrors = validateRequiredFiles(req.files);
-        
-        // Combine all validation errors
-        const allErrors = [...fieldValidationErrors, ...fileValidationErrors];
-        
-        if (allErrors.length > 0) {
-            return res.status(400).json({
-                success: false,
-                message: 'Validation failed',
-                errors: allErrors
-            });
-        }
-
-        // Extract file paths safely
-        const studentProfile = req.files['profileImage'][0].path;
-        const studentSignature = req.files['signature'][0].path;
-        const studentDoc = req.files['documents'];
-
         // Create new student instance
         const students = new studentSchema({
             courses: course,
@@ -151,28 +69,51 @@ router.post("/", docUploader, async (req, res) => {
             caste: Caste,
             address: Address,
             studentContact: StudentMN,
-            parentsContact: pcontact,
-            studentProfileImage: studentProfile,
-            studentSign: studentSignature,
-            studentDocuments: studentDoc.map(doc => doc.path)
+            parentsContact: pcontact
         });
 
+        // Save profile image if provided
+        if (req.files && req.files['profileImage']) {
+            students.studentProfileImage = {
+                data: req.files['profileImage'][0].buffer,
+                contentType: req.files['profileImage'][0].mimetype,
+                filename: req.files['profileImage'][0].originalname
+            };
+        }
+
+        // Save signature if provided
+        if (req.files && req.files['signature']) {
+            students.studentSign = {
+                data: req.files['signature'][0].buffer,
+                contentType: req.files['signature'][0].mimetype,
+                filename: req.files['signature'][0].originalname
+            };
+        }
+
+        // Save documents if provided
+        if (req.files && req.files['documents']) {
+            students.studentDocuments = req.files['documents'].map(doc => ({
+                data: doc.buffer,
+                contentType: doc.mimetype,
+                filename: doc.originalname
+            }));
+        }
+
         // Save student to database
-        const studentIsCreated = await students.save();
-        
+        const CreatedStudent = await students.save();
+
         // Success response
-        res.status(201).json({
+        res.status(200).render("indexPopup", {
             success: true,
-            message: 'Student created successfully',
-            data: {
-                studentId: studentIsCreated._id,
-                name: `${first_name} ${sur_name}`
-            }
+            message: `Student ${first_name} ${sur_name} created successfully`,
+            data: CreatedStudent
         });
+
+        // console.log("Data saved successfully: ", CreatedStudent);
 
     } catch (error) {
         console.error('Error creating student:', error);
-        
+
         // Handle specific MongoDB validation errors
         if (error.name === 'ValidationError') {
             const validationErrors = Object.values(error.errors).map(err => err.message);
@@ -182,7 +123,7 @@ router.post("/", docUploader, async (req, res) => {
                 errors: validationErrors
             });
         }
-        
+
         // Handle duplicate key errors
         if (error.code === 11000) {
             const duplicateField = Object.keys(error.keyPattern)[0];
@@ -192,7 +133,7 @@ router.post("/", docUploader, async (req, res) => {
                 errors: [`This ${duplicateField} is already registered`]
             });
         }
-        
+
         // Generic server error
         res.status(500).json({
             success: false,
@@ -201,6 +142,8 @@ router.post("/", docUploader, async (req, res) => {
         });
     }
 });
+
+
 
 // GET route for accessing home page
 router.get("/", (req, res) => {

@@ -6,203 +6,247 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student | ID-Card </title>
     <link rel="stylesheet" href="/css/idCard.css">
-    {{!--
-    <script defer src="fourth.js"></script> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <div class="main" id="formContainer">
-        
-        <form name="myForm" onsubmit="return validation()" action="/idCard" method="post">
-
-            <h1 id="heading" class="auto-type">ID-SLIP</h1>
-            <P class="ac_year"> Academic Year:
-                <input type="text" name="academic" id="accYear" autofocus="none">
-            </P>
-            <div class="instruction">
-                <p>Name Of Student (Fill in CAPITAL LETTERS only)<sup>*</sup></p>
+    <div class="container" style="display: flex;">
+        <div class="sidebar">
+            <div class="sidebar-child">
+                <a href="/">
+                    <i class="fa-regular fa-house"></i>
+                    <p>Registration Form</p>
+                </a>
             </div>
-
-            <!-- full name section -->
-            <!-- full name section -->
-            <div class="name-setion">
-                <div class="name ">
-                    <p id="firstName">First Name</p>
-                    <input type="text" name="fname" id="fname" placeholder="FIRSTNAME" required>
-                    <i class="name-error error" id="error"></i>
-                </div>
-                <div class="fatherName">
-                    <p id="fatherName">Middle Name</p>
-                    <input type="text" name="mname" id="mname" placeholder="MIDDLENAME" required>
-                    <i class="middleName-error error"></i>
-                </div>
-                <div class="surName">
-                    <p id="surName"> Surname</p>
-                    <input type="text" name="sname" id="sname" placeholder="SURNAME" required>
-                    <i class="lastName-error error"></i>
-                </div>
+            <div class="sidebar-child">
+                <a href="/studentUndertaking">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p>Student Undertaking</p>
+                </a>
             </div>
-
-
-            <!-- Date of birth, gender and blood group section -->
-            <div class="DOB-BLOODG">
-                <div class="DOB">
-                    <p id="DOB"> Date Of Birth</p>
-                    <input type="date" name="" id="date" required>
-                </div>
-                <div class="gender">
-                    <p id="gender"> Gender</p>
-                    <select name="Gender" id="Gender" required>
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="bloodGroup">
-                    <p id="bloodGroup">Blood Group</p>
-                    <select name="BloodGroup" id="BloodGroup" required>
-                        <option value="">Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                    </select>
-                </div>
+            <div class="sidebar-child">
+                <a href="/feesUndertaking">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p>Fees Undertaking</p>
+                </a>
             </div>
+            <div class="sidebar-child">
+                <a href="/idCard">
+                    <i class="fa-regular fa-id-card"></i>
+                    <p>ID Card</p>
+                </a>
+            </div>
+        </div>
 
-            <!-- <hr style="height: 1px; Background-color:black; margin-top:20px;"> -->
-            <!-- checkboxes and multiple options to be select sections -->
+        <div class="main" id="formContainer">
+            <form name="myForm" id="idCardForm" action="/idCard" method="post">
 
-            <div class="checkboxes">
-                <!-- <div class="course"> -->
-                <fieldset class="course">
-                    <legend>Courses</legend>
-                    <!-- <p id="course">Course</p> -->
-                    <div class="course-item">
-                        <div>
-                            <label for="btech">B.TECH</label>
-                            <input type="checkbox" value="B.TECH" name="course" id="btech">
-                        </div>
-                        <div>
-                            <label for="mtech">M.TECH</label>
-                            <input type="checkbox" value="M-TECH" name="course" id="mtech">
-                        </div>
-                        <div>
-                            <label for="mba">M.B.A</label>
-                            <input type="checkbox" value="M.B.A" name="course" id="mba">
-                        </div>
+                <h1 id="heading" class="auto-type">ID-SLIP</h1>
+                <P class="ac_year"> Academic Year:
+                    <input type="text" name="academic" id="accYear" autofocus="none">
+                </P>
+                <div class="instruction">
+                    <p>Name Of Student (Fill in CAPITAL LETTERS only)<sup>*</sup></p>
+                </div>
+
+                <!-- full name section -->
+                <!-- full name section -->
+                <div class="name-setion">
+                    <div class="name ">
+                        <p id="firstName">First Name</p>
+                        <input type="text" name="fname" id="fname" placeholder="FIRSTNAME">
+                        <i class="name-error error" id="error"></i>
                     </div>
-                </fieldset>
-                <!-- </div> -->
+                    <div class="fatherName">
+                        <p id="fatherName">Middle Name</p>
+                        <input type="text" name="mname" id="mname" placeholder="MIDDLENAME">
+                        <i class="middleName-error error"></i>
+                    </div>
+                    <div class="surName">
+                        <p id="surName"> Surname</p>
+                        <input type="text" name="sname" id="sname" placeholder="SURNAME">
+                        <i class="lastName-error error"></i>
+                    </div>
+                </div>
 
-                <!-- class .............................. -->
-                <!-- <div class="class"> -->
-                <fieldset class="class">
-                    <legend>Class</legend>
 
-                    <!-- <p id="class">Class</p> -->
-                    <div class="class-item">
-                        <div>
-                            <label for="fe">First Year</label>
-                            <input type="checkbox" value="First Year" name="classes" id="fe">
-                        </div>
-                        <div>
-                            <label for="se">Second Year</label>
-                            <input type="checkbox" value="Second Year" name="classes" id="se">
-                        </div>
-                        <div>
-                            <label for="te">Third Year</label>
-                            <input type="checkbox" value="Third Year" name="classes" id="te">
-                        </div>
-                        <div>
+                <!-- Date of birth, gender and blood group section -->
+                <div class="DOB-BLOODG">
+                    <div class="DOB">
+                        <p id="DOB"> Date Of Birth</p>
+                        <input type="date" name="DOB" id="date">
+                    </div>
+                    <div class="gender">
+                        <p id="gender"> Gender</p>
+                        <select name="Gender" id="Gender">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="bloodGroup">
+                        <p id="bloodGroup">Blood Group</p>
+                        <select name="BloodGroup" id="BloodGroup">
+                            <option value="">Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <hr style="height: 1px; Background-color:black; margin-top:20px;"> -->
+                <!-- checkboxes and multiple options to be select sections -->
+
+                <div class="checkboxes">
+                    <!-- <div class="course"> -->
+                    <fieldset class="course">
+                        <legend>Courses</legend>
+                        <!-- <p id="course">Course</p> -->
+                        <div class="course-item">
                             <div>
-                                <label for="be">Final Year</label>
-                                <input type="checkbox" value="Final Year" name="classes" id="be">
+                                <label for="btech">B.TECH</label>
+                                <input type="radio" name="course" value="B.TECH" id="btech">
+                                {{!-- <input type="checkbox" value="B.TECH" name="course" id="btech"> --}}
+                            </div>
+                            <div>
+                                <label for="mtech">M.TECH</label>
+                                <input type="radio" name="course" value="M.TECH" id="mtech">
+                                {{!-- <input type="checkbox" value="M-TECH" name="course" id="mtech"> --}}
+                            </div>
+                            <div>
+                                <label for="mba">M.B.A</label>
+                                <input type="radio" name="course" value="M.B.A" id="mba">
+                                {{!-- <input type="checkbox" value="M.B.A" name="course" id="mba"> --}}
                             </div>
                         </div>
+                    </fieldset>
+                    <!-- </div> -->
+                    <!-- class .............................. -->
+                    <!-- <div class="class"> -->
+                    <fieldset class="class">
+                        <legend>Class</legend>
+
+                        <!-- <p id="class">Class</p> -->
+                        <div class="class-item">
+                            <div>
+                                <label for="fe">First Year</label>
+                                <input type="radio" name="classes" value="First Year" id="fe">
+                                {{!-- <input type="checkbox" value="First Year" name="classes" id="fe"> --}}
+                            </div>
+                            <div>
+                                <label for="se">Second Year</label>
+                                <input type="radio" name="classes" value="Second Year" id="se">
+                                {{!-- <input type="checkbox" value="Second Year" name="classes" id="se"> --}}
+                            </div>
+                            <div>
+                                <label for="te">Third Year</label>
+                                <input type="radio" name="classes" value="Third Year" id="te">
+                                {{!-- <input type="checkbox" value="Third Year" name="classes" id="te"> --}}
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="be">Final Year</label>
+                                    <input type="radio" name="classes" value="Final Year" id="be">
+                                    {{!-- <input type="checkbox" value="Final Year" name="classes" id="be"> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- </div> -->
+
+                    <!-- <div class="branches"> -->
+                    <fieldset class="branches">
+                        <legend>Branch</legend>
+                        <!-- <p id="branches">Branch</p> -->
+                        <div class="branch-item">
+                            <div>
+                                <label for="civil">CIVIL</label>
+                                <input type="radio" value="CIVIL" name="branches" id="civil">
+                            </div>
+                            <div>
+                                <label for="ee">EE</label>
+                                <input type="radio" value="EE" name="branches" id="ee">
+                            </div>
+                            <div>
+                                <label for="cse">CSE</label>
+                                <input type="radio" value="CSE" name="branches" id="cse">
+                            </div>
+                            <div>
+                                <label for="ece">ECE</label>
+                                <input type="radio" value="ECE" name="branches" id="ece">
+                            </div>
+                            <div>
+                                <label for="ds">DS</label>
+                                <input type="radio" value="DS" name="branches" id="ds">
+                            </div>
+                            <div>
+                                <label for="aiml">AIML</label>
+                                <input type="radio" value="AIML" name="branches" id="aiml">
+                            </div>
+                            <div>
+                                <label for="mech">MECH</label>
+                                <input type="radio" value="MECH" name="branches" id="mech">
+                            </div>
+                            <div>
+                                <label for="vlsi">VLSI</label>
+                                <input type="radio" value="VLSI" name="branches" id="vlsi">
+                            </div>
+                            <div>
+                                <label for="5g">5G</label>
+                                <input type="radio" value="5G" name="branches" id="5g">
+                            </div>
+
+                        </div>
+                    </fieldset>
+                    <!-- </div> -->
+                </div>
+
+                <!-- Contact and address section ......................... -->
+                <div class="contact-section">
+                    <div class="contact same">
+                        <p>Student Contact Number</p>
+                        <input type="tel" name="stdContact" id="std_contact" placeholder="Student Contact Number">
+                        <!-- <i class="stdContact-error">this is error</i> -->
                     </div>
-                </fieldset>
-                <!-- </div> -->
-
-                <!-- <div class="branches"> -->
-                <fieldset class="branches">
-                    <legend>Branch</legend>
-                    <!-- <p id="branches">Branch</p> -->
-                    <div class="branch-item">
-                        <div>
-                            <label for="civil">CIVIL</label><input type="checkbox" value="CIVIL" name="branches"
-                                id="civil">
-                        </div>
-                        <div>
-                            <label for="ee">EE</label><input type="checkbox" value="EE" name="branches" id="ee">
-                        </div>
-                        <div>
-                            <label for="cse">CSE</label><input type="checkbox" value="CSE" name="branches" id="cse">
-                        </div>
-                        <div>
-                            <label for="ece">ECE</label><input type="checkbox" value="ECE" name="branches" id="ece">
-                        </div>
-                        <div>
-                            <label for="ds">DS</label><input type="checkbox" value="DS" name="branches" id="ds">
-                        </div>
-                        <div>
-                            <label for="aiml">AIML</label><input type="checkbox" value="AIML" name="branches" id="aiml">
-                        </div>
-                        <div>
-                            <label for="mech">MECH</label><input type="checkbox" value="MECH" name="branches" id="mech">
-                        </div>
-                        <div>
-                            <label for="vlsi">VLSI</label><input type="checkbox" value="VLSI" name="branches" id="vlsi">
-                        </div>
-                        <div>
-                            <label for="5g">5G</label><input type="checkbox" value="5G" name="branches" id="5g">
-                        </div>
-                        <div>
-                            <label for="other">Other</label><input type="text" value="" name="otherBranches" id="other">
-                        </div>
+                    <div class="parentCon same">
+                        <p>Parents Contact Number:</p>
+                        <input type="text" name="pContact" id="p_contact" placeholder="Parents Contact Number">
+                        <!-- <i class="parent-error">this is error</i> -->
                     </div>
-                </fieldset>
-                <!-- </div> -->
-            </div>
+                    <div class="address same">
+                        <p>Address</p><span>
+                            <textarea name="stdAddress" id="std_address" cols="70" rows="7"
+                                placeholder="Address..."></textarea>
+                            <!-- <i class="address-error">this is error</i></span> -->
+                    </div>
+                </div>
 
-            <!-- Contact and address section ......................... -->
-            <div class="contact-section">
-                <div class="contact same">
-                    <p>Student Contact Number</p>
-                    <input type="tel" name="stdContact" id="std_contact" placeholder="Student Contact Number" required>
-                    <!-- <i class="stdContact-error">this is error</i> -->
-                </div>
-                <div class="parentCon same">
-                    <p>Parents Contact Number:</p>
-                    <input type="text" name="pContact" id="p_contact" placeholder="Parents Contact Number" required>
-                    <!-- <i class="parent-error">this is error</i> -->
-                </div>
-                <div class="address same">
-                    <p>Address</p><span>
-                        <textarea name="stdAddress" id="std_address" cols="70" rows="7" placeholder="Address..."
-                            required></textarea>
-                        <!-- <i class="address-error">this is error</i></span> -->
-                </div>
-            </div>
 
-            <input type="button" id="preview-Btn" value=" Preview This Page">
-            <div class="button">
-                <input type="submit" value="Submit" id="submit">
-                <input type="reset" value="Reset" id="reset">
-            </div>
-            <div class="backbutton"> 
-                <div class="prev">
-                    <button>
-                        <a href="/feesUndertaking">Back</a>
-                    </button>
+                <div class="button">
+                    <input type="button" id="previewPage" value="Preview"
+                        style="cursor: pointer; padding: 4px; background-color:brown">
+                    <input type="submit" value="Submit" id="submit-btn">
+                    <input type="reset" value="Reset" id="reset">
                 </div>
-            </div>
-        </form>
+                {{!-- <div class="backbutton">
+                    <div class="prev">
+                        <button>
+                            <a href="/feesUndertaking">Back</a>
+                        </button>
+                    </div>
+                </div> --}}
+            </form>
+        </div>
+
     </div>
 
 
@@ -244,7 +288,7 @@
             </div>
             <div class="bloodGroup2">
                 <p id="bloodGroup">Blood Group</p>
-                <input type="text" id="B-GROUP" readonly>
+                <input type="text" id="B_GROUP" readonly>
             </div>
         </div>
         <hr class="midline">
@@ -297,9 +341,6 @@
     </div>
 
     <script src="/javaScript/fourth.js"></script>
-
-    {{!--
-    <script src="/js/alert.js"></script> --}}
 </body>
 
 </html>

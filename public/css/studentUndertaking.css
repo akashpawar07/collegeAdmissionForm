@@ -1,7 +1,64 @@
 body {
-    padding: 0px 0px 0px 200px;
+    padding: 0px 0px 0px 300px;
     line-height: 0.7cm;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.container {
+    display: flex;
+
+}
+
+.sidebar {
+    position:fixed;
+    left: 10px;
+    width: 19%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+
+
+}
+
+.sidebar .sidebar-child {
+    background: rgb(48, 48, 81);
+    cursor: pointer;
+    width: 100%;
+    padding-left: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 4px 0px;
+    border-radius: 6px;
+}
+
+.sidebar .sidebar-child a {
+    color: white;
+    cursor: pointer;
+    font-size: 19px;
+    width: 100%;
+    padding-left: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.sidebar .sidebar-child .lable{
+    margin: 16px 16px 16px 0px;
+
+}
+
+
+.sidebar .sidebar-child:hover {
+    background: rgb(92, 52, 52);
+}
+
 
 form {
     border: 2px solid black;
@@ -11,10 +68,6 @@ form {
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
 }
-
-/* .all {
-     margin-top: -40px;
-} */
 
 .headline {
     text-align: center;
@@ -82,19 +135,21 @@ body input {
 
 /* .....................................buttons..................................................... */
 
-.prev{
+.prev {
     display: flex;
     justify-content: space-between;
     padding: 5px 4px;
 }
-.prev button{
+
+.prev button {
     border-radius: 5px;
     padding: 5px 4px;
     border: none;
     border: 1px solid rgb(62, 137, 80);
     cursor: pointer;
 }
-.prev a{
+
+.prev a {
     text-decoration: none;
     padding: 6px;
     font-size: 16px;

@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
 
     const stdUnder= await stdUndertaking.save()
     res.send("zal kam")
-    console.log(req.body.dateOfUndertaking)
+    // console.log(req.body.dateOfUndertaking)
 })
 router.get("/", (req, res) => {
     res.render('secondPage')

@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popup</title>
+    <title>Fess Undertaking | Success</title>
     <style>
         body {
             background: rgb(45, 47, 94);
             font-family: Arial, Helvetica, sans-serif;
         }
+
         .contanier {
             display: flex;
             flex-direction: column;
@@ -17,6 +18,7 @@
             width: 99vw;
             height: 90vh;
         }
+
         .contanier .popup {
             width: 30%;
             height: 40vh;
@@ -32,6 +34,7 @@
             margin: auto;
             position: relative;
         }
+
         .contanier .popup img {
             width: 60px;
             height: 60px;
@@ -40,6 +43,7 @@
             position: absolute;
             top: 0;
         }
+
         .div-item {
             display: flex;
             align-items: center;
@@ -47,6 +51,7 @@
             width: 90%;
             text-align: center;
         }
+
         a {
             background: rgb(19, 175, 19);
             text-decoration: none;
@@ -56,34 +61,39 @@
             width: 80%;
             color: white;
         }
+
         /* Media query setiction started */
         @media only screen and (min-width:200px) and (max-width:480px) {
             .contanier {
                 width: 100vw;
                 height: 100vh;
             }
+
             .contanier .popup {
                 width: 90vw;
                 height: 30vh;
             }
+
             .contanier .popup img {
                 width: 80px;
                 height: 80px;
             }
-            .div-item p{
+
+            .div-item p {
                 font-size: 18px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="contanier">
         <div class="popup" id="disp">
             <img src="/images/checkBtn.png" alt="">
             <div class="div-item">
                 <h2>Thank You!</h2>
-                <p>Your ID Card datails has been Successfully Submitted</p><br>
-                <a href="/feesUndertaking">OK</a>
+                <p>Your Undertaking for Fees details have been successfully submitted.</p><br>
+                <a href="/idCard">Next ➡️</a>
             </div>
         </div>
     </div>

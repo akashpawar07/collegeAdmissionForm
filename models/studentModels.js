@@ -1,22 +1,6 @@
 const mongoose = require("mongoose")
 
 const studentSchema = new mongoose.Schema({
-    courses:{
-        type:String,
-        uppercase: true
-    },
-    addmissionThrough:{
-        type:String,
-        uppercase: true
-    },
-    class:{
-        type:String,
-        uppercase: true
-    },
-    branch:{
-        type:String,
-        uppercase: true
-    },
     surname: {
         type: String,
         uppercase: true
@@ -34,10 +18,25 @@ const studentSchema = new mongoose.Schema({
         uppercase: true,
         trim: true
     },
+    courses: {
+        type: String,
+        uppercase: true
+    },
+    addmissionThrough: {
+        type: String,
+        uppercase: true
+    },
+    class: {
+        type: String,
+        uppercase: true
+    },
+    branch: {
+        type: String,
+        uppercase: true
+    },
     dateOfBirth: {
         type: Date,
         trim: true
-        // required:true
     },
     gender: {
         type: String,
@@ -61,57 +60,58 @@ const studentSchema = new mongoose.Schema({
     },
     abcId: {
         type: String,
-        
     },
     aadharNo: {
         type: Number,
-        // required: true
     },
     email: {
         type: String,
         lowercase: true
     },
-    nationality:{
-        type:String,
+    nationality: {
+        type: String,
         uppercase: true
     },
-    religion:{
-        type:String,
+    religion: {
+        type: String,
         uppercase: true
     },
-    category:{
-        type:String,
+    category: {
+        type: String,
         uppercase: true
     },
-    caste:{
-        type:String,
+    caste: {
+        type: String,
         uppercase: true
     },
-    address:{
-        type:String,
+    address: {
+        type: String,
         uppercase: true
     },
-    studentContact:{
-        type:Number,
-        // required:true
+    studentContact: {
+        type: Number,
     },
-    parentsContact:{
-        type:Number,
-        // required:true
+    parentsContact: {
+        type: Number,
     },
-    studentProfileImage:[{
-        type: String
-    }],
-    studentSign:[{
-        type: String
-    }],
-    studentDocuments:[{
-        type: String
-    }],
+    // store binary data
+    studentProfileImage: {
+        data: Buffer,
+        contentType: String,
+        filename: String
+    },
+    studentSign: {
+        data: Buffer,
+        contentType: String,
+        filename: String
+    },
+    studentDocuments: [{
+        data: Buffer,
+        contentType: String,
+        filename: String
+    }]
 
 }, { timestamps: true })
 
 const Student = mongoose.model("Student", studentSchema)
 module.exports = Student;
-
-

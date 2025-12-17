@@ -1,63 +1,104 @@
-function run() {
-  alert("Data Submited succesfully...!")
+//////////////////// VALIDATION ORDER ////////////////////
+
+const idCardValidation = [
+  { key: "academic", id: "accYear", label: "Academic Year", type: "enter" },
+  { key: "fname", id: "fname", label: "First Name", type: "enter" },
+  { key: "mname", id: "mname", label: "Middle Name", type: "enter" },
+  { key: "sname", id: "sname", label: "Surname", type: "enter" },
+
+  { key: "DOB", id: "date", label: "Date of Birth", type: "select" },
+  { key: "Gender", id: "Gender", label: "Gender", type: "select" },
+  { key: "BloodGroup", id: "BloodGroup", label: "Blood Group", type: "select" },
+
+  { key: "course", label: "Course", type: "radio" },
+  { key: "classes", label: "Class", type: "radio" },
+  { key: "branches", label: "Branch", type: "radio" },
+
+  { key: "stdContact", id: "std_contact", label: "Student Contact", type: "enter" },
+  { key: "pContact", id: "p_contact", label: "Parent Contact", type: "enter" },
+  { key: "stdAddress", id: "std_address", label: "Address", type: "enter" }
+];
+
+//////////////////// UPDATED VALIDATION FUNCTION ////////////////////
+function validateIdCardForm() {
+  for (const field of idCardValidation) {
+
+    if (field.type === "radio") {
+      const selected = document.querySelector(
+        `input[name="${field.key}"]:checked`
+      );
+      if (!selected) {
+        alert(`Please select ${field.label}`);
+        return false;
+      }
+
+    } else {
+      // Use id property if it exists, otherwise use key
+      const elementId = field.id || field.key;
+      const el = document.getElementById(elementId);
+      if (!el || !el.value.trim()) {
+        const action = field.type === "select" ? "select" : "enter";
+        alert(`Please ${action} ${field.label}`);
+        el?.focus();
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
-document.getElementById('preview-Btn').addEventListener('click', () => {
-  // Getting the value of input fields
-  let fname = document.getElementById('fname').value.trim();
-  let mname = document.getElementById('mname').value.trim();
-  let sname = document.getElementById('sname').value.trim();
-  let date = document.getElementById('date').value.trim();
 
-  let c1 = document.getElementById('std_contact').value.trim();
-  let c2 = document.getElementById('p_contact').value.trim();
 
-  let address = document.getElementById('std_address').value.trim();
-  let Gender = document.getElementById('Gender').value.trim();
-  let Bgroup = document.getElementById('BloodGroup').value.trim();
+//////////////////// SUBMIT FUNCTION ////////////////////
 
-  // For radio inputs, check if a selection was made
-  let selectedCourse = document.querySelector('input[name="course"]:checked');
-  let selectedClass = document.querySelector('input[name="classes"]:checked');
-  let selectedBranch = document.querySelector('input[name="branches"]:checked');
+document.getElementById('idCardForm').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-  // Validation: If any field is empty/unchecked, show alert and stop
-  if (
-    !fname || !mname || !sname || !date ||
-    !c1 || !c2 || !address || !Gender || !Bgroup ||
-    !selectedCourse || !selectedClass || !selectedBranch
-  ) {
-    alert("All fields are compulsory");
-    return; // Prevent preview if validation fails
-  }
+  if (!validateIdCardForm()) return;
+  
 
-  // Proceed as before (set values & show preview)
-  document.getElementById('FNAME').value = fname;
-  document.getElementById('MNAME').value = mname;
-  document.getElementById('SNAME').value = sname;
-  document.getElementById('DATE').value = date;
-
-  document.getElementById('SCONTACT').value = c1;
-  document.getElementById('PCONTACT').value = c2;
-
-  document.getElementById('ADDRESS').value = address;
-  document.getElementById('GENDER').value = Gender;
-  document.getElementById('B-GROUP').value = Bgroup;
-
-  document.getElementById('course-name').value = selectedCourse.value;
-  document.getElementById('class-name').value = selectedClass.value;
-  document.getElementById('branch-name').value = selectedBranch.value;
-
-  document.getElementById('preview_from').style.display = 'block';
-
-  var formContainer = document.querySelector("#formContainer");
-  formContainer.classList.add("blur");
+  // ✅ Submit the actual form element safely
+  HTMLFormElement.prototype.submit.call(this);
 });
 
 
+const getValue = id =>
+  document.getElementById(id)?.value.trim() || "";
+
+const getRadio = name =>
+  document.querySelector(`input[name="${name}"]:checked`)?.value || "";
+
+//////////////////// PREVIEW FUNCTION ////////////////////
+
+document.getElementById('previewPage').addEventListener('click', () => {
+
+  document.getElementById('FNAME').value = getValue('fname');
+  document.getElementById('MNAME').value = getValue('mname');
+  document.getElementById('SNAME').value = getValue('sname');
+  document.getElementById('DATE').value = getValue('date');
+
+  document.getElementById('SCONTACT').value = getValue('std_contact');
+  document.getElementById('PCONTACT').value = getValue('p_contact');
+
+  document.getElementById('ADDRESS').value = getValue('std_address');
+  document.getElementById('GENDER').value = getValue('Gender');
+  document.getElementById('B_GROUP').value = getValue('BloodGroup');
+
+  document.getElementById('course-name').value = getRadio('course');
+  document.getElementById('class-name').value = getRadio('classes');
+  document.getElementById('branch-name').value = getRadio('branches');
+
+  document.getElementById('preview_from').style.display = 'block';
+  document.getElementById('formContainer').classList.add('blur');
+});
+
+
+
+//////////////////// CANCEL PREVIEW ////////////////////
+
 function cancelPreview() {
   document.getElementById('preview_from').style.display = 'none';
-
-  var formContainer = document.querySelector("#formContainer")
-  formContainer.classList.remove("blur");
+  document.getElementById('formContainer').classList.remove('blur');
 }
+
+

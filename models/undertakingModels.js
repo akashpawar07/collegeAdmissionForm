@@ -7,31 +7,30 @@ const studentUndertakingSchema = new mongoose.Schema({
     },
     GuardianName: {
         type: String,
-        require: true,
+        required: true,
         uppercase: true
     },
     StudentName: {
         type: String,
-        require: true,
+        required: true,
         uppercase: true
     },
-
     InstituteName: {
         type: String,
-        require: true,
+        required: true,
         uppercase: true
     },
-    studentSignature:{
-        type: String,
-        require: true,
-        uppercase: true
+    studentSignature: {
+        data: Buffer,
+        contentType: String,
+        filename: String
     },
-    ParentsSignature:{
-        type: String,
-        require: true,
-        uppercase: true
+    ParentsSignature: {
+        data: Buffer,
+        contentType: String,
+        filename: String
     }
-    
+
 }, { timestamps: true })
 
 const studentUndertaking = mongoose.model("studentUndertaking", studentUndertakingSchema)

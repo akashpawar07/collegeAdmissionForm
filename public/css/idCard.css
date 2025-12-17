@@ -1,5 +1,9 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    
+     font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    display: flex;
 }
 
 .main {
@@ -8,6 +12,51 @@
     margin: auto;
     width: 50vw;
     padding: 10px;
+}
+
+.sidebar {
+    position: fixed;
+    left: 10px;
+    width: 19%;
+    /* padding: 4px; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+
+
+}
+
+.sidebar .sidebar-child {
+    background: rgb(48, 48, 81);
+    cursor: pointer;
+    width: 100%;
+    padding-left: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 4px 0px;
+    border-radius: 6px;
+}
+
+.sidebar .sidebar-child a {
+    color: white;
+    cursor: pointer;
+    font-size: 19px;
+    width: 100%;
+    padding-left: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.sidebar .sidebar-child:hover {
+    background: rgb(92, 52, 52);
 }
 
 
@@ -244,7 +293,7 @@ select {
     background-color: rgb(241, 217, 217);
 }
 
-.main .button #submit{
+.main .button #submit-btn {
     background-color: rgb(37, 110, 37);
     color: white;
 }
@@ -266,10 +315,10 @@ select {
     border-radius: 4px;
 }
 
-.prev button a{
+.prev button a {
     text-decoration: none;
-    color:#527fa5;
-    font-size:medium;
+    color: #527fa5;
+    font-size: medium;
     background: transparent;
 }
 
@@ -325,7 +374,7 @@ a {
     position: absolute;
     left: 295px;
     display: none;
-    overflow:hidden;
+    overflow: hidden;
     background-color: rgb(255, 255, 255);
     border: 1px dashed black;
     box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
@@ -336,7 +385,7 @@ a {
 } */
 
 
-.preview input{
+.preview input {
     /* background-color: #527fa5; */
     border: none;
     outline: none;
@@ -344,7 +393,7 @@ a {
 }
 
 
-#cancelpoppup{
+#cancelpoppup {
     cursor: pointer;
     color: rgb(223, 18, 18);
     position: absolute;
@@ -353,12 +402,12 @@ a {
 }
 
 
-.blur{
+.blur {
     filter: blur(10px);
 }
 
 
-#preview-Btn{
+#preview-Btn {
     color: #0a0c0e;
     /* width: auto; */
     background-color: transparent;
@@ -371,137 +420,140 @@ a {
     margin: 10px;
 }
 
-.name-setion2{
-   position: relative;
+.name-setion2 {
+    position: relative;
     /* background-color: red; */
     left: 15px;
 }
 
 
-#FNAME, #MNAME, #SNAME{
+#FNAME,
+#MNAME,
+#SNAME {
     position: relative;
     left: 30%;
     bottom: 35px;
     /* background-color: red; */
 }
 
-.fatherName2{
+.fatherName2 {
     position: relative;
     bottom: 30px;
     /* background-color: red; */
 }
 
-.SurName{
+.SurName {
     position: relative;
     bottom: 60px;
     /* background-color: red; */
 }
 
-.DOB2{
+.DOB2 {
     position: relative;
     bottom: 110px;
     left: -20px;
 }
 
-#DATE{
+#DATE {
     position: relative;
     left: 142%;
     bottom: 35px;
 }
 
 
-.gender2{
+.gender2 {
     position: relative;
     bottom: 70px;
     left: -175px;
 }
 
-#GENDER{
+#GENDER {
     position: relative;
     left: 99%;
     bottom: 35px;
 }
 
-.bloodGroup2{
+.bloodGroup2 {
     position: relative;
     bottom: 30px;
     left: -390px;
 }
 
-#B-GROUP{
+#B_GROUP {
     position: relative;
     left: 99%;
     bottom: 35px;
 }
 
-.midline{
+.midline {
     position: relative;
     bottom: 70px;
 }
 
-.course2{
+.course2 {
     position: relative;
     bottom: 90px;
     left: 8px;
 }
 
-#course-name{
+#course-name {
     position: relative;
     left: 30%;
     bottom: 37px;
 }
 
-.class2{
+.class2 {
     position: relative;
     bottom: 140px;
     left: 8px;
 }
 
-#class-name{
+#class-name {
     position: relative;
     left: 29%;
     bottom: 37px;
 }
 
-.branch2{
+.branch2 {
     position: relative;
     bottom: 190px;
     left: 8px;
 }
 
-#branch-name{
+#branch-name {
     position: relative;
     left: 30%;
     bottom: 37px;
 }
 
 
-.midline2{
+.midline2 {
     position: relative;
     bottom: 220px;
 }
 
-.contact-section2{
+.contact-section2 {
     position: relative;
     bottom: 200px;
     left: 10px;
-line-height: 0.1%;
+    line-height: 0.1%;
 }
 
-#SCONTACT{
+#SCONTACT {
     position: relative;
     left: 40%;
     bottom: 24px;
 }
 
-#PCONTACT{
+#PCONTACT {
     position: relative;
     left: 40%;
     bottom: 24px;
 }
 
-#ADDRESS{
+#ADDRESS {
     font-weight: bold;
+    border: none;
 }
 
 /* ............................... MEDIA QUERRY SECTION START ................................... */
@@ -520,10 +572,10 @@ line-height: 0.1%;
     .ac_year {
         margin: 0px 10px;
     }
-    
+
     .instruction p {
         color: royalblue;
-       
+
     }
 
     .name-setion .name,
@@ -543,7 +595,8 @@ line-height: 0.1%;
     .DOB-BLOODG {
         flex-direction: column;
     }
-    .DOB-BLOODG .DOB input{
+
+    .DOB-BLOODG .DOB input {
         width: 95%;
     }
 
@@ -551,7 +604,8 @@ line-height: 0.1%;
         width: 99%;
     }
 
-    .DOB-BLOODG input, select {
+    .DOB-BLOODG input,
+    select {
         width: 100%;
         padding: 8px;
     }
@@ -566,24 +620,26 @@ line-height: 0.1%;
         width: 20%;
     }
 
-    .main .button{
+    .main .button {
         margin-left: 5%;
         margin-top: 20px;
         width: 94%;
         display: flex;
         justify-content: space-between;
     }
+
     .main .button input {
-       width: 45%;
-       margin: auto;
+        width: 45%;
+        margin: auto;
+        cursor: pointer;
     }
-    
-    
-    .main .button #submit:active {
+
+
+    .main .button #submit-btn:active {
         background-color: rgb(37, 110, 37);
         color: white;
     }
-    
+
     .main .button #reset:active {
         background-color: rgb(255, 0, 0);
         color: white;
@@ -611,118 +667,122 @@ line-height: 0.1%;
     }
 
 
-    #preview-Btn{
+    #preview-Btn {
         border-radius: 20px;
         padding: 5px;
     }
 
-    #FNAME, #MNAME, #SNAME{
+    #FNAME,
+    #MNAME,
+    #SNAME {
         position: relative;
         left: 50%;
         bottom: 35px;
         /* background-color: red; */
     }
 
-    .DOB2{
+    .DOB2 {
         position: relative;
         bottom: 110px;
         left: 6px;
     }
-    
-    #DATE{
+
+    #DATE {
         position: relative;
         left: 50%;
         bottom: 37px;
         /* background-color: red; */
     }
 
-    .gender2{
+    .gender2 {
         position: relative;
         bottom: 150px;
         left: 3px;
     }
-    
-    #GENDER{
+
+    #GENDER {
         position: relative;
         left: 54%;
         bottom: 35px;
     }
 
-    .bloodGroup2{
+    .bloodGroup2 {
         position: relative;
         bottom: 186px;
         left: 5px;
     }
-    
-    #B-GROUP{
+
+    #B_GROUP {
         position: relative;
         left: 55%;
         bottom: 35px;
     }
 
-    .midline{
+    .midline {
         bottom: 230px;
     }
 
-    .course2{
+    .course2 {
         position: relative;
         bottom: 250px;
         left: 8px;
     }
 
-    #course-name{
+    #course-name {
         position: relative;
         left: 55%;
         bottom: 37px;
     }
 
-    .class2{
+    .class2 {
         position: relative;
         bottom: 300px;
         left: 8px;
     }
-    
-    #class-name{
+
+    #class-name {
         position: relative;
         left: 53%;
         bottom: 37px;
     }
 
-    .branch2{
+    .branch2 {
         position: relative;
         bottom: 350px;
         left: 8px;
     }
-    
-    #branch-name{
+
+    #branch-name {
         position: relative;
         left: 55%;
         bottom: 37px;
     }
-    
-    .midline2{
+
+    .midline2 {
         position: relative;
         bottom: 390px;
     }
-    
-    .contact-section2{
+
+    .contact-section2 {
         position: relative;
         bottom: 380px;
         left: 10px;
-    line-height: 0.1%;
+        line-height: 0.1%;
     }
-    #SCONTACT{
+
+    #SCONTACT {
         position: relative;
         left: 70%;
         bottom: 24px;
     }
-    
-    #PCONTACT{
+
+    #PCONTACT {
         position: relative;
         left: 70%;
         bottom: 24px;
     }
-    #ADDRESS{
+
+    #ADDRESS {
         width: 90%;
     }
 }
