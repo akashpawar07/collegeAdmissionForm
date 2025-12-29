@@ -9,8 +9,31 @@ body {
 
 }
 
+#sidebar-nav {
+    z-index: 10;
+    position: fixed;
+    padding: 12px;
+    left: 10px;
+    width: 19%;
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #101218ef;
+}
+
+#menubar {
+    display: none;
+}
+
+#close-crossbar {
+    display: none;
+}
+
+
 .sidebar {
-    position:fixed;
+    position: fixed;
     left: 10px;
     width: 19%;
     height: auto;
@@ -23,7 +46,6 @@ body {
 }
 
 .sidebar .sidebar-child {
-    background: rgb(48, 48, 81);
     cursor: pointer;
     width: 100%;
     padding-left: 4px;
@@ -49,14 +71,20 @@ body {
     text-decoration: none;
 }
 
-.sidebar .sidebar-child .lable{
+.sidebar .sidebar-child .lable {
     margin: 16px 16px 16px 0px;
 
 }
 
 
 .sidebar .sidebar-child:hover {
-    background: rgb(92, 52, 52);
+    background-color: #3f424a;
+}
+
+#sidebar-nav .sidebar-child.active {
+    background-color: #3f424a !important;
+    /* Test with !important first */
+    color: red;
 }
 
 
@@ -210,6 +238,73 @@ body input {
     body {
         /* height: ; */
         padding: 0px;
+    }
+
+    #sidebar-nav {
+        z-index: 10;
+        position: fixed;
+        margin: 10px 0px;
+        left: 10px;
+        width: 40%;
+        height: 100vh;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 8px;
+        display: none;
+
+    }
+
+    .toggle {
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 10px;
+        height: auto;
+        width: 100%;
+        position: fixed;
+        right: 0;
+        top: 2px;
+
+    }
+
+    #menubar {
+        color: rgb(254, 252, 249);
+        font-size: 32px;
+        padding: 9px 20px;
+        cursor: pointer;
+        border-radius: 3px;
+        background: #32569f;
+        position: relative;
+        display: block;
+        left: 3px;
+        top: 0px;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    #close-crossbar {
+        color: rgb(254, 252, 249);
+        font-size: 32px;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 12%;
+        background: #101218ef;
+        position: relative;
+        left: 280px;
+        top: 10px;
+        display: none;
     }
 
     #popup {

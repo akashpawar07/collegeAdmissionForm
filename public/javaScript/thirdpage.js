@@ -1,54 +1,44 @@
+//////////////// SIDEBAR //////////////////////////////
 
-document.getElementById('preview-Btn').addEventListener('click', () => {
+const menuBtn = document.getElementById("menubar");
+const sidebar = document.getElementById("sidebar-nav");
+const closeBtn = document.getElementById("close-crossbar");
 
-    //     // Getting the value of input fields
- 
-    let sname = document.getElementById('stu-name').value
-    let pname = document.getElementById('parent-name').value
-    let fees = document.getElementById('fees').value
-    let fees2 = document.getElementById('fees2').value
-    let sname2 = document.getElementById('stu-name2').value
-    let pname2 = document.getElementById('parent-name2').value
-    let address = document.getElementById('address').value
-    let c1 = document.getElementById('Personal').value
-    let c2 = document.getElementById('Fathers').value
-    let c3 = document.getElementById('Mothers').value
-    let c4 = document.getElementById('Relative').value
- 
-    let place = document.getElementById('place').value
-    let date = document.getElementById('date').value
+// Open logic
+menuBtn.onclick = function () {
+    sidebar.style.display = "block";
+    closeBtn.style.display = "block";
+    menuBtn.style.display = "none";
+};
 
- 
- 
-    // console.log(address)
-  // Asigning the value 
- 
-    document.getElementById('STU-NAME').value = sname
-    document.getElementById('PARENT-NAME').value = pname
-    document.getElementById('FEES').value = fees
-    document.getElementById('FEES2').value = fees2
-    document.getElementById('STU-NAME2').value = sname2
-    document.getElementById('PARENT-NAME2').value = pname2
-    document.getElementById('ADDRESS').value = address
-    document.getElementById('PERSONAL').value = c1
-    document.getElementById('FATHERS').value = c2
-    document.getElementById('MOTHERS').value = c3
-    document.getElementById('RELATIVE').value = c4
-    document.getElementById('PLACE').value = place
-    document.getElementById('DATE').value = date
- 
- 
- 
-    document.getElementById('preview_from').style.display = 'block';
- 
-    var formContainer = document.querySelector(".formContainer")
-    formContainer.classList.add("blur");
- 
- })
- 
- function cancelPreview() {
-    document.getElementById('preview_from').style.display = 'none';
- 
-    var formContainer = document.querySelector(".formContainer")
-    formContainer.classList.remove("blur");
- }
+// Close logic
+closeBtn.onclick = function () {
+    sidebar.style.display = "none";
+    menuBtn.style.display = "block";
+    closeBtn.style.display = "none";
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+    // console.log("Current Browser Path:", currentPath); // Debug current URL
+
+    const sidebarItems = document.querySelectorAll('#sidebar-nav .sidebar-child');
+
+    sidebarItems.forEach(item => {
+        const link = item.querySelector('a');
+        const href = link.getAttribute('href');
+
+        // Log each comparison to see why it might fail
+        // console.log(`Checking link: ${href} | Match: ${currentPath === href}`);
+
+        if (currentPath === href) {
+            item.classList.add('active');
+            console.log("✅ Added 'active' class to:", item);
+
+            // // Final check: Does the element have the class now?
+            // if (item.classList.contains('active')) {
+            //     console.log("Verified: Element now has class 'active'");
+            // }
+        }
+    });
+});

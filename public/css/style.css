@@ -1,23 +1,25 @@
 body {
     padding: 0px 0px 0px 0px;
-    margin-left: 100px;
+    /* margin-left: 100px; */
     font-family: Arial, Helvetica, sans-serif;
 }
 
 #body-data {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 12px;
-  width: 100%;
-  /* background: url(https://akashpawar07.github.io/portfolio/assets/group4-Cei5xW3f.jpg) no-repeat center/cover; */
+    display: flex;
+    justify-content: space-evenly;
+    gap: 12px;
+    width: 100%;
 }
 
 
-.sidebar {
-    position:fixed;
+#sidebar-nav {
+    z-index: 10;
+    background-color: #101218ef;
+    position: fixed;
+    padding: 12px;
     left: 10px;
     width: 19%;
-    height: auto;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,8 +27,16 @@ body {
 
 }
 
+#menubar {
+    visibility: hidden;
+}
+
+#close-crossbar {
+    visibility: hidden;
+}
+
+
 .sidebar .sidebar-child {
-    background: rgb(48, 48, 81);
     cursor: pointer;
     width: 100%;
     padding-left: 4px;
@@ -38,7 +48,7 @@ body {
     border-radius: 6px;
 }
 
-.sidebar .sidebar-child a{
+.sidebar .sidebar-child a {
     color: white;
     cursor: pointer;
     font-size: 19px;
@@ -52,8 +62,17 @@ body {
 }
 
 .sidebar .sidebar-child:hover {
-    background: rgb(92, 52, 52);
+    background-color: #3f424a;
 }
+
+#sidebar-nav .sidebar-child.active {
+    background-color: #3f424a !important;
+    /* Test with !important first */
+    color: red;
+}
+
+
+
 
 /* form css */
 form {
@@ -747,6 +766,107 @@ a {
         margin: 0.5px;
         width: 50vw;
     }
+
+    #sidebar-nav {
+        z-index: 10;
+        position: fixed;
+        margin: 10px 0px;
+        left: 10px;
+        width: 30%;
+        height: 100vh;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 8px;
+        display: none;
+
+    }
+
+    .toggle {
+        z-index: 1;
+        box-sizing: border-box;
+        padding: 16px;
+        height: 150px;
+        width: 100%;
+        position: fixed;
+        right: 0;
+        top: 25px;
+
+    }
+
+    #menubar {
+        color: rgb(254, 252, 249);
+        font-size: 32px;
+        padding: 10px 22px;
+        cursor: pointer;
+        border-radius: 3px;
+        background: #32569f;
+        position: relative;
+        display: block;
+        left: 5px;
+        top: 40px;
+        animation: bounce 2s infinite;
+        visibility: unset;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    #close-crossbar {
+        color: rgb(254, 252, 249);
+        font-size: 32px;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 12%;
+        background: #101218ef;
+        position: relative;
+        left: 280px;
+        top: -20px;
+        display: none;
+        visibility: unset;
+
+    }
+
+    .sidebar .sidebar-child {
+        /* background: rgb(48, 48, 81); */
+        cursor: pointer;
+        width: 100%;
+        padding-left: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        margin: 4px 0px;
+        border-radius: 6px;
+    }
+
+    .sidebar .sidebar-child a {
+        color: white;
+        cursor: pointer;
+        font-size: 19px;
+        width: 100%;
+        padding-left: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        border-radius: 6px;
+    }
+
+    .sidebar .sidebar-child:hover {
+        background: rgb(92, 52, 52);
+    }
+
 
     .addMissiontxt {
         width: 480px;

@@ -1,3 +1,51 @@
+//////////////// SIDEBAR //////////////////////////////
+
+const menuBtn = document.getElementById("menubar");
+const sidebar = document.getElementById("sidebar-nav");
+const closeBtn = document.getElementById("close-crossbar");
+
+// Open logic
+menuBtn.onclick = function () {
+    sidebar.style.display = "block";
+    closeBtn.style.display = "block";
+    menuBtn.style.display = "none";
+};
+
+// Close logic
+closeBtn.onclick = function () {
+    sidebar.style.display = "none";
+    menuBtn.style.display = "block";
+    closeBtn.style.display = "none";
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+    // console.log("Current Browser Path:", currentPath); // Debug current URL
+
+    const sidebarItems = document.querySelectorAll('#sidebar-nav .sidebar-child');
+
+    sidebarItems.forEach(item => {
+        const link = item.querySelector('a');
+        const href = link.getAttribute('href');
+
+        // Log each comparison to see why it might fail
+        // console.log(`Checking link: ${href} | Match: ${currentPath === href}`);
+
+        if (currentPath === href) {
+            item.classList.add('active');
+            // console.log("✅ Added 'active' class to:", item);
+           
+        }
+    });
+});
+
+
+
+
+
+
+
+
 //////////////// ELEMENT REFERENCES //////////////////
 
 const profileInputFile = document.getElementById("profilePicture");
@@ -161,8 +209,13 @@ SignInputFile.onchange = function () {
     }
 };
 
-
+//////////////// PREVIEW THE FORM /////////////////////
 document.getElementById('preview-Btn').addEventListener('click', () => {
+
+    // if preview is oepn then sidebar must be close
+    sidebar.style.display = "none";
+    closeBtn.style.display = "none";
+    menuBtn.style.display = "none";
 
     // 🔹 INPUT FIELD ASSIGN TO PREVIEW FIELDS
     // Left getting for preview    =  Right input values comming from admision form
@@ -216,8 +269,22 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.querySelector(".formContainer").classList.add("blur");
 });
 
-// Cancel ❌  Preview
+
+
+
+////////////////////////// Cancel ❌  Preview  ////////////////////////////////////
 function cancelPreview() {
+    // if preview is close then sidebar must be open 
+    sidebar.style.display = "block";
+
+    // Only show if the device width is 481px or less
+    if (window.innerWidth <= 481) {
+        sidebar.style.display = "none";
+        menuBtn.style.display = "block";
+    } else {
+        closeBtn.style.display = "block";
+    }
+
     document.getElementById('preview_from').style.display = 'none';
     document.querySelector(".formContainer").classList.remove("blur");
 }

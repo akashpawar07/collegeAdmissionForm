@@ -1,40 +1,44 @@
+//////////////// SIDEBAR //////////////////////////////
 
-// document.getElementById('preview-Btn').addEventListener('click', () =>{
+const menuBtn = document.getElementById("menubar");
+const sidebar = document.getElementById("sidebar-nav");
+const closeBtn = document.getElementById("close-crossbar");
 
-//     // Getting the value of input fields
-//    let date = document.getElementById('date').value
-//    let pname = document.getElementById('parent-name').value
-//    let sname = document.getElementById('stu-name').value
-//    let institute = document.getElementById('institute-name').value
-//    let day = document.getElementById('day').value
-//    let month = document.getElementById('month').value
-//    let year = document.getElementById('year').value
-//    let pname2 = document.getElementById('parent-name2').value
-//    let sname2 = document.getElementById('stu-name2').value
-//    let sign = document.getElementById('sign').value
+// Open logic
+menuBtn.onclick = function () {
+    sidebar.style.display = "block";
+    closeBtn.style.display = "block";
+    menuBtn.style.display = "none";
+};
 
+// Close logic
+closeBtn.onclick = function () {
+    sidebar.style.display = "none";
+    menuBtn.style.display = "block";
+    closeBtn.style.display = "none";
+};
 
-//    // Asigning the value 
-//    document.getElementById('DATE').value = date
-//    document.getElementById('PARENT-NAME').value= pname
-//    document.getElementById('STU-NAME').value= sname
-//    document.getElementById('INSTITUTE-NAME').value= institute
-//    document.getElementById('DAY').value= day
-//    document.getElementById('MONTH').value= month
-//    document.getElementById('YEAR').value= year
-//    document.getElementById('PARENT-NAME2').value= pname2
-//    document.getElementById('STU-NAME2').value= sname2
-//    document.getElementById('SIGN').value=sign
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+    // console.log("Current Browser Path:", currentPath); // Debug current URL
 
-//    document.getElementById('preview_from').style.display = 'block';
+    const sidebarItems = document.querySelectorAll('#sidebar-nav .sidebar-child');
 
-//    var formContainer = document.querySelector(".formContainer")
-//    formContainer.classList.add("blur");
-// })
+    sidebarItems.forEach(item => {
+        const link = item.querySelector('a');
+        const href = link.getAttribute('href');
 
-// function cancelPreview() {
-//    document.getElementById('preview_from').style.display = 'none';
+        // Log each comparison to see why it might fail
+        // console.log(`Checking link: ${href} | Match: ${currentPath === href}`);
 
-//    var formContainer = document.querySelector(".formContainer")
-//    formContainer.classList.remove("blur");
-// }
+        if (currentPath === href) {
+            item.classList.add('active');
+            // console.log("✅ Added 'active' class to:", item);
+
+            // // Final check: Does the element have the class now?
+            // if (item.classList.contains('active')) {
+            //     console.log("Verified: Element now has class 'active'");
+            // }
+        }
+    });
+});
