@@ -196,7 +196,7 @@ body {
     border: none;
     width: 100%;
     text-align: center;
-    font-family: 'Segoe UI', cursive; /* Signature look */
+    font-family: 'Lucida Handwriting', 'Segoe Print', 'Bradley Hand', cursive;
     font-size: 1.2rem;
     color: var(--accent-color);
     background: transparent;
