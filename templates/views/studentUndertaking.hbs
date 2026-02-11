@@ -44,7 +44,7 @@
         </nav>
 
         <main class="content-area">
-            <form action="/studentUndertaking" method="post" class="paper-form" enctype="multipart/form-data">
+            <form action="/studentUndertaking" id="submitForm" method="post" class="paper-form" enctype="multipart/form-data">
                 
                 <div class="form-header">
                     <div class="date-group">
@@ -115,12 +115,12 @@
                     <div class="signature-section">
                         <div class="sign-box">
                             <label>Parents Digital Signature:</label>
-                            <input type="text" id="parent-name2" class="sign-input" autocomplete="off" required>
+                            <input type="text" id="parent-name2" class="sign-input" autocomplete="off" readonly required>
                         </div>
 
                         <div class="sign-box">
                             <label>Student Digital Signature:</label>
-                            <input type="text" id="stu-name2" class="sign-input" autocomplete="off" required>
+                            <input type="text" id="stu-name2" class="sign-input" autocomplete="off" readonly required>
                         </div>
                     </div>
                 </div>

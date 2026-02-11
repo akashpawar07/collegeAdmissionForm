@@ -63,7 +63,8 @@ body {
     margin-right: 10px;
 }
 
-.sidebar-child:hover, .sidebar-child.active {
+.sidebar-child:hover,
+.sidebar-child.active {
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
@@ -178,7 +179,8 @@ body {
 .sign-box {
     flex: 1;
     display: flex;
-    flex-direction: column-reverse; /* Puts label under input */
+    flex-direction: column-reverse;
+    /* Puts label under input */
     align-items: center;
 }
 
@@ -200,6 +202,8 @@ body {
     font-size: 1.2rem;
     color: var(--accent-color);
     background: transparent;
+    border: none;
+    outline: none;
 }
 
 /* --- Footer (Address & Date) --- */
@@ -214,11 +218,20 @@ body {
     border: 1px solid #eee;
 }
 
-.address-box label, .date-place-box label {
+.address-box label,
+.date-place-box label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
     font-size: 0.9rem;
+    
+}
+#date{
+     border: none;  
+    outline: none; 
+}
+#place{
+     border: none;  
+    outline: none; 
 }
 
 .address-box textarea {
@@ -229,6 +242,8 @@ body {
     font-size: 1rem;
     resize: none;
     font-family: inherit;
+      border: none;      /* Removes the default permanent border */
+    outline: none; 
 }
 
 .form-group-row {
@@ -266,38 +281,65 @@ body {
     transition: all 0.3s;
 }
 
-.btn-primary { background: var(--accent-color); color: white; }
-.btn-primary:hover { background: #2e683b; }
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
 
-.btn-secondary { background: #555; color: white; }
-.btn-secondary:hover { background: #333; }
+.btn-primary:hover {
+    background: #2e683b;
+}
 
-.btn-outline { border: 1px solid var(--accent-color); color: var(--accent-color); background: white; }
-.btn-outline:hover { background: #f0fdf4; }
+.btn-secondary {
+    background: #555;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #333;
+}
+
+.btn-outline {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background: white;
+}
+
+.btn-outline:hover {
+    background: #f0fdf4;
+}
 
 /* =========================================
    RESPONSIVE DESIGN (Tablets & Mobiles) 
    ========================================= */
 @media screen and (max-width: 768px) {
-    
+
     .sidebar {
         transform: translateX(-100%);
-        padding-top: 80px; 
+        padding-top: 80px;
     }
-    .sidebar.active { transform: translateX(0); }
-    
-    .mobile-header { display: flex; }
-    
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .mobile-header {
+        display: flex;
+    }
+
     .content-area {
         margin-left: 0;
         width: 100%;
         padding: 10px;
     }
 
-    .paper-form { padding: 20px; }
+    .paper-form {
+        padding: 20px;
+    }
 
     .inline-input {
-        width: 100%; /* Inputs take full width on mobile for easier typing */
+        width: 100%;
+        /* Inputs take full width on mobile for easier typing */
         display: block;
         margin: 5px 0;
         text-align: left;

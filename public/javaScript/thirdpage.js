@@ -69,12 +69,18 @@ if (addressEl) {
 }
 
 
-document.getElementById("disp").addEventListener("click", function(event) {
+document.getElementById("disp").addEventListener("click", function (event) {
     let fees1 = document.getElementById("fees").value.trim();
-    let fees2 = document.getElementById("fees2").value.trim(); // Fixed ID: was 'fee2' in your JS, 'fees2' in HTML
+    let fees2 = document.getElementById("fees2").value.trim();
+    let studentNamee = document.getElementById("stu-name").value;
+    let GuardianName = document.getElementById("parent-name").value;
+    let address = document.getElementById("address").value;
+    let place = document.getElementById("place").value;
 
-    if (fees1 === "" || fees2 === "") {
-        alert("Please enter fees");
+    if (fees1 === "" || fees2 === "" || studentNamee.trim() === "" || GuardianName.trim() === "" 
+    || address.trim() === "") {
+
+        alert("All fields are compulsary, please fill form carefully");
         event.preventDefault(); // This is what stops the form submission
         return false;
     }

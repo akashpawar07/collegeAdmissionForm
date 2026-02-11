@@ -224,8 +224,9 @@ body {
     text-align: center;
     font-family: 'Lucida Handwriting', 'Segoe Print', 'Bradley Hand', cursive;
     color: var(--accent-color);
-    /* Optional: Looks like a signature */
     font-size: 1.2rem;
+     
+    outline: none; 
 }
 
 /* --- Buttons --- */

@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function populateIDCard() {
   // Helper to get session data
-  const getVal = (key) => sessionStorage.getItem(key) || "N/A";
+  const getVal = (key) => sessionStorage.getItem(key)
 
   // --- 1. DATA RETRIEVAL ---
-  const fname = getVal('firstName');
+  const fname = getVal('firstName')
   const sname = getVal('surname');
   const dobRaw = getVal('dateOfBirth');
   const studentMob = getVal('studentc');
@@ -84,7 +84,6 @@ function populateIDCard() {
 
 
 
-
 //////////////// 3. PHOTO PREVIEW & VALIDATION //////////////////
 
 // Photo Upload Preview
@@ -107,25 +106,50 @@ const finalForm = document.getElementById('finalSubmitForm');
 
 if (finalForm) {
   finalForm.onsubmit = function (e) {
+
+    // 1. Get Values from Hidden Inputs (The actual data being submitted)
+    // These IDs must match your <input type="hidden"> IDs in HTML
+    const firstname = document.getElementById("hiddenFname").value.trim();
+    const surrname = document.getElementById("hiddenSname").value.trim();
+    const std_course = document.getElementById("hiddenCourse").value.trim();
+    const current_Class = document.getElementById("hiddenClass").value.trim();
+    const dateOFBirth = document.getElementById("hiddenDob").value.trim();
+    const stuContact = document.getElementById("hiddenStudentMobile").value.trim();
+    const parContact = document.getElementById("hiddenParentContact").value.trim();
+    const stuAddress = document.getElementById("hiddenAddress").value.trim();
+
+    // Manual Inputs
     const photoFile = document.getElementById('profilePicInput').files.length;
     const bloodGroup = document.getElementById('bloodGroupSelect').value;
 
-    // 1. Validation Checks
+    // 2. Validation Logic
+
+    // Check Photo
     if (photoFile === 0) {
       alert("Please upload your profile photo first!");
       e.preventDefault();
       return false;
     }
 
+    // Check Blood Group
     if (bloodGroup === "") {
       alert("Please select your Blood Group!");
       e.preventDefault();
       return false;
     }
 
-    // 2. Clear Session Data
-    // We use a tiny timeout so the browser has time to "grab" the data 
-    // for the POST request before the memory is wiped.
+    // Check Data Fields (Retrieved from Session/Hidden Inputs)
+    if (firstname === "" || surrname === "" || std_course === "" ||
+      current_Class === "" || dateOFBirth === "" ||
+      stuContact === "" || parContact === "" || stuAddress === "") {
+
+      alert("All fields are compulsory! Some data is missing from the Registration Form. Please go back and fill in your details.");
+      e.preventDefault();
+      return false;
+    }
+
+    // 3. Clear Session Data
+    // Only clear if validation passes
     setTimeout(() => {
       sessionStorage.clear();
       console.log("Session storage cleared successfully.");

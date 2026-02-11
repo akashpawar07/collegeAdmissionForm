@@ -3,11 +3,23 @@ const menuBtn = document.getElementById("menubar");
 const sidebar = document.getElementById("sidebar-nav");
 const closeBtn = document.getElementById("close-crossbar");
 
+document.getElementById("submitForm").addEventListener("submit", ((e) => {
+
+    let studentNamee = document.getElementById("stu-name").value;
+    let GuardianName = document.getElementById("parent-name").value;
+
+    // .trim() to prevent users from just entering spaces
+    if (studentNamee.trim() === "" || GuardianName.trim() === "") {
+         e.preventDefault(); 
+        alert("All fields are compulsory. Please check all necessary fields before submitting.");
+    }
+}))
+
 // Open logic
 menuBtn.onclick = function () {
     // Instead of display:block, we add the 'active' class to slide it in
     sidebar.classList.add("active");
-    
+
     // Toggle the buttons
     closeBtn.style.display = "block";
     menuBtn.style.display = "none";
@@ -17,7 +29,7 @@ menuBtn.onclick = function () {
 closeBtn.onclick = function () {
     // Remove class to slide it out
     sidebar.classList.remove("active");
-    
+
     // Toggle the buttons
     closeBtn.style.display = "none";
     menuBtn.style.display = "block";
@@ -26,7 +38,7 @@ closeBtn.onclick = function () {
 // Function for getting current URL (Active Tab Highlighting)
 document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
-    
+
     // Select the <a> tags directly since they now have the class .sidebar-child
     const sidebarLinks = document.querySelectorAll('.sidebar-child');
 
@@ -45,7 +57,7 @@ const firstName = sessionStorage.getItem("firstName");
 const fatherName = sessionStorage.getItem("fatherName");
 
 // Check if session data exists to avoid "null null" appearing
-if(surname && firstName && fatherName) {
+if (surname && firstName && fatherName) {
     document.getElementById("parent-name").value = fatherName + " " + surname;
     document.getElementById("stu-name").value = firstName + " " + surname;
     document.getElementById("parent-name2").value = fatherName + " " + surname;
