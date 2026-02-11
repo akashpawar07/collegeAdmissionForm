@@ -1,55 +1,37 @@
-const express = require("express")
+const express = require("express");
 const router = express.Router();
+const studentIdCard = require("../models/studentIdCardModels");
 
-const studentIdCard = require("../models/studentIdCardModels")
-
-
-// POST route fro creating idCards
+// POST
 router.post("/", async (req, res) => {
     try {
-        // console.log("REQ BODY:", req.body);
+        // Helper function to handle accidental arrays
+        const getSingleValue = (val) => Array.isArray(val) ? val[0] : val;
 
-        studentId = new studentIdCard({
-            academicYear: req.body.academic,
-            firstName: req.body.fname,
-            middleName: req.body.mname,
-            surName: req.body.sname,
-            dateOfBirth: req.body.DOB,
-            gender: req.body.Gender,
-            bloodGroup: req.body.BloodGroup,
-
-            course: req.body.course || "",
-            classes: req.body.classes || "",
-            branch: req.body.branches || "",
-            otherBranch: req.body.otherBranches || "",
-
-            studentContact: req.body.stdContact,
-            parentsContact: req.body.pContact,
-            studentAddress: req.body.stdAddress
+        const studentId = new studentIdCard({
+            academicYear: getSingleValue(req.body.academicYear),
+            firstName: getSingleValue(req.body.firstName),
+            surName: getSingleValue(req.body.surName),
+            dateOfBirth: getSingleValue(req.body.dateOfBirth),
+            bloodGroup: getSingleValue(req.body.bloodGroup),
+            course: getSingleValue(req.body.course), // This fixes the error!
+            classes: getSingleValue(req.body.classes),
+            studentContact: getSingleValue(req.body.studentContact),
+            parentsContact: getSingleValue(req.body.parentsContact),
+            studentAddress: getSingleValue(req.body.studentAddress)
         });
 
-        const newStudent = await studentId.save();
-
-        // console.log("Saved Student:", newStudent);
-
+        await studentId.save();
         res.status(200).render("idCardPopup");
 
     } catch (err) {
-        console.error(err);
-        res.status(500).send("Server Error");
+        console.error("Validation/Save Error:", err);
+        res.status(500).send("Server Error: " + err.message);
     }
 });
 
-
-
-
-// GET route
 router.get("/", (req, res) => {
-    res.render('idCard')
-})
-// exporting last page route
-module.exports = router
+    res.render('idCard');
+});
 
-
-
-
+module.exports = router;

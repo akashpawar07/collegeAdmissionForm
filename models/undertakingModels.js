@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const studentUndertakingSchema = new mongoose.Schema({
     date: {
-        type: Date,
+        type: String,
         trim: true
     },
     GuardianName: {

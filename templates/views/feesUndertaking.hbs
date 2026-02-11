@@ -5,201 +5,116 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/images/college-logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYCET | Student Fess-Undertaking</title>
+    <title>SYCET | Student Fees-Undertaking</title>
     <link rel="stylesheet" href="/css/feesUndertaking.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="toggle">
-        <i class="fa-solid fa-list" id="menubar"></i>
-        <i class="fa-solid fa-x" id="close-crossbar"></i>
-    </div>
     
-    <div class="container" style="display: flex;">
-        <div class="sidebar" id="sidebar-nav">
-            <div class="sidebar-child">
-                <a href="/">
-                    <i class="fa-regular fa-house"></i>
-                    <p>Registration Form</p>
-                </a>
-            </div>
-            <div class="sidebar-child">
-                <a href="/studentUndertaking">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <p>Student Undertaking</p>
-                </a>
-            </div>
-            <div class="sidebar-child">
-                <a href="/feesUndertaking">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <p>Fees Undertaking</p>
-                </a>
-            </div>
-            <div class="sidebar-child">
-                <a href="/idCard">
-                    <i class="fa-regular fa-id-card"></i>
-                    <p>ID Card</p>
-                </a>
-            </div>
+    <div class="mobile-header">
+        <div class="toggle">
+            <i class="fa-solid fa-bars" id="menubar"></i>
+            <i class="fa-solid fa-xmark" id="close-crossbar"></i>
         </div>
-
-        <form action="/feesUndertaking" method="post" class="formContainer">
-
-            <center>
-                <u>
-                    <H1>UNDERTAKING FOR FEES</H1>
-                    <p>(FOR STUDENT)</p>
-                </u>
-            </center>
-            <div class="content">
-                <p>I <input type="text" name="stuname" id="stu-name" required>son/daughter of <input type="text"
-                        name="fathername" required style="width: 200px;" id="parent-name">seeking admission to the
-                    First/Direct Second Year Engineering
-                    in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic
-                    year 2023-2024 in the branch UG:Civil/ Mech/ETC/CSE/AIML/other, PG: Struct
-                    Mech/CSE/ETC/other Engineering. I am fully aware of the my admission is purely provisional
-                    subject to the approval of AICTE, Delhi, DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai.
-                    I shall be fully responsible for the consequence there to.I am fully aware and agree that
-                    the presently charged fees are interim fees as approved by the 'SHIKSHAN SHUKA SAMITI'/
-                    Authority / Honarable Court/ Hon'ble Supreme Court. (interim fees at present Rs <input type="number"
-                        name="presentFees" id="fees">
-                    only) I am aware and agree to pay fees which
-                    will be finalized by the 'SHIKSHAN SHULKA SAMITI'Authority / Hon'ble Court/ Hon'ble Supreme Court.
-                    'SHIKSHAN SHULKA SAMITI'/Authority / Honarable Court/ Hon'ble Supreme Court from time to time during
-                    my entire period of course and if not paid, I know that my admission will be cancelled for which
-                    will
-                    be responsible and I will not held College/ any body responsible for cancellation of my admission:
-                    The propossed fees will be about <input type="number" name="praposedFees" id="fees2">
-                    (). I will pay all the fees due to on before
-                    submission of the semester till the institution receives all claims for Govt.</p>
-            </div>
-
-            <div class="sign">
-                <p><input type="file" style="border:none;"><br>
-                    (sign) <br><br>
-                    <input type="text" id="stu-name2"> <br>
-                    (full name of candidate)
-                </p>
-                <p><input type="file" style="border: none;"><br>
-                    (sign) <br><br>
-                    <input type="text" id="parent-name2"> <br>
-                    (full name of the Parent/Guardian)
-                </p>
-            </div>
-            <address>
-                <textarea name="homeAdress" cols="21" rows="5" id="address" placeholder="Enter Your Address"
-                    required></textarea>
-            </address>
-
-            <div class="contact">
-                Contact No.
-                <ol>
-                    <li> Personal: <input type="number" name="pContact" id="Personal" required></li>
-
-                    <li>Fathers: <input type="number" name="fContact" id="Fathers" required></li>
-
-                    <li> Mothers: <input type="number" name="mContact" id="Mothers" required></li>
-
-                    <li>Relative: <input type="number" name="rContact" id="Relative" required></li>
-                </ol>
-            </div>
-            <div class="place">
-                <p>Place: <input type="text" name="placeName" placeholder="Enter Place" id="place" required></p>
-                <p>Date: <input type="date" name="presentDate" id="date" required></p>
-            </div>
-
-            <div class="button">
-                <div class="prev">
-                    <button>
-                        <a href="/studentUndertaking">Back </a>
-                    </button>
-                </div>
-
-                {{!-- <button id="preview-Btn">Preview This Page</button> --}}
-                <button type="submit" id="disp" style="cursor: pointer;">Submit</button>
-
-                <div class="next">
-                    <button>
-                        <a href="/idCard"> Next </a>
-                    </button>
-                </div>
-            </div>
-        </form>
+        <span class="mobile-title">Fees Undertaking</span>
     </div>
 
-    {{!-- <div class="preview" id="preview_from">
-        <center>
-            <u>
-                <H1>UNDERTAKING FOR FEES</H1>
-                <p>(FOR STUDENT)</p>
-            </u>
-        </center>
-        <div class="content">
-            <p>I <input type="text" id="STU-NAME" readonly>son/daughter of <input type="text" style="width: 200px;"
-                    id="PARENT-NAME" readonly>seeking admission to the
-                First/Direct Second Year Engineering
-                in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic
-                year 2023-2024 in the branch UG:Civil/ Mech/ETC/CSE/AIML/other, PG: Struct
-                Mech/CSE/ETC/other Engineering. I am fully aware of the my admission is purely provisional
-                subject to the approval of AICTE, Delhi, DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai.
-                I shall be fully responsible for the consequence there to.I am fully aware and agree that
-                the presently charged fees are interim fees as approved by the 'SHIKSHAN SHUKA SAMITI'/
-                Authority / Honarable Court/ Hon'ble Supreme Court. (interim fees at present Rs <input type="number"
-                    id="FEES" readonly>
-                only) I am aware and agree to pay fees which
-                will be finalized by the 'SHIKSHAN SHULKA SAMITI'Authority / Hon'ble Court/ Hon'ble Supreme Court.
-                'SHIKSHAN SHULKA SAMITI'/Authority / Honarable Court/ Hon'ble Supreme Court from time to time during
-                my entire period of course and if not paid, I know that my admission will be cancelled for which
-                will
-                be responsible and I will not held College/ any body responsible for cancellation of my admission:
-                The propossed fees will be about <input type="number" id="FEES2" readonly>
-                (). I will pay all the fees due to on before
-                submission of the semester till the institution receives all claims for Govt.</p>
-        </div>
+    <div class="main-wrapper">
 
-        <div class="sign">
-            <p><input type="file" style="border:none;"><br>
-                (sign) <br><br>
-                <input type="text" id="STU-NAME2" readonly> <br>
-                (full name of candidate)
-            </p>
-            <p><input type="file" style="border: none;"><br>
-                (sign) <br><br>
-                <input type="text" id="PARENT-NAME2" readonly> <br>
-                (full name of the Parent/Guardian)
-            </p>
-        </div>
-        <address>
-            <textarea name="" cols="21" rows="5" id="ADDRESS" readonly></textarea>
-        </address>
-        <div class="contact">
-            Contact No.
-            <ol>
-                <li> Personal: <input type="number" id="PERSONAL" readonly></li>
+        <nav class="sidebar" id="sidebar-nav">
+            <div class="nav-links">
+                <a href="/" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-house"></i></div>
+                    <span class="label">Registration Form</span>
+                </a>
+                <a href="/studentUndertaking" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
+                    <span class="label">Student Undertaking</span>
+                </a>
+                <a href="/feesUndertaking" class="sidebar-child active">
+                    <div class="icon-box"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <span class="label">Fees Undertaking</span>
+                </a>
+                <a href="/idCard" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-id-card"></i></div>
+                    <span class="label">ID Card</span>
+                </a>
+            </div>
+        </nav>
 
-                <li>Fathers: <input type="number" id="FATHERS" readonly></li>
+        <main class="content-area">
+            <form action="/feesUndertaking" method="post" class="paper-form">
+                
+                <div class="form-header-center">
+                    <h1 class="doc-title">UNDERTAKING FOR FEES</h1>
+                    <p class="doc-subtitle">(FOR STUDENT)</p>
+                </div>
 
-                <li> Mothers: <input type="number" id="MOTHERS" readonly></li>
+                <div class="text-content fill-in-blanks">
+                    <p>
+                        I, <input type="text" name="stuname" id="stu-name" class="inline-input long-input" readonly required>
+                        son/daughter of <input type="text" name="fathername" id="parent-name" class="inline-input long-input" readonly required>,
+                        seeking admission to the <strong>First/Direct Second Year Engineering</strong> in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic year 2023-2024 in the branch UG: Civil/ Mech/ ETC/ CSE/ AIML/ other, PG: Struct Mech/ CSE/ ETC/ other Engineering.
+                    </p>
+                    <p>
+                        I am fully aware that my admission is purely provisional subject to the approval of AICTE, Delhi, DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai. I shall be fully responsible for the consequence thereto.
+                    </p>
+                    <p>
+                        I am fully aware and agree that the presently charged fees are interim fees as approved by the 'SHIKSHAN SHULKA SAMITI'/ Authority / Honorable Court/ Hon'ble Supreme Court. 
+                        (Interim fees at present Rs <input type="number" name="presentFees" id="fees" class="inline-input short-input" placeholder="0000"> only).
+                    </p>
+                    <p>
+                        I am aware and agree to pay fees which will be finalized by the 'SHIKSHAN SHULKA SAMITI'/ Authority / Honorable Court/ Hon'ble Supreme Court from time to time during my entire period of course and if not paid, I know that my admission will be cancelled for which I will be responsible and I will not hold College/ anybody responsible for cancellation of my admission.
+                    </p>
+                    <p>
+                        The proposed fees will be about <input type="number" name="praposedFees" id="fees2" class="inline-input short-input" placeholder="0000">. 
+                        I will pay all the fees due on or before submission of the semester till the institution receives all claims for Govt.
+                    </p>
+                </div>
 
-                <li>Relative: <input type="number" id="RELATIVE" readonly></li>
-            </ol>
-        </div>
-        <div class="Place">
-            <p>Place: <input type="text" placeholder="Enter Place" id="PLACE" readonly></p>
-            <p>Date: <input type="date" id="DATE" readonly></p>
-        </div>
-        <br>
-        <h2 id="cancelpoppup" onclick="cancelPreview()">&#10005</h2>
-    </div> --}}
+                <hr class="divider">
+
+                <div class="signature-section">
+                    <div class="sign-box">
+                        <label>Digital Signature of Student</label>
+                        <input type="text" id="stu-name2" class="sign-input" readonly>
+                    </div>
+
+                    <div class="sign-box">
+                        <label>Digital Signature of Parents</label>
+                        <input type="text" id="parent-name2" class="sign-input" readonly>
+                    </div>
+                </div>
+
+                <div class="footer-grid">
+                    <div class="address-box">
+                        <label>Address:</label>
+                        <textarea name="homeAdress" id="address" rows="3" readonly></textarea>
+                    </div>
+
+                    <div class="date-place-box">
+                        <div class="form-group-row">
+                            <label>Date:</label>
+                            <input type="date" name="presentDate" id="date" readonly required>
+                        </div>
+                        <div class="form-group-row">
+                            <label>Place:</label>
+                            <input type="text" name="placeName" id="place" placeholder="Enter Place" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/studentUndertaking" class="btn btn-secondary">Back</a>
+                    <button type="submit" id="disp" class="btn btn-primary">Submit</button>
+                    <a href="/idCard" class="btn btn-outline">Next</a>
+                </div>
+
+            </form>
+        </main>
+    </div>
+
     <script src="/javaScript/thirdpage.js"></script>
-
-
 </body>
-
-</html>
-</body>
-
 </html>

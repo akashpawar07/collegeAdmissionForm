@@ -35,7 +35,7 @@ const studentSchema = new mongoose.Schema({
         uppercase: true
     },
     dateOfBirth: {
-        type: Date,
+        type: String,
         trim: true
     },
     gender: {

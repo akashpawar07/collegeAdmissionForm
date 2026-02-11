@@ -1,1048 +1,379 @@
+/* --- CSS Reset & Variables --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #388e5f;
+    --bg-color: #f3f4f6;
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #ffffff;
+    --paper-bg: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    padding: 0px 0px 0px 0px;
-    /* margin-left: 100px; */
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-#body-data {
+/* --- Layout Wrappers --- */
+.main-wrapper {
     display: flex;
-    justify-content: space-evenly;
-    gap: 12px;
-    width: 100%;
+    min-height: 100vh;
 }
 
-
-#sidebar-nav {
-    z-index: 10;
-    background-color: #101218ef;
+/* --- Sidebar Styling --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
     position: fixed;
-    padding: 12px;
-    left: 10px;
-    width: 19%;
-    height: 95vh;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    padding: 20px 10px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-
 }
 
-#menubar {
-    visibility: hidden;
+.sidebar-child {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sidebar-child .icon-box {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.sidebar-child:hover, .sidebar-child.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* --- Mobile Header --- */
+.mobile-header {
+    display: none;
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.mobile-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.toggle i {
+    font-size: 24px;
+    cursor: pointer;
 }
 
 #close-crossbar {
-    visibility: hidden;
-}
-
-
-.sidebar .sidebar-child {
-    cursor: pointer;
-    width: 100%;
-    padding-left: 4px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    margin: 4px 0px;
-    border-radius: 6px;
-}
-
-.sidebar .sidebar-child a {
-    color: white;
-    cursor: pointer;
-    font-size: 19px;
-    width: 100%;
-    padding-left: 4px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    border-radius: 6px;
-}
-
-.sidebar .sidebar-child:hover {
-    background-color: #3f424a;
-}
-
-#sidebar-nav .sidebar-child.active {
-    background-color: #3f424a !important;
-    /* Test with !important first */
-    color: red;
-}
-
-
-
-
-/* form css */
-form {
-    width: 800px;
-    background-color: rgba(211, 211, 211, 0.4);
-    height: auto;
-    padding: 20px;
-    border: 2px solid black;
-    border-radius: 5px;
-}
-
-.header {
-    height: 40px;
-    border: 2px solid black;
-    display: flex;
-    justify-content: space-evenly;
-    position: sticky;
-    top: 0px;
-    /* background-color: rgba(7, 8, 15, 0.662); */
-    background-color: rgb(69, 67, 67);
-    border-radius: 5px;
-}
-
-.addMissiontxt {
-    margin: 5px;
-    width: 247px;
-    font-size: auto;
-    color: #ffffff;
-}
-
-.acadmicTxt {
-    margin: 14px 0px 0px -2px;
-    width: 60%;
-    color: white;
-}
-
-.formno {
-    width: 100px;
-    height: 40px;
-    border-left: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#number {
-    width: 50px;
-    border: 0px;
-    background: transparent;
-    font-size: 20px;
-    font-weight: bolder;
-    text-align: center;
-}
-
-
-/* .collageinfomation */
-.collageinfo {
-    height: 140px;
-    width: 90%;
-    margin-top: 6px;
-
-}
-
-.collage {
-    text-align: center;
-    font-size: medium;
-    margin-top: -135px;
-    margin-left: 45px;
-    /* line-height: 17px; */
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-style: italic;
-}
-
-.line {
-    width: 81.5%;
-    margin-left: 0px;
-}
-
-.cphoto img {
-    height: 120px;
-    width: 120px;
-    margin: 5px 0px 0px 0px;
-    border-radius: 5px;
-}
-
-
-/* photograf section  */
-.photo {
-    /* background-color: cadetblue; */
-    height: 150px;
-    width: 140px;
-    /* border: 1.5px solid black; */
-    /* background-color: rgb(65, 55, 128); */
-    margin: 0px;
-    margin-top: -150px;
-    margin-left: 82%;
-    border-radius: 5px;
-    padding: 1px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-
-}
-
-.photo img {
-    width: 99%;
-    height: 80%;
-}
-
-.photo input {
     display: none;
 }
 
-.photo label {
-    background-color: lightslategrey;
-    color: white;
-    padding: 4px;
-    margin-top: 2px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    cursor: pointer;
-}
-
-.photo label:hover {
-    background-color: rgb(66, 116, 165);
-    color: white;
-}
-
-.photo label:active {
-    background-color: green;
-    color: white;
-}
-
-/* signature section ..................................................................... */
-.sign {
-    height: 65px;
-    width: 130px;
-    /* border: 1.5px solid black; */
-    border-radius: 5px;
-    margin-top: -35px;
-    margin-left: 82%;
-    /* overflow: hidden;
-    text-align: center; */
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.sign img {
-    width: 99%;
-    height: 68%;
-}
-
-.sign input {
-    display: none;
-}
-
-.sign label {
-    background-color: lightslategrey;
-    color: white;
-    padding: 4px;
-    margin-top: 3px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    cursor: pointer;
-}
-
-.sign label:hover {
-    background-color: rgb(66, 116, 165);
-    color: white;
-}
-
-.sign label:active {
-    background-color: green;
-    color: white;
-}
-
-
-
-
-/* course section  */
-.course {
-    height: 50px;
-    width: 670px;
-    margin-top: -10px;
-    margin-left: 5px;
-    margin-right: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 15.8px;
-}
-
-.para {
-    margin: 0px;
-    margin-top: 16px;
-}
-
-
-/*form input contant part  */
-.content {
-    width: 795px;
-    border-radius: 5px;
-
-}
-
-
-.namediv {
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    text-transform: capitalize;
-    /* border: 1px solid red; */
-
-}
-
-.namediv .first {
-    width: 42%;
-}
-
-.namediv div input {
-    width: 99%;
-    padding: 8px;
-    margin-top: -5px;
-}
-
-
-.name {
-    margin-left: 10px;
-}
-
-.inputField {
+/* --- Main Content Area --- */
+.content-area {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    padding: 40px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    margin-top: 10px;
 }
 
-.inputField .child {
-    display: flex;
-    justify-content: space-evenly;
-    margin-left: 11px;
-    width: 99%;
-}
-
-.inputField fieldset {
-    width: 41%;
-}
-
-
-.content .items6 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    /* border: 1px solid red; */
-
-}
-
-.content .items6 .item-list {
-    width: 40%;
-    /* border: 1px solid orange; */
-}
-
-.content .items6 input {
-    width: 97%;
-    padding: 8px;
-    margin-top: -5px;
-}
-
-.content #last-child {
-    /* border: 1px solid orange; */
-    width: 88%;
-    padding: 0px 8px;
-    margin-left: 10px;
-}
-
-
-/* Certificate list section  */
-.Certificate {
-    border: 2px solid rgb(171, 129, 129);
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.ol {
-    line-height: 30px;
-}
-
-.Orignal {
-    font-size: x-small;
-}
-
-
-.container-button {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-#disp {
-    padding: 2px;
-    /* position: relative; */
-    /* left: 35%; */
-    border: 1px solid rgb(23, 19, 23);
+/* --- Formal Paper Form --- */
+.paper-form {
+    background: var(--paper-bg);
+    max-width: 900px;
+    width: 100%;
+    padding: 40px;
     border-radius: 4px;
-    color: #388e5f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
 }
 
-/* button for next page  */
-.next button {
-    /* margin-top: 1%; */
-    /* margin-left: 690px;  */
-    border: 1.5px solid violet;
-    border-radius: 4px;
-}
-
-a {
-    text-decoration: none;
-    color: #388e5f;
-    font-size: medium;
-}
-
-/* .next button:hover {
-    background-image: url(/images/next2.jpeg);
-    background-size:contain;
-} */
-
-/* .nextbutton{
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    margin-left: -32px;
-    padding-top: 20px;
-    margin-top: -7px;
-} */
-
-/* .nextbutton:hover {
-    visibility: hidden;
-    opacity: 0;
-} */
-
-
-/* ...................... PREVIEW SECTION .................... */
-.preview-header {
-    display: flex;
-    flex-direction: column;
-    height: 190px;
-    width: 99%;
-    border-bottom: 1px dashed black;
-    /* border: 1px solid rgb(0, 0, 0); */
-}
-
-.preview-header .mainTitle {
-    height: 40px;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-bottom: 1px solid black;
-    background-color: rgba(187, 184, 184, 0.388);
-}
-
-.preview-header .clgContent {
-    display: flex;
-    gap: 5px;
-    height: 160px;
-}
-
-.preview-header .clgContent .collegeLogo {
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    /* border: 1px solid red; */
-}
-
-.preview-header .clgContent .collegeLogo img {
-    height: 130px;
-}
-
-.preview-header .clgContent .collegeInfo {
-    width: 80%;
-}
-
-
-.preview-header .clgContent .collegeInfo .item1 {
-    text-align: center;
-    width: 90%;
-}
-
-.preview-header .clgContent .collegeInfo .item2 {
-    font-size: 21px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: -8px;
-}
-
-.preview-header .clgContent .collegeInfo .item3 {
-    text-align: center;
-    margin-top: -8px;
-}
-
-.preview-header .clgContent .collegeInfo .item4 {
-    text-align: center;
-    margin-top: -8px;
-}
-
-
-#preview_from {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 66%;
-    height: auto;
-    top: 10px;
+.header-strip {
+    background: #444;
+    color: white;
     padding: 10px;
-    position: absolute;
-    display: none;
-    overflow: hidden;
-    background-color: rgb(254, 249, 249);
-    border: 1px dashed black;
-    box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
-}
-
-#preview_from .name-section {
-    box-sizing: border-box;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 5px;
-    width: 98%;
-    /* border: 1px solid rgb(0, 42, 255); */
-}
-
-#preview_from .name-section .namesOnly {
-    width: 48%;
-
-}
-
-#preview_from .name-section .namesOnly div {
-    padding: 2px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    width: 98%;
-    /* border: 1px solid rebeccapurple; */
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
 }
 
-#preview_from .name-section .namesOnly div input {
-    padding: 7px;
-    margin: 3px 0px 3px;
-    width: 40%;
-    padding-left: 4px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    /* border-bottom: 1px solid black;v */
-
+.form-title {
+    margin: 0;
+    font-size: 1.2rem;
 }
 
-#preview_from .name-section .photo-sign {
-    width: 47%;
-    height: 280px;
+.academic-year {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* --- College Info Grid --- */
+.college-header-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.college-info-section {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-    justify-items: center;
+    gap: 15px;
     text-align: center;
-    /* border: 1px solid rgb(205, 17, 17); */
 }
 
-#preview_from .name-section .photo-sign .profile {
-    width: 180px;
-    height: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0.5px solid black;
-}
-
-#preview_from .name-section .photo-sign .previewsign {
-    width: 180px;
-    border: 0.5px solid black;
-}
-
-#preview_from .name-section .photo-sign .profile img {
-    height: 165px;
+.college-logo {
+    height: 100px;
     width: auto;
 }
 
-#preview_from .name-section .photo-sign .previewsign img {
-    height: 60px;
-    width: 178px;
-    padding: 1px;
-}
+.college-text h3 { font-size: 0.9rem; color: #555; }
+.college-text h1 { font-size: 1.1rem; color: var(--primary-color); margin: 5px 0; }
+.college-text p { font-size: 0.8rem; color: #666; }
 
-
-#preview_from .other-section {
-    width: 99%;
-    height: 200px;
-    overflow: hidden;
+.upload-section {
     display: flex;
-    justify-content: space-between;
-    /* flex-direction: row; */
-    flex-wrap: wrap;
-    padding: 5px;
+    gap: 15px;
+    justify-content: center;
 }
 
-#preview_from .other-section .items-section {
+.photo-box, .sign-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 6px;
-    width: 55%;
-    margin-left: 10px;
-    /* border: 1px solid rgb(0, 0, 0); */
-}
-
-#preview_from .other-section .items-section div {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 3px 0px;
-    /* border: 1px solid olive; */
+    width: 110px;
 }
 
-#preview_from .other-section .items-section div input {
-    width: 44%;
-    padding: 6px;
-    margin: 3px 0px;
-    padding-left: 4px;
-    border: none;
-    outline: none;
-    /* border-bottom: 1px solid black; */
-    background-color: transparent;
+.photo-box img, .sign-box img {
+    width: 100px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    margin-bottom: 5px;
 }
+.sign-box img { height: 50px; width: 100px; }
 
-.otherDetails {
-    width: 99%;
-    height: auto;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 5px;
-    /* border: 1px solid red; */
-}
-
-
-.otherDetails .item-section2 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 6px;
+.upload-btn {
+    background: #555;
+    color: white;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
     width: 100%;
-    /* border: 1px solid black; */
+}
+.upload-btn:hover { background: #333; }
+
+/* Only hide the Photo & Signature inputs (because they use custom labels) */
+#profilePicture, #profileSignature {
+    display: none;
 }
 
-.otherDetails .item-section2 div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 48%;
-    /* outline: none;
-    border: none; */
-    /* border-bottom: 1px solid orange; */
-}
-
-.item-section2 div span {
-    font-weight: 400;
-}
-
-.item-section2 input {
-    width: 55%;
-    padding: 6px;
-    margin: 3px 0px;
-    padding-left: 4px;
-    border: none;
-    outline: none;
-    background: transparent;
-}
-
-#cancelpoppup {
+/* Make sure the Document list uploads are VISIBLE */
+.doc-item input[type="file"] {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
     cursor: pointer;
-    color: rgb(223, 18, 18);
-    position: absolute;
-    bottom: 1px;
-    right: 15px;
+    width: 100%; /* Ensures they fit on mobile */
 }
 
-.blur {
-    filter: blur(10px);
+/* --- Form Grids & Inputs --- */
+.divider { border-top: 2px solid #eee; margin: 20px 0; }
+.section-title {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+.section-title.centered { text-align: center; border: none; text-decoration: underline;}
+
+.input-grid {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
-#preview-Btn {
-    color: #65b5f6;
-    background-color: transparent;
-    border: 1px solid #14171b;
-    border-radius: 4px;
-    pad: 7px;
-    cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    transition: all 0.3s ease-in-out;
-}
+.two-col { grid-template-columns: 1fr 1fr; }
+.three-col { grid-template-columns: 1fr 1fr 1fr; }
 
-
-
-
-
-#preview_from .certificates-deatils {
-    width: 99%;
-    height: auto;
-    /* overflow: hidden; */
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 5px;
-    /* background-color: red; */
-}
-
-
-#preview_from .certificates-deatils .item-section3 {
+.form-group {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 6px;
-    width: 55%;
-
 }
 
-#preview_from .certificates-deatils .item-section3 div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    /* margin: 3px 0px; */
-    /* border: 1px solid olive; */
-    /* background-color: red; */
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-#preview_from .certificates-deatils .item-section3 div input {
-    width: 90%;
-    padding: 6px;
-    margin: 3px 0px;
-    margin-right: 35%;
-    padding-left: 4px;
-    border: none;
+.form-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
     outline: none;
-    /* border-bottom: 1px solid black; */
-    background-color: transparent;
-    /* background-color: red; */
+    width: 100%;
+}
+.form-input:focus { border-color: var(--accent-color); }
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+}
+.radio-group label { font-weight: normal; cursor: pointer; }
+
+/* --- Documents List --- */
+.documents-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
+.doc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+    font-size: 0.9rem;
+}
+.doc-item input { width: 180px; font-size: 0.8rem; }
 
+/* --- Buttons --- */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
 
+.btn {
+    padding: 10px 25px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.btn-primary { background: var(--accent-color); color: white; }
+.btn-secondary { background: #555; color: white; }
+.btn-outline { border: 1px solid var(--accent-color); color: var(--accent-color); background: white;}
 
+/* --- PREVIEW MODAL --- */
+.preview-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    overflow-y: auto;
+}
 
+.preview-paper {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 20px black;
+}
 
+.close-preview {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+}
 
+.preview-header { text-align: center; border-bottom: 2px solid #333; margin-bottom: 20px; }
+.preview-grid { display: flex; gap: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;}
+.preview-grid.col-2 { display: grid; grid-template-columns: 1fr 1fr; }
+.left-details { width: 70%; }
+.right-photos { width: 30%; text-align: center; }
+.p-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
+.p-row input { border: none; border-bottom: 1px dotted #333; width: 60%; font-weight: bold;}
+.p-photo img { height: 100px; border: 1px solid #ccc; }
+.p-sign img { height: 40px; border: 1px solid #ccc; }
 
-/* @media print{
-    body*{
-        visibility: hidden;
+.blur { filter: blur(5px); }
+
+/* =========================================
+   RESPONSIVE DESIGN (Tablets & Mobiles) 
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        padding-top: 80px; /* FIX: Prevent links hiding under header */
     }
-    #preview_from, #preview_from*{
-        visibility: hidden;
-    }
-    #preview_from{
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-} */
-
-
-
-/* media query section ..............................................................*/
-@media screen and (min-width:200px) and (max-width:480px) {
-    body {
-        padding: 0px;
-        margin: 0.5px;
-        width: 50vw;
-    }
-
-    #sidebar-nav {
-        z-index: 10;
-        position: fixed;
-        margin: 10px 0px;
-        left: 10px;
-        width: 30%;
-        height: 100vh;
-        padding: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 8px;
-        display: none;
-
-    }
-
-    .toggle {
-        z-index: 1;
-        box-sizing: border-box;
-        padding: 16px;
-        height: 150px;
+    .sidebar.active { transform: translateX(0); }
+    
+    .mobile-header { display: flex; }
+    
+    .content-area {
+        margin-left: 0;
         width: 100%;
-        position: fixed;
-        right: 0;
-        top: 25px;
-
-    }
-
-    #menubar {
-        color: rgb(254, 252, 249);
-        font-size: 32px;
-        padding: 10px 22px;
-        cursor: pointer;
-        border-radius: 3px;
-        background: #32569f;
-        position: relative;
-        display: block;
-        left: 5px;
-        top: 40px;
-        animation: bounce 2s infinite;
-        visibility: unset;
-    }
-
-    @keyframes bounce {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    #close-crossbar {
-        color: rgb(254, 252, 249);
-        font-size: 32px;
-        padding: 8px;
-        cursor: pointer;
-        border-radius: 12%;
-        background: #101218ef;
-        position: relative;
-        left: 280px;
-        top: -20px;
-        display: none;
-        visibility: unset;
-
-    }
-
-    .sidebar .sidebar-child {
-        /* background: rgb(48, 48, 81); */
-        cursor: pointer;
-        width: 100%;
-        padding-left: 4px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        margin: 4px 0px;
-        border-radius: 6px;
-    }
-
-    .sidebar .sidebar-child a {
-        color: white;
-        cursor: pointer;
-        font-size: 19px;
-        width: 100%;
-        padding-left: 4px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        border-radius: 6px;
-    }
-
-    .sidebar .sidebar-child:hover {
-        background: rgb(92, 52, 52);
-    }
-
-
-    .addMissiontxt {
-        width: 480px;
-        font-size: 35px;
-    }
-
-    .acadmicTxt {
-        font-size: 23.5px;
-    }
-
-
-    /* .collage{
-        font-size: 17px;
-        width: 100%;
-        margin: 0px;
-        margin-top: -130px;
-        margin-left: 25px;
-        line-height: 16px;
-    } */
-
-
-    /* .collage h1{
-        background-color: red;
-        font-size: 40px;
-    }
-  .line{
-      background-color: red;
-      width: 100%;
-     margin-top: 40px;
-  }
-    .cphoto{
-       visibility: hidden;
-    } */
-
-
-    .photo {
-        /* visibility: hidden; */
-        /* height: 300px;
-        width: 140px; */
-    }
-
-    .sign {
-        /* visibility: hidden; */
-        position: relative;
-        top: -40px;
-    }
-
-    .course {
-        height: 100px;
-        width: 720px;
-        /* margin-top: -10px; */
-        /* margin-left: 5px; */
-        /* margin-right: 50px;  */
-        /* display: flex;
-        flex-wrap: wrap;
-        gap: 1px;
-        font-weight: bold;
-        font-style: italic;
-        font-size: 24px;  */
-        font-size: 24px;
-    }
-
-
-    .inputField {
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column;
-        font-size: 25px;
-        align-items: center;
-        width: 100%;
-    }
-
-    .same {
-        font-size: 20px;
-        width: 200%;
         padding: 10px;
     }
 
-    .hrline {
-        position: relative;
-        top: 50px;
-    }
+    .paper-form { padding: 15px; }
 
-    .name {
-        position: relative;
-        top: 40px;
-        font-size: 25px;
-    }
+    /* Stack Grids */
+    .college-header-grid { grid-template-columns: 1fr; text-align: center; }
+    .college-info-section { flex-direction: column; }
+    
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    .documents-list { grid-template-columns: 1fr; }
 
-    .namediv {
-        flex-direction: column;
-        padding: 10px;
-        font-size: 25px;
-    }
-
-    .namediv .first {
-        width: auto;
-        padding: 10px;
-    }
-
-    .namediv div input {
-        width: 96%;
-        padding: 10px;
-        margin-top: -10px;
-    }
-
-    .content .items6 {
-        width: 98%;
-        flex-direction: column;
-        padding: 10px;
-        /* border: 1px solid rebeccapurple; */
-
-
-    }
-
-    .content .items6 .item-list {
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        padding: 5px;
-        /* border: 1px solid purple; */
-        /* border: 1px solid orange; */
-    }
-
-    .content .items6 input {
-        width: 98%;
-        padding: 10px;
-
-    }
-
-    .content #last-child {
-        margin-left: -3px;
-    }
-
-    fieldset {
-        margin: 0px 80px 0px 55px;
-    }
-
-    .child fieldset {
-        width: 240px;
-        height: 70px;
-    }
-
-    fieldset #date {
-        width: 150px;
-    }
-
-    .Certificate {
-        font-size: 28px;
-        padding: 20px;
-    }
-
-    #preview_from {
-        width: 225%;
-        height: auto;
-        left: 7px;
-    }
-
-    #preview-Btn {
-        /* display: none; */
-        font-size: 30px;
-        border-radius: 20px;
-    }
-
-    .next button a {
-        font-size: 35px;
-    }
-
-    .next button {
-        border-radius: 20px;
-        padding: 10px;
-    }
-
-    #disp {
-        font-size: 30px;
-        border-radius: 10px;
-        padding: 10px;
-    }
+    .doc-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+    
+    .header-strip { flex-direction: column; text-align: center; }
+    
+    .action-buttons { flex-direction: column; }
+    
+    /* Preview Modal Mobile */
+    .preview-paper { width: 95%; padding: 10px; }
+    .preview-grid, .preview-grid.col-2 { flex-direction: column; display: flex; }
+    .right-photos { width: 100%; display: flex; justify-content: center; gap: 10px; }
 }

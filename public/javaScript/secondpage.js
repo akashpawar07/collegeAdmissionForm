@@ -1,44 +1,53 @@
-//////////////// SIDEBAR //////////////////////////////
-
+//////////////// SIDEBAR TOGGLE LOGIC //////////////////////////////
 const menuBtn = document.getElementById("menubar");
 const sidebar = document.getElementById("sidebar-nav");
 const closeBtn = document.getElementById("close-crossbar");
 
 // Open logic
 menuBtn.onclick = function () {
-    sidebar.style.display = "block";
+    // Instead of display:block, we add the 'active' class to slide it in
+    sidebar.classList.add("active");
+    
+    // Toggle the buttons
     closeBtn.style.display = "block";
     menuBtn.style.display = "none";
 };
 
 // Close logic
 closeBtn.onclick = function () {
-    sidebar.style.display = "none";
-    menuBtn.style.display = "block";
+    // Remove class to slide it out
+    sidebar.classList.remove("active");
+    
+    // Toggle the buttons
     closeBtn.style.display = "none";
+    menuBtn.style.display = "block";
 };
 
+// Function for getting current URL (Active Tab Highlighting)
 document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
-    // console.log("Current Browser Path:", currentPath); // Debug current URL
+    
+    // Select the <a> tags directly since they now have the class .sidebar-child
+    const sidebarLinks = document.querySelectorAll('.sidebar-child');
 
-    const sidebarItems = document.querySelectorAll('#sidebar-nav .sidebar-child');
-
-    sidebarItems.forEach(item => {
-        const link = item.querySelector('a');
-        const href = link.getAttribute('href');
-
-        // Log each comparison to see why it might fail
-        // console.log(`Checking link: ${href} | Match: ${currentPath === href}`);
-
-        if (currentPath === href) {
-            item.classList.add('active');
-            // console.log("✅ Added 'active' class to:", item);
-
-            // // Final check: Does the element have the class now?
-            // if (item.classList.contains('active')) {
-            //     console.log("Verified: Element now has class 'active'");
-            // }
+    sidebarLinks.forEach(link => {
+        // Check if the link's href matches current path
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
         }
     });
 });
+
+
+/////////////// FORM INPUT AUTO-FILL (Keep existing logic) ///////////////
+const surname = sessionStorage.getItem("surname");
+const firstName = sessionStorage.getItem("firstName");
+const fatherName = sessionStorage.getItem("fatherName");
+
+// Check if session data exists to avoid "null null" appearing
+if(surname && firstName && fatherName) {
+    document.getElementById("parent-name").value = fatherName + " " + surname;
+    document.getElementById("stu-name").value = firstName + " " + surname;
+    document.getElementById("parent-name2").value = fatherName + " " + surname;
+    document.getElementById("stu-name2").value = firstName + " " + surname;
+}

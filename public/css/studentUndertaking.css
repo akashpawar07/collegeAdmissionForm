@@ -1,373 +1,373 @@
+/* --- CSS Reset & Variables --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3e8950;
+    --bg-color: #f3f4f6;
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #ffffff;
+    --paper-bg: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    padding: 0px 0px 0px 300px;
-    line-height: 0.7cm;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-.container {
+/* --- Layout Wrappers --- */
+.main-wrapper {
     display: flex;
-
+    min-height: 100vh;
 }
 
-#sidebar-nav {
-    z-index: 10;
+/* --- Sidebar Styling --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
     position: fixed;
-    padding: 12px;
-    left: 10px;
-    width: 19%;
-    height: 99vh;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    padding: 20px 10px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-    background-color: #101218ef;
 }
 
-#menubar {
+.sidebar-child {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    font-size: 16px;
+}
+
+.sidebar-child .icon-box {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.sidebar-child:hover,
+.sidebar-child.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* --- Mobile Header & Toggle --- */
+.mobile-header {
     display: none;
+    /* Hidden on desktop */
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.mobile-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.toggle i {
+    font-size: 24px;
+    cursor: pointer;
 }
 
 #close-crossbar {
     display: none;
 }
 
-
-.sidebar {
-    position: fixed;
-    left: 10px;
-    width: 19%;
-    height: auto;
+/* --- Main Content Area --- */
+.content-area {
+    margin-left: 260px;
+    /* Width of sidebar */
+    width: calc(100% - 260px);
+    padding: 40px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-
-
+    justify-content: center;
 }
 
-.sidebar .sidebar-child {
-    cursor: pointer;
+/* --- Formal Paper Form --- */
+.paper-form {
+    background: var(--paper-bg);
+    max-width: 900px;
     width: 100%;
-    padding-left: 4px;
+    padding: 50px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* --- Form Typography & Elements --- */
+.form-header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    margin: 4px 0px;
-    border-radius: 6px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 
-.sidebar .sidebar-child a {
-    color: white;
-    cursor: pointer;
-    font-size: 19px;
-    width: 100%;
-    padding-left: 4px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    border-radius: 6px;
-    text-decoration: none;
+.date-group label {
+    font-weight: bold;
 }
 
-.sidebar .sidebar-child .lable {
-    margin: 16px 16px 16px 0px;
-
-}
-
-
-.sidebar .sidebar-child:hover {
-    background-color: #3f424a;
-}
-
-#sidebar-nav .sidebar-child.active {
-    background-color: #3f424a !important;
-    /* Test with !important first */
-    color: red;
-}
-
-
-form {
-    border: 2px solid black;
-    width: 800px;
-    height: auto;
-    background-color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
+.date-group input {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--accent-color);
+    outline: none;
 }
 
 .headline {
     text-align: center;
-    text-decoration: underline;
-    font-family: ;
+    margin: 30px 0 20px;
+    color: var(--primary-color);
+    text-transform: uppercase;
 }
 
-.name {
-    margin-left: 35px;
+.headline h3 {
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
-input {
-    border: 0px;
-    border-bottom: 0.5px solid black;
+.text-content ol {
+    padding-left: 25px;
+    text-align: justify;
+}
+
+.text-content li {
+    margin-bottom: 12px;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px dashed #ccc;
+    margin: 30px 0;
+}
+
+/* --- Inputs inside text (Fill in the blanks) --- */
+.inline-input {
+    border: none;
+    border-bottom: 1px dashed #333;
     background: transparent;
-    width: 350px;
-}
-
-.content2 input {
-    border: none;
-    outline: none;
-    border-bottom: 1px solid black;
-    padding: 3px;
+    color: var(--accent-color);
     font-weight: bold;
-}
-
-p {
-    margin-left: 30px;
-}
-
-p input {
-    width: 120px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid black;
-    padding: 3px;
-    font-weight: bold;
-}
-
-
-fieldset {
-    /* height: 30px;
-    width: 20px;
+    font-size: 1rem;
+    padding: 0 5px;
     text-align: center;
-    margin-top: -8px;
-    margin-left: 670px; */
-    width: 13%;
-    float: right;
-}
-
-fieldset input {
-    height: 20px;
-    width: 100px;
-}
-
-.sign {
-    display: flex;
-    justify-content: space-between;
-}
-
-body input {
     width: auto;
+    min-width: 150px;
+    max-width: 100%;
 }
 
+.inline-input:focus {
+    outline: none;
+    border-bottom: 1px solid var(--accent-color);
+}
 
-/* .....................................buttons..................................................... */
+/* --- Signature Section --- */
+.form-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
 
-.prev {
+.declaration-date {
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.signature-section {
     display: flex;
     justify-content: space-between;
-    padding: 5px 4px;
+    gap: 20px;
+    margin-top: 30px;
 }
 
-.prev button {
-    border-radius: 5px;
-    padding: 5px 4px;
-    border: none;
-    border: 1px solid rgb(62, 137, 80);
-    cursor: pointer;
-}
-
-.prev a {
-    text-decoration: none;
-    padding: 6px;
-    font-size: 16px;
-    color: black;
-}
-
-
-
-/* ...................... PREVIEW SECTION .................... */
-/* #preview_from {
+.sign-box {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    width: 63.5%;
-    height: auto;
-    top: 10px;
-    padding: 10px;
-    position: absolute;
-    display: none;
-    overflow: hidden;
-    background-color: rgb(254, 249, 249);
-    border: 1px dashed black;
-    box-shadow: 5px 10px 10px rgba(61, 102, 191, 0.678);
-} */
+    align-items: center;
+    width: 45%;
+}
 
-/* .preview input {
+.sign-input {
     border: none;
-    outline: none;
-} */
+    border-bottom: 1px solid #000;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    color: var(--accent-color);
+    /* Optional: Looks like a signature */
+    font-size: 1.2rem;
+}
 
-/* #cancelpoppup {
+/* --- Buttons --- */
+.action-buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
     cursor: pointer;
-    color: rgb(223, 18, 18);
-    position: absolute;
-    bottom: 1px;
-    right: 15px;
-} */
+    transition: all 0.3s;
+    font-size: 1rem;
+    border: none;
+}
 
-/* .blur {
-    filter: blur(10px);
-} */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
 
-/* #preview-Btn {
-    background-color: transparent;
-    border: 1px solid #050607;
-    border-radius: 4px;
-    pad: 7px;
-    cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    transition: all 0.3s ease-in-out;
-} */
+.btn-primary:hover {
+    background-color: #2e683b;
+    transform: translateY(-2px);
+}
 
+.btn-secondary {
+    background-color: white;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
 
+.btn-secondary:hover {
+    background-color: #f0fdf4;
+}
 
+/* =========================================
+   RESPONSIVE DESIGN (Tablets & Mobiles) 
+   ========================================= */
+@media screen and (max-width: 768px) {
 
+    .sidebar {
+        /* Keep your existing transform/transition logic */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
 
-@media screen and (min-width:200px) and (max-width:480px) {
-    body {
-        /* height: ; */
-        padding: 0px;
+        /* FIX: Push the links down so they aren't hidden under the header */
+        padding-top: 80px;
+
+        /* Ensure sidebar is on top of other content but below the toggle button if needed */
+        z-index: 999;
     }
 
-    #sidebar-nav {
-        z-index: 10;
-        position: fixed;
-        margin: 10px 0px;
-        left: 10px;
-        width: 40%;
-        height: 100vh;
-        padding: 12px;
+    /* 2. Slide sidebar in when JS adds 'active' class */
+    .sidebar.active {
+        transform: translateX(0%);
+    }
+
+    /* 3. Handle the Toggle Buttons */
+    .mobile-header {
         display: flex;
-        flex-direction: column;
+        /* Show the header bar */
+        justify-content: space-between;
         align-items: center;
-        border-radius: 8px;
-        display: none;
-
-    }
-
-    .toggle {
-        z-index: 1;
-        box-sizing: border-box;
-        padding: 10px;
-        height: auto;
-        width: 100%;
-        position: fixed;
-        right: 0;
-        top: 2px;
-
+        z-index: 1001;
+        position: sticky;
+        top: 0;
     }
 
     #menubar {
-        color: rgb(254, 252, 249);
-        font-size: 32px;
-        padding: 9px 20px;
-        cursor: pointer;
-        border-radius: 3px;
-        background: #32569f;
-        position: relative;
         display: block;
-        left: 3px;
-        top: 0px;
-        animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-10px);
-        }
+        /* Show hamburger by default */
+        font-size: 24px;
+        cursor: pointer;
     }
 
     #close-crossbar {
-        color: rgb(254, 252, 249);
-        font-size: 32px;
-        padding: 8px;
-        cursor: pointer;
-        border-radius: 12%;
-        background: #101218ef;
-        position: relative;
-        left: 280px;
-        top: 10px;
         display: none;
+        /* Hide X by default */
+        font-size: 24px;
+        cursor: pointer;
     }
 
-    #popup {
-        margin: auto;
-        width: 100vw;
-        height: 80vh;
+    /* Show mobile header */
+    .mobile-header {
+        display: flex;
     }
 
-    form {
-        height: auto;
-        border: none;
-        font-size: large;
-    }
-
-    fieldset {
-        margin-right: 40px;
-    }
-
-    .headline {
-        margin-left: 10px;
-    }
-
-    .headline {
-        font-size: 22px;
-    }
-
-    #preview_from {
-        width: 255%;
-        height: auto;
-    }
-
-    .secondSign {
-        margin-left: 10px;
-    }
-
-    .next button a {
-        font-size: 35px;
-    }
-
-    .next button {
-        padding: 5px;
-        border-radius: 20px;
-    }
-
-    .prev button a {
-        font-size: 35px;
-    }
-
-    .prev button {
-        border-radius: 20px;
-        padding: 5px;
-
-    }
-
-    #preview-Btn {
-        font-size: 25px;
-        border-radius: 20px;
-        padding: 5px;
-    }
-
-    #disp {
+    /* Adjust main content width */
+    .content-area {
+        margin-left: 0;
+        width: 100%;
         padding: 10px;
-        font-size: 30px;
-        border-radius: 15px;
+    }
+
+    /* Adjust form padding */
+    .paper-form {
+        padding: 20px;
+        box-shadow: none;
+        border: none;
+    }
+
+    /* Stack signature boxes */
+    .signature-section {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .sign-box {
+        width: 100%;
+    }
+
+    /* Make inline inputs responsive */
+    .inline-input {
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+        text-align: left;
+    }
+
+    /* Buttons stack */
+    .action-buttons {
+        flex-direction: row;
+        /* Keep buttons in row but smaller */
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    /* Adjust font sizes for readability */
+    body {
+        font-size: 14px;
+    }
+
+    .headline h3 {
+        font-size: 1.1rem;
     }
 }
