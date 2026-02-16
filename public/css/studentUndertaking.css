@@ -8,6 +8,7 @@
     --paper-bg: #ffffff;
     --text-color: #333;
     --border-color: #ddd;
+    --hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -29,7 +30,9 @@ body {
     min-height: 100vh;
 }
 
-/* --- Sidebar Styling --- */
+/* ==========================================================================
+   --- UNIVERSAL SIDEBAR STYLING ---
+   ========================================================================== */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -53,26 +56,50 @@ body {
     color: #cbd5e1;
     text-decoration: none;
     border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s ease-in-out;
     font-size: 16px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-child a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
 }
 
 .sidebar-child .icon-box {
     width: 30px;
     text-align: center;
-    margin-right: 10px;
+    font-size: 18px;
 }
 
-.sidebar-child:hover,
-.sidebar-child.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+.sidebar-child .label {
+    font-weight: 500;
 }
+
+/* Hover State */
+.sidebar-child:hover {
+    background-color: var(--hover-bg);
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Active State (Highlighted) */
+.sidebar-child.active {
+    background-color: var(--hover-bg) !important;
+    color: #ffffff;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* ========================================================================== */
 
 /* --- Mobile Header & Toggle --- */
 .mobile-header {
     display: none;
-    /* Hidden on desktop */
     background: var(--sidebar-bg);
     color: white;
     padding: 15px;
@@ -100,7 +127,6 @@ body {
 /* --- Main Content Area --- */
 .content-area {
     margin-left: 260px;
-    /* Width of sidebar */
     width: calc(100% - 260px);
     padding: 40px;
     display: flex;
@@ -225,8 +251,7 @@ body {
     font-family: 'Lucida Handwriting', 'Segoe Print', 'Bradley Hand', cursive;
     color: var(--accent-color);
     font-size: 1.2rem;
-     
-    outline: none; 
+    outline: none;
 }
 
 /* --- Buttons --- */
@@ -273,27 +298,22 @@ body {
    ========================================= */
 @media screen and (max-width: 768px) {
 
+    /* --- FIXED MOBILE SIDEBAR LOGIC --- */
     .sidebar {
-        /* Keep your existing transform/transition logic */
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
-
-        /* FIX: Push the links down so they aren't hidden under the header */
         padding-top: 80px;
-
-        /* Ensure sidebar is on top of other content but below the toggle button if needed */
-        z-index: 999;
+        z-index: 1000;
+        display: flex;
+        /* Keep flex so content inside aligns */
     }
 
-    /* 2. Slide sidebar in when JS adds 'active' class */
     .sidebar.active {
         transform: translateX(0%);
     }
 
-    /* 3. Handle the Toggle Buttons */
     .mobile-header {
         display: flex;
-        /* Show the header bar */
         justify-content: space-between;
         align-items: center;
         z-index: 1001;
@@ -303,21 +323,14 @@ body {
 
     #menubar {
         display: block;
-        /* Show hamburger by default */
         font-size: 24px;
         cursor: pointer;
     }
 
     #close-crossbar {
         display: none;
-        /* Hide X by default */
         font-size: 24px;
         cursor: pointer;
-    }
-
-    /* Show mobile header */
-    .mobile-header {
-        display: flex;
     }
 
     /* Adjust main content width */
@@ -355,7 +368,6 @@ body {
     /* Buttons stack */
     .action-buttons {
         flex-direction: row;
-        /* Keep buttons in row but smaller */
         flex-wrap: wrap;
     }
 
@@ -364,7 +376,6 @@ body {
         text-align: center;
     }
 
-    /* Adjust font sizes for readability */
     body {
         font-size: 14px;
     }

@@ -2,6 +2,8 @@ const express = require("express")
 const router = express.Router()
 const studentUndertakingFessSchema = require('../models/studentFeesModels')
 
+const {preventLoggedinUser} = require('../middleware/authMiddlewares')
+
 // POST route
 router.post("/", async (req, res) => {
     try {
@@ -29,7 +31,7 @@ router.post("/", async (req, res) => {
 })
 
 // GET route
-router.get("/", (req, res) => {
+router.get("/", preventLoggedinUser, (req, res) => {
     res.render('feesUndertaking')
 })
 

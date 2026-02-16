@@ -1,10 +1,11 @@
-//////////////// 1. SIDEBAR TOGGLE //////////////////////////////
+//////////////// 1. SIDEBAR TOGGLE (UPDATED) //////////////////////////////
 const menuBtn = document.getElementById("menubar");
 const sidebar = document.getElementById("sidebar-nav");
 const closeBtn = document.getElementById("close-crossbar");
 
 if (menuBtn) {
   menuBtn.onclick = function () {
+    sidebar.style.display = "flex"; // Force flex display on mobile
     sidebar.classList.add("active");
     closeBtn.style.display = "block";
     menuBtn.style.display = "none";
@@ -16,16 +17,27 @@ if (closeBtn) {
     sidebar.classList.remove("active");
     closeBtn.style.display = "none";
     menuBtn.style.display = "block";
+
+    // Wait for slide transition to finish before removing display
+    setTimeout(() => {
+      if (!sidebar.classList.contains("active")) {
+        sidebar.style.display = "";
+      }
+    }, 300);
   };
 }
 
 //////////////// 2. DATA POPULATION & SYNC //////////////////
 document.addEventListener("DOMContentLoaded", function () {
-  // Highlight sidebar active link
+  // Highlight sidebar active link (UPDATED)
   const currentPath = window.location.pathname;
   const sidebarItems = document.querySelectorAll('.sidebar-child');
+
   sidebarItems.forEach(item => {
-    if (item.getAttribute('href') === currentPath) {
+    item.classList.remove('active');
+    const href = item.getAttribute('href') || (item.querySelector('a') && item.querySelector('a').getAttribute('href'));
+
+    if (href && (href === currentPath || (currentPath.includes(href) && href !== '/'))) {
       item.classList.add('active');
     }
   });
@@ -147,7 +159,7 @@ if (finalForm) {
       e.preventDefault();
       return false;
     }
-
+s
     // 3. Clear Session Data
     // Only clear if validation passes
     setTimeout(() => {

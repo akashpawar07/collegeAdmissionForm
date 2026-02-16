@@ -29,7 +29,9 @@ body {
     min-height: 100vh;
 }
 
-/* --- Sidebar Styling --- */
+/* ==========================================================================
+   --- Sidebar Styling (UPDATED) ---
+   ========================================================================== */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -53,21 +55,36 @@ body {
     color: #cbd5e1;
     text-decoration: none;
     border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s ease-in-out;
     font-size: 16px;
     cursor: pointer;
+    border-left: 4px solid transparent;
 }
 
 .sidebar-child .icon-box {
     width: 30px;
     text-align: center;
     margin-right: 10px;
+    font-size: 18px;
 }
 
-.sidebar-child:hover, .sidebar-child.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+.sidebar-child .label {
+    font-weight: 500;
 }
+
+.sidebar-child:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.sidebar-child.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* ========================================================================== */
 
 /* --- Mobile Header --- */
 .mobile-header {
@@ -158,9 +175,21 @@ body {
     width: auto;
 }
 
-.college-text h3 { font-size: 0.9rem; color: #555; }
-.college-text h1 { font-size: 1.1rem; color: var(--primary-color); margin: 5px 0; }
-.college-text p { font-size: 0.8rem; color: #666; }
+.college-text h3 {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.college-text h1 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin: 5px 0;
+}
+
+.college-text p {
+    font-size: 0.8rem;
+    color: #666;
+}
 
 .upload-section {
     display: flex;
@@ -168,14 +197,16 @@ body {
     justify-content: center;
 }
 
-.photo-box, .sign-box {
+.photo-box,
+.sign-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 110px;
 }
 
-.photo-box img, .sign-box img {
+.photo-box img,
+.sign-box img {
     width: 100px;
     height: 120px;
     object-fit: cover;
@@ -183,7 +214,11 @@ body {
     background: #f0f0f0;
     margin-bottom: 5px;
 }
-.sign-box img { height: 50px; width: 100px; }
+
+.sign-box img {
+    height: 50px;
+    width: 100px;
+}
 
 .upload-btn {
     background: #555;
@@ -195,10 +230,14 @@ body {
     text-align: center;
     width: 100%;
 }
-.upload-btn:hover { background: #333; }
+
+.upload-btn:hover {
+    background: #333;
+}
 
 /* Only hide the Photo & Signature inputs (because they use custom labels) */
-#profilePicture, #profileSignature {
+#profilePicture,
+#profileSignature {
     display: none;
 }
 
@@ -208,11 +247,16 @@ body {
     margin-top: 5px;
     font-size: 0.9rem;
     cursor: pointer;
-    width: 100%; /* Ensures they fit on mobile */
+    width: 100%;
+    /* Ensures they fit on mobile */
 }
 
 /* --- Form Grids & Inputs --- */
-.divider { border-top: 2px solid #eee; margin: 20px 0; }
+.divider {
+    border-top: 2px solid #eee;
+    margin: 20px 0;
+}
+
 .section-title {
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
@@ -221,7 +265,12 @@ body {
     font-size: 1.1rem;
     text-transform: uppercase;
 }
-.section-title.centered { text-align: center; border: none; text-decoration: underline;}
+
+.section-title.centered {
+    text-align: center;
+    border: none;
+    text-decoration: underline;
+}
 
 .input-grid {
     display: grid;
@@ -229,8 +278,13 @@ body {
     margin-bottom: 20px;
 }
 
-.two-col { grid-template-columns: 1fr 1fr; }
-.three-col { grid-template-columns: 1fr 1fr 1fr; }
+.two-col {
+    grid-template-columns: 1fr 1fr;
+}
+
+.three-col {
+    grid-template-columns: 1fr 1fr 1fr;
+}
 
 .form-group {
     display: flex;
@@ -251,7 +305,10 @@ body {
     outline: none;
     width: 100%;
 }
-.form-input:focus { border-color: var(--accent-color); }
+
+.form-input:focus {
+    border-color: var(--accent-color);
+}
 
 .radio-group {
     display: flex;
@@ -259,7 +316,11 @@ body {
     flex-wrap: wrap;
     font-size: 0.9rem;
 }
-.radio-group label { font-weight: normal; cursor: pointer; }
+
+.radio-group label {
+    font-weight: normal;
+    cursor: pointer;
+}
 
 /* --- Documents List --- */
 .documents-list {
@@ -276,7 +337,11 @@ body {
     padding-bottom: 5px;
     font-size: 0.9rem;
 }
-.doc-item input { width: 180px; font-size: 0.8rem; }
+
+.doc-item input {
+    width: 180px;
+    font-size: 0.8rem;
+}
 
 /* --- Buttons --- */
 .action-buttons {
@@ -294,17 +359,32 @@ body {
     font-weight: bold;
     font-size: 1rem;
 }
-.btn-primary { background: var(--accent-color); color: white; }
-.btn-secondary { background: #555; color: white; }
-.btn-outline { border: 1px solid var(--accent-color); color: var(--accent-color); background: white;}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: #555;
+    color: white;
+}
+
+.btn-outline {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background: white;
+}
 
 /* --- PREVIEW MODAL --- */
 .preview-overlay {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
     z-index: 2000;
     overflow-y: auto;
 }
@@ -321,23 +401,68 @@ body {
 
 .close-preview {
     position: absolute;
-    top: 10px; right: 20px;
+    top: 10px;
+    right: 20px;
     font-size: 30px;
     cursor: pointer;
     color: red;
 }
 
-.preview-header { text-align: center; border-bottom: 2px solid #333; margin-bottom: 20px; }
-.preview-grid { display: flex; gap: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;}
-.preview-grid.col-2 { display: grid; grid-template-columns: 1fr 1fr; }
-.left-details { width: 70%; }
-.right-photos { width: 30%; text-align: center; }
-.p-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; }
-.p-row input { border: none; border-bottom: 1px dotted #333; width: 60%; font-weight: bold;}
-.p-photo img { height: 100px; border: 1px solid #ccc; }
-.p-sign img { height: 40px; border: 1px solid #ccc; }
+.preview-header {
+    text-align: center;
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+}
 
-.blur { filter: blur(5px); }
+.preview-grid {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.preview-grid.col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.left-details {
+    width: 70%;
+}
+
+.right-photos {
+    width: 30%;
+    text-align: center;
+}
+
+.p-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.p-row input {
+    border: none;
+    border-bottom: 1px dotted #333;
+    width: 60%;
+    font-weight: bold;
+}
+
+.p-photo img {
+    height: 100px;
+    border: 1px solid #ccc;
+}
+
+.p-sign img {
+    height: 40px;
+    border: 1px solid #ccc;
+}
+
+.blur {
+    filter: blur(5px);
+}
 
 /* =========================================
    RESPONSIVE DESIGN (Tablets & Mobiles) 
@@ -345,35 +470,78 @@ body {
 @media screen and (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
-        padding-top: 80px; /* FIX: Prevent links hiding under header */
+        padding-top: 80px;
+        /* FIX: Prevent links hiding under header */
     }
-    .sidebar.active { transform: translateX(0); }
-    
-    .mobile-header { display: flex; }
-    
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .mobile-header {
+        display: flex;
+    }
+
     .content-area {
         margin-left: 0;
         width: 100%;
         padding: 10px;
     }
 
-    .paper-form { padding: 15px; }
+    .paper-form {
+        padding: 15px;
+    }
 
     /* Stack Grids */
-    .college-header-grid { grid-template-columns: 1fr; text-align: center; }
-    .college-info-section { flex-direction: column; }
-    
-    .two-col, .three-col { grid-template-columns: 1fr; }
-    .documents-list { grid-template-columns: 1fr; }
+    .college-header-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 
-    .doc-item { flex-direction: column; align-items: flex-start; gap: 5px; }
-    
-    .header-strip { flex-direction: column; text-align: center; }
-    
-    .action-buttons { flex-direction: column; }
-    
+    .college-info-section {
+        flex-direction: column;
+    }
+
+    .two-col,
+    .three-col {
+        grid-template-columns: 1fr;
+    }
+
+    .documents-list {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .header-strip {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
     /* Preview Modal Mobile */
-    .preview-paper { width: 95%; padding: 10px; }
-    .preview-grid, .preview-grid.col-2 { flex-direction: column; display: flex; }
-    .right-photos { width: 100%; display: flex; justify-content: center; gap: 10px; }
+    .preview-paper {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .preview-grid,
+    .preview-grid.col-2 {
+        flex-direction: column;
+        display: flex;
+    }
+
+    .right-photos {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
 }

@@ -24,11 +24,18 @@
 
         <nav class="sidebar" id="sidebar-nav">
             <div class="nav-links">
+                <a href="/admin-dashboard" class="sidebar-child active">
+                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+                    <span class="label">Admin Dashboard</span>
+                </a>
+
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
+
                 <a href="/" class="sidebar-child">
                     <div class="icon-box"><i class="fa-solid fa-house"></i></div>
                     <span class="label">Registration Form</span>
                 </a>
-                <a href="/studentUndertaking" class="sidebar-child active">
+                <a href="/studentUndertaking" class="sidebar-child">
                     <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
                     <span class="label">Student Undertaking</span>
                 </a>
@@ -44,8 +51,9 @@
         </nav>
 
         <main class="content-area">
-            <form action="/studentUndertaking" id="submitForm" method="post" class="paper-form" enctype="multipart/form-data">
-                
+            <form action="/studentUndertaking" id="submitForm" method="post" class="paper-form"
+                enctype="multipart/form-data">
+
                 <div class="form-header">
                     <div class="date-group">
                         <label for="date">Date:</label>
@@ -60,16 +68,33 @@
                     <div class="text-content">
                         <ol>
                             <li>I will always follow all rules & regulations made by college & institute.</li>
-                            <li>I will regularly & sincerely attend all theory classes with practicals from the first day of next semester.</li>
-                            <li>I will always follow all norms decided by college authority regarding Uniform, I-card, hygiene, safety & sporty environment.</li>
-                            <li>I will be highly disciplined in all respects. I will not indulge in any misbehavior such as commenting, mocking, shouting, running, teasing etc. I will instantly obey discipline related instructions by any staff.</li>
-                            <li>I am timely & regularly completing all homework, assignments, practicals, seminars, projects & any given task within stipulated time and with involvement.</li>
-                            <li>I am ready to understand punishment given by college/department for indiscipline, misbehavior or any other default.</li>
-                            <li>I will always maintain discipline during Events, Cultural programs, Sports, Gatherings, Guest/Expert lectures, Industrial visits etc.</li>
-                            <li>I am aware that any rule imposed by the University such as "imposing limits on the numbers of attempts permissible to pass any examination" shall be binding on me.</li>
-                            <li>I hereby agree to conform to any Rules, Acts & Laws enforced by Government & I hereby undertake that I will do nothing either inside or outside the college which may result in disciplinary action against me under these rules, acts & laws referred to.</li>
-                            <li>I fully understand that the principal of the college has the right to expel me from the college for any infringement of the rules of conduct & discipline prescribed by the college or University or Government & the undertaking given above.</li>
-                            <li><strong>Condition of minimum attendance:</strong> I am fully aware; I will not be allowed to appear for the examination if I do not attend minimum 90 percent classes of theory, practical etc. I am also aware that I will not be allowed for the examination, drawing, workshop etc. if I fail to submit satisfactorily all the assignments, jobs, journals, drawings & reports as may be specified by the University within stipulated time limit.</li>
+                            <li>I will regularly & sincerely attend all theory classes with practicals from the first
+                                day of next semester.</li>
+                            <li>I will always follow all norms decided by college authority regarding Uniform, I-card,
+                                hygiene, safety & sporty environment.</li>
+                            <li>I will be highly disciplined in all respects. I will not indulge in any misbehavior such
+                                as commenting, mocking, shouting, running, teasing etc. I will instantly obey discipline
+                                related instructions by any staff.</li>
+                            <li>I am timely & regularly completing all homework, assignments, practicals, seminars,
+                                projects & any given task within stipulated time and with involvement.</li>
+                            <li>I am ready to understand punishment given by college/department for indiscipline,
+                                misbehavior or any other default.</li>
+                            <li>I will always maintain discipline during Events, Cultural programs, Sports, Gatherings,
+                                Guest/Expert lectures, Industrial visits etc.</li>
+                            <li>I am aware that any rule imposed by the University such as "imposing limits on the
+                                numbers of attempts permissible to pass any examination" shall be binding on me.</li>
+                            <li>I hereby agree to conform to any Rules, Acts & Laws enforced by Government & I hereby
+                                undertake that I will do nothing either inside or outside the college which may result
+                                in disciplinary action against me under these rules, acts & laws referred to.</li>
+                            <li>I fully understand that the principal of the college has the right to expel me from the
+                                college for any infringement of the rules of conduct & discipline prescribed by the
+                                college or University or Government & the undertaking given above.</li>
+                            <li><strong>Condition of minimum attendance:</strong> I am fully aware; I will not be
+                                allowed to appear for the examination if I do not attend minimum 90 percent classes of
+                                theory, practical etc. I am also aware that I will not be allowed for the examination,
+                                drawing, workshop etc. if I fail to submit satisfactorily all the assignments, jobs,
+                                journals, drawings & reports as may be specified by the University within stipulated
+                                time limit.</li>
                         </ol>
                     </div>
                 </div>
@@ -80,42 +105,63 @@
                     <div class="headline">
                         <h3>ANNEXURE II <br> AFFIDAVIT BY PARENT/GUARDIAN</h3>
                     </div>
-                    
+
                     <div class="text-content fill-in-blanks">
                         <p>
-                            I, <input type="text" id="parent-name" name="fathername" class="inline-input" placeholder="Parent Name" readonly required>
+                            I, <input type="text" id="parent-name" name="fathername" class="inline-input"
+                                placeholder="Parent Name" readonly required>
                             Mr./Mrs./Ms (full name of parent/guardian) Father/Mother/guardian of
-                            <input type="text" id="stu-name" name="stdname" class="inline-input" placeholder="Student Name" readonly required>
+                            <input type="text" id="stu-name" name="stdname" class="inline-input"
+                                placeholder="Student Name" readonly required>
                             (full name of student with admission / registration / enrollment number),
                         </p>
-                        
+
                         <ol>
-                            <li>having been admitted to 
-                                <input type="text" id="institute-name" name="institutename" value="SYCET Chh.Sambhajinagar" class="inline-input" readonly required>
-                                (name of the institution), have received a copy of the AICTE regulations on Curbing the menace of Ragging in Higher Education Institutions, 2009, (hereinafter called the "regulations") carefully read and fully understood the provisions contained in the said Regulations.
+                            <li>having been admitted to
+                                <input type="text" id="institute-name" name="institutename"
+                                    value="SYCET Chh.Sambhajinagar" class="inline-input" readonly required>
+                                (name of the institution), have received a copy of the AICTE regulations on Curbing the
+                                menace of Ragging in Higher Education Institutions, 2009, (hereinafter called the
+                                "regulations") carefully read and fully understood the provisions contained in the said
+                                Regulations.
                             </li>
-                            <li>I have, in particular, perused clause 3 of the Regulations & am aware as to what constitutes ragging.</li>
-                            <li>I have also, in particular, perused clause 7 & clause 9.1 of the Regulations and am fully aware of the penal & administrative action that is liable to be taken against my ward in case he/she is found guilty or abetting ragging, actively or passively, or being part of a conspiracy to promote ragging.</li>
-                            <li>I hereby solemnly aver and undertake that a) My ward will not indulge in any behavior or act that may be constituted as ragging under clause 3 of the Regulations. b) My ward will not participate in or abet or propagate through any act of commission or omission that...</li>
-                            <li>I hereby affirm that, if found guilty of ragging, my ward is liable for punishment according to clause 9.1 of the Regulations, without prejudice to any other criminal action that may be taken against my ward under any penal law or any law for the time being in force.</li>
-                            <li>I hereby declare that my ward has not been expelled or debarred from admission in any institution in the country on account of being found guilty of, abetting or being part of a conspiracy to promote, ragging & further affirm that, in case the declaration is found to be untrue, I am aware that the admission of my ward is liable to be cancelled.</li>
+                            <li>I have, in particular, perused clause 3 of the Regulations & am aware as to what
+                                constitutes ragging.</li>
+                            <li>I have also, in particular, perused clause 7 & clause 9.1 of the Regulations and am
+                                fully aware of the penal & administrative action that is liable to be taken against my
+                                ward in case he/she is found guilty or abetting ragging, actively or passively, or being
+                                part of a conspiracy to promote ragging.</li>
+                            <li>I hereby solemnly aver and undertake that a) My ward will not indulge in any behavior or
+                                act that may be constituted as ragging under clause 3 of the Regulations. b) My ward
+                                will not participate in or abet or propagate through any act of commission or omission
+                                that...</li>
+                            <li>I hereby affirm that, if found guilty of ragging, my ward is liable for punishment
+                                according to clause 9.1 of the Regulations, without prejudice to any other criminal
+                                action that may be taken against my ward under any penal law or any law for the time
+                                being in force.</li>
+                            <li>I hereby declare that my ward has not been expelled or debarred from admission in any
+                                institution in the country on account of being found guilty of, abetting or being part
+                                of a conspiracy to promote, ragging & further affirm that, in case the declaration is
+                                found to be untrue, I am aware that the admission of my ward is liable to be cancelled.
+                            </li>
                         </ol>
                     </div>
                 </div>
 
                 <div class="form-footer">
                     <p class="declaration-date">
-                        Declared on 
-                        <span id="day" class="highlight"></span>, 
-                        <span id="currentDate" class="highlight"></span> 
-                        <span id="month" class="highlight"></span> 
+                        Declared on
+                        <span id="day" class="highlight"></span>,
+                        <span id="currentDate" class="highlight"></span>
+                        <span id="month" class="highlight"></span>
                         <span id="year" class="highlight"></span>
                     </p>
 
                     <div class="signature-section">
                         <div class="sign-box">
                             <label>Parents Digital Signature:</label>
-                            <input type="text" id="parent-name2" class="sign-input" autocomplete="off" readonly required>
+                            <input type="text" id="parent-name2" class="sign-input" autocomplete="off" readonly
+                                required>
                         </div>
 
                         <div class="sign-box">
@@ -151,4 +197,5 @@
         document.getElementById('year').innerHTML = year;
     </script>
 </body>
+
 </html>

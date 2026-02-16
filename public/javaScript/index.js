@@ -3,7 +3,7 @@ const menuBtn = document.getElementById("menubar");
 const sidebar = document.getElementById("sidebar-nav");
 const closeBtn = document.getElementById("close-crossbar");
 
-// Open Sidebar
+// Open Sidebar (Mobile)
 if (menuBtn) {
     menuBtn.onclick = function () {
         sidebar.classList.add("active");
@@ -12,7 +12,7 @@ if (menuBtn) {
     };
 }
 
-// Close Sidebar
+// Close Sidebar (Mobile)
 if (closeBtn) {
     closeBtn.onclick = function () {
         sidebar.classList.remove("active");
@@ -23,14 +23,26 @@ if (closeBtn) {
 
 //////////////// ON PAGE LOAD (RESTORE DATA & ACTIVE LINK) //////////////////
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Set Active Link
+    
+    // 1. Set Active Link Dynamically
     const currentPath = window.location.pathname;
     const sidebarItems = document.querySelectorAll('.sidebar-child');
+    
     sidebarItems.forEach(item => {
-        if (item.getAttribute('href') === currentPath) {
+        item.classList.remove('active'); // Clear any hardcoded active classes
+        const href = item.getAttribute('href');
+        
+        // Exact match for the active page
+        if (href === currentPath) {
             item.classList.add('active');
         }
     });
+
+    // Fallback if path is just root
+    if (currentPath === "" || currentPath === "/") {
+        const homeLink = document.querySelector('.sidebar-child[href="/"]');
+        if(homeLink) homeLink.classList.add('active');
+    }
 
     // 2. RESTORE FORM DATA FROM SESSION STORAGE
     restoreFormData();
@@ -97,13 +109,11 @@ const documentValidation = [
 
 // 1. Function to Restore Data (Called on Page Load)
 function restoreFormData() {
-    // Helper to set value if it exists
     const setVal = (id, key) => {
         const val = sessionStorage.getItem(key);
         if (val) document.getElementById(id).value = val;
     };
 
-    // Text & Select Inputs
     setVal('surname', 'surname');
     setVal('fname', 'firstName');
     setVal('father_name', 'fatherName');
@@ -126,7 +136,6 @@ function restoreFormData() {
     setVal('stdContact', 'studentc');
     setVal('parentsCon', 'parentsc');
 
-    // Radio Buttons (Need special handling)
     const restoreRadio = (name, key) => {
         const savedValue = sessionStorage.getItem(key);
         if (savedValue) {
@@ -142,7 +151,6 @@ function restoreFormData() {
 
 // 2. Function to Save Data (Called on Input Change)
 function saveToSession() {
-    // We map the HTML Element IDs to your Session Keys
     const dataMap = {
         'surname': 'surname',
         'fname': 'firstName',
@@ -167,7 +175,6 @@ function saveToSession() {
         'parentsCon': 'parentsc'
     };
 
-    // Save Text/Select inputs
     for (const [id, key] of Object.entries(dataMap)) {
         const element = document.getElementById(id);
         if (element) {
@@ -175,7 +182,6 @@ function saveToSession() {
         }
     }
 
-    // Save Radio Buttons
     const saveRadio = (name, key) => {
         const checked = document.querySelector(`input[name="${name}"]:checked`);
         if (checked) sessionStorage.setItem(key, checked.value);
@@ -188,7 +194,6 @@ function saveToSession() {
 
 // 3. Add Event Listener to Auto-Save on any change
 document.getElementById('studentForm').addEventListener('input', function(e) {
-    // Only save if it's NOT a file input
     if(e.target.type !== 'file') {
         saveToSession();
     }
@@ -199,7 +204,6 @@ document.getElementById('studentForm').addEventListener('input', function(e) {
 document.getElementById('studentForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // 1. Collect Data (For Validation)
     const formData = {
         surname: document.getElementById('surname').value.trim(),
         firstName: document.getElementById('fname').value.trim(),
@@ -227,7 +231,7 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
         parentsc: document.getElementById('parentsCon').value.trim()
     };
 
-    // 2. Input Validation
+    // Input Validation
     for (const field of InputFieldvalidationOrder) {
         if (field.message === "file") {
             const fileInput = field.key === "profileInputFile" ? profileInputFile : SignInputFile;
@@ -244,11 +248,9 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
         }
     }
 
-    // 3. Document Validation
+    // Document Validation
     for (const doc of documentValidation) {
         const input = document.getElementById(doc.key);
-        // Only validate docs if user hasn't uploaded them before? 
-        // For now, we enforce it as per your request.
         if (!input || !input.files || !input.files.length) {
             alert(`Please upload ${doc.label}`);
             input?.focus();
@@ -256,10 +258,7 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
         }
     }
 
-    // 4. Force Save one last time before submit
     saveToSession();
-    
-    // 5. Submit
     this.submit();
 });
 
@@ -270,7 +269,6 @@ function handleNextPage() {
 }
 
 //////////////// PREVIEW LOGIC //////////////////
-// Image Previews
 profileInputFile.onchange = function () {
     if (this.files.length) {
         const url = URL.createObjectURL(this.files[0]);
@@ -289,12 +287,12 @@ SignInputFile.onchange = function () {
 
 // Open Preview
 document.getElementById('preview-Btn').addEventListener('click', () => {
+    
     // Hide mobile sidebar if open
     sidebar.classList.remove("active");
     if(closeBtn) closeBtn.style.display = "none";
     if(menuBtn) menuBtn.style.display = "block";
 
-    // Map Values
     document.getElementById('SURNAME').value = document.getElementById('surname').value;
     document.getElementById('FIRSTNAME').value = document.getElementById('fname').value;
     document.getElementById('MIDDLENAME').value = document.getElementById('father_name').value;
@@ -322,7 +320,6 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('studentContact').value = document.getElementById('stdContact').value;
     document.getElementById('parentsContact').value = document.getElementById('parentsCon').value;
 
-    // Document Names
     const getFileName = (id) => document.getElementById(id)?.files[0]?.name || "Not Uploaded";
     
     document.getElementById('ssc').value = getFileName('sscdoc');
@@ -342,44 +339,43 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('Hostel').value = getFileName('hosteldoc');
     document.getElementById('Death').value = getFileName('deathdoc');
 
-    // Show Overlay
     document.getElementById('preview_from').style.display = 'block';
-    document.querySelector(".paper-form").classList.add("blur");
+    document.querySelector(".formContainer").classList.add("blur");
 });
 
 // Close Preview
 function cancelPreview() {
     document.getElementById('preview_from').style.display = 'none';
-    document.querySelector(".paper-form").classList.remove("blur");
+    document.querySelector(".formContainer").classList.remove("blur");
 }
 
 // Income Validation
-function extractAndValidate() {
-    var fileInput = document.getElementById('incomeDoc');
-    var file = fileInput.files[0];
-    var reader = new FileReader();
+// function extractAndValidate() {
+//     var fileInput = document.getElementById('incomeDoc');
+//     var file = fileInput.files[0];
+//     var reader = new FileReader();
 
-    reader.onload = function (event) {
-        var typedarray = new Uint8Array(event.target.result);
-        if (typeof pdfjsLib !== 'undefined') {
-            pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
-                var text = "";
-                pdf.getPage(1).then(function (page) {
-                    page.getTextContent().then(function (textContent) {
-                        textContent.items.forEach(function (item) {
-                            text += item.str + " ";
-                        });
-                        if (text.includes("तहसीलदार")) {
-                            alert('Valid PDF: This is an Income Certificate.');
-                        } else {
-                            alert('Invalid PDF: This is not an Income Certificate.');
-                        }
-                    });
-                });
-            }).catch(function (error) {
-                alert('Error loading PDF: ' + error.message);
-            });
-        }
-    };
-    if(file) reader.readAsArrayBuffer(file);
-}
+//     reader.onload = function (event) {
+//         var typedarray = new Uint8Array(event.target.result);
+//         if (typeof pdfjsLib !== 'undefined') {
+//             pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
+//                 var text = "";
+//                 pdf.getPage(1).then(function (page) {
+//                     page.getTextContent().then(function (textContent) {
+//                         textContent.items.forEach(function (item) {
+//                             text += item.str + " ";
+//                         });
+//                         if (text.includes("तहसीलदार")) {
+//                             alert('Valid PDF: This is an Income Certificate.');
+//                         } else {
+//                             alert('Invalid PDF: This is not an Income Certificate.');
+//                         }
+//                     });
+//                 });
+//             }).catch(function (error) {
+//                 alert('Error loading PDF: ' + error.message);
+//             });
+//         }
+//     };
+//     if(file) reader.readAsArrayBuffer(file);
+// }

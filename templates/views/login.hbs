@@ -4,154 +4,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student | Login</title>
+    <title>SYCET | Student Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body{
-            background-image:url('https://img.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg?ga=GA1.1.919035732.1724917926&semt=ais_hybrid');
-             background-repeat: no-repeat;
-            background-size:cover;
-            font-family: Arial, Helvetica, sans-serif;/
+        /* --- CSS Reset & Base Styling --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        .container{
-            width: 100vw;
-            height: 100vh;
+
+        body {
+            /* Added a subtle dark overlay to the background image so the white text is always readable */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://img.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg?ga=GA1.1.919035732.1724917926&semt=ais_hybrid');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
             justify-content: center;
             align-items: center;
-            display: flex;
+            position: relative;
         }
 
-        form{
+        /* --- Home Button Styling --- */
+        .home-btn {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .home-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- Form Container --- */
+        form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgba(77, 75, 75, 0.155);
-            padding: 10px;
-            backdrop-filter: blur(30px);
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.543);
-            box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+            background-color: rgba(30, 41, 59, 0.4); /* Deeper, more professional glass effect */
+            padding: 40px 30px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            
+            /* Responsiveness */
+            width: 90%;
+            max-width: 420px; /* Prevents it from getting too wide on desktop */
         }
 
-        form h1{
+        /* --- Logo & Headers --- */
+        .college-logo {
+            width: 70px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        form h1 {
             color: white;
-            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
 
-        form p{
-            color: white;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 15px;
-        }
-
-        form .form-inputs{
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            width: 100%;
-            padding: 1px;
-            gap: 10px;
-        }
-        
-        form .form-inputs .input-container{
-            border: none;
-            outline: none;
-            padding: 7px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        form .form-inputs .input-container input{
-            caret-color: red;
-            background-color: rgba(128, 128, 128, 0.276);
-            color: white;
-            width: 99%;
-            margin-top: 4px;
-            border-radius: 3px;
-            outline: none;
-            border: none;
-            padding: 8px;
-            border: 2px solid gray
-            font-size: ;
-            box-sizing: border-box;
-        }
-        form .form-inputs .input-container input::placeholder{
-           font-size: 13px;
-           color: rgba(255, 255, 255, 0.532);
-        }
-
-        form input:focus{
-            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        }
-
-        form label{
-            color: white;
-            font-size: 15px;
-            font-weight: bold;
-        }
-
-        button{
-            width: 96%;
-            padding: 5px;
-            font-size: 16px;
-            align-self: center;
-            font-weight: bold;
-            background-color: transparent;
-            color: white;
-           border: none;
-           outline: none;
-        }
-
-        .btn{
-            border: 2px solid rgba(255, 255, 255, 0.333);
-            border-radius: 4px;
-        }
-        form .div-item{
+        form p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
             text-align: center;
+            margin-bottom: 25px;
+        }
 
+        /* --- Inputs --- */
+        .form-inputs {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
-        form .div-item a{
-             color: rgb(13, 15, 40);
+
+        .input-container {
+            width: 100%;
+        }
+
+        form label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        form input {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 6px;
+            outline: none;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+
+        form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        form input:focus {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-color: #388e5f; /* Accent green from your admin dashboard */
+            box-shadow: 0 0 0 3px rgba(56, 142, 95, 0.3);
+        }
+
+        /* --- Submit Button --- */
+        button.btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #388e5f; /* Professional accent color */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        button.btn:hover {
+            background-color: #2c7a4b;
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer Links --- */
+        .div-item {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .div-item p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .div-item a {
+            color: #86efac; /* Light green that looks great on dark backgrounds */
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
-        form .div-item a:hover{
+
+        .div-item a:hover {
+            color: #fff;
             text-decoration: underline;
+        }
+
+        /* --- Mobile Tweaks --- */
+        @media (max-width: 480px) {
+            form {
+                padding: 30px 20px;
+            }
+            .home-btn {
+                top: 15px;
+                left: 15px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <form action="/login" method="post" id="form">    
 
+    <a href="/" class="home-btn">
+        <i class="fa-solid fa-house"></i> Home
+    </a>
+
+    <form action="/login" method="post" id="form">
+        <img src="/images/college-logo.svg" alt="College Logo" class="college-logo" onerror="this.style.display='none'">
+        
         <h1>Login</h1>
-        <p>Use your registerd email and password for login</p>
+        <p>Use your registered email and password</p>
+        
         <div class="form-inputs">
-           <div class="input-container">
-                <label for="email">Email</label><br>
-                <input
-                    type="email" 
-                    name="email" 
-                    id="userEamil"
-                    placeholder="Enter registerd email"
-                >
-           </div>
-          <div class="input-container">
-                <label for="password">Password</label><br>
-                <input 
-                    type="password" 
-                    name="password" 
-                    id="userPass" 
-                    placeholder="Enter your password"
-                >
-          </div class="input-container">
-            <button type="submit" class="btn">Login</button>
+            <div class="input-container">
+                <label for="userEamil">Email</label>
+                <input type="email" name="email" id="userEamil" placeholder="Enter registered email" required>
+            </div>
+            
+            <div class="input-container">
+                <label for="userPass">Password</label>
+                <input type="password" name="password" id="userPass" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="btn">Sign In</button>
+            
             <div class="div-item">
-                <p>dont have an account <a href="/signup">Signup</a></p>
+                <p>Don't have an account? <a href="/signup">Sign up</a></p>
             </div>
         </div>
-        
     </form>
-    </div>
-</body>
 
+</body>
 </html>

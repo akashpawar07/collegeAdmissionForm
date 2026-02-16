@@ -8,8 +8,8 @@ const bodyParser = require("body-parser")
 const dotenv = require("dotenv").config()
 const fs = require("fs")
 const port = process.env.PORT || 7070
-
-
+const connectDB = require("./DB/dbConnection"); 
+connectDB();
 
 // middlewares
 app.use(cookieParser())
@@ -29,9 +29,6 @@ app.set('view engine', 'hbs');
 // set the actual location of views folder.................
 app.set('views', path.join(__dirname, "/templates/views"));
 
-// databse connection 
-const dbURI = require('./DB/dbConnection')
-
 // importing routes from router folder
 const indexRoutes           = require("./router/indexRoutes")
 const stdUndertakingRoutes  = require("./router/studentUndertakingRoutes")
@@ -39,24 +36,26 @@ const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
 const idcardRoutes          = require("./router/idCardRoutes"); 
 const userSignup            = require("./router/signupRoutes");
 const userlogin             = require("./router/loginRoutes");
-// const userLogout            = require("./route/userLogout");
+const adminDashboard        = require("./router/adminDashboardRoutes");
+const userLogout            = require("./router/logoutRoutes");
 
 
 // middleware for authorized user only
-// const {loggedinUserOnly} = require('./middleware/authMiddlewares')
+const {loggedinUserOnly} = require('./middleware/authMiddlewares');
+
 
 
 //using routes here
 app.use("/",                        indexRoutes);
-app.use("/studentUndertaking",      stdUndertakingRoutes)
-app.use("/feesundertaking",         feesUndertakingRoutes)
-app.use("/idcard",                  idcardRoutes)
-app.use("/signup",                  userSignup)
-app.use("/login",                   userlogin)
-// app.use("/lgout",                   userLogout)
+app.use("/studentUndertaking",      stdUndertakingRoutes);
+app.use("/feesundertaking",         feesUndertakingRoutes);
+app.use("/admin-dashboard",         loggedinUserOnly, adminDashboard);
+app.use("/idcard",                  idcardRoutes);
+app.use("/signup",                  userSignup);
+app.use("/login",                   userlogin);
+app.use("/logout",                   userLogout)
 
 
-// default route for if anyone want to access another page beyond the existing pages then this will open 404 page!
 app.get("/*", (req, res) => {
     res.render('Invalid')
 })

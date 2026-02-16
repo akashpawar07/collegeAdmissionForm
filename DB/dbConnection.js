@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
-// making connection with database
-const dbConection = mongoose.connect(process.env.DB_CONNECTION)
-    .then(() => {
-        console.log("Database is connected")
-    }).catch((err) => {
-        console.log("Something went wrong while connecting atlas database -> ", err)
-    })
-//exporting databse module
-module.exports = dbConection;
+const connectDB = async () => {
+    try {
+        await mongoose.connect(process.env.DB_CONNECTION);
+        console.log("Database is connected successfully");
+    } catch (err) {
+        console.log("Something went wrong while connecting to the database -> ", err);
+        
+        process.exit(1); 
+    }
+};
+
+// 2. Export the function
+module.exports = connectDB;

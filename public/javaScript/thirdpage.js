@@ -1,34 +1,52 @@
-//////////////// SIDEBAR TOGGLE LOGIC //////////////////////////////
+//////////////// SIDEBAR TOGGLE LOGIC (UPDATED) //////////////////////////////
 const menuBtn = document.getElementById("menubar");
 const sidebar = document.getElementById("sidebar-nav");
 const closeBtn = document.getElementById("close-crossbar");
 
 // Open logic
-menuBtn.onclick = function () {
-    sidebar.classList.add("active");
-    closeBtn.style.display = "block";
-    menuBtn.style.display = "none";
-};
+if (menuBtn) {
+    menuBtn.onclick = function () {
+        sidebar.classList.add("active");
+        sidebar.style.display = "flex"; // Force flex for mobile
+        closeBtn.style.display = "block";
+        menuBtn.style.display = "none";
+    };
+}
 
 // Close logic
-closeBtn.onclick = function () {
-    sidebar.classList.remove("active");
-    closeBtn.style.display = "none";
-    menuBtn.style.display = "block";
-};
+if (closeBtn) {
+    closeBtn.onclick = function () {
+        sidebar.classList.remove("active");
+        closeBtn.style.display = "none";
+        menuBtn.style.display = "block";
 
-// Active Link Highlighting
+        // Wait for CSS slide transition to finish before hiding display
+        setTimeout(() => {
+            if (!sidebar.classList.contains("active")) {
+                sidebar.style.display = "";
+            }
+        }, 300);
+    };
+}
+
+// Active Link Highlighting (UPDATED)
 document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     const sidebarItems = document.querySelectorAll('.sidebar-child');
+
     sidebarItems.forEach(item => {
-        if (item.getAttribute('href') === currentPath) {
+        item.classList.remove('active');
+
+        // Get href either directly from item (if unified HTML) or from nested <a>
+        const href = item.getAttribute('href') || (item.querySelector('a') && item.querySelector('a').getAttribute('href'));
+
+        if (href && (href === currentPath || (currentPath.includes(href) && href !== '/'))) {
             item.classList.add('active');
         }
     });
 });
 
-/////////////// FORM AUTO-FILL LOGIC ///////////////
+/////////////// FORM AUTO-FILL LOGIC (UNTOUCHED) ///////////////
 // Set Date
 const date = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
 const year = date.getFullYear();
@@ -65,23 +83,26 @@ safeSetValue("place", "Chhatrapti Sambhajinagar");
 // Fill Address
 const addressEl = document.getElementById("address");
 if (addressEl) {
-    addressEl.value = Address
+    addressEl.value = Address;
 }
 
+/////////////// SUBMIT VALIDATION (UNTOUCHED) ///////////////
+const dispBtn = document.getElementById("disp");
+if (dispBtn) {
+    dispBtn.addEventListener("click", function (event) {
+        let fees1 = document.getElementById("fees").value.trim();
+        let fees2 = document.getElementById("fees2").value.trim();
+        let studentNamee = document.getElementById("stu-name").value;
+        let GuardianName = document.getElementById("parent-name").value;
+        let address = document.getElementById("address").value;
+        let place = document.getElementById("place").value;
 
-document.getElementById("disp").addEventListener("click", function (event) {
-    let fees1 = document.getElementById("fees").value.trim();
-    let fees2 = document.getElementById("fees2").value.trim();
-    let studentNamee = document.getElementById("stu-name").value;
-    let GuardianName = document.getElementById("parent-name").value;
-    let address = document.getElementById("address").value;
-    let place = document.getElementById("place").value;
+        if (fees1 === "" || fees2 === "" || studentNamee.trim() === "" || GuardianName.trim() === ""
+            || address.trim() === "") {
 
-    if (fees1 === "" || fees2 === "" || studentNamee.trim() === "" || GuardianName.trim() === "" 
-    || address.trim() === "") {
-
-        alert("All fields are compulsary, please fill form carefully");
-        event.preventDefault(); // This is what stops the form submission
-        return false;
-    }
-});
+            alert("All fields are compulsary, please fill form carefully");
+            event.preventDefault(); // This is what stops the form submission
+            return false;
+        }
+    });
+}

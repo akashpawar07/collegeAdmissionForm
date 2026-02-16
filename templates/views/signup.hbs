@@ -4,177 +4,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student | Signup</title>
+    <title>SYCET | Student Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body{
-            background-image:url('https://img.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg?ga=GA1.1.919035732.1724917926&semt=ais_hybrid');
-             background-repeat: no-repeat;
-            background-size:cover;
-            font-family: Arial, Helvetica, sans-serif;
+        /* --- CSS Reset & Base Styling --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-          .container{
-            width: 100vw;
-            height: 100vh;
+        body {
+            /* Dark overlay to ensure text readability */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://img.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg?ga=GA1.1.919035732.1724917926&semt=ais_hybrid');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
             justify-content: center;
             align-items: center;
-            display: flex;
+            position: relative;
         }
-         form{
+
+        /* --- Home Button Styling --- */
+        .home-btn {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        .home-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* --- Form Container --- */
+        form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgba(77, 75, 75, 0.155);
-            padding: 10px;
-            backdrop-filter: blur(30px);
-            border-radius: 8px;
-            border: 2px solid rgba(255, 255, 255, 0.543);
-            box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+            background-color: rgba(30, 41, 59, 0.4); 
+            padding: 30px 25px; /* Reduced from 40px to shrink overall height */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            
+            /* Responsiveness */
+            width: 90%;
+            max-width: 400px; /* Slightly narrower for a tighter look */
+            margin: 20px 0; 
         }
-          form h1{
+
+        /* --- Logo & Headers --- */
+        .college-logo {
+            width: 60px; /* Scaled down logo slightly */
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        form h1 {
             color: white;
-            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
 
-        form p{
-            color: white;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 15px;
-        }
-
-        form .form-inputs{
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            width: 100%;
-            padding: 1px;
-            gap: 10px;
-        }
-          form .form-inputs .input-container{
-            border: none;
-            outline: none;
-            padding: 7px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        form .form-inputs .input-container input{
-            caret-color: red;
-            background-color: rgba(128, 128, 128, 0.276);
-            color: white;
-            width: 99%;
-            margin-top: 4px;
-            border-radius: 3px;
-            outline: none;
-            border: none;
-            padding: 8px;
-            border: 2px solid gray
-            font-size: ;
-            box-sizing: border-box;
-        }
-         form .form-inputs .input-container input::placeholder{
-           font-size: 13px;
-           color: rgba(255, 255, 255, 0.532);
-        }
-
-        form input:focus{
-            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-        }
-
-        form label{
-            color: white;
-            font-size: 15px;
-            font-weight: bold;
-        }
-
-        button{
-            width: 50%;
-            padding: 5px;
-            font-size: 16px;
-            align-self: center;
-            font-weight: bold;
-            background-color: transparent;
-            color: white;
-           border: none;
-           outline: none;
-        }
-        .btn{
-            border: 2px solid rgba(255, 255, 255, 0.333);
-            border-radius: 4px;
-        }
-        form .div-item{
+        form p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
             text-align: center;
+            margin-bottom: 15px; /* Reduced space below paragraph */
+            line-height: 1.3;
+        }
 
+        /* --- Inputs --- */
+        .form-inputs {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* Tighter gap between inputs */
         }
-        form .div-item a{
-             color: rgb(22, 23, 39);
+
+        .input-container {
+            width: 100%;
+        }
+
+        form label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px; /* Tighter space between label and input */
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        form input {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            border-radius: 6px;
+            outline: none;
+            padding: 10px 12px; /* Shorter inputs to save vertical space */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.95rem;
+            transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+
+        form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        form input:focus {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-color: #388e5f;
+            box-shadow: 0 0 0 3px rgba(56, 142, 95, 0.3);
+        }
+
+        /* --- Submit Button --- */
+        button.btn {
+            width: 100%;
+            padding: 10px; /* Thinner button */
+            margin-top: 5px; /* Less margin above button */
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #388e5f; 
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        button.btn:hover {
+            background-color: #2c7a4b;
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer Links --- */
+        .div-item {
+            text-align: center;
+            margin-top: 10px; /* Reduced margin above footer */
+        }
+
+        .div-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .div-item a {
+            color: #86efac; 
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
-        form .div-item a:hover{
+
+        .div-item a:hover {
+            color: #fff;
             text-decoration: underline;
+        }
+
+        /* --- Mobile Tweaks --- */
+        @media (max-width: 480px) {
+            form {
+                padding: 25px 20px;
+            }
+            .home-btn {
+                top: 15px;
+                left: 15px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <form action="/signup" id="signup-form" method="post">
 
-            <h1>Signup</h1>
-            <p style="font-size: 14px;">Please fill in the form carefully as incorrect information <br> may lead to issues with your account.
-            </p>
-            <div class="form-inputs">
-              <div class="input-container">
-                <label for="name">Enter your name</label>
-                  <input
-                    type="text" 
-                    name="name" 
-                    id="name" 
-                    placeholder="Enter your name"
-                >
-              </div>
+    <a href="/" class="home-btn">
+        <i class="fa-solid fa-house"></i> Home
+    </a>
 
-               <div  class="input-container">
-                <label for="email">Enter your email</label>
-                 <input
-                    type="email" 
-                    name="email" 
-                    id="email"
-                    placeholder="Enter your email"
-                >
-               </div>
-              <div  class="input-container">
-                <label for="password">Create password</label>
-                  <input 
-                    type="password" 
-                    name="password" 
-                    id="password" 
-                    placeholder="Enter your password"
-                >
-              </div>
-                <button type="submit" class="btn" onclick="validateForm">Signup</button>
-                 <div class="div-item">
-
-                <p>Already have an account <a href="/login">Login</a></p>
-                 </div>
+    <form action="/signup" id="signup-form" method="post">
+        
+        <img src="/images/college-logo.svg" alt="College Logo" class="college-logo" onerror="this.style.display='none'">
+        
+        <h1>Signup</h1>
+        <p>Please fill in the form carefully. Incorrect info may lead to account issues.</p>
+        
+        <div class="form-inputs">
+            <div class="input-container">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter your full name" required>
             </div>
-            </form>
-        </div>
-        </form>
-    </div>
-    <script>
 
-       const form = document.getElementById('signup-form');
+            <div class="input-container">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-container">
+                <label for="password">Create Password</label>
+                <input type="password" name="password" id="password" placeholder="Create a strong password" required>
+            </div>
+
+            <button type="submit" class="btn">Create Account</button>
+            
+            <div class="div-item">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Form Validation Script
+        const form = document.getElementById('signup-form');
 
         form.addEventListener('submit', (e) => {
-        if (!form.checkValidity()) {
-            e.preventDefault();
-            alert('Please fill in all required fields.');
-        } else {
-            // Form is valid, proceed with submission
-        }
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                alert('Please fill in all required fields properly.');
+            }
         });
-
     </script>
 </body>
 

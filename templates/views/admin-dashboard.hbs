@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/images/college-logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYCET | Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <style>
+        /* --- Professional Logout Button Styling --- */
+        .logout-btn {
+            background: transparent;
+            border: none;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin-top: 15px; /* Pushes it slightly away from the regular links */
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            text-align: left;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            font-family: inherit; /* Ensures it uses the body font */
+        }
+
+        .logout-btn .icon-box {
+            width: 30px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        /* Subtle red hover effect for the logout action */
+        .logout-btn:hover {
+            background-color: rgba(220, 38, 38, 0.15); /* Light red tint */
+            color: #fca5a5; /* Soft red text */
+            border-left: 4px solid #dc2626; /* Solid red indicator */
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mobile-header">
+        <div class="toggle">
+            <i class="fa-solid fa-bars" id="menubar"></i>
+            <i class="fa-solid fa-xmark" id="close-crossbar"></i>
+        </div>
+        <span class="mobile-title">Admin Dashboard</span>
+    </div>
+
+    <div class="main-wrapper">
+
+        <nav class="sidebar" id="sidebar-nav">
+            <div class="nav-links">
+                <a href="/admin-dashboard" class="sidebar-child active">
+                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+                    <span class="label">Admin Dashboard</span>
+                </a>
+
+                <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
+
+                <a href="/" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-house"></i></div>
+                    <span class="label">Registration Form</span>
+                </a>
+                <a href="/studentUndertaking" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
+                    <span class="label">Student Undertaking</span>
+                </a>
+                <a href="/feesUndertaking" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                    <span class="label">Fees Undertaking</span>
+                </a>
+                <a href="/idCard" class="sidebar-child">
+                    <div class="icon-box"><i class="fa-solid fa-id-card"></i></div>
+                    <span class="label">ID Card</span>
+                </a>
+                
+                <button onclick="handleLogout()" class="logout-btn">
+                    <div class="icon-box"><i class="fa-solid fa-right-from-bracket"></i></div>
+                    <span class="label">Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <main class="content-area">
+
+            <div class="dashboard-container">
+
+                <div class="dash-header">
+                    <div>
+                        <h1 class="dash-title">Admission Overview</h1>
+                    </div>
+                    <div class="dash-actions">
+                        <button class="btn btn-outline"><i class="fa-solid fa-download"></i> Export Data</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card" style="border-top-color: var(--primary-color);">
+                        <div class="stat-icon" style="color: var(--primary-color); background: #e2e8f0;">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Applications</h3>
+                            <p id="totalCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-top-color: var(--accent-color);">
+                        <div class="stat-icon" style="color: var(--accent-color); background: #dcfce7;">
+                            <i class="fa-solid fa-check-to-slot"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>B.Tech Applications</h3>
+                            <p id="btechCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-top-color: #f59e0b;">
+                        <div class="stat-icon" style="color: #f59e0b; background: #fef3c7;">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>M.Tech Applications</h3>
+                            <p id="mtechCount">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-top-color: #8b5cf6;">
+                        <div class="stat-icon" style="color: #8b5cf6; background: #ede9fe;">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>MBA Applications</h3>
+                            <p id="mbaCount">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <h2>Recent Admissions</h2>
+                        <div class="search-box">
+                            <i class="fa-solid fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search students...">
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table" id="studentsTable">
+                            <thead>
+                                <tr>
+                                    <th>App ID</th>
+                                    <th>Student Name</th>
+                                    <th>Course</th>
+                                    <th>Branch</th>
+                                    <th>Date Applied</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <p>Showing <span id="showingCount">0</span> records</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div id="viewModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            
+            <div class="modal-header">
+                <h2>Applicant Details</h2>
+                <span id="modalStatus" class="status pending">PENDING</span>
+            </div>
+
+            <div class="modal-body" id="modalBody">
+                </div>
+        </div>
+    </div>
+
+    <script src="/javaScript/admin-dashboard.js"></script>
+</body>
+
+</html>

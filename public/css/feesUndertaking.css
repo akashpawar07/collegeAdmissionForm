@@ -29,7 +29,9 @@ body {
     min-height: 100vh;
 }
 
-/* --- Sidebar Styling --- */
+/* ==========================================================================
+   --- UNIVERSAL SIDEBAR STYLING ---
+   ========================================================================== */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -53,21 +55,47 @@ body {
     color: #cbd5e1;
     text-decoration: none;
     border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s ease-in-out;
     font-size: 16px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-child a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
 }
 
 .sidebar-child .icon-box {
     width: 30px;
     text-align: center;
-    margin-right: 10px;
+    font-size: 18px;
 }
 
-.sidebar-child:hover,
-.sidebar-child.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+.sidebar-child .label {
+    font-weight: 500;
 }
+
+/* Hover State */
+.sidebar-child:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Active State (Highlighted) */
+.sidebar-child.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* ========================================================================== */
+
 
 /* --- Mobile Header --- */
 .mobile-header {
@@ -223,15 +251,17 @@ body {
     font-weight: bold;
     display: block;
     font-size: 0.9rem;
-    
+
 }
-#date{
-     border: none;  
-    outline: none; 
+
+#date {
+    border: none;
+    outline: none;
 }
-#place{
-     border: none;  
-    outline: none; 
+
+#place {
+    border: none;
+    outline: none;
 }
 
 .address-box textarea {
@@ -242,8 +272,9 @@ body {
     font-size: 1rem;
     resize: none;
     font-family: inherit;
-      border: none;      /* Removes the default permanent border */
-    outline: none; 
+    border: none;
+    /* Removes the default permanent border */
+    outline: none;
 }
 
 .form-group-row {
@@ -314,9 +345,14 @@ body {
    ========================================= */
 @media screen and (max-width: 768px) {
 
+    /* --- FIXED MOBILE SIDEBAR LOGIC --- */
     .sidebar {
         transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
         padding-top: 80px;
+        z-index: 1000;
+        display: flex;
+        /* Kept for JS */
     }
 
     .sidebar.active {
@@ -325,6 +361,19 @@ body {
 
     .mobile-header {
         display: flex;
+        z-index: 1001;
+    }
+
+    #menubar {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    #close-crossbar {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
     }
 
     .content-area {
@@ -339,7 +388,6 @@ body {
 
     .inline-input {
         width: 100%;
-        /* Inputs take full width on mobile for easier typing */
         display: block;
         margin: 5px 0;
         text-align: left;

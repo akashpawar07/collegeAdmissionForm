@@ -3,6 +3,7 @@ const router = express.Router()
 
 // imported the studentUndertakingSchema of secondPage
 const studentUndertakingSchema = require('../models/undertakingModels')
+const {preventLoggedinUser} = require('../middleware/authMiddlewares');
 
 // importing middleware for storing student sign and guardian sign
 const Upload = require("../middleware/undertakingMiddeware")
@@ -50,40 +51,8 @@ router.post("/", docUploader, async (req, res) => {
 })
 
 
-
-
-
-/////////////// OLD POST request \\\\\\\\\\\\\\\\
-// router.post("/", docUploader, async (req, res) => {
-//     try {
-//         // Uncomment when you want to save signatures
-//         const studentSignature = req.files['studentSign']?.[0]?.path
-//         const ParentsSignature = req.files['guardianSign']?.[0]?.path
-
-//         const data = new studentUndertakingSchema({
-//             date: req.body.tarikh,
-//             GuardianName: req.body.fathername,
-//             StudentName: req.body.stdname,
-//             InstituteName: req.body.institutename,
-//             studentSignature: studentSignature,
-//             ParentsSignature: ParentsSignature
-//         })
-
-//         const stdUndertakingData = await data.save()
-//         res.status(200).render('studentUnderPopup')
-
-//     } catch (error) {
-//         console.error("Error saving data:", error)
-//         res.status(500).send("Error saving undertaking data")
-//     }
-// })
-
-
-
-
-
 // GET routes for studentUndertaking
-router.get("/", (req, res) => {
+router.get("/", preventLoggedinUser, (req, res) => {
     res.render('studentUndertaking')
 })
 

@@ -94,6 +94,14 @@ const studentSchema = new mongoose.Schema({
     parentsContact: {
         type: Number,
     },
+
+    status: {
+        type: String,
+        enum: ["Approved", "Rejected", "Pending"],
+        default: "Pending"
+    },
+
+
     // store binary data
     studentProfileImage: {
         data: Buffer,

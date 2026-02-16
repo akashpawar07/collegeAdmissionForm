@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { preventLoggedinUser } = require('../middleware/authMiddlewares')
 
 // Using middleware for get student profileImage, signature, documents
 const upload = require("../middleware/indexMiddleware");
@@ -145,8 +146,41 @@ router.post("/", docUploader, async (req, res) => {
 
 
 
+
+// Add this to your Admin Router file
+
+// PATCH route to update student status
+router.patch("/update-status/:id", async (req, res) => {
+    try {
+        const studentId = req.params.id;
+        const { status } = req.body; // "Approved", "Rejected", or "Pending"
+
+        // Find the student by ID and update their status field
+        const updatedStudent = await studentSchema.findByIdAndUpdate(
+            studentId,
+            { status: status },
+            { new: true } // Returns the updated document
+        );
+
+        if (!updatedStudent) {
+            return res.status(404).json({ success: false, message: "Student not found" });
+        }
+
+        console.log(`Student ${studentId} status updated to ${status}`);
+        res.status(200).json({ success: true, message: "Status updated successfully" });
+
+    } catch (error) {
+        console.error("Error updating status:", error);
+        res.status(500).json({ success: false, message: "Internal server error" });
+    }
+});
+
+
+
+
+
 // GET route for accessing home page
-router.get("/", (req, res) => {
+router.get("/", preventLoggedinUser, (req, res) => {
     try {
         res.render('index');
     } catch (error) {
@@ -157,6 +191,9 @@ router.get("/", (req, res) => {
         });
     }
 });
+
+
+
 
 // Exporting router
 module.exports = router;

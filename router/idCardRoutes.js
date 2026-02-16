@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const studentIdCard = require("../models/studentIdCardModels");
+const {preventLoggedinUser} = require('../middleware/authMiddlewares')
+
 
 // POST
 router.post("/", async (req, res) => {
@@ -30,7 +32,8 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.get("/", (req, res) => {
+
+router.get("/", preventLoggedinUser, (req, res) => {
     res.render('idCard');
 });
 
