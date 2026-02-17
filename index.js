@@ -34,7 +34,7 @@ const indexRoutes           = require("./router/indexRoutes")
 const stdUndertakingRoutes  = require("./router/studentUndertakingRoutes")
 const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
 const idcardRoutes          = require("./router/idCardRoutes"); 
-const userSignup            = require("./router/signupRoutes");
+// const userSignup            = require("./router/signupRoutes");
 const userlogin             = require("./router/loginRoutes");
 const adminDashboard        = require("./router/adminDashboardRoutes");
 const userLogout            = require("./router/logoutRoutes");
@@ -51,13 +51,13 @@ app.use("/studentUndertaking",      stdUndertakingRoutes);
 app.use("/feesundertaking",         feesUndertakingRoutes);
 app.use("/admin-dashboard",         loggedinUserOnly, adminDashboard);
 app.use("/idcard",                  idcardRoutes);
-app.use("/signup",                  userSignup);
+// app.use("/signup",                  userSignup);
 app.use("/login",                   userlogin);
 app.use("/logout",                   userLogout)
 
 
 app.get("/*", (req, res) => {
-    res.render('Invalid')
+    res.render('404page')
 })
 // Listening page on port
 app.listen(port, (req, res) => {

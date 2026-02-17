@@ -94,19 +94,21 @@ function populateIDCard() {
   document.getElementById('hiddenAcademicYear').value = academicYear;
 }
 
-
-
 //////////////// 3. PHOTO PREVIEW & VALIDATION //////////////////
 
 // Photo Upload Preview
 const profileInput = document.getElementById('profilePicInput');
 const cardImage = document.getElementById('cardProfileImage');
+const iconPlaceholder = document.getElementById('iconPlaceholder'); // Added icon reference
+
 if (profileInput) {
   profileInput.addEventListener('change', function () {
     if (this.files && this.files[0]) {
       const reader = new FileReader();
       reader.onload = function (e) {
         cardImage.src = e.target.result;
+        cardImage.style.display = 'block'; // Show the uploaded image
+        if (iconPlaceholder) iconPlaceholder.style.display = 'none'; // Hide the icon placeholder
       }
       reader.readAsDataURL(this.files[0]);
     }
@@ -159,7 +161,7 @@ if (finalForm) {
       e.preventDefault();
       return false;
     }
-s
+
     // 3. Clear Session Data
     // Only clear if validation passes
     setTimeout(() => {

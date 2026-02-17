@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const studentSchema = require("../models/studentModels");
+const userModel = require("../models/userModel")
+const jwt = require('jsonwebtoken');
 
 // middleware for authorized user only
 // const {preventLoggedinUser} = require('../middleware/authMiddlewares')
@@ -32,7 +34,32 @@ router.get("/students", async (req, res) => {
 });
 
 
+// API ROUTE TO FETCH ADMIN PROFILE
+router.get("/profile", async (req, res) => {
+    try {
+        const token = req.cookies.userToken; 
+        
+        if (!token) {
+            return res.status(401).json({ success: false, message: "Not logged in" });
+        }
 
+        const decodedToken = jwt.verify(token, process.env.SECRETE_KEY);
+
+        // 3. Find the user by the 'id' stored in the payload: {id: user._id, email: user.email}
+        const admin = await userModel.findById(decodedToken.id).select("-password");
+
+        if (!admin) {
+            return res.status(404).json({ success: false, message: "Admin profile not found" });
+        }
+
+        // 4. Send the data back to the frontend!
+        res.status(200).json(admin);
+
+    } catch (error) {
+        console.log("Error fetching profile: ", error);
+        res.status(500).json({ success: false, message: "Failed to load profile" });
+    }
+});
 
 // PATCH route to update student status
 router.patch("/update-status/:id", async (req, res) => {

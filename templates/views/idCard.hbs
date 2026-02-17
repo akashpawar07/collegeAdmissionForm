@@ -78,17 +78,19 @@
                                 </div>
                             </div>
 
-                            <div class="photo-section">
-                                <div class="photo-frame" onclick="document.getElementById('profilePicInput').click()">
-                                    <img src="/images/profile-placeholder.png" id="cardProfileImage"
-                                        alt="Student Photo">
-                                    <div class="upload-overlay"><i class="fa-solid fa-camera"></i></div>
-                                    <input type="file" id="profilePicInput" name="profileImage" accept="image/*"
-                                        style="display: none;">
+                            <div class="photo-frame" onclick="document.getElementById('profilePicInput').click()">
+
+                                <div id="iconPlaceholder"
+                                    style="width: 100%; height: 100%; background: #e2e8f0; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 50px;">
+                                    <i class="fa-solid fa-user-tie"></i>
                                 </div>
-                                <div class="student-signature">
-                                    <p class="sign-label">Student Sign</p>
-                                </div>
+
+                                <img src="" id="cardProfileImage" alt="Student Photo"
+                                    style="display: none; width: 100%; height: 100%; object-fit: cover;">
+
+                                <div class="upload-overlay"><i class="fa-solid fa-camera"></i></div>
+                                <input type="file" id="profilePicInput" name="profileImage" accept="image/*"
+                                    style="display: none;">
                             </div>
 
                             <div class="student-info">

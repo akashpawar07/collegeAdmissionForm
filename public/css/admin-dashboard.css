@@ -349,6 +349,15 @@
         border: 1px solid #fecaca;
     }
 
+    button.btn-reset {
+        background: transparent;
+        border: none;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+        color: inherit;
+    }
+
     .action-btn {
         background: #e2e8f0;
         color: var(--text-main);
@@ -374,6 +383,43 @@
         color: var(--text-muted);
         border-top: 1px solid var(--border-color);
         font-weight: 500;
+    }
+
+    /* --- Professional Logout Button Styling --- */
+    .logout-btn {
+        background: transparent;
+        border: none;
+        color: #cbd5e1;
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        margin-top: 15px;
+        /* Pushes it slightly away from the regular links */
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        text-align: left;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+        font-family: inherit;
+        /* Ensures it uses the body font */
+    }
+
+    .logout-btn .icon-box {
+        width: 30px;
+        text-align: center;
+        margin-right: 10px;
+    }
+
+    /* Subtle red hover effect for the logout action */
+    .logout-btn:hover {
+        background-color: rgba(220, 38, 38, 0.15);
+        /* Light red tint */
+        color: #fca5a5;
+        /* Soft red text */
+        border-left: 4px solid #dc2626;
+        /* Solid red indicator */
+        transform: translateX(4px);
     }
 
     /* --- RESPONSIVE DESIGN --- */

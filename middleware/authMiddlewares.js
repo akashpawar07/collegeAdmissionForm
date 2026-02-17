@@ -1,4 +1,5 @@
 const { getUser } = require("../services/auth");
+const userModel = require("../models/userModel")
 
 // 1. Middleware for PRIVATE routes (Admin Dashboard)
 async function loggedinUserOnly(req, res, next) {

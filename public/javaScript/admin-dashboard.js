@@ -295,7 +295,7 @@ async function changeStudentStatus(studentId, newStatus) {
             },
             body: JSON.stringify({ status: newStatus })
         });
-        console.log("resp-",response)
+        console.log("resp-", response)
 
         const result = await response.json();
 
@@ -311,7 +311,6 @@ async function changeStudentStatus(studentId, newStatus) {
         alert("An error occurred while updating the status.");
     }
 }
-
 
 
 function closeModal() {
@@ -360,14 +359,20 @@ const debouncedSearch = debounce(performSearch, 700);
 /// handle logout functionality ///////////////
 async function handleLogout() {
     try {
-        // 1. Send a POST request to match your backend route
         const response = await fetch("/logout", {
             method: "POST"
         });
 
-        if (response.ok || response.redirected) {
+        if (response.ok) {
             sessionStorage.clear();
-            window.location.href = "/login";
+
+            // Grab the beautiful HTML screen from the server
+            const html = await response.text();
+
+            // Wipe the current dashboard and paint the logout screen!
+            document.open();
+            document.write(html);
+            document.close();
 
         } else {
             console.log("Logout failed on the server.");
@@ -375,5 +380,75 @@ async function handleLogout() {
 
     } catch (error) {
         console.log("Error while logging out:", error);
+    }
+}
+
+
+
+//////////////// 7. ADMIN PROFILE LOGIC //////////////////////////////
+
+async function viewProfile() {
+    try {
+        // Fetch the admin data from the new backend route
+        const response = await fetch('/admin-dashboard/profile');
+
+        if (!response.ok) throw new Error("Failed to fetch profile");
+
+        const adminData = await response.json();
+
+        const profileModal = document.getElementById('profileModal');
+        const profileBody = document.getElementById('profileModalBody');
+
+        // Render the Profile UI
+        profileBody.innerHTML = `
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="width: 80px; height: 80px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; margin: 0 auto 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3 style="margin: 0; color: var(--primary-color); font-size: 1.5rem;">${adminData.name || 'Admin'}</h3>
+                <p style="margin: 5px 0 0 0; color: var(--text-muted); text-transform: uppercase; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent-color);"></i> ${adminData.role || 'Administrator'}
+                </p>
+            </div>
+            
+            <div class="data-grid" style="grid-template-columns: 1fr;">
+                <div class="data-item">
+                    <label>Full Name</label>
+                    <span>${adminData.name || 'N/A'}</span>
+                </div>
+                <div class="data-item">
+                    <label>Email Address</label>
+                    <span>${adminData.email || 'N/A'}</span>
+                </div>
+                <div class="data-item">
+                    <label>Account Role</label>
+                    <span style="text-transform: capitalize;">${adminData.role || 'N/A'}</span>
+                </div>
+            </div>
+        `;
+
+        profileModal.classList.add('show');
+    } catch (error) {
+        console.error("Error loading profile:", error);
+        alert("An error occurred while loading the admin profile.");
+    }
+}
+
+function closeProfileModal() {
+    document.getElementById('profileModal').classList.remove('show');
+}
+
+// UPDATE YOUR EXISTING window.onclick FUNCTION TO THIS:
+window.onclick = function (event) {
+    const viewModal = document.getElementById('viewModal');
+    const profileModal = document.getElementById('profileModal');
+
+    // Close student view modal
+    if (event.target === viewModal) {
+        closeModal();
+    }
+    // Close profile modal
+    if (event.target === profileModal) {
+        closeProfileModal();
     }
 }

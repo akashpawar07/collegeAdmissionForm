@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 function setUser(user){
      return jwt.sign(
-        {id : user._id,email : user.email}, // paylaod
+        {id : user._id, email : user.email}, // paylaod
         process.env.SECRETE_KEY,  //secrete key
        
     )

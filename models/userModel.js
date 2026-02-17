@@ -14,7 +14,12 @@ const userSignupSchema = new mongoose.Schema({
         type: String,
         lowecase: true,
     },
+    role:{
+        type : String,
+        enum : ["user", "admin"],
+        default : "user"
+    }
 
 },{timestamps: true})
 
-module.exports = mongoose.model("userSignup", userSignupSchema)
+module.exports = mongoose.model("user", userSignupSchema)

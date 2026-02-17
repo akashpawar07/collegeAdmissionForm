@@ -8,39 +8,6 @@
     <title>SYCET | Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/admin-dashboard.css">
-    <style>
-        /* --- Professional Logout Button Styling --- */
-        .logout-btn {
-            background: transparent;
-            border: none;
-            color: #cbd5e1;
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            margin-top: 15px; /* Pushes it slightly away from the regular links */
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            text-align: left;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s, transform 0.2s;
-            font-family: inherit; /* Ensures it uses the body font */
-        }
-
-        .logout-btn .icon-box {
-            width: 30px;
-            text-align: center;
-            margin-right: 10px;
-        }
-
-        /* Subtle red hover effect for the logout action */
-        .logout-btn:hover {
-            background-color: rgba(220, 38, 38, 0.15); /* Light red tint */
-            color: #fca5a5; /* Soft red text */
-            border-left: 4px solid #dc2626; /* Solid red indicator */
-            transform: translateX(4px);
-        }
-    </style>
 </head>
 
 <body>
@@ -64,23 +31,11 @@
 
                 <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
 
-                <a href="/" class="sidebar-child">
-                    <div class="icon-box"><i class="fa-solid fa-house"></i></div>
-                    <span class="label">Registration Form</span>
-                </a>
-                <a href="/studentUndertaking" class="sidebar-child">
-                    <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
-                    <span class="label">Student Undertaking</span>
-                </a>
-                <a href="/feesUndertaking" class="sidebar-child">
-                    <div class="icon-box"><i class="fa-solid fa-indian-rupee-sign"></i></div>
-                    <span class="label">Fees Undertaking</span>
-                </a>
-                <a href="/idCard" class="sidebar-child">
-                    <div class="icon-box"><i class="fa-solid fa-id-card"></i></div>
-                    <span class="label">ID Card</span>
-                </a>
-                
+                <button onclick="viewProfile()" class="sidebar-child btn-reset">
+                    <div class="icon-box"><i class="fa-solid fa-user-tie"></i></div>
+                    <span class="label">Profile</span>
+                </button>
+
                 <button onclick="handleLogout()" class="logout-btn">
                     <div class="icon-box"><i class="fa-solid fa-right-from-bracket"></i></div>
                     <span class="label">Logout</span>
@@ -183,14 +138,27 @@
     <div id="viewModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
-            
+
             <div class="modal-header">
                 <h2>Applicant Details</h2>
                 <span id="modalStatus" class="status pending">PENDING</span>
             </div>
 
             <div class="modal-body" id="modalBody">
-                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profileModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 500px;">
+            <span class="close-btn" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></span>
+
+            <div class="modal-header">
+                <h2>Admin Profile</h2>
+            </div>
+
+            <div class="modal-body" id="profileModalBody">
+            </div>
         </div>
     </div>
 
