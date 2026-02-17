@@ -23,7 +23,6 @@
 
     <div class="main-wrapper">
 
-        {{!-- ////////////////////////////// SIDE NAVBAR SECTION --}}
         <nav class="sidebar" id="sidebar-nav">
             <div class="nav-links">
                 <a href="/admin-dashboard" class="sidebar-child active">
@@ -161,7 +160,7 @@
                         </div>
                     </div>
 
-                    <div class="input-grid two-col">
+                    <div class="input-grid three-col">
                         <div class="form-group">
                             <label>2. Date of Birth <span class="req-star">*</span></label>
                             <input type="date" class="form-input" id="date" name="dob">
@@ -173,6 +172,20 @@
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Blood Group <span class="req-star">*</span></label>
+                            <select name="BloodGroup" id="bloodGroup" class="form-input">
+                                <option value="">--Select--</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
                             </select>
                         </div>
                     </div>
@@ -284,19 +297,23 @@
                             <span>Non Creamy Layer <small>(Original) <span class="req-star">*</span></small></span>
                             <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="ncldoc">
                         </div>
+
                         <div class="doc-item">
                             <span>Gap Certificate <small style="color: gray;">(Optional)</small></span>
                             <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="gapdoc">
                         </div>
+
                         <div class="doc-item">
                             <span>CET/JEE/GATE Score Card <small>(Original) <span
                                         class="req-star">*</span></small></span>
                             <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="scorecarddoc">
                         </div>
+
                         <div class="doc-item">
-                            <span>Admission Confirm Letter <small style="color: gray;">(Optional)</small></span>
+                            <span>Admission Confirm Letter <span class="req-star">*</span></span>
                             <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="addconfirmationdoc">
                         </div>
+
                         <div class="doc-item">
                             <span>Income Certificate <span class="req-star">*</span></span>
                             <input id="incomeDoc" type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png">
@@ -309,18 +326,22 @@
                             <span>Aadhar & Bank Passbook <small>(Xerox) <span class="req-star">*</span></small></span>
                             <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="adhardoc">
                         </div>
+
                         <div class="doc-item">
-                            <span>Declaration Form</span>
+                            <span>Declaration Form <span class="req-star">*</span></span>
                             <input type="file" name="documents" id="declarationdoc" accept=".pdf,.jpg,.jpeg,.png">
                         </div>
+
                         <div class="doc-item">
-                            <span>Hostel Fees Receipt</span>
+                            <span>Hostel Fees Receipt <span class="req-star">*</span></span>
                             <input type="file" name="documents" id="hosteldoc" accept=".pdf,.jpg,.jpeg,.png">
                         </div>
+
                         <div class="doc-item">
                             <span>Death / Divorce Cert <small style="color: gray;">(Optional)</small></span>
                             <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" id="deathdoc">
                         </div>
+
                     </div>
                 </div>
 
@@ -336,6 +357,9 @@
                         Page</button>
                 </div>
 
+                <input type="hidden" name="profileImageBase64" id="hiddenProfileBase64">
+                <input type="hidden" name="signatureBase64" id="hiddenSignatureBase64">
+
             </form>
 
         </main>
@@ -343,9 +367,10 @@
 
     <div id="preview_from" class="preview-overlay">
         <div class="preview-paper">
-            
+
             <div class="preview-actions" style="justify-content: center;">
-                <button type="button" class="btn btn-secondary close-btn-top" onclick="cancelPreview()"><i class="fa-solid fa-arrow-left"></i> Edit Form</button>
+                <button type="button" class="btn btn-secondary close-btn-top" onclick="cancelPreview()"><i
+                        class="fa-solid fa-arrow-left"></i> Edit Form</button>
             </div>
 
             <div class="formal-header">
@@ -390,6 +415,7 @@
                     <div class="f-row"><label>Mother's Name:</label> <input id="MOTHERNAME" readonly></div>
                     <div class="f-row"><label>Date of Birth:</label> <input id="DOB" readonly></div>
                     <div class="f-row"><label>Gender:</label> <input id="gender" readonly></div>
+                    <div class="f-row"><label>Blood Group:</label> <input id="previewBloodGroup" readonly></div>
                 </div>
             </div>
 
@@ -402,7 +428,7 @@
                     <div class="f-row"><label>State:</label> <input id="State" readonly></div>
                     <div class="f-row"><label>Aadhar No:</label> <input id="addharCard" readonly></div>
                     <div class="f-row"><label>ABC ID:</label> <input id="abcID" readonly></div>
-                    
+
                     <div class="f-row"><label>Nationality:</label> <input id="Nationality" readonly></div>
                     <div class="f-row"><label>Religion:</label> <input id="Religion" readonly></div>
                     <div class="f-row"><label>Category:</label> <input id="Category" readonly></div>
@@ -437,9 +463,10 @@
                     <div class="f-row"><label>16. Death/Divorce:</label> <input id="Death" readonly></div>
                 </div>
             </div>
-            
+
             <div class="f-footer-note" style="justify-content: center; text-align: center; margin-top: 20px;">
-                <p>I hereby declare that all the information provided above is true to the best of my knowledge and belief.</p>
+                <p>I hereby declare that all the information provided above is true to the best of my knowledge and
+                    belief.</p>
             </div>
 
         </div>

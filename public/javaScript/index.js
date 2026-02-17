@@ -29,16 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const sidebarItems = document.querySelectorAll('.sidebar-child');
     
     sidebarItems.forEach(item => {
-        item.classList.remove('active'); // Clear any hardcoded active classes
+        item.classList.remove('active'); 
         const href = item.getAttribute('href');
-        
-        // Exact match for the active page
         if (href === currentPath) {
             item.classList.add('active');
         }
     });
 
-    // Fallback if path is just root
     if (currentPath === "" || currentPath === "/") {
         const homeLink = document.querySelector('.sidebar-child[href="/"]');
         if(homeLink) homeLink.classList.add('active');
@@ -47,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // 2. RESTORE FORM DATA FROM SESSION STORAGE
     restoreFormData();
 });
-
 
 //////////////// ELEMENT REFERENCES //////////////////
 const profileInputFile = document.getElementById("profilePicture");
@@ -71,6 +67,7 @@ const InputFieldvalidationOrder = [
     { key: "motherName", label: "Mother Name", message: "enter" },
     { key: "dateOfBirth", label: "Date of Birth", message: "select" },
     { key: "Gender", label: "Gender", message: "select" },
+    { key: "BloodGroup", label: "Blood Group", message: "select" }, 
     { key: "birthPalce", label: "Birth Place", message: "enter" },
     { key: "tq", label: "Tahsil(Taluka)", message: "enter" },
     { key: "dist", label: "District", message: "enter" },
@@ -107,7 +104,7 @@ const documentValidation = [
 
 //////////////// SESSION STORAGE LOGIC (SAVE & RESTORE) //////////////////
 
-// 1. Function to Restore Data (Called on Page Load)
+// 1. Function to Restore Data
 function restoreFormData() {
     const setVal = (id, key) => {
         const val = sessionStorage.getItem(key);
@@ -120,6 +117,7 @@ function restoreFormData() {
     setVal('mother_name', 'motherName');
     setVal('date', 'dateOfBirth');
     setVal('Gender', 'Gender');
+    setVal('bloodGroup', 'BloodGroup'); 
     setVal('brnch', 'selectedBranch');
     setVal('birthPlace', 'birthPalce');
     setVal('tahsil', 'tq');
@@ -147,9 +145,22 @@ function restoreFormData() {
     restoreRadio('course', 'selectedCourse');
     restoreRadio('AdmissionThrough', 'AdmissionBy');
     restoreRadio('classes', 'classes');
+
+    // Restore Images
+    const savedProfileImage = sessionStorage.getItem("profileImage");
+    if (savedProfileImage) {
+        document.getElementById("profile-pic-placeholder").src = savedProfileImage;
+        document.getElementById("previewProfileImage").src = savedProfileImage;
+    }
+
+    const savedSignature = sessionStorage.getItem("profileSignature");
+    if (savedSignature) {
+        document.getElementById("sign-placeholder").src = savedSignature;
+        document.getElementById("previewProfileSign").src = savedSignature;
+    }
 }
 
-// 2. Function to Save Data (Called on Input Change)
+// 2. Function to Save Data
 function saveToSession() {
     const dataMap = {
         'surname': 'surname',
@@ -158,6 +169,7 @@ function saveToSession() {
         'mother_name': 'motherName',
         'date': 'dateOfBirth',
         'Gender': 'Gender',
+        'bloodGroup': 'BloodGroup', 
         'brnch': 'selectedBranch',
         'birthPlace': 'birthPalce',
         'tahsil': 'tq',
@@ -192,7 +204,7 @@ function saveToSession() {
     saveRadio('classes', 'classes');
 }
 
-// 3. Add Event Listener to Auto-Save on any change
+// Auto-Save
 document.getElementById('studentForm').addEventListener('input', function(e) {
     if(e.target.type !== 'file') {
         saveToSession();
@@ -211,6 +223,7 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
         motherName: document.getElementById('mother_name').value.trim(),
         dateOfBirth: document.getElementById('date').value.trim(),
         Gender: document.getElementById('Gender').value.trim(),
+        BloodGroup: document.getElementById('bloodGroup').value.trim(), 
         selectedCourse: document.querySelector('input[name="course"]:checked')?.value || "",
         AdmissionBy: document.querySelector('input[name="AdmissionThrough"]:checked')?.value || "",
         classes: document.querySelector('input[name="classes"]:checked')?.value || "",
@@ -235,7 +248,9 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
     for (const field of InputFieldvalidationOrder) {
         if (field.message === "file") {
             const fileInput = field.key === "profileInputFile" ? profileInputFile : SignInputFile;
-            if (!fileInput.files.length) {
+            const hasStoredImage = field.key === "profileInputFile" ? sessionStorage.getItem("profileImage") : sessionStorage.getItem("profileSignature");
+            
+            if (!fileInput.files.length && !hasStoredImage) {
                 alert(`Please upload ${field.label}`);
                 return;
             }
@@ -259,6 +274,11 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
     }
 
     saveToSession();
+
+    // --- POPULATE HIDDEN INPUTS BEFORE SUBMIT ---
+    document.getElementById('hiddenProfileBase64').value = sessionStorage.getItem("profileImage") || "";
+    document.getElementById('hiddenSignatureBase64').value = sessionStorage.getItem("profileSignature") || "";
+
     this.submit();
 });
 
@@ -268,27 +288,93 @@ function handleNextPage() {
     }
 }
 
-//////////////// PREVIEW LOGIC //////////////////
+//////////////// PREVIEW LOGIC & IMAGE STORAGE //////////////////
+
 profileInputFile.onchange = function () {
     if (this.files.length) {
-        const url = URL.createObjectURL(this.files[0]);
+        const file = this.files[0];
+
+        // 50KB Limit
+        const maxFileSize = 50 * 1024;
+        if (file.size > maxFileSize) {
+            alert("Image size must be 50KB or less. Please select a smaller file.");
+            this.value = ""; 
+            return; 
+        }
+
+        const url = URL.createObjectURL(file);
         profileImagePlaceholder.src = url;
         previewProfileImg.src = url;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const base64Image = e.target.result;
+            try {
+                sessionStorage.setItem("profileImage", base64Image);
+            } catch (error) {
+                if (error.name === 'QuotaExceededError') {
+                    alert("Your browser's session storage is full. Please clear your cache.");
+                }
+            }
+        };
+        reader.readAsDataURL(file);
     }
 };
 
 SignInputFile.onchange = function () {
     if (this.files.length) {
-        const url = URL.createObjectURL(this.files[0]);
+        const file = this.files[0];
+
+        // 50KB Limit
+        const maxFileSize = 50 * 1024; 
+        if (file.size > maxFileSize) {
+            alert("Signature image size must be 50KB or less. Please select a smaller file.");
+            this.value = "";
+            return; 
+        }
+
+        const url = URL.createObjectURL(file);
         signPlaceholder.src = url;
         previewProfileSign.src = url;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const base64Image = e.target.result;
+            try {
+                sessionStorage.setItem("profileSignature", base64Image);
+            } catch (error) {
+                if (error.name === 'QuotaExceededError') {
+                    alert("Your browser's session storage is full. Please clear your cache.");
+                }
+            }
+        };
+        reader.readAsDataURL(file);
     }
 };
+
+//////////////// DOCUMENTS VALIDATION (100KB LIMIT) //////////////////
+
+const documentInputs = document.querySelectorAll('input[name="documents"]');
+documentInputs.forEach(input => {
+    input.addEventListener('change', function () {
+        if (this.files.length > 0) {
+            const file = this.files[0];
+            const maxDocSize = 100 * 1024; // 100KB in bytes
+
+            if (file.size > maxDocSize) {
+                const labelText = this.previousElementSibling ? this.previousElementSibling.textContent.split('(')[0].trim() : "This document";
+                
+                alert(`${labelText} size must be 100KB or less. Please select a smaller file.`);
+                this.value = ""; 
+            }
+        }
+    });
+});
+
 
 // Open Preview
 document.getElementById('preview-Btn').addEventListener('click', () => {
     
-    // Hide mobile sidebar if open
     sidebar.classList.remove("active");
     if(closeBtn) closeBtn.style.display = "none";
     if(menuBtn) menuBtn.style.display = "block";
@@ -299,6 +385,7 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('MOTHERNAME').value = document.getElementById('mother_name').value;
     document.getElementById('DOB').value = document.getElementById('date').value;
     document.getElementById('gender').value = document.getElementById('Gender').value;
+    document.getElementById('previewBloodGroup').value = document.getElementById('bloodGroup').value; 
     
     document.getElementById('courses').value = document.querySelector('input[name="course"]:checked')?.value || "";
     document.getElementById('AdmissionTh').value = document.querySelector('input[name="AdmissionThrough"]:checked')?.value || "";
@@ -348,34 +435,3 @@ function cancelPreview() {
     document.getElementById('preview_from').style.display = 'none';
     document.querySelector(".formContainer").classList.remove("blur");
 }
-
-// Income Validation
-// function extractAndValidate() {
-//     var fileInput = document.getElementById('incomeDoc');
-//     var file = fileInput.files[0];
-//     var reader = new FileReader();
-
-//     reader.onload = function (event) {
-//         var typedarray = new Uint8Array(event.target.result);
-//         if (typeof pdfjsLib !== 'undefined') {
-//             pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
-//                 var text = "";
-//                 pdf.getPage(1).then(function (page) {
-//                     page.getTextContent().then(function (textContent) {
-//                         textContent.items.forEach(function (item) {
-//                             text += item.str + " ";
-//                         });
-//                         if (text.includes("तहसीलदार")) {
-//                             alert('Valid PDF: This is an Income Certificate.');
-//                         } else {
-//                             alert('Invalid PDF: This is not an Income Certificate.');
-//                         }
-//                     });
-//                 });
-//             }).catch(function (error) {
-//                 alert('Error loading PDF: ' + error.message);
-//             });
-//         }
-//     };
-//     if(file) reader.readAsArrayBuffer(file);
-// }

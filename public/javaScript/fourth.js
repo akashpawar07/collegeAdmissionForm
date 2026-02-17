@@ -1,11 +1,11 @@
-//////////////// 1. SIDEBAR TOGGLE (UPDATED) //////////////////////////////
+//////////////// 1. SIDEBAR TOGGLE //////////////////////////////
 const menuBtn = document.getElementById("menubar");
 const sidebar = document.getElementById("sidebar-nav");
 const closeBtn = document.getElementById("close-crossbar");
 
 if (menuBtn) {
   menuBtn.onclick = function () {
-    sidebar.style.display = "flex"; // Force flex display on mobile
+    sidebar.style.display = "flex"; 
     sidebar.classList.add("active");
     closeBtn.style.display = "block";
     menuBtn.style.display = "none";
@@ -18,7 +18,6 @@ if (closeBtn) {
     closeBtn.style.display = "none";
     menuBtn.style.display = "block";
 
-    // Wait for slide transition to finish before removing display
     setTimeout(() => {
       if (!sidebar.classList.contains("active")) {
         sidebar.style.display = "";
@@ -29,7 +28,6 @@ if (closeBtn) {
 
 //////////////// 2. DATA POPULATION & SYNC //////////////////
 document.addEventListener("DOMContentLoaded", function () {
-  // Highlight sidebar active link (UPDATED)
   const currentPath = window.location.pathname;
   const sidebarItems = document.querySelectorAll('.sidebar-child');
 
@@ -42,12 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Fill the ID card and the Hidden Form Fields
   populateIDCard();
 });
 
 function populateIDCard() {
-  // Helper to get session data
   const getVal = (key) => sessionStorage.getItem(key)
 
   // --- 1. DATA RETRIEVAL ---
@@ -60,6 +56,9 @@ function populateIDCard() {
   const branch = getVal('selectedBranch');
   const currentClass = getVal('classes');
   const address = getVal('address');
+  const bloodGroup = getVal('BloodGroup'); // ADDED BLOOD GROUP
+  
+  const profileImgBase64 = getVal('profileImage');
 
   // --- 2. CALCULATE ACADEMIC YEAR ---
   const date = new Date();
@@ -75,14 +74,21 @@ function populateIDCard() {
   document.getElementById('cardParentContact').textContent = parentMob;
   document.getElementById('class').textContent = currentClass;
   document.getElementById("academic-year").textContent = `Academic Year: ${academicYear}`;
+  document.getElementById('cardBloodGroup').textContent = bloodGroup || 'N/A'; // ADDED BLOOD GROUP TO UI
 
-  // Address UI (Truncate if too long for card display)
+  const cardImage = document.getElementById('cardProfileImage');
+  const iconPlaceholder = document.getElementById('iconPlaceholder');
+  if (profileImgBase64 && cardImage) {
+      cardImage.src = profileImgBase64;
+      cardImage.style.display = 'block';
+      if (iconPlaceholder) iconPlaceholder.style.display = 'none';
+  }
+
   let displayAddress = address;
-  if (displayAddress.length > 80) displayAddress = displayAddress.substring(0, 80) + "...";
-  document.getElementById('cardAddress').textContent = displayAddress.toUpperCase();
+  if (displayAddress && displayAddress.length > 80) displayAddress = displayAddress.substring(0, 80) + "...";
+  document.getElementById('cardAddress').textContent = (displayAddress || "").toUpperCase();
 
   // --- 4. UPDATE HIDDEN INPUTS (For Database Submission) ---
-  // These IDs must match the "id" attributes of the hidden inputs in your HTML
   document.getElementById('hiddenFname').value = fname;
   document.getElementById('hiddenSname').value = sname;
   document.getElementById('hiddenDob').value = dobRaw;
@@ -92,37 +98,15 @@ function populateIDCard() {
   document.getElementById('hiddenParentContact').value = parentMob;
   document.getElementById('hiddenAddress').value = address;
   document.getElementById('hiddenAcademicYear').value = academicYear;
+  document.getElementById('hiddenBloodGroup').value = bloodGroup || ''; // ADDED BLOOD GROUP INPUT
 }
 
-//////////////// 3. PHOTO PREVIEW & VALIDATION //////////////////
-
-// Photo Upload Preview
-const profileInput = document.getElementById('profilePicInput');
-const cardImage = document.getElementById('cardProfileImage');
-const iconPlaceholder = document.getElementById('iconPlaceholder'); // Added icon reference
-
-if (profileInput) {
-  profileInput.addEventListener('change', function () {
-    if (this.files && this.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        cardImage.src = e.target.result;
-        cardImage.style.display = 'block'; // Show the uploaded image
-        if (iconPlaceholder) iconPlaceholder.style.display = 'none'; // Hide the icon placeholder
-      }
-      reader.readAsDataURL(this.files[0]);
-    }
-  });
-}
-
-// handle submit and form validation 
+//////////////// 3. FORM VALIDATION & SUBMIT //////////////////
 const finalForm = document.getElementById('finalSubmitForm');
 
 if (finalForm) {
   finalForm.onsubmit = function (e) {
 
-    // 1. Get Values from Hidden Inputs (The actual data being submitted)
-    // These IDs must match your <input type="hidden"> IDs in HTML
     const firstname = document.getElementById("hiddenFname").value.trim();
     const surrname = document.getElementById("hiddenSname").value.trim();
     const std_course = document.getElementById("hiddenCourse").value.trim();
@@ -131,39 +115,17 @@ if (finalForm) {
     const stuContact = document.getElementById("hiddenStudentMobile").value.trim();
     const parContact = document.getElementById("hiddenParentContact").value.trim();
     const stuAddress = document.getElementById("hiddenAddress").value.trim();
+    const bg = document.getElementById("hiddenBloodGroup").value.trim();
 
-    // Manual Inputs
-    const photoFile = document.getElementById('profilePicInput').files.length;
-    const bloodGroup = document.getElementById('bloodGroupSelect').value;
-
-    // 2. Validation Logic
-
-    // Check Photo
-    if (photoFile === 0) {
-      alert("Please upload your profile photo first!");
-      e.preventDefault();
-      return false;
-    }
-
-    // Check Blood Group
-    if (bloodGroup === "") {
-      alert("Please select your Blood Group!");
-      e.preventDefault();
-      return false;
-    }
-
-    // Check Data Fields (Retrieved from Session/Hidden Inputs)
     if (firstname === "" || surrname === "" || std_course === "" ||
       current_Class === "" || dateOFBirth === "" ||
-      stuContact === "" || parContact === "" || stuAddress === "") {
+      stuContact === "" || parContact === "" || stuAddress === "" || bg === "") {
 
       alert("All fields are compulsory! Some data is missing from the Registration Form. Please go back and fill in your details.");
       e.preventDefault();
       return false;
     }
 
-    // 3. Clear Session Data
-    // Only clear if validation passes
     setTimeout(() => {
       sessionStorage.clear();
       console.log("Session storage cleared successfully.");

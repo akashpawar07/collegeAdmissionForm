@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { preventLoggedinUser } = require('../middleware/authMiddlewares')
+const studentSchema = require("../models/studentModels");
 
 // Using middleware for get student profileImage, signature, documents
 const upload = require("../middleware/indexMiddleware");
@@ -10,10 +11,9 @@ const docUploader = upload.fields([
     { name: 'documents', maxCount: 16 }
 ]);
 
-// Importing student schema from models folder
-const studentSchema = require("../models/studentModels");
 
 
+// POST route for creating student
 // POST route for creating student
 router.post("/", docUploader, async (req, res) => {
     try {
@@ -29,6 +29,7 @@ router.post("/", docUploader, async (req, res) => {
             mother_name,
             dob,
             Gender,
+            BloodGroup,
             Village,
             Taluka,
             District,
@@ -42,10 +43,12 @@ router.post("/", docUploader, async (req, res) => {
             Caste,
             Address,
             StudentMN,
-            pcontact
+            pcontact,
+            profileImageBase64, // <--- GRABBING HIDDEN IMAGE DATA
+            signatureBase64     // <--- GRABBING HIDDEN SIGNATURE DATA
         } = req.body;
 
-        // Create new student instance
+        // Create new student instance 
         const students = new studentSchema({
             courses: course,
             addmissionThrough: AdmissionThrough,
@@ -57,6 +60,7 @@ router.post("/", docUploader, async (req, res) => {
             motherName: mother_name,
             dateOfBirth: dob,
             gender: Gender,
+            bloodGroup: BloodGroup,
             village: Village,
             taluka: Taluka,
             dist: District,
@@ -73,25 +77,53 @@ router.post("/", docUploader, async (req, res) => {
             parentsContact: pcontact
         });
 
-        // Save profile image if provided
-        if (req.files && req.files['profileImage']) {
+        // -------------------------------------------------------------
+        // 1. SAVE PROFILE IMAGE (Check standard file upload first, then Base64 fallback)
+        // -------------------------------------------------------------
+        if (req.files && req.files['profileImage'] && req.files['profileImage'].length > 0) {
             students.studentProfileImage = {
                 data: req.files['profileImage'][0].buffer,
                 contentType: req.files['profileImage'][0].mimetype,
                 filename: req.files['profileImage'][0].originalname
             };
+        } else if (profileImageBase64) {
+            // Convert Base64 string back to binary Buffer
+            const base64Data = profileImageBase64.replace(/^data:image\/\w+;base64,/, "");
+            const mimeTypeMatch = profileImageBase64.match(/^data:(image\/\w+);base64,/);
+            const mimeType = mimeTypeMatch ? mimeTypeMatch[1] : 'image/jpeg';
+
+            students.studentProfileImage = {
+                data: Buffer.from(base64Data, 'base64'),
+                contentType: mimeType,
+                filename: 'profile_restored.jpg'
+            };
         }
 
-        // Save signature if provided
-        if (req.files && req.files['signature']) {
+        // -------------------------------------------------------------
+        // 2. SAVE SIGNATURE (Check standard file upload first, then Base64 fallback)
+        // -------------------------------------------------------------
+        if (req.files && req.files['signature'] && req.files['signature'].length > 0) {
             students.studentSign = {
                 data: req.files['signature'][0].buffer,
                 contentType: req.files['signature'][0].mimetype,
                 filename: req.files['signature'][0].originalname
             };
+        } else if (signatureBase64) {
+            // Convert Base64 string back to binary Buffer
+            const base64Data = signatureBase64.replace(/^data:image\/\w+;base64,/, "");
+            const mimeTypeMatch = signatureBase64.match(/^data:(image\/\w+);base64,/);
+            const mimeType = mimeTypeMatch ? mimeTypeMatch[1] : 'image/jpeg';
+
+            students.studentSign = {
+                data: Buffer.from(base64Data, 'base64'),
+                contentType: mimeType,
+                filename: 'signature_restored.jpg'
+            };
         }
 
-        // Save documents if provided
+        // -------------------------------------------------------------
+        // 3. SAVE DOCUMENTS
+        // -------------------------------------------------------------
         if (req.files && req.files['documents']) {
             students.studentDocuments = req.files['documents'].map(doc => ({
                 data: doc.buffer,
@@ -109,8 +141,6 @@ router.post("/", docUploader, async (req, res) => {
             message: `Student ${first_name} ${sur_name} created successfully`,
             data: CreatedStudent
         });
-
-        // console.log("Data saved successfully: ", CreatedStudent);
 
     } catch (error) {
         console.error('Error creating student:', error);
@@ -143,7 +173,6 @@ router.post("/", docUploader, async (req, res) => {
         });
     }
 });
-
 
 
 

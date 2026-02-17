@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema({
     surname: {
@@ -39,6 +39,11 @@ const studentSchema = new mongoose.Schema({
         trim: true
     },
     gender: {
+        type: String,
+        uppercase: true
+    },
+    // ---> NEWLY ADDED BLOOD GROUP FIELD <---
+    bloodGroup: {
         type: String,
         uppercase: true
     },
@@ -101,7 +106,6 @@ const studentSchema = new mongoose.Schema({
         default: "Pending"
     },
 
-
     // store binary data
     studentProfileImage: {
         data: Buffer,
@@ -119,7 +123,7 @@ const studentSchema = new mongoose.Schema({
         filename: String
     }]
 
-}, { timestamps: true })
+}, { timestamps: true });
 
-const Student = mongoose.model("Student", studentSchema)
+const Student = mongoose.model("Student", studentSchema);
 module.exports = Student;

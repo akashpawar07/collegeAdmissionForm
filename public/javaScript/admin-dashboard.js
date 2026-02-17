@@ -197,6 +197,10 @@ function viewDetails(rawId) {
                 <span>${student.gender || 'N/A'}</span>
             </div>
             <div class="data-item">
+                <label>Blood Group</label>
+                <span>${student.bloodGroup || 'N/A'}</span>
+            </div>
+            <div class="data-item">
                 <label>Category / Caste</label>
                 <span>${student.category || 'N/A'} / ${student.caste || 'N/A'}</span>
             </div>
