@@ -100,10 +100,10 @@ const renderSuccessCard = (userName) => `
             </div>
         </div>
         <script>
-            // Automatically redirect to login after 3 seconds (4000 milliseconds)
+            // Automatically redirect to login after 3 seconds (3000 milliseconds)
             setTimeout(() => {
                 window.location.href = '/login';
-            }, 4000);
+            }, 3000);
         </script>
     `;
 

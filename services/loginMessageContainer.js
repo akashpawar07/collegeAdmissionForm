@@ -100,7 +100,7 @@ const renderLoginSuccess = (userName) => `
         <script>
             setTimeout(() => {
                 window.location.href = '/admin-dashboard';
-            }, 4000);
+            }, 3000);
         </script>
     `;
 

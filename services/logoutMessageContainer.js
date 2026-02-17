@@ -48,10 +48,10 @@ const renderLogoutSuccess = () => `
         </div>
     </div>
     <script>
-        // Automatically redirect to login after 4 seconds
+        // Automatically redirect to login after 3 seconds
         setTimeout(() => {
             window.location.href = '/login';
-        }, 4000);
+        }, 3000);
     </script>
 `;
 

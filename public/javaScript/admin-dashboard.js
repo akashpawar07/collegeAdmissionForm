@@ -82,36 +82,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 //////////////// 3. TABLE & STATS LOGIC //////////////////////////////
 
-function updateStats(dbData) {
-    const total = dbData.length;
-
-    const btech = dbData.filter(s => {
-        if (!s.courses || s.courses === "N/A") return false;
-        const normalized = s.courses.toUpperCase().replace(/[\s.]/g, '');
-        return normalized.includes("BTECH");
-    }).length;
-
-    const mtech = dbData.filter(s => {
-        if (!s.courses || s.courses === "N/A") return false;
-        const normalized = s.courses.toUpperCase().replace(/[\s.]/g, '');
-        return normalized.includes("MTECH");
-    }).length;
-
-    const mba = dbData.filter(s => {
-        if (!s.courses || s.courses === "N/A") return false;
-        const normalized = s.courses.toUpperCase().replace(/[\s.]/g, '');
-        return normalized.includes("MBA");
-    }).length;
-
-
-    if (document.getElementById("totalCount")) document.getElementById("totalCount").textContent = total;
-    if (document.getElementById("btechCount")) document.getElementById("btechCount").textContent = btech;
-    if (document.getElementById("mtechCount")) document.getElementById("mtechCount").textContent = mtech;
-    if (document.getElementById("mbaCount")) document.getElementById("mbaCount").textContent = mba;
-}
-
-//////////////// 3. TABLE & STATS LOGIC //////////////////////////////
-
 function updateStats(data) {
     const total = data.length;
 
@@ -178,7 +148,6 @@ function getImageSrc(imgObj) {
     return '/images/default-avatar.png';
 }
 
-
 function viewDetails(rawId) {
     const student = fullDatabaseRawData.find(s => s._id === rawId);
     if (!student) return alert("Student data not found!");
@@ -191,9 +160,14 @@ function viewDetails(rawId) {
     modalStatus.textContent = stat.toUpperCase();
     modalStatus.className = `status ${stat.toLowerCase()}`;
 
-    // Notice the ACTION BUTTONS section added to the bottom of this HTML string!
+    let student_id = student._id ? `SYCET-${student._id.toString().slice(-6).toUpperCase()}` : "N/A";
+
     modalBody.innerHTML = `
         <div class="data-grid">
+        <div class="data-item">
+                <label>Application Id</label>
+                <span>${student_id || 'N/A'}</span>
+            </div>
             <div class="data-item">
                 <label>Full Name</label>
                 <span>${student.firstName || ''} ${student.fatherName || ''} ${student.surname || ''}</span>
@@ -277,6 +251,8 @@ function viewDetails(rawId) {
         </div>
     `;
 
+    // Lock background scrolling and show modal
+    document.body.classList.add('no-scroll');
     modal.classList.add('show');
 }
 
@@ -287,7 +263,6 @@ async function changeStudentStatus(studentId, newStatus) {
     if (!isConfirmed) return;
 
     try {
-        // If your routes are prefixed with /admin-dashboard in index.js, keep it like this:
         const response = await fetch(`/admin-dashboard/update-status/${studentId}`, {
             method: 'PATCH',
             headers: {
@@ -316,13 +291,20 @@ async function changeStudentStatus(studentId, newStatus) {
 function closeModal() {
     const modal = document.getElementById('viewModal');
     modal.classList.remove('show');
+    // Unlock background scrolling
+    document.body.classList.remove('no-scroll');
 }
 
 // Close modal if user clicks on the blurry background
 window.onclick = function (event) {
-    const modal = document.getElementById('viewModal');
-    if (event.target === modal) {
+    const viewModal = document.getElementById('viewModal');
+    const profileModal = document.getElementById('profileModal');
+
+    if (event.target === viewModal) {
         closeModal();
+    }
+    if (event.target === profileModal) {
+        closeProfileModal();
     }
 }
 
@@ -354,8 +336,6 @@ function performSearch(event) {
 
 const debouncedSearch = debounce(performSearch, 700);
 
-
-
 /// handle logout functionality ///////////////
 async function handleLogout() {
     try {
@@ -382,8 +362,6 @@ async function handleLogout() {
         console.log("Error while logging out:", error);
     }
 }
-
-
 
 //////////////// 7. ADMIN PROFILE LOGIC //////////////////////////////
 
@@ -427,6 +405,8 @@ async function viewProfile() {
             </div>
         `;
 
+        // Lock background scrolling and show modal
+        document.body.classList.add('no-scroll');
         profileModal.classList.add('show');
     } catch (error) {
         console.error("Error loading profile:", error);
@@ -436,19 +416,6 @@ async function viewProfile() {
 
 function closeProfileModal() {
     document.getElementById('profileModal').classList.remove('show');
-}
-
-// UPDATE YOUR EXISTING window.onclick FUNCTION TO THIS:
-window.onclick = function (event) {
-    const viewModal = document.getElementById('viewModal');
-    const profileModal = document.getElementById('profileModal');
-
-    // Close student view modal
-    if (event.target === viewModal) {
-        closeModal();
-    }
-    // Close profile modal
-    if (event.target === profileModal) {
-        closeProfileModal();
-    }
+    // Unlock background scrolling
+    document.body.classList.remove('no-scroll');
 }
