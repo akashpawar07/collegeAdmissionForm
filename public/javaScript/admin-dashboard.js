@@ -229,7 +229,7 @@ function viewDetails(rawId) {
                 <span>${student.parentsContact || 'N/A'}</span>
             </div>
             <div class="data-item full-width">
-                <label>Full Address</label>s
+                <label>Full Address</label>
                 <span>${student.address || ''}</span>
             </div>
         </div>
