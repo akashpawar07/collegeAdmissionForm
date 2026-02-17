@@ -230,7 +230,7 @@ function viewDetails(rawId) {
             </div>
             <div class="data-item full-width">
                 <label>Full Address</label>
-                <span>${student.village || ''}, ${student.taluka || ''}, ${student.dist || ''}, ${student.state || ''} - ${student.address || ''}</span>
+                <span>$${student.address || ''}</span>
             </div>
         </div>
 
