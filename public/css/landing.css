@@ -1,0 +1,393 @@
+:root {
+    --primary-color: #1e293b; /* Sleek dark slate */
+    --accent-color: #388e5f;  /* Your green */
+    --bg-color: #e2e8f0;      /* Soft outer background */
+    --text-main: #334155;
+    --text-muted: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px); /* Subtle dot pattern */
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-main);
+}
+
+.landing-wrapper {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.split-card {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    min-height: 600px;
+}
+
+/* ================== LEFT PANEL (BRANDING) ================== */
+.branding-panel {
+    flex: 0 0 40%;
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.branding-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.main-logo {
+    height: 110px;
+    width: auto;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.trust-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #cbd5e1;
+}
+
+.brand-text h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.accreditation {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.academic-badge {
+    display: inline-block;
+    border: 2px solid var(--accent-color);
+    color: #4ade80;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* --- Admin Login Link (Left Panel) --- */
+.admin-link-container {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 20; /* Keep it above the background circles */
+}
+
+.admin-link {
+    color: rgba(255, 255, 255, 0.5); /* Semi-transparent so it doesn't distract students */
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.admin-link:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Decorative Background Circles */
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    z-index: 1;
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    left: -100px;
+}
+
+.circle-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -150px;
+    right: -150px;
+}
+
+/* ================== RIGHT PANEL (INSTRUCTIONS) ================== */
+.guidelines-panel {
+    flex: 1;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.panel-header {
+    margin-bottom: 40px;
+}
+
+.panel-header h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.panel-header p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
+.instruction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 45px;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.step-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: #f1f5f9;
+    color: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border: 1px solid #e2e8f0;
+}
+
+.step-text h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.step-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ================== AGREEMENT & BUTTON ================== */
+.agreement-section {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 24px;
+    width: 24px;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.checkmark i {
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+    border-color: var(--accent-color);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.custom-checkbox input:checked ~ .checkmark i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.check-text {
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    line-height: 1.4;
+    padding-top: 2px;
+}
+
+.btn-proceed {
+    width: 100%;
+    padding: 16px;
+    background: #cbd5e1;
+    color: #64748b;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-proceed.active {
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(56, 142, 95, 0.3);
+}
+
+.btn-proceed.active:hover {
+    background: #2c7a4b;
+    transform: translateY(-2px);
+}
+
+/* ================== RESPONSIVE DESIGN ================== */
+
+/* TABLETS: Stack panels vertically */
+@media screen and (max-width: 992px) {
+    .split-card {
+        flex-direction: column;
+    }
+    
+    .branding-panel {
+        padding: 40px 20px;
+    }
+    
+    .main-logo {
+        height: 80px;
+    }
+    
+    .brand-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .guidelines-panel {
+        padding: 40px 30px;
+    }
+
+    /* Un-pin Admin link so it sits normally under the text on smaller screens */
+    .admin-link-container {
+        position: relative;
+        bottom: auto;
+        margin-top: 30px;
+    }
+}
+
+/* SMARTPHONES: Full screen width, no margins */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0; /* Remove 20px padding from body */
+    }
+
+    .landing-wrapper {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100vh;
+    }
+
+    .split-card {
+        border-radius: 0; /* Remove rounded corners */
+        box-shadow: none; /* Remove shadows */
+        min-height: 100vh; /* Stretch to full height */
+    }
+}
+
+/* SMALL PHONES: Adjust padding and KEEP ICONS ON SAME LINE */
+@media screen and (max-width: 600px) {
+    .guidelines-panel {
+        padding: 30px 20px;
+    }
+    
+    .panel-header h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Key Fix: Keeps the icon and text next to each other */
+    .instruction-item {
+        flex-direction: row; 
+        align-items: flex-start;
+        gap: 15px; 
+    }
+
+    /* Key Fix: Stops the icon from shrinking/squishing */
+    .step-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        flex-shrink: 0; 
+    }
+    
+    .step-text h3 {
+        font-size: 1.05rem;
+    }
+}

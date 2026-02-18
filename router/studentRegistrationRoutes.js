@@ -12,8 +12,6 @@ const docUploader = upload.fields([
 ]);
 
 
-
-// POST route for creating student
 // POST route for creating student
 router.post("/", docUploader, async (req, res) => {
     try {
@@ -175,9 +173,6 @@ router.post("/", docUploader, async (req, res) => {
 });
 
 
-
-// Add this to your Admin Router file
-
 // PATCH route to update student status
 router.patch("/update-status/:id", async (req, res) => {
     try {
@@ -211,7 +206,7 @@ router.patch("/update-status/:id", async (req, res) => {
 // GET route for accessing home page
 router.get("/", preventLoggedinUser, (req, res) => {
     try {
-        res.render('index');
+        res.render('student-registration');
     } catch (error) {
         console.error('Error rendering index page:', error);
         res.status(500).json({

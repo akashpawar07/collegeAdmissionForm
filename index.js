@@ -30,7 +30,8 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "/templates/views"));
 
 // importing routes from router folder
-const indexRoutes           = require("./router/indexRoutes")
+const landingRoutes         = require("./router/landingRouter")
+const student_registrationRoutes    = require("./router/studentRegistrationRoutes")
 const stdUndertakingRoutes  = require("./router/studentUndertakingRoutes")
 const feesUndertakingRoutes = require("./router/feesUndertakingRoutes")
 const idcardRoutes          = require("./router/idCardRoutes"); 
@@ -46,7 +47,8 @@ const {loggedinUserOnly} = require('./middleware/authMiddlewares');
 
 
 //using routes here
-app.use("/",                        indexRoutes);
+app.use("/",                        landingRoutes);
+app.use("/student-registration",    student_registrationRoutes);
 app.use("/studentUndertaking",      stdUndertakingRoutes);
 app.use("/feesundertaking",         feesUndertakingRoutes);
 app.use("/admin-dashboard",         loggedinUserOnly, adminDashboard);

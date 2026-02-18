@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/images/college-logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYCET | Admission Guidelines</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/landing.css">
+</head>
+
+<body>
+
+    <div class="landing-wrapper">
+        <div class="split-card">
+
+            <div class="branding-panel">
+                <div class="branding-content">
+                    <img src="/images/clogo.png" alt="SYCET Logo" class="main-logo">
+                    <div class="brand-text">
+                        <span class="trust-badge">SHREEYASH PRATISHTHAN'S</span>
+                        <h1>Shreeyash College of Engineering & Technology</h1>
+                        <p class="accreditation">(An ISO 9001:2008 Certified Institute, NAAC Accredited)</p>
+                        <div class="academic-badge" id="dynamicYear">Admission Portal</div>
+                    </div>
+                </div>
+
+                <div class="admin-link-container">
+                    <a href="/login" class="admin-link"><i class="fa-solid fa-user-shield"></i> Admin Login</a>
+                </div>
+
+                <div class="bg-circle circle-1"></div>
+                <div class="bg-circle circle-2"></div>
+            </div>
+
+            <div class="guidelines-panel">
+
+                <div class="panel-header">
+                    <h2>Registration Guidelines</h2>
+                    <p>Please read carefully to ensure a smooth application process.</p>
+                </div>
+
+                <div class="instruction-list">
+
+                    <div class="instruction-item">
+                        <div class="step-icon"><i class="fa-solid fa-route"></i></div>
+                        <div class="step-text">
+                            <h3>1. Follow the Step-by-Step Sequence</h3>
+                            <p>Complete each section entirely before moving forward. Do not use the sidebar to skip
+                                pages, as your data must be saved sequentially.</p>
+                        </div>
+                    </div>
+
+                    <div class="instruction-item">
+                        <div class="step-icon"><i class="fa-solid fa-file-image"></i></div>
+                        <div class="step-text">
+                            <h3>2. Prepare Your Documents</h3>
+                            <p>Keep your files ready. Your <strong>Profile Photo & Signature</strong> must be under
+                                <strong>50KB</strong>. All other educational certificates must be under
+                                <strong>100KB</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="instruction-item">
+                        <div class="step-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div class="step-text">
+                            <h3>3. Final Verification</h3>
+                            <p>Utilize the "Preview Form" feature to double-check all details. Once the form is
+                                submitted, modifications cannot be made.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="agreement-section">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="agreeCheck">
+                        <span class="checkmark">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span class="check-text">I confirm that I have read and understood all the guidelines mentioned
+                            above.</span>
+                    </label>
+
+                    <button id="startBtn" class="btn-proceed" disabled onclick="startApplication()">
+                        Proceed to Registration <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ----------------------------------------------------
+        // 1. DYNAMIC ACADEMIC YEAR CALCULATION (IST)
+        // ----------------------------------------------------
+        document.addEventListener("DOMContentLoaded", () => {
+            // Get current date in IST
+            const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth() + 1; // getMonth is 0-indexed (Jan = 0)
+
+            // If we are before June (admission season), we are in the previous academic year.
+            // Example: Feb 2026 -> "2025-2026". August 2026 -> "2026-2027"
+            let academicYear;
+            if (currentMonth < 6) {
+                academicYear = `${currentYear - 1}-${currentYear}`;
+            } else {
+                academicYear = `${currentYear}-${currentYear + 1}`;
+            }
+
+            document.getElementById('dynamicYear').textContent = `Admission Portal ${academicYear}`;
+        });
+
+        // ----------------------------------------------------
+        // 2. INTERACTIVE CHECKBOX LOGIC
+        // ----------------------------------------------------
+        const agreeCheck = document.getElementById('agreeCheck');
+        const startBtn = document.getElementById('startBtn');
+
+        agreeCheck.addEventListener('change', function () {
+            if (this.checked) {
+                startBtn.disabled = false;
+                startBtn.classList.add('active');
+            } else {
+                startBtn.disabled = true;
+                startBtn.classList.remove('active');
+            }
+        });
+
+        function startApplication() {
+            // Redirects to your actual registration form route
+            window.location.href = "/student-registration";
+        }
+    </script>
+</body>
+
+</html>
