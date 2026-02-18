@@ -29,7 +29,7 @@ if (closeBtn) {
     };
 }
 
-// Active Link Highlighting (UPDATED)
+// Active Link Highlighting 
 document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     const sidebarItems = document.querySelectorAll('.sidebar-child');
@@ -46,19 +46,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-/////////////// FORM AUTO-FILL LOGIC (UNTOUCHED) ///////////////
-// Set Date
-const date = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-const year = date.getFullYear();
-const month = String(date.getMonth() + 1).padStart(2, '0');
-const dateOfMonth = String(date.getDate()).padStart(2, '0');
+/////////////// FORM AUTO-FILL LOGIC ///////////////
 
+// Set Date (Check session storage first, otherwise generate today's date)
 const dateInput = document.getElementById('date');
-if (dateInput) {
-    dateInput.value = `${year}-${month}-${dateOfMonth}`;
+const savedDate = sessionStorage.getItem("presentDate");
+
+if (savedDate) {
+    if (dateInput) dateInput.value = savedDate;
+} else {
+    // Generate today's date if nothing is saved
+    const date = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const dateOfMonth = String(date.getDate()).padStart(2, '0');
+
+    if (dateInput) {
+        dateInput.value = `${year}-${month}-${dateOfMonth}`;
+        sessionStorage.setItem("presentDate", dateInput.value); // Save default to session
+    }
 }
 
-// Retrieve Session Data
+// Retrieve Session Data for read-only fields
 const surname = sessionStorage.getItem("surname") || "";
 const firstName = sessionStorage.getItem("firstName") || "";
 const fatherName = sessionStorage.getItem("fatherName") || "";
@@ -68,17 +77,24 @@ const district = sessionStorage.getItem("dist") || "";
 const state = sessionStorage.getItem("state") || "";
 const Address = sessionStorage.getItem("address") || "";
 
-// Fill Fields
+// Retrieve saved Fees
+const savedPresentFees = sessionStorage.getItem("presentFees") || "";
+const savedProposedFees = sessionStorage.getItem("praposedFees") || "";
+
+// Fill Fields Function
 const safeSetValue = (id, value) => {
     const el = document.getElementById(id);
     if (el) el.value = value;
 };
 
+// Populate the read-only and retrieved fields
 safeSetValue("stu-name", firstName + " " + surname);
 safeSetValue("parent-name", fatherName + " " + surname);
 safeSetValue("stu-name2", firstName + " " + surname);
 safeSetValue("parent-name2", fatherName + " " + surname);
 safeSetValue("place", "Chhatrapti Sambhajinagar");
+safeSetValue("fees", savedPresentFees);   // Loads Present Fees
+safeSetValue("fees2", savedProposedFees); // Loads Proposed Fees
 
 // Fill Address
 const addressEl = document.getElementById("address");
@@ -86,7 +102,33 @@ if (addressEl) {
     addressEl.value = Address;
 }
 
-/////////////// SUBMIT VALIDATION (UNTOUCHED) ///////////////
+/////////////// REAL-TIME SESSION STORAGE SAVING ///////////////
+// This saves the data to sessionStorage the moment the user types it in,
+// so if they click the "Next" button without clicking "Submit", it is still saved!
+
+const feesEl = document.getElementById("fees");
+const fees2El = document.getElementById("fees2");
+const placeEl = document.getElementById("place");
+
+if (feesEl) {
+    feesEl.addEventListener("input", function() {
+        sessionStorage.setItem("presentFees", this.value);
+    });
+}
+
+if (fees2El) {
+    fees2El.addEventListener("input", function() {
+        sessionStorage.setItem("praposedFees", this.value);
+    });
+}
+
+if (dateInput) {
+    dateInput.addEventListener("change", function() {
+        sessionStorage.setItem("presentDate", this.value);
+    });
+}
+
+/////////////// SUBMIT VALIDATION ///////////////
 const dispBtn = document.getElementById("disp");
 if (dispBtn) {
     dispBtn.addEventListener("click", function (event) {
@@ -100,9 +142,14 @@ if (dispBtn) {
         if (fees1 === "" || fees2 === "" || studentNamee.trim() === "" || GuardianName.trim() === ""
             || address.trim() === "") {
 
-            alert("All fields are compulsary, please fill form carefully");
-            event.preventDefault(); // This is what stops the form submission
+            alert("All fields are compulsory, please fill the form carefully");
+            event.preventDefault(); // This stops the form submission
             return false;
         }
+
+        // Just as a backup, save data right before submit
+        sessionStorage.setItem("presentFees", fees1);
+        sessionStorage.setItem("praposedFees", fees2);
+        sessionStorage.setItem("presentDate", document.getElementById("date").value);
     });
 }

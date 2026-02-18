@@ -21,15 +21,15 @@ if (closeBtn) {
     };
 }
 
-//////////////// ON PAGE LOAD (RESTORE DATA & ACTIVE LINK) //////////////////
+//////////////// ON PAGE LOAD (RESTORE DATA & ACTIVE LINK & GENERATE IDs) //////////////////
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     // 1. Set Active Link Dynamically
     const currentPath = window.location.pathname;
     const sidebarItems = document.querySelectorAll('.sidebar-child');
-    
+
     sidebarItems.forEach(item => {
-        item.classList.remove('active'); 
+        item.classList.remove('active');
         const href = item.getAttribute('href');
         if (href === currentPath) {
             item.classList.add('active');
@@ -38,8 +38,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentPath === "" || currentPath === "/") {
         const homeLink = document.querySelector('.sidebar-child[href="/"]');
-        if(homeLink) homeLink.classList.add('active');
+        if (homeLink) homeLink.classList.add('active');
     }
+
+    // ==========================================
+    // --- DYNAMIC ACADEMIC YEAR LOGIC ---
+    // ==========================================
+    const currentYear = new Date().getFullYear();
+    // Calculates (LastYear) - (CurrentYear) e.g., 2025-2026
+    const academicYearText = `${currentYear - 1}-${currentYear}`;
+
+    const displayAcademicYear = document.getElementById("displayAcademicYear");
+    if (displayAcademicYear) {
+        displayAcademicYear.textContent = academicYearText;
+    }
+
+    // ==========================================
+    // --- APPLICATION ID GENERATION LOGIC ---
+    // ==========================================
+    let appId = sessionStorage.getItem("applicationId");
+
+    // If no ID exists in this session, generate a new one
+    if (!appId) {
+        // Generates a 6-digit random number (100000 to 999999)
+        const random6Digit = Math.floor(100000 + Math.random() * 900000);
+        appId = `SYCET${currentYear}${random6Digit}`;
+
+        // Save it to session storage so it persists across page navigations
+        sessionStorage.setItem("applicationId", appId);
+    }
+
+    // Display it on the UI badge
+    const displayAppId = document.getElementById("displayAppId");
+    if (displayAppId) displayAppId.textContent = appId;
+
+    // Put it in the hidden input to send to the backend on submit
+    const hiddenAppId = document.getElementById("hiddenApplicationId");
+    if (hiddenAppId) hiddenAppId.value = appId;
 
     // 2. RESTORE FORM DATA FROM SESSION STORAGE
     restoreFormData();
@@ -67,7 +102,7 @@ const InputFieldvalidationOrder = [
     { key: "motherName", label: "Mother Name", message: "enter" },
     { key: "dateOfBirth", label: "Date of Birth", message: "select" },
     { key: "Gender", label: "Gender", message: "select" },
-    { key: "BloodGroup", label: "Blood Group", message: "select" }, 
+    { key: "BloodGroup", label: "Blood Group", message: "select" },
     { key: "birthPalce", label: "Birth Place", message: "enter" },
     { key: "tq", label: "Tahsil(Taluka)", message: "enter" },
     { key: "dist", label: "District", message: "enter" },
@@ -117,7 +152,7 @@ function restoreFormData() {
     setVal('mother_name', 'motherName');
     setVal('date', 'dateOfBirth');
     setVal('Gender', 'Gender');
-    setVal('bloodGroup', 'BloodGroup'); 
+    setVal('bloodGroup', 'BloodGroup');
     setVal('brnch', 'selectedBranch');
     setVal('birthPlace', 'birthPalce');
     setVal('tahsil', 'tq');
@@ -169,7 +204,7 @@ function saveToSession() {
         'mother_name': 'motherName',
         'date': 'dateOfBirth',
         'Gender': 'Gender',
-        'bloodGroup': 'BloodGroup', 
+        'bloodGroup': 'BloodGroup',
         'brnch': 'selectedBranch',
         'birthPlace': 'birthPalce',
         'tahsil': 'tq',
@@ -205,8 +240,8 @@ function saveToSession() {
 }
 
 // Auto-Save
-document.getElementById('studentForm').addEventListener('input', function(e) {
-    if(e.target.type !== 'file') {
+document.getElementById('studentForm').addEventListener('input', function (e) {
+    if (e.target.type !== 'file') {
         saveToSession();
     }
 });
@@ -223,7 +258,7 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
         motherName: document.getElementById('mother_name').value.trim(),
         dateOfBirth: document.getElementById('date').value.trim(),
         Gender: document.getElementById('Gender').value.trim(),
-        BloodGroup: document.getElementById('bloodGroup').value.trim(), 
+        BloodGroup: document.getElementById('bloodGroup').value.trim(),
         selectedCourse: document.querySelector('input[name="course"]:checked')?.value || "",
         AdmissionBy: document.querySelector('input[name="AdmissionThrough"]:checked')?.value || "",
         classes: document.querySelector('input[name="classes"]:checked')?.value || "",
@@ -249,7 +284,7 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
         if (field.message === "file") {
             const fileInput = field.key === "profileInputFile" ? profileInputFile : SignInputFile;
             const hasStoredImage = field.key === "profileInputFile" ? sessionStorage.getItem("profileImage") : sessionStorage.getItem("profileSignature");
-            
+
             if (!fileInput.files.length && !hasStoredImage) {
                 alert(`Please upload ${field.label}`);
                 return;
@@ -279,6 +314,8 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
     document.getElementById('hiddenProfileBase64').value = sessionStorage.getItem("profileImage") || "";
     document.getElementById('hiddenSignatureBase64').value = sessionStorage.getItem("profileSignature") || "";
 
+    // applicationId is already set in the hidden input during DOMContentLoaded!
+
     this.submit();
 });
 
@@ -298,8 +335,8 @@ profileInputFile.onchange = function () {
         const maxFileSize = 50 * 1024;
         if (file.size > maxFileSize) {
             alert("Image size must be 50KB or less. Please select a smaller file.");
-            this.value = ""; 
-            return; 
+            this.value = "";
+            return;
         }
 
         const url = URL.createObjectURL(file);
@@ -326,11 +363,11 @@ SignInputFile.onchange = function () {
         const file = this.files[0];
 
         // 50KB Limit
-        const maxFileSize = 50 * 1024; 
+        const maxFileSize = 50 * 1024;
         if (file.size > maxFileSize) {
             alert("Signature image size must be 50KB or less. Please select a smaller file.");
             this.value = "";
-            return; 
+            return;
         }
 
         const url = URL.createObjectURL(file);
@@ -363,9 +400,9 @@ documentInputs.forEach(input => {
 
             if (file.size > maxDocSize) {
                 const labelText = this.previousElementSibling ? this.previousElementSibling.textContent.split('(')[0].trim() : "This document";
-                
+
                 alert(`${labelText} size must be 100KB or less. Please select a smaller file.`);
-                this.value = ""; 
+                this.value = "";
             }
         }
     });
@@ -374,10 +411,13 @@ documentInputs.forEach(input => {
 
 // Open Preview
 document.getElementById('preview-Btn').addEventListener('click', () => {
-    
+
     sidebar.classList.remove("active");
-    if(closeBtn) closeBtn.style.display = "none";
-    if(menuBtn) menuBtn.style.display = "block";
+    if (closeBtn) closeBtn.style.display = "none";
+    if (menuBtn) menuBtn.style.display = "block";
+
+    // DISPLAY THE APP ID IN PREVIEW MODAL
+    document.getElementById('previewAppIdDisplay').textContent = sessionStorage.getItem("applicationId") || "N/A";
 
     document.getElementById('SURNAME').value = document.getElementById('surname').value;
     document.getElementById('FIRSTNAME').value = document.getElementById('fname').value;
@@ -385,12 +425,12 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('MOTHERNAME').value = document.getElementById('mother_name').value;
     document.getElementById('DOB').value = document.getElementById('date').value;
     document.getElementById('gender').value = document.getElementById('Gender').value;
-    document.getElementById('previewBloodGroup').value = document.getElementById('bloodGroup').value; 
-    
+    document.getElementById('previewBloodGroup').value = document.getElementById('bloodGroup').value;
+
     document.getElementById('courses').value = document.querySelector('input[name="course"]:checked')?.value || "";
     document.getElementById('AdmissionTh').value = document.querySelector('input[name="AdmissionThrough"]:checked')?.value || "";
     document.getElementById('AdmissionForClass').value = document.querySelector('input[name="classes"]:checked')?.value || "";
-    
+
     document.getElementById("branches").value = document.getElementById('brnch').value;
     document.getElementById('placeOfBirth').value = document.getElementById('birthPlace').value;
     document.getElementById('taluka').value = document.getElementById('tahsil').value;
@@ -408,7 +448,7 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('parentsContact').value = document.getElementById('parentsCon').value;
 
     const getFileName = (id) => document.getElementById(id)?.files[0]?.name || "Not Uploaded";
-    
+
     document.getElementById('ssc').value = getFileName('sscdoc');
     document.getElementById('hsc').value = getFileName('hscdoc');
     document.getElementById('Tc').value = getFileName('tcdoc');
@@ -427,11 +467,11 @@ document.getElementById('preview-Btn').addEventListener('click', () => {
     document.getElementById('Death').value = getFileName('deathdoc');
 
     document.getElementById('preview_from').style.display = 'block';
-    document.querySelector(".formContainer").classList.add("blur");
+    document.querySelector(".formContainer")?.classList.add("blur");
 });
 
 // Close Preview
 function cancelPreview() {
     document.getElementById('preview_from').style.display = 'none';
-    document.querySelector(".formContainer").classList.remove("blur");
+    document.querySelector(".formContainer")?.classList.remove("blur");
 }

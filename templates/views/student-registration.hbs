@@ -53,12 +53,13 @@
 
         <main class="content-area">
 
-            <form id="studentForm" action="/student-registration" method="post" enctype="multipart/form-data" class="paper-form">
+            <form id="studentForm" action="/student-registration" method="post" enctype="multipart/form-data"
+                class="paper-form">
 
                 <div class="header-strip">
                     <h2 class="form-title">ADMISSION FORM</h2>
                     <div class="academic-year">
-                        <span>ACADEMIC YEAR : 2024-2025</span>
+                        <span>ACADEMIC YEAR : <span id="displayAcademicYear"></span></span>
                     </div>
                 </div>
 
@@ -93,6 +94,19 @@
                 </div>
 
                 <hr class="divider">
+
+                <div
+                    style="margin-bottom: 20px; background: #f8fafc; padding: 12px 18px; border: 1px solid #e2e8f0; border-left: 4px solid var(--accent-color); border-radius: 6px; display: flex; align-items: center; width: 100%; max-width: 350px;">
+                    <i class="fa-solid fa-id-badge"
+                        style="font-size: 1.5rem; color: var(--accent-color); margin-right: 15px;"></i>
+                    <div>
+                        <span
+                            style="display: block; font-size: 0.75rem; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Your
+                            Application ID</span>
+                        <span id="displayAppId"
+                            style="font-size: 1.25rem; font-weight: 800; color: #0f172a; letter-spacing: 1px;"></span>
+                    </div>
+                </div>
 
                 <div class="form-section">
                     <h3 class="section-title">Course Selection</h3>
@@ -359,6 +373,7 @@
 
                 <input type="hidden" name="profileImageBase64" id="hiddenProfileBase64">
                 <input type="hidden" name="signatureBase64" id="hiddenSignatureBase64">
+                <input type="hidden" name="applicationId" id="hiddenApplicationId">
 
             </form>
 
@@ -393,7 +408,12 @@
             </div>
 
             <div class="f-title-strip">
-                <h3>APPLICATION FOR ADMISSION : 2024-2025</h3>
+                <h3>APPLICATION FOR ADMISSION</h3>
+            </div>
+
+            <div
+                style="text-align: right; padding: 5px 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 0.95rem; margin-bottom: 10px;">
+                Application ID: <span id="previewAppIdDisplay" style="color: var(--primary-color);"></span>
             </div>
 
             <div class="f-section">

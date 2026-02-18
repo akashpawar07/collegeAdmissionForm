@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let realStudents = [];
 let fullDatabaseRawData = [];
 
-// This event listener runs AUTOMATICALLY as soon as the DOM (HTML) loads. No clicking needed!
+// This event listener runs AUTOMATICALLY as soon as the DOM (HTML) loads.
 document.addEventListener("DOMContentLoaded", async function () {
     try {
         const response = await fetch('/admin-dashboard/students');
@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const dbData = await response.json();
         fullDatabaseRawData = dbData;
-        // console.log("getting data: ", dbData);
 
         // 1. Format the database data
         realStudents = dbData.map(student => {
             return {
-                rawId: student._id, // NEW: Keep the raw DB ID to look them up later
-                id: student._id ? `SYCET-${student._id.toString().slice(-6).toUpperCase()}` : "N/A",
+                rawId: student._id,
+                // ---> CHANGED HERE: Now pulls the real Application ID from DB
+                id: student.applicationId || "N/A",
                 name: `${student.firstName || ''} ${student.surname || ''}`.trim(),
                 course: student.courses || "N/A",
                 branch: student.branch || "N/A",
@@ -160,13 +160,14 @@ function viewDetails(rawId) {
     modalStatus.textContent = stat.toUpperCase();
     modalStatus.className = `status ${stat.toLowerCase()}`;
 
-    let student_id = student._id ? `SYCET-${student._id.toString().slice(-6).toUpperCase()}` : "N/A";
+    // ---> CHANGED HERE: Real Application ID for the popup modal
+    let student_id = student.applicationId || "N/A";
 
     modalBody.innerHTML = `
         <div class="data-grid">
         <div class="data-item">
                 <label>Application Id</label>
-                <span>${student_id || 'N/A'}</span>
+                <span>${student_id}</span>
             </div>
             <div class="data-item">
                 <label>Full Name</label>

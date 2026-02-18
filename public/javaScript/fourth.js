@@ -5,7 +5,7 @@ const closeBtn = document.getElementById("close-crossbar");
 
 if (menuBtn) {
   menuBtn.onclick = function () {
-    sidebar.style.display = "flex"; 
+    sidebar.style.display = "flex";
     sidebar.classList.add("active");
     closeBtn.style.display = "block";
     menuBtn.style.display = "none";
@@ -56,9 +56,9 @@ function populateIDCard() {
   const branch = getVal('selectedBranch');
   const currentClass = getVal('classes');
   const address = getVal('address');
-  const bloodGroup = getVal('BloodGroup'); // ADDED BLOOD GROUP
-  
-  const profileImgBase64 = getVal('profileImage');
+  const bloodGroup = getVal('BloodGroup');
+
+  const profileImgBase64 = getVal('profileImageBase64') || getVal('profileImage');
 
   // --- 2. CALCULATE ACADEMIC YEAR ---
   const date = new Date();
@@ -67,21 +67,25 @@ function populateIDCard() {
   let academicYear = (currentMonth >= 7) ? `${currentYear}-${currentYear + 1}` : `${currentYear - 1}-${currentYear}`;
 
   // --- 3. UPDATE VISUAL ID CARD (UI) ---
-  document.getElementById('cardName').textContent = `${fname} ${sname}`.toUpperCase();
-  document.getElementById('cardCourse').textContent = `${course} - ${branch}`.toUpperCase();
-  document.getElementById('cardDob').textContent = dobRaw.split('-').reverse().join('/');
-  document.getElementById('studentMobile').textContent = studentMob;
-  document.getElementById('cardParentContact').textContent = parentMob;
-  document.getElementById('class').textContent = currentClass;
+  document.getElementById('cardName').textContent = `${fname || ''} ${sname || ''}`.toUpperCase();
+  document.getElementById('cardCourse').textContent = `${course || ''} - ${branch || ''}`.toUpperCase();
+
+  if (dobRaw) {
+    document.getElementById('cardDob').textContent = dobRaw.split('-').reverse().join('/');
+  }
+
+  document.getElementById('studentMobile').textContent = studentMob || '';
+  document.getElementById('cardParentContact').textContent = parentMob || '';
+  document.getElementById('class').textContent = currentClass || '';
   document.getElementById("academic-year").textContent = `Academic Year: ${academicYear}`;
-  document.getElementById('cardBloodGroup').textContent = bloodGroup || 'N/A'; // ADDED BLOOD GROUP TO UI
+  document.getElementById('cardBloodGroup').textContent = bloodGroup || 'N/A';
 
   const cardImage = document.getElementById('cardProfileImage');
   const iconPlaceholder = document.getElementById('iconPlaceholder');
   if (profileImgBase64 && cardImage) {
-      cardImage.src = profileImgBase64;
-      cardImage.style.display = 'block';
-      if (iconPlaceholder) iconPlaceholder.style.display = 'none';
+    cardImage.src = profileImgBase64;
+    cardImage.style.display = 'block';
+    if (iconPlaceholder) iconPlaceholder.style.display = 'none';
   }
 
   let displayAddress = address;
@@ -89,16 +93,16 @@ function populateIDCard() {
   document.getElementById('cardAddress').textContent = (displayAddress || "").toUpperCase();
 
   // --- 4. UPDATE HIDDEN INPUTS (For Database Submission) ---
-  document.getElementById('hiddenFname').value = fname;
-  document.getElementById('hiddenSname').value = sname;
-  document.getElementById('hiddenDob').value = dobRaw;
-  document.getElementById('hiddenCourse').value = course;
-  document.getElementById('hiddenClass').value = currentClass;
-  document.getElementById('hiddenStudentMobile').value = studentMob;
-  document.getElementById('hiddenParentContact').value = parentMob;
-  document.getElementById('hiddenAddress').value = address;
+  document.getElementById('hiddenFname').value = fname || '';
+  document.getElementById('hiddenSname').value = sname || '';
+  document.getElementById('hiddenDob').value = dobRaw || '';
+  document.getElementById('hiddenCourse').value = course || '';
+  document.getElementById('hiddenClass').value = currentClass || '';
+  document.getElementById('hiddenStudentMobile').value = studentMob || '';
+  document.getElementById('hiddenParentContact').value = parentMob || '';
+  document.getElementById('hiddenAddress').value = address || '';
   document.getElementById('hiddenAcademicYear').value = academicYear;
-  document.getElementById('hiddenBloodGroup').value = bloodGroup || ''; // ADDED BLOOD GROUP INPUT
+  document.getElementById('hiddenBloodGroup').value = bloodGroup || '';
 }
 
 //////////////// 3. FORM VALIDATION & SUBMIT //////////////////
@@ -126,10 +130,10 @@ if (finalForm) {
       return false;
     }
 
-    setTimeout(() => {
-      sessionStorage.clear();
-      console.log("Session storage cleared successfully.");
-    }, 3000);
+    // Note: sessionStorage.clear() has been intentionally removed from here.
+    // The data must persist so the Success page can use it to generate 
+    // the Printable Application document. It will be cleared when the 
+    // user clicks the "OK" button on the final success popup.
 
     return true;
   };

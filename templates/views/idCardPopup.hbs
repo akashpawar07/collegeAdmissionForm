@@ -5,83 +5,256 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/images/college-logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYCET | ID-Card Success</title>
+    <title>SYCET | Admission Success</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             background: rgb(45, 47, 94);
             font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
         }
 
         .contanier {
             display: flex;
             flex-direction: column;
             margin: auto;
-            width: 99vw;
-            height: 90vh;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
         }
 
         .contanier .popup {
-            width: 30%;
-            height: 40vh;
+            width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 30px 20px 20px 20px;
             gap: 10px;
             background: rgb(255, 251, 251);
             border-radius: 7px;
             color: rgb(48, 44, 44);
-            margin: auto;
             position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         .contanier .popup img {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            margin-top: -35px;
+            margin-top: -55px;
             position: absolute;
             top: 0;
+            background: white;
+            padding: 5px;
         }
 
         .div-item {
             display: flex;
             align-items: center;
             flex-direction: column;
-            width: 90%;
+            width: 100%;
             text-align: center;
         }
 
-        a {
-            background: rgb(19, 175, 19);
-            text-decoration: none;
-            border-radius: 3px;
-            padding: 10px;
-            height: 20px;
-            width: 80%;
-            color: white;
+        .div-item h2 {
+            margin-bottom: 5px;
         }
 
-        /* Media query setiction started */
-        @media only screen and (min-width:200px) and (max-width:480px) {
-            .contanier {
-                width: 100vw;
-                height: 100vh;
+        .div-item p {
+            margin-top: 0;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .print-disclaimer {
+            color: #dc2626 !important;
+            font-size: 13px !important;
+            font-weight: bold;
+            margin: 15px 0;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px dashed #f87171;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            text-decoration: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-print {
+            background: #1e293b;
+        }
+
+        .btn-ok {
+            background: rgb(19, 175, 19);
+            padding: 12px 35px;
+        }
+
+        /* =========================================
+           PRINT STYLES (Formal, Compact A4 Layout)
+           ========================================= */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm;
             }
 
-            .contanier .popup {
-                width: 90vw;
-                height: 30vh;
+            body * {
+                visibility: hidden;
             }
 
-            .contanier .popup img {
-                width: 80px;
-                height: 80px;
+            body {
+                background: white !important;
+                margin: 0;
+                padding: 0;
             }
 
-            .div-item p {
-                font-size: 18px;
+            #printableApplication,
+            #printableApplication * {
+                visibility: visible;
+            }
+
+            #printableApplication {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                display: block !important;
+                font-family: 'Times New Roman', Times, serif;
+                color: #000;
+                box-sizing: border-box;
+            }
+
+            .print-header {
+                text-align: center;
+                margin-bottom: 8px;
+                border-bottom: 2px solid #000;
+                padding-bottom: 5px;
+            }
+
+            .header-top {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                min-height: 45px;
+            }
+
+            .print-logo {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 45px;
+                width: auto;
+            }
+
+            .header-titles {
+                text-align: center;
+            }
+
+            .header-titles h2 {
+                margin: 0;
+                font-size: 17px;
+                text-transform: uppercase;
+            }
+
+            .header-titles p {
+                margin: 2px 0 0 0;
+                font-size: 11px;
+            }
+
+            .print-header h3 {
+                margin: 8px 0 2px 0;
+                font-size: 14px;
+                text-decoration: underline;
+            }
+
+            .formal-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 11.5px;
+                margin-bottom: 8px;
+                page-break-inside: avoid;
+            }
+
+            .formal-table th,
+            .formal-table td {
+                border: 1px solid #000;
+                padding: 4px 6px;
+                vertical-align: middle;
+            }
+
+            .table-title {
+                background-color: #f2f2f2 !important;
+                -webkit-print-color-adjust: exact;
+                text-align: left;
+                font-size: 12.5px;
+                text-transform: uppercase;
+                padding: 5px 6px !important;
+            }
+
+            .label-cell {
+                font-weight: bold;
+                width: 15%;
+                background-color: #fafafa !important;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .undertaking-text {
+                font-size: 11px;
+                line-height: 1.35;
+                text-align: justify;
+                padding: 8px 12px !important;
+            }
+
+            .undertaking-text ol {
+                margin: 4px 0 4px 18px;
+                padding: 0;
+            }
+
+            .undertaking-text li {
+                margin-bottom: 3px;
+            }
+
+            .dynamic-data {
+                font-weight: 600;
+                text-transform: uppercase;
+                border-bottom: 1px solid #000;
+                display: inline-block;
+                padding: 0 4px;
+                line-height: 1.1;
+            }
+
+            .price-bold {
+                font-weight: bold;
+                font-size: 12px;
             }
         }
     </style>
@@ -90,16 +263,318 @@
 <body>
     <div class="contanier">
         <div class="popup" id="disp">
-            <img src="/images/checkBtn.png" alt="">
+            <img src="/images/checkBtn.png" alt="Success">
             <div class="div-item">
                 <h2>Thank You!</h2>
-                <p>Your ID Card details have been successfully submitted.</p><br>
-                <a href="/">Ok</a>
+                <p>Your admission form and undertakings have been successfully submitted.</p>
+                <p class="print-disclaimer">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Please print and keep this application form with
+                    you for further admission processes.
+                </p>
+                <div class="btn-container">
+                    <button onclick="triggerPrint()" class="btn btn-print">
+                        <i class="fa-solid fa-print"></i> Print Application
+                    </button>
+                    <button onclick="finishProcess()" class="btn btn-ok">OK</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div id="printableApplication" style="display: none;">
+
+        <div class="print-header">
+            <div class="header-top">
+                <img src="/images/clogo.png" class="print-logo" alt="College Logo">
+                <div class="header-titles">
+                    <h2>SHREEYASH COLLEGE OF ENGINEERING & TECHNOLOGY</h2>
+                    <p>(An ISO 9001:2008 Certified Institute, NAAC Accredited)</p>
+                </div>
+            </div>
+            <h3>ADMISSION APPLICATION FORM</h3>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; font-weight: bold; font-size: 12px; margin-bottom: 6px;">
+            <div style="background: #f8fafc; padding: 4px 10px; border: 1px solid #000; border-radius: 3px;">
+                Application ID: <span id="printAppId"
+                    style="font-family: monospace; font-size: 13px; margin-left: 5px;"></span>
+            </div>
+        </div>
+
+        <table class="formal-table">
+            <tr>
+                <th colspan="4" class="table-title">1. Academic Details</th>
+            </tr>
+            <tr>
+                <td class="label-cell">Course:</td>
+                <td id="printCourse"></td>
+                <td class="label-cell">Branch:</td>
+                <td id="printBranch"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Class / Year:</td>
+                <td id="printClass"></td>
+                <td class="label-cell">Admission Mode:</td>
+                <td id="printAdmissionMode"></td>
+            </tr>
+        </table>
+
+        <table class="formal-table">
+            <tr>
+                <th colspan="4" class="table-title">2. Personal Details</th>
+            </tr>
+            <tr>
+                <td class="label-cell">Full Name:</td>
+                <td id="printName" colspan="2"></td>
+                <td rowspan="6" style="width: 100px; text-align: center; vertical-align: middle; padding: 4px;">
+                    <img id="printProfileImg" src="" alt="Photo"
+                        style="width: 90px; height: 110px; border: 1px solid #000; object-fit: cover; display: none;">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-cell">Mother's Name:</td>
+                <td id="printMother" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Date of Birth:</td>
+                <td id="printDob" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Place of Birth:</td>
+                <td id="printBirthPlace" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Gender & Blood:</td>
+                <td id="printGenderBlood" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Category / Caste:</td>
+                <td id="printCategoryCaste" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Religion:</td>
+                <td id="printReligion"></td>
+                <td class="label-cell">Nationality:</td>
+                <td id="printNationality"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Aadhar No:</td>
+                <td id="printAadhar"></td>
+                <td class="label-cell">ABC ID:</td>
+                <td id="printAbc"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Mobile (Student):</td>
+                <td id="printMobile"></td>
+                <td class="label-cell">Email ID:</td>
+                <td id="printEmail"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Mobile (Parent):</td>
+                <td id="printParentMobile" colspan="3"></td>
+            </tr>
+            <tr>
+                <td class="label-cell">Address:</td>
+                <td id="printAddress" colspan="3"></td>
+            </tr>
+        </table>
+
+        <table class="formal-table">
+            <tr>
+                <th class="table-title">3. Student Undertaking (Rules & Conduct)</th>
+            </tr>
+            <tr>
+                <td class="undertaking-text">
+                    I, <span class="dynamic-data fill-student-name"></span>, hereby agree to the following terms:
+                    <ol>
+                        <li>I will always follow all rules & regulations made by college & institute.</li>
+                        <li>I will regularly & sincerely attend all theory classes with practicals from the first day of
+                            next semester.</li>
+                        <li>I will always follow all norms decided by college authority regarding Uniform, I-card,
+                            hygiene, safety & sporty environment.</li>
+                        <li>I will be highly disciplined in all respects. I will not indulge in any misbehavior such as
+                            commenting, mocking, shouting, running, teasing etc. I will instantly obey discipline
+                            related instructions by any staff.</li>
+                        <li>I am timely & regularly completing all homework, assignments, practicals, seminars, projects
+                            & any given task within stipulated time and with involvement.</li>
+                        <li>I am ready to understand punishment given by college/department for indiscipline,
+                            misbehavior or any other default.</li>
+                        <li>I will always maintain discipline during Events, Cultural programs, Sports, Gatherings,
+                            Guest/Expert lectures, Industrial visits etc.</li>
+                        <li>I am aware that any rule imposed by the University such as "imposing limits on the numbers
+                            of attempts permissible to pass any examination" shall be binding on me.</li>
+                        <li>I hereby agree to conform to any Rules, Acts & Laws enforced by Government & I hereby
+                            undertake that I will do nothing either inside or outside the college which may result in
+                            disciplinary action against me.</li>
+                        <li>I fully understand that the principal has the right to expel me from the college for any
+                            infringement of the rules of conduct & discipline.</li>
+                        <li><strong>Condition of minimum attendance:</strong> I am fully aware I will not be allowed to
+                            appear for the examination if I do not attend minimum 90 percent classes of theory,
+                            practical etc. I will not be allowed for the examination if I fail to submit satisfactorily
+                            all assignments within the stipulated time limit.</li>
+                    </ol>
+                </td>
+            </tr>
+        </table>
+
+        <table class="formal-table">
+            <tr>
+                <th class="table-title">4. Annexure II: Affidavit by Parent / Guardian</th>
+            </tr>
+            <tr>
+                <td class="undertaking-text">
+                    I, Mr./Mrs./Ms <span class="dynamic-data fill-parent-name"></span> Father/Mother/Guardian of <span
+                        class="dynamic-data fill-student-name"></span>, having been admitted to Shreeyash College of
+                    Engineering & Technology, have received a copy of the AICTE regulations on Curbing the menace of
+                    Ragging in Higher Education Institutions, 2009.
+                    <ol>
+                        <li>I have, in particular, perused clause 3 of the Regulations & am aware as to what constitutes
+                            ragging.</li>
+                        <li>I have also perused clause 7 & clause 9.1 of the Regulations and am fully aware of the penal
+                            & administrative action liable to be taken against my ward in case he/she is found guilty or
+                            abetting ragging.</li>
+                        <li>My ward will not indulge in any behavior or act that may be constituted as ragging under
+                            clause 3 of the Regulations.</li>
+                        <li>My ward will not participate in or abet or propagate through any act of commission or
+                            omission that constitutes ragging.</li>
+                        <li>I hereby affirm that, if found guilty of ragging, my ward is liable for punishment according
+                            to clause 9.1 of the Regulations, without prejudice to any other criminal action.</li>
+                        <li>I hereby declare that my ward has not been expelled or debarred from admission in any
+                            institution in the country on account of being found guilty of ragging. I am aware that if
+                            this declaration is untrue, my ward's admission is liable to be cancelled.</li>
+                    </ol>
+                </td>
+            </tr>
+        </table>
+
+        <table class="formal-table">
+            <tr>
+                <th class="table-title">5. Fees Undertaking & Authorizations</th>
+            </tr>
+            <tr>
+                <td class="undertaking-text">
+                    I, <span class="dynamic-data fill-student-name"></span> son/daughter of <span
+                        class="dynamic-data fill-parent-name"></span>, seeking admission to the First/Direct Second Year
+                    Engineering in Shreeyash College of Engineering & Technology, Chh. Sambhajinagar for the academic
+                    year in the respective branch.
+                    <br><br>
+                    I am fully aware that my admission is purely provisional subject to the approval of AICTE, Delhi,
+                    DTE Mumbai/ 'PRAVESH NIYANTRAN SMITI', Mumbai. I shall be fully responsible for the consequence
+                    thereto.
+                    <br><br>
+                    I am fully aware and agree that the presently charged fees are interim fees as approved by the
+                    'SHIKSHAN SHULKA SAMITI'/ Authority / Honorable Court/ Hon'ble Supreme Court. (Interim fees at
+                    present <span class="price-bold">Rs. <span id="printPresentFees"
+                            class="dynamic-data"></span>/-</span> only).
+                    <br><br>
+                    I am aware and agree to pay fees which will be finalized by the 'SHIKSHAN SHULKA SAMITI'/ Authority
+                    / Honorable Court from time to time during my entire period of course and if not paid, I know that
+                    my admission will be cancelled for which I will be responsible and I will not hold College/ anybody
+                    responsible for cancellation of my admission.
+                    <br><br>
+                    The proposed fees will be about <span class="price-bold">Rs. <span id="printProposedFees"
+                            class="dynamic-data"></span>/-</span>. I will pay all the fees due on or before submission
+                    of the semester till the institution receives all claims for Govt.
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 15px 20px 10px 20px;">
+                    <div style="margin-bottom: 10px; line-height: 1.6;">
+                        <div><strong>Date: </strong> <span id="printDate"
+                                style="font-weight: 600; text-transform: uppercase;"></span></div>
+                        <div><strong>Place: </strong> <span
+                                style="font-weight: 600; text-transform: uppercase;">CHHATRAPATI SAMBHAJINAGAR</span>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 25px;">
+                        <div style="text-align: center;">
+                            <div
+                                style="height: 30px; width: 140px; border-bottom: 1px dashed #000; margin-bottom: 5px;">
+                            </div>
+                            <strong>Signature of Parent/Guardian</strong>
+                        </div>
+                        <div style="text-align: center;">
+                            <img id="printStudentSign2" src="" alt="Sign"
+                                style="height: 35px; border-bottom: 1px dashed #000; margin-bottom: 5px; display: none;"><br>
+                            <strong>Signature of Student</strong>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const getVal = (key) => sessionStorage.getItem(key) || 'N/A';
+
+            // ---> FETCH AND DISPLAY APPLICATION ID <---
+            document.getElementById('printAppId').textContent = getVal('applicationId');
+
+            // 1. ACADEMIC DETAILS
+            document.getElementById('printCourse').textContent = getVal('selectedCourse').toUpperCase();
+            document.getElementById('printBranch').textContent = getVal('selectedBranch').toUpperCase();
+            document.getElementById('printClass').textContent = getVal('classes').toUpperCase();
+            document.getElementById('printAdmissionMode').textContent = getVal('AdmissionBy').toUpperCase();
+
+            // 2. NAME FORMATTING
+            const fname = getVal('firstName');
+            const fatherName = getVal('fatherName');
+            const sname = getVal('surname');
+
+            const fullName = `${fname} ${fatherName} ${sname}`.replace(/N\/A/g, '').replace(/\s+/g, ' ').trim().toUpperCase();
+            const parentName = `${fatherName} ${sname}`.replace(/N\/A/g, '').replace(/\s+/g, ' ').trim().toUpperCase();
+
+            document.getElementById('printName').textContent = fullName;
+            document.getElementById('printMother').textContent = getVal('motherName').toUpperCase();
+
+            // Fill all instances of dynamic names
+            document.querySelectorAll('.fill-student-name').forEach(el => el.textContent = fullName);
+            document.querySelectorAll('.fill-parent-name').forEach(el => el.textContent = parentName);
+
+            // 3. PERSONAL DETAILS
+            document.getElementById('printDob').textContent = getVal('dateOfBirth');
+            document.getElementById('printBirthPlace').textContent = getVal('birthPalce').toUpperCase();
+            document.getElementById('printGenderBlood').textContent = `${getVal('Gender').toUpperCase()} / ${getVal('BloodGroup').toUpperCase()}`;
+            document.getElementById('printCategoryCaste').textContent = `${getVal('category').toUpperCase()} / ${getVal('caste').toUpperCase()}`;
+            document.getElementById('printReligion').textContent = getVal('religion').toUpperCase();
+            document.getElementById('printNationality').textContent = getVal('nationality').toUpperCase();
+            document.getElementById('printAadhar').textContent = getVal('adhar');
+            document.getElementById('printAbc').textContent = getVal('abcid');
+            document.getElementById('printMobile').textContent = getVal('studentc');
+            document.getElementById('printParentMobile').textContent = getVal('parentsc');
+            document.getElementById('printEmail').textContent = getVal('emailid');
+
+            // 4. ADDRESS
+            const addressParts = [getVal('address'), getVal('tq') !== 'N/A' ? `Taluka: ${getVal('tq')}` : '', getVal('dist') !== 'N/A' ? `Dist: ${getVal('dist')}` : '', getVal('state') !== 'N/A' ? `State: ${getVal('state')}` : ''].filter(Boolean);
+            document.getElementById('printAddress').textContent = addressParts.join(', ').toUpperCase();
+
+            // 5. FEES & DATES
+            document.getElementById('printPresentFees').textContent = getVal('presentFees') === 'N/A' ? '________' : getVal('presentFees');
+            document.getElementById('printProposedFees').textContent = getVal('praposedFees') === 'N/A' ? '________' : getVal('praposedFees');
+
+            const pDate = getVal('presentDate');
+            document.getElementById('printDate').textContent = pDate !== 'N/A' ? pDate.split('-').reverse().join('/') : 'DD/MM/YYYY';
+
+            // 6. IMAGES 
+            const profileImg = sessionStorage.getItem('profileImage');
+            const signImg = sessionStorage.getItem('profileSignature');
+
+            if (profileImg && profileImg !== 'null') {
+                const pImg = document.getElementById('printProfileImg');
+                pImg.src = profileImg; pImg.style.display = "inline-block";
+            }
+            if (signImg && signImg !== 'null') {
+                document.getElementById('printStudentSign2').src = signImg;
+                document.getElementById('printStudentSign2').style.display = "inline-block";
+            }
+        });
+
+        function triggerPrint() { window.print(); }
+        function finishProcess() { sessionStorage.clear(); window.location.href = "/"; }
+    </script>
 </body>
-<script>
-    sessionStorage.clear();
-</script>
+
 </html>

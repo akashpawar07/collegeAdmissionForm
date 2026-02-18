@@ -17,6 +17,7 @@ router.post("/", docUploader, async (req, res) => {
     try {
         // Destructure request body
         const {
+            applicationId,
             course,
             AdmissionThrough,
             classes,
@@ -48,6 +49,8 @@ router.post("/", docUploader, async (req, res) => {
 
         // Create new student instance 
         const students = new studentSchema({
+            applicationId: applicationId,
+            courses: course,
             courses: course,
             addmissionThrough: AdmissionThrough,
             class: classes,

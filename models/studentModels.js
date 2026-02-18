@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema({
+    applicationId: {
+        type: String,
+        unique: true, // Ensures no two students ever get the same ID
+        required: true
+    },
     surname: {
         type: String,
         uppercase: true
