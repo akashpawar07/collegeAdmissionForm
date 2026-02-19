@@ -548,8 +548,8 @@
             document.getElementById('printEmail').textContent = getVal('emailid');
 
             // 4. ADDRESS
-            const addressParts = [getVal('address'), getVal('tq') !== 'N/A' ? `Taluka: ${getVal('tq')}` : '', getVal('dist') !== 'N/A' ? `Dist: ${getVal('dist')}` : '', getVal('state') !== 'N/A' ? `State: ${getVal('state')}` : ''].filter(Boolean);
-            document.getElementById('printAddress').textContent = addressParts.join(', ').toUpperCase();
+            const addressParts = getVal('address' || " ")
+            document.getElementById('printAddress').textContent = addressParts.toUpperCase();
 
             // 5. FEES & DATES
             document.getElementById('printPresentFees').textContent = getVal('presentFees') === 'N/A' ? '________' : getVal('presentFees');

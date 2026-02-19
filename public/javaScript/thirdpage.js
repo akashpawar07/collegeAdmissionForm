@@ -111,19 +111,19 @@ const fees2El = document.getElementById("fees2");
 const placeEl = document.getElementById("place");
 
 if (feesEl) {
-    feesEl.addEventListener("input", function() {
+    feesEl.addEventListener("input", function () {
         sessionStorage.setItem("presentFees", this.value);
     });
 }
 
 if (fees2El) {
-    fees2El.addEventListener("input", function() {
+    fees2El.addEventListener("input", function () {
         sessionStorage.setItem("praposedFees", this.value);
     });
 }
 
 if (dateInput) {
-    dateInput.addEventListener("change", function() {
+    dateInput.addEventListener("change", function () {
         sessionStorage.setItem("presentDate", this.value);
     });
 }
@@ -152,4 +152,17 @@ if (dispBtn) {
         sessionStorage.setItem("praposedFees", fees2);
         sessionStorage.setItem("presentDate", document.getElementById("date").value);
     });
+}
+
+
+function handleNextPage() {
+    const warningMessage = 
+        "⚠️ Have you submitted your form?\n\n" +
+        "• If YES: Click 'OK' to proceed to the next page.\n" +
+        "• If NO: Click 'Cancel' and submit your form first.\n\n" +
+        "Any unsaved data will be lost at your own risk!";
+
+    if (confirm(warningMessage)) {
+        window.location.href = "/idCard";
+    }
 }

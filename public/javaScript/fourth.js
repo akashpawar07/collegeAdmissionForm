@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function populateIDCard() {
-  const getVal = (key) => sessionStorage.getItem(key)
+  const getVal = (key) => sessionStorage.getItem(key);
 
   // --- 1. DATA RETRIEVAL ---
-  const fname = getVal('firstName')
+  const fname = getVal('firstName');
   const sname = getVal('surname');
   const dobRaw = getVal('dateOfBirth');
   const studentMob = getVal('studentc');
@@ -105,36 +105,77 @@ function populateIDCard() {
   document.getElementById('hiddenBloodGroup').value = bloodGroup || '';
 }
 
-//////////////// 3. FORM VALIDATION & SUBMIT //////////////////
+//////////////// 3. FINAL COMPREHENSIVE SUBMIT VALIDATION //////////////////
 const finalForm = document.getElementById('finalSubmitForm');
+
+// Mapped array of your 31 exact sessionStorage keys with user-friendly names for the popup
+const requiredSessionKeys = [
+  { key: 'applicationId', name: 'Application ID' },
+  { key: 'selectedCourse', name: 'Course Selection' },
+  { key: 'AdmissionBy', name: 'Admission Type' },
+  { key: 'classes', name: 'Class' },
+  { key: 'selectedBranch', name: 'Branch Name' },
+  { key: 'surname', name: 'Surname' },
+  { key: 'firstName', name: 'First Name' },
+  { key: 'fatherName', name: 'Father\'s Name' },
+  { key: 'motherName', name: 'Mother\'s Name' },
+  { key: 'dateOfBirth', name: 'Date of Birth' },
+  { key: 'Gender', name: 'Gender' },
+  { key: 'BloodGroup', name: 'Blood Group' },
+  { key: 'birthPalce', name: 'Place of Birth' },
+  { key: 'tq', name: 'Taluka' },
+  { key: 'dist', name: 'District' },
+  { key: 'state', name: 'State' },
+  { key: 'abcid', name: 'ABC ID' },
+  { key: 'adhar', name: 'Aadhar Card No.' },
+  { key: 'emailid', name: 'Email ID' },
+  { key: 'nationality', name: 'Nationality' },
+  { key: 'religion', name: 'Religion' },
+  { key: 'category', name: 'Category' },
+  { key: 'caste', name: 'Caste' },
+  { key: 'address', name: 'Full Address' },
+  { key: 'studentc', name: 'Student Mobile No.' },
+  { key: 'parentsc', name: 'Parent Mobile No.' },
+  { key: 'profileImage', name: 'Profile Image' },
+  { key: 'profileSignature', name: 'Signature' },
+  { key: 'presentFees', name: 'Present Fees (Fees Undertaking)' },
+  { key: 'praposedFees', name: 'Proposed Fees (Fees Undertaking)' },
+  { key: 'presentDate', name: 'Form Date (Fees Undertaking)' }
+];
 
 if (finalForm) {
   finalForm.onsubmit = function (e) {
+    let missingFields = [];
 
-    const firstname = document.getElementById("hiddenFname").value.trim();
-    const surrname = document.getElementById("hiddenSname").value.trim();
-    const std_course = document.getElementById("hiddenCourse").value.trim();
-    const current_Class = document.getElementById("hiddenClass").value.trim();
-    const dateOFBirth = document.getElementById("hiddenDob").value.trim();
-    const stuContact = document.getElementById("hiddenStudentMobile").value.trim();
-    const parContact = document.getElementById("hiddenParentContact").value.trim();
-    const stuAddress = document.getElementById("hiddenAddress").value.trim();
-    const bg = document.getElementById("hiddenBloodGroup").value.trim();
+    // Loop through the strict list of 31 keys to check if they exist and are not empty
+    for (let item of requiredSessionKeys) {
+      let value = sessionStorage.getItem(item.key);
 
-    if (firstname === "" || surrname === "" || std_course === "" ||
-      current_Class === "" || dateOFBirth === "" ||
-      stuContact === "" || parContact === "" || stuAddress === "" || bg === "") {
+      // Failsafe: Check alternative keys for images just in case
+      if (item.key === 'profileImage' && (!value || value === 'null')) {
+        value = sessionStorage.getItem('profileImageBase64');
+      }
+      if (item.key === 'profileSignature' && (!value || value === 'null')) {
+        value = sessionStorage.getItem('signatureBase64');
+      }
 
-      alert("All fields are compulsory! Some data is missing from the Registration Form. Please go back and fill in your details.");
+      // If the value is completely missing or is an empty string
+      if (!value || value.trim() === "") {
+        missingFields.push(item.name);
+      }
+    }
+
+    // If any fields are missing, block submission and show the exact list
+    if (missingFields.length > 0) {
       e.preventDefault();
+
+      const formattedMissingList = missingFields.join("\n- ");
+      alert(`⚠️ INCOMPLETE APPLICATION\n\nThe following required fields are missing or empty in your application:\n\n- ${formattedMissingList}\n\nPlease go back to the relevant pages and complete these fields before submitting.`);
+
       return false;
     }
 
-    // Note: sessionStorage.clear() has been intentionally removed from here.
-    // The data must persist so the Success page can use it to generate 
-    // the Printable Application document. It will be cleared when the 
-    // user clicks the "OK" button on the final success popup.
-
+    // Session clearing is safely handled on the Success Page
     return true;
   };
 }

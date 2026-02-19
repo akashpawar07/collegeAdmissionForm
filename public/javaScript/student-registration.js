@@ -320,7 +320,13 @@ document.getElementById('studentForm').addEventListener('submit', function (e) {
 });
 
 function handleNextPage() {
-    if (confirm("Are you sure you want to move to the next page?")) {
+    const warningMessage =
+        "⚠️ Have you submitted your form?\n\n" +
+        "• If YES: Click 'OK' to proceed to the next page.\n" +
+        "• If NO: Click 'Cancel' and submit your form first.\n\n" +
+        "Any unsaved data will be lost at your own risk!";
+
+    if (confirm(warningMessage)) {
         window.location.href = "/studentUndertaking";
     }
 }
