@@ -50,3 +50,26 @@ The **SYCET Admission Portal** is a comprehensive, end-to-end digital admission 
 * **Email/SMS Integration:** Send automated confirmation emails to students upon successful submission and status changes (Approved/Rejected).
 * **Payment Gateway Integration:** Allow students to pay their proposed admission fees directly through the portal.
 * **Export Feature:** Enable Admins to export the dashboard data to Excel/CSV for offline university records.
+
+## Project Architecture and Screenshorts
+
+### Registration Guidelines : Landing Page
+<img width="1706" height="876" alt="Image" src="https://github.com/user-attachments/assets/b6bdb83e-516f-4f1d-92c4-2547a902b9cf" />
+
+### Admin Login
+<img width="1906" height="872" alt="Image" src="https://github.com/user-attachments/assets/4f1ebf37-bb2e-4924-a61b-d67a60366dcf" />
+
+### Admin Dashboard
+
+
+### System Generated ID-Card
+<img width="771" height="657" alt="Image" src="https://github.com/user-attachments/assets/ab4b25cb-4d97-4787-9be2-da326bc727ff" />
+
+
+### System Context DFD
+<img width="1298" height="523" alt="Image" src="https://github.com/user-attachments/assets/baa3eb88-0960-43f1-9e2e-44ab9cd7191d" />
+
+### System Architecture Diagram
+<img width="3155" height="3712" alt="Image" src="https://github.com/user-attachments/assets/d2b34ac9-ed6c-4807-92d3-03f844acf455" />
+
+
