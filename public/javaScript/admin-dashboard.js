@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 date: student.dateOfBirth || "N/A",
                 status: student.status || "Pending"
             };
-        });
+        }).reverse();
 
         // 2. Render the table and update the top stats immediately
         renderTable(realStudents);
