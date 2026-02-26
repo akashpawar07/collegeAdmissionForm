@@ -137,7 +137,7 @@ router.post("/", docUploader, async (req, res) => {
         const CreatedStudent = await students.save();
 
         // Success response
-        res.status(200).render("indexPopup", {
+        res.status(200).render("student-registration-Popup", {
             success: true,
             message: `Student ${first_name} ${sur_name} created successfully`,
             data: CreatedStudent

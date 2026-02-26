@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    background: linear-gradient(135deg, #2b4560 0%, #527592 100%);
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contanier {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.contanier .popup {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out forwards;
+    box-sizing: border-box;
+}
+
+.icon-container {
+    width: 80px;
+    height: 80px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+.icon-container i {
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.div-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.div-item h2 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    color: #111827;
+    font-weight: 700;
+}
+
+.div-item p.success-msg {
+    margin: 0 0 20px 0;
+    color: #4b5563;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.print-disclaimer {
+    background-color: #eff6ff;
+    color: #1e40af !important;
+    border: 1px solid #dbeafe;
+    font-size: 13px !important;
+    font-weight: 500;
+    margin: 0 0 25px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    line-height: 1.5;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-print {
+    background: #1f2937;
+}
+
+.btn-print:hover {
+    background: #111827;
+}
+
+.btn-ok {
+    background: #22c55e;
+    padding: 12px 35px;
+}
+
+.btn-ok:hover {
+    background: #16a34a;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .contanier .popup {
+        padding: 30px 20px;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .div-item h2 {
+        font-size: 24px;
+    }
+}
+
+/* =========================================
+   PRINT STYLES (Preserved)
+   ========================================= */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 8mm;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    body {
+        background: white !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    #printableApplication,
+    #printableApplication * {
+        visibility: visible;
+    }
+
+    #printableApplication {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: block !important;
+        font-family: 'Times New Roman', Times, serif;
+        color: #000;
+        box-sizing: border-box;
+    }
+
+    .print-header {
+        text-align: center;
+        margin-bottom: 8px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 5px;
+    }
+
+    .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        min-height: 45px;
+    }
+
+    .print-logo {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 45px;
+        width: auto;
+    }
+
+    .header-titles {
+        text-align: center;
+    }
+
+    .header-titles h2 {
+        margin: 0;
+        font-size: 17px;
+        text-transform: uppercase;
+    }
+
+    .header-titles p {
+        margin: 2px 0 0 0;
+        font-size: 11px;
+    }
+
+    .print-header h3 {
+        margin: 8px 0 2px 0;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+
+    .formal-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11.5px;
+        margin-bottom: 8px;
+        page-break-inside: avoid;
+    }
+
+    .formal-table th,
+    .formal-table td {
+        border: 1px solid #000;
+        padding: 4px 6px;
+        vertical-align: middle;
+    }
+
+    .table-title {
+        background-color: #f2f2f2 !important;
+        -webkit-print-color-adjust: exact;
+        text-align: left;
+        font-size: 12.5px;
+        text-transform: uppercase;
+        padding: 5px 6px !important;
+    }
+
+    .label-cell {
+        font-weight: bold;
+        width: 15%;
+        background-color: #fafafa !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .undertaking-text {
+        font-size: 11px;
+        line-height: 1.35;
+        text-align: justify;
+        padding: 8px 12px !important;
+    }
+
+    .undertaking-text ol {
+        margin: 4px 0 4px 18px;
+        padding: 0;
+    }
+
+    .undertaking-text li {
+        margin-bottom: 3px;
+    }
+
+    .dynamic-data {
+        font-weight: 600;
+        text-transform: uppercase;
+        border-bottom: 1px solid #000;
+        display: inline-block;
+        padding: 0 4px;
+        line-height: 1.1;
+    }
+
+    .price-bold {
+        font-weight: bold;
+        font-size: 12px;
+    }
+}

@@ -6,88 +6,150 @@
     <link rel="icon" type="image/x-icon" href="/images/college-logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Undertaking | Success</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background: rgb(45, 47, 94);
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .contanier {
+            font-family: 'Poppins', sans-serif;
+            /* Exact background gradient matching the image */
+            background: linear-gradient(90deg, #2a4f78 0%, #5a7d9f 100%);
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            margin: auto;
-            width: 99vw;
-            height: 90vh;
-        }
-        .contanier .popup {
-            width: 30%;
-            height: 40vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 10px;
-            gap: 10px;
-            background: rgb(255, 251, 251);
-            border-radius: 7px;
-            color: rgb(48, 44, 44);
-            margin: auto;
-            position: relative;
-        }
-        .contanier .popup img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-top: -35px;
-            position: absolute;
-            top: 0;
-        }
-        .div-item {
-            display: flex;
             align-items: center;
-            flex-direction: column;
-            width: 90%;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .popup {
+            background: #ffffff;
+            width: 100%;
+            max-width: 480px;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            animation: slideUp 0.5s ease-out forwards;
         }
-        a {
-            background: rgb(19, 175, 19);
+
+        .icon-container {
+            width: 90px;
+            height: 90px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .icon-container i {
+            color: #ffffff;
+            font-size: 48px;
+        }
+
+        .div-item h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .div-item p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn-next {
+            display: inline-block;
+            background-color: #10b981;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 3px;
-            padding: 10px;
-            height: 20px;
-            width: 80%;
-            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 14px 40px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        /* Media query setiction started */
-        @media only screen and (min-width:200px) and (max-width:480px) {
-            .contanier {
-                width: 100vw;
-                height: 100vh;
+
+        .btn-next:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .contanier .popup {
-                width: 90vw;
-                height: 30vh;
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .contanier .popup img {
-                width: 80px;
-                height: 80px;
+        }
+
+        @media only screen and (max-width: 480px) {
+            .popup {
+                padding: 30px 20px;
+                width: 90%;
             }
-            .div-item p{
-                font-size: 18px;
+
+            .icon-container {
+                width: 70px;
+                height: 70px;
+            }
+
+            .icon-container i {
+                font-size: 36px;
+            }
+
+            .div-item h2 {
+                font-size: 1.8rem;
+            }
+
+            .div-item p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="contanier">
+    <div class="container">
         <div class="popup" id="disp">
-            <img src="/images/checkBtn.png" alt="">
+            <div class="icon-container">
+                <i class="fa-solid fa-check"></i>
+            </div>
             <div class="div-item">
                 <h2>Thank You!</h2>
-                <p>Your Undertaking for College Discipline details have been successfully submitted.</p><br>
-                <a href="/feesUndertaking">Next ➡️</a>
+                <p>Student Undertaking saved successfully! Please proceed to the next step to complete your Fees Undertaking.</p>
+                <a href="/feesUndertaking" class="btn-next">Next</a>
             </div>
         </div>
     </div>
-</body>s
+</body>
 
 </html>
