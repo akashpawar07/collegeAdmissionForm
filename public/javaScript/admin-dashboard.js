@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // 1. Format the database data
         realStudents = dbData.map(student => {
+
+            const applicationDate = student.createdAt 
+                ? new Date(student.createdAt).toLocaleDateString('en-IN') // 'en-IN' formats it as DD/MM/YYYY
+                : "N/A";
             return {
                 rawId: student._id,
                 // ---> CHANGED HERE: Now pulls the real Application ID from DB
@@ -60,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 name: `${student.firstName || ''} ${student.surname || ''}`.trim(),
                 course: student.courses || "N/A",
                 branch: student.branch || "N/A",
-                date: student.dateOfBirth || "N/A",
+                date: applicationDate || "N/A",
                 status: student.status || "Pending"
             };
         }).reverse();
