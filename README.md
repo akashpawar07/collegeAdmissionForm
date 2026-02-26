@@ -56,15 +56,14 @@ The **SYCET Admission Portal** is a comprehensive, end-to-end digital admission 
 ### Registration Guidelines : Landing Page
 <img width="1706" height="876" alt="Image" src="https://github.com/user-attachments/assets/b6bdb83e-516f-4f1d-92c4-2547a902b9cf" />
 
-### Admin Login
-<img width="1353" height="1236" alt="Image" src="https://github.com/user-attachments/assets/943cd121-37a9-47a9-a4e1-7b27717f5f62" />
+### Login Page
+<img width="1900" height="869" alt="Image" src="https://github.com/user-attachments/assets/0b0e067c-61b7-4909-9a71-128b26046aa1" />
 
 ### Admin Dashboard
 <img width="1899" height="874" alt="Image" src="https://github.com/user-attachments/assets/de9af5d5-f8a6-437b-877a-041605e5813b" />
 
 ### System Generated ID-Card
-<img width="771" height="657" alt="Image" src="https://github.com/user-attachments/assets/ab4b25cb-4d97-4787-9be2-da326bc727ff" />
-
+<img width="1353" height="1236" alt="Image" src="https://github.com/user-attachments/assets/943cd121-37a9-47a9-a4e1-7b27717f5f62" />
 
 ### System Context DFD
 <img width="1298" height="523" alt="Image" src="https://github.com/user-attachments/assets/baa3eb88-0960-43f1-9e2e-44ab9cd7191d" />
